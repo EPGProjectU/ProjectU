@@ -17,10 +17,10 @@ public class Consumable : Item
     }
     public override void Pickup()
     {
-        throw new System.NotImplementedException();
+        EquipmentController.PickupMultiple();
     }
     public override void Drop()
     {
-        throw new System.NotImplementedException();
+        EquipmentController.DropMultiple();
     }
 }

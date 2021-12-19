@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EquipmentController : MonoBehaviour
+public static class EquipmentController
 {
 
 
-    public void PickupSingle()
+    public static void PickupSingle()
     {
 
     }
-    public void PickupMultiple()
+    public static void PickupMultiple()
     {
 
     }
-    public void DropSingle()
+    public static void DropSingle()
     {
 
     }
-    public void DropMultiple()
+    public static void DropMultiple()
     {
 
     }

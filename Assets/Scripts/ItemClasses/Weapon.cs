@@ -17,10 +17,10 @@ public class Weapon : Item
     }
     public override void Pickup()
     {
-        throw new System.NotImplementedException();
+        EquipmentController.PickupSingle();
     }
     public override void Drop()
     {
-        throw new System.NotImplementedException();
+        EquipmentController.DropSingle();
     }
 }

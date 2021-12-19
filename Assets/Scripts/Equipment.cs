@@ -16,4 +16,12 @@ public class Equipment : MonoBehaviour
 
     }
 
+    void ShowEquipment()
+    {
+        foreach (Item item in items)
+        {
+            Debug.Log(item.Name);
+        }
+    }
+
 }
