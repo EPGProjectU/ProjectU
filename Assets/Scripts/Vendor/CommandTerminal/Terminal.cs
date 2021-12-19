@@ -64,6 +64,8 @@ namespace CommandTerminal
         GUIStyle label_style;
         GUIStyle input_style;
 
+        Texture2D background_texture;
+
         public static CommandLog Buffer { get; private set; }
         public static CommandShell Shell { get; private set; }
         public static CommandHistory History { get; private set; }
@@ -141,10 +143,21 @@ namespace CommandTerminal
             Application.logMessageReceived -= HandleUnityLog;
         }
 
+        [RuntimeInitializeOnLoadMethod]
+        static void OnRuntimeMethodLoad()
+        {
+            Debug.Log("Creating terminal instance");
+
+            var gameObject = new GameObject("Terminal");
+            gameObject.AddComponent<Terminal>();
+
+            DontDestroyOnLoad(gameObject);
+        }
+
         void Start() {
             if (ConsoleFont == null) {
                 ConsoleFont = Font.CreateDynamicFontFromOSFont("Courier New", 16);
-                Debug.LogWarning("Command Console Warning: Please assign a font.");
+                //Debug.LogWarning("Command Console Warning: Please assign a font.");
             }
 
             command_text = "";
@@ -184,7 +197,14 @@ namespace CommandTerminal
             }
 
             HandleOpenness();
+
+            ResetBackground();
             window = GUILayout.Window(88, window, DrawConsole, "", window_style);
+        }
+
+        void ResetBackground()
+        {
+            window_style.normal.background = background_texture;
         }
 
         void SetupWindow() {
@@ -192,7 +212,7 @@ namespace CommandTerminal
             window = new Rect(0, current_open_t - real_window_size, Screen.width, real_window_size);
 
             // Set background color
-            Texture2D background_texture = new Texture2D(1, 1);
+            background_texture = new Texture2D(1, 1);
             background_texture.SetPixel(0, 0, BackgroundColor);
             background_texture.Apply();
 
