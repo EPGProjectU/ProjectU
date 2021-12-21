@@ -5,15 +5,10 @@ using UnityEngine;
 public class Consumable : Item
 {
     // Start is called before the first frame update
-    void Start()
+    public int Value { get; set; }
+    public Consumable(string name, int value) : base(name)
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        Value = value;
     }
     public override void Pickup()
     {

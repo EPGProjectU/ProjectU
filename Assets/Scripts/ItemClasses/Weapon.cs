@@ -5,16 +5,12 @@ using UnityEngine;
 public class Weapon : Item
 {
     // Start is called before the first frame update
-    void Start()
+    public int Damage { get; set; }
+    public Weapon(string name, int damage) : base(name)
     {
-
+        Damage = damage;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public override void Pickup()
     {
         EquipmentController.PickupSingle();

@@ -5,15 +5,10 @@ using UnityEngine;
 public class Armor : Item
 {
     // Start is called before the first frame update
-    void Start()
+    public int ArmorValue { get; set; }
+    public Armor(string name, int armorValue) : base(name)
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        ArmorValue = armorValue;
     }
     public override void Pickup()
     {

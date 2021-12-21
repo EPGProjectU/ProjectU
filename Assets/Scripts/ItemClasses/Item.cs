@@ -5,16 +5,12 @@ using UnityEngine;
 public abstract class Item : MonoBehaviour
 {
     public string Name { get; set; }
-    void Start()
-    {
 
+    public Item(string name)
+    {
+        Name = name;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public abstract void Pickup();
     public abstract void Drop();

@@ -5,16 +5,8 @@ using UnityEngine;
 public class Miscellaineous : Item
 {
     // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    public Miscellaineous(string name) : base(name) { }
     public override void Pickup()
     {
         EquipmentController.PickupMultiple();
