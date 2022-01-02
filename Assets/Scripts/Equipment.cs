@@ -4,19 +4,10 @@ using UnityEngine;
 
 public class Equipment : MonoBehaviour
 {
-    List<Item> items = new List<Item>();
-    void Start()
-    {
+    public List<Item> items = new List<Item>();
 
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void ShowEquipment()
+    public void ShowEquipment()
     {
         foreach (Item item in items)
         {

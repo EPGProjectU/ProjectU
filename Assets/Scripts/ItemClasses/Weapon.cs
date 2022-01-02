@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon : Item
 {
     // Start is called before the first frame update
-    public int Damage { get; set; }
+    public int Damage;
     public Weapon(string name, int damage) : base(name)
     {
         Damage = damage;
@@ -13,10 +13,10 @@ public class Weapon : Item
 
     public override void Pickup()
     {
-        EquipmentController.PickupSingle();
+
     }
     public override void Drop()
     {
-        EquipmentController.DropSingle();
+
     }
 }

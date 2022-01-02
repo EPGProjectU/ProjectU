@@ -2,24 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class EquipmentController
+public class EquipmentController : MonoBehaviour
 {
+    public Equipment equipment;
 
-
-    public static void PickupSingle()
+    public void PickupSingle(Item item)
     {
-
+        equipment.items.Add(item);
+        equipment.ShowEquipment();
     }
-    public static void PickupMultiple()
+    public void PickupMultiple(Item item)
     {
-
+        equipment.items.Add(item);
+        equipment.ShowEquipment();
     }
-    public static void DropSingle()
+    public void DropSingle(Item item)
     {
-
+        equipment.items.Remove(item);
+        equipment.ShowEquipment();
     }
-    public static void DropMultiple()
+    public void DropMultiple(Item item)
     {
-
+        equipment.items.Remove(item);
+        equipment.ShowEquipment();
     }
+
 }
