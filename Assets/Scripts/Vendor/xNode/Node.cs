@@ -262,7 +262,7 @@ namespace XNode {
             foreach (NodePort port in Ports) port.ClearConnections();
         }
 
-#region Attributes
+        #region Attributes
         /// <summary> Mark a serializable field as an input port. You can access this through <see cref="GetInputPort(string)"/> </summary>
         [AttributeUsage(AttributeTargets.Field)]
         public class InputAttribute : Attribute {
@@ -295,17 +295,20 @@ namespace XNode {
             public bool instancePortList { get { return dynamicPortList; } set { dynamicPortList = value; } }
             public bool dynamicPortList;
             public TypeConstraint typeConstraint;
+            public string[] dependencies;
 
             /// <summary> Mark a serializable field as an output port. You can access this through <see cref="GetOutputPort(string)"/> </summary>
             /// <param name="backingValue">Should we display the backing value for this port as an editor field? </param>
             /// <param name="connectionType">Should we allow multiple connections? </param>
             /// <param name="typeConstraint">Constrains which input connections can be made from this port </param>
             /// <param name="dynamicPortList">If true, will display a reorderable list of outputs instead of a single port. Will automatically add and display values for lists and arrays </param>
-            public OutputAttribute(ShowBackingValue backingValue = ShowBackingValue.Never, ConnectionType connectionType = ConnectionType.Multiple, TypeConstraint typeConstraint = TypeConstraint.None, bool dynamicPortList = false) {
+            /// <param name="dependencies"> List of input ports that are directly used to get value of this output port. Will not allow any connection that results in output being connected to dependency input port, even indirectly through other nodes dependencies. </param>
+            public OutputAttribute(ShowBackingValue backingValue = ShowBackingValue.Never, ConnectionType connectionType = ConnectionType.Multiple, TypeConstraint typeConstraint = TypeConstraint.None, bool dynamicPortList = false, string[] dependencies = null) {
                 this.backingValue = backingValue;
                 this.connectionType = connectionType;
                 this.dynamicPortList = dynamicPortList;
                 this.typeConstraint = typeConstraint;
+                this.dependencies = dependencies;
             }
 
             /// <summary> Mark a serializable field as an output port. You can access this through <see cref="GetOutputPort(string)"/> </summary>

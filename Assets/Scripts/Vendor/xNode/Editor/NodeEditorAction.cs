@@ -218,7 +218,7 @@ namespace XNodeEditor {
                         //Port drag release
                         if (IsDraggingPort) {
                             // If connection is valid, save it
-                            if (draggedOutputTarget != null && draggedOutput.CanConnectTo(draggedOutputTarget)) {
+                            if (draggedOutputTarget != null && draggedOutput.CanConnectTo(draggedOutputTarget) && !NodeEditorUtilities.CheckForDependencyLoop(draggedOutput, draggedOutputTarget)) {
                                 XNode.Node node = draggedOutputTarget.node;
                                 if (graph.nodes.Count != 0) draggedOutput.Connect(draggedOutputTarget);
 
@@ -487,7 +487,7 @@ namespace XNodeEditor {
                             inputPort = newNodeIn.GetInputPort(inputPort.fieldName);
                             outputPort = newNodeOut.GetOutputPort(outputPort.fieldName);
                         }
-                        if (!inputPort.IsConnectedTo(outputPort)) inputPort.Connect(outputPort);
+                        if (!inputPort.IsConnectedTo(outputPort) && !NodeEditorUtilities.CheckForDependencyLoop(outputPort, inputPort)) inputPort.Connect(outputPort);
                     }
                 }
             }
@@ -555,7 +555,7 @@ namespace XNodeEditor {
             // Fallback to input port
             if (inputPort == null) inputPort = node.Ports.FirstOrDefault(x => x.IsInput);
             // Autoconnect if connection is compatible
-            if (inputPort != null && inputPort.CanConnectTo(autoConnectOutput)) autoConnectOutput.Connect(inputPort);
+            if (inputPort != null && inputPort.CanConnectTo(autoConnectOutput) && !NodeEditorUtilities.CheckForDependencyLoop(autoConnectOutput, inputPort)) autoConnectOutput.Connect(inputPort);
 
             // Save changes
             EditorUtility.SetDirty(graph);

@@ -205,6 +205,11 @@ namespace XNodeEditor {
             return w;
         }
 
+        public void OnInspectorUpdate()
+        {
+            Repaint();
+        }
+
         /// <summary> Repaint all open NodeEditorWindows. </summary>
         public static void RepaintAll() {
             NodeEditorWindow[] windows = Resources.FindObjectsOfTypeAll<NodeEditorWindow>();

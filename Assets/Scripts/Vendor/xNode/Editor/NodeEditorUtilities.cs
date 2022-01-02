@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
+using XNode;
 using Object = UnityEngine.Object;
 
 namespace XNodeEditor {
@@ -151,6 +152,42 @@ namespace XNodeEditor {
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Gets input ports that output port has marked as dependency
+        /// </summary>
+        /// <param name="outputPort">Output port to check for dependencies</param>
+        /// <returns>List of zero or more dependency input ports</returns>
+        public static List<NodePort> GetDependencyInputs(NodePort outputPort)
+        {
+            GetCachedAttrib(outputPort.node.GetType(), outputPort.fieldName, out Node.OutputAttribute outputAttribute);
+
+            if (outputAttribute.dependencies == null)
+                return new List<NodePort>();
+
+            return outputAttribute.dependencies.Select(dependency => outputPort.node.GetInputPort(dependency)).ToList();
+        }
+
+        /// <summary>
+        /// Checks recursively if connection between ports will result in dependency loop
+        /// </summary>
+        /// <param name="outputPort">Output port that connection goes of</param>
+        /// <param name="inputPort">Input port that connection goes to</param>
+        /// <returns>Return true if dependency loop was detected</returns>
+        public static bool CheckForDependencyLoop(NodePort outputPort, NodePort inputPort)
+        {
+            var dependencies = GetDependencyInputs(outputPort);
+
+            if (dependencies.Count <= 0)
+                return false;
+
+            // Check if current outputPort is has inputPort as its dependency
+            if (dependencies.Contains(inputPort))
+                return true;
+
+            // Check next nodes that are connected to dependency input
+            return dependencies.SelectMany(inPort => inPort.GetConnections()).Any(nextOutputPort => CheckForDependencyLoop(nextOutputPort, inputPort));
         }
 
         /// <summary>
