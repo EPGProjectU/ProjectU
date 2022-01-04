@@ -1,4 +1,4 @@
-[CreateNodeMenuAttribute("Logic/Not", 2)]
+[CreateNodeMenuAttribute("Logic/And", 2)]
 public class AndNode : BoolNode
 {
     public override bool GetValue()

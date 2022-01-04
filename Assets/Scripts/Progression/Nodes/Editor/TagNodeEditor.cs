@@ -10,6 +10,7 @@ public class TagNodeEditor : NodeEditor
     public override void OnBodyGUI()
     {
         serializedObject.Update();
+        ProgressionManager.StartEditorChange();
 
         GUILayout.BeginHorizontal();
         NodeEditorGUILayout.PortField(new GUIContent("In"), target.GetInputPort("input"), GUILayout.MinWidth(0));
@@ -21,7 +22,8 @@ public class TagNodeEditor : NodeEditor
 
         var oldState = Node.collected;
         Node.collected = GUILayout.Toggle(Node.collected, "Collected");
-        
+
+        ProgressionManager.EndEditorChange(oldState != Node.collected);
         serializedObject.ApplyModifiedProperties();
     }
 

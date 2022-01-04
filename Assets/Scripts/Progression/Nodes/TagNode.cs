@@ -20,7 +20,11 @@ public class TagNode : Node, ProgressionTag
     public string Name
     {
         get => _name;
-        set => _name = value;
+        set
+        {
+            ProgressionManager.SendTagNameChangeNotifications(_name, value, graph);
+            _name = value;
+        }
     }
 
     public ProgressionTag.TagState State => IsCollected() ? ProgressionTag.TagState.Collected : IsActive() ? ProgressionTag.TagState.Active : ProgressionTag.TagState.Inactive;
