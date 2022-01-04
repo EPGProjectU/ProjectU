@@ -7,18 +7,22 @@ using UnityEngine;
 /// </summary>
 public class PlayerController : ActorController
 {
+    public int health = 3;
+    private bool isDead;
     // Start is called before the first frame update
     void Start()
     {
         // Calling setup of ActorController
         Setup();
+        isDead = false;
+        GameEventSystem.Instance.OnPlayerTakesDamage += takeDamage;
     }
 
     // Update is called once per frame
     void Update()
     {
         // Updating player speed base on the input
-        UpdateVelocity(GetVelocityFromInput());
+        if(!isDead)UpdateVelocity(GetVelocityFromInput());
     }
 
     /// <summary>
@@ -35,5 +39,18 @@ public class PlayerController : ActorController
 
         // Multiplying input vector by the selected movement speed
         return inputVector * (Input.GetKey("left shift") ? RunningSpeed : BaseSpeed);
+    }
+
+    public void takeDamage(int damage)
+    {
+        health -= damage;
+        Debug.Log("Health = " + health);
+        if (health < 1)
+        {
+            isDead = true;
+            GameEventSystem.Instance.PlayerIsDead();
+            Debug.Log("Player is Dead");
+        }
+        
     }
 }
