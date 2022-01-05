@@ -45,6 +45,7 @@ namespace SAP2D {
         private void Start()
         {
             pathfinder = SAP2DPathfinder.singleton;
+            //grid = pathfinder.GetGrid(Config.GridIndex);  //optimization? 
         }
 
         private void Update()

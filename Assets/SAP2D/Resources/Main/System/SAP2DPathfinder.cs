@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace SAP2D {
@@ -61,8 +62,8 @@ namespace SAP2D {
 
             if (targetTile.isWalkable == false) return null;
 
-            List<SAP_TileData> openList = new List<SAP_TileData>();
-            List<SAP_TileData> closedList = new List<SAP_TileData>();
+            HashSet<SAP_TileData> openList = new HashSet<SAP_TileData>();
+            HashSet<SAP_TileData> closedList = new HashSet<SAP_TileData>();
 
             while(closedList.Contains(targetTile) == false)
             {
@@ -114,11 +115,11 @@ namespace SAP2D {
             return path.ToArray();
         }
 
-        private SAP_TileData FindNextTile(List<SAP_TileData> openList)
+        private SAP_TileData FindNextTile(HashSet<SAP_TileData> openList)
         {
             if (openList.Count == 0) return null;
 
-            SAP_TileData result = openList[0];
+            SAP_TileData result = openList.First();
             foreach(SAP_TileData tile in openList)
             {
                 if(tile.F < result.F) result = tile;
