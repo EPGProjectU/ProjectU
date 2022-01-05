@@ -43,7 +43,7 @@ MonoBehaviour:
   input: 0
   output: 0
   collected: 0
-  _name: SQ3/BR2/D
+  _name: SQ/BR2/D
 --- !u!114 &-8045693421809948763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
   input: 0
   output: 0
   collected: 0
-  _name: P0/EntryPoint1
+  _name: MAIN/P0/EntryPoint1
 --- !u!114 &-7842843429907566467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   input: 0
   output: 0
   collected: 0
-  _name: P3/OR
+  _name: MAIN/P3/OR
 --- !u!114 &-7647528920774060610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,7 +382,7 @@ MonoBehaviour:
   input: 0
   output: 0
   collected: 0
-  _name: P2/A
+  _name: MAIN/P2/A
 --- !u!114 &-4710926220035158951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,7 +426,7 @@ MonoBehaviour:
   input: 0
   output: 0
   collected: 0
-  _name: SQ1
+  _name: SQ/1
 --- !u!114 &-4031510013751740988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,7 +470,7 @@ MonoBehaviour:
   input: 0
   output: 0
   collected: 0
-  _name: SQ3/BR2/B
+  _name: SQ/BR2/B
 --- !u!114 &-3275965754634845792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,7 +514,7 @@ MonoBehaviour:
   input: 0
   output: 0
   collected: 0
-  _name: P4/BR1/B
+  _name: MAIN/P4/BR1/B
 --- !u!114 &-3230342944337600944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,7 +602,7 @@ MonoBehaviour:
   input: 0
   output: 0
   collected: 0
-  _name: P4/BR1/C
+  _name: MAIN/P4/BR1/C
 --- !u!114 &-1987163435566084664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,7 +701,7 @@ MonoBehaviour:
   input: 0
   output: 0
   collected: 0
-  _name: SQ3/BR2/C
+  _name: SQ/BR2/C
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -791,7 +791,7 @@ MonoBehaviour:
   input: 0
   output: 0
   collected: 0
-  _name: P2/B
+  _name: MAIN/P2/B
 --- !u!114 &1568424514948958628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,7 +824,10 @@ MonoBehaviour:
       _node: {fileID: 1568424514948958628}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: input
+        node: {fileID: 8212303023784682889}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -832,7 +835,7 @@ MonoBehaviour:
   input: 0
   output: 0
   collected: 0
-  _name: SQ2
+  _name: SQ/2
 --- !u!114 &2996666164581562401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -876,7 +879,7 @@ MonoBehaviour:
   input: 0
   output: 0
   collected: 0
-  _name: SQ3/BR2/A
+  _name: SQ/BR2/A
 --- !u!114 &4147835467978345106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -973,7 +976,7 @@ MonoBehaviour:
   input: 0
   output: 0
   collected: 0
-  _name: P1
+  _name: MAIN/P1
 --- !u!114 &4615220013187734995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1061,7 +1064,7 @@ MonoBehaviour:
   input: 0
   output: 0
   collected: 0
-  _name: P4/BR1/A
+  _name: MAIN/P4/BR1/A
 --- !u!114 &7494430596948892267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1108,7 +1111,7 @@ MonoBehaviour:
   input: 0
   output: 0
   collected: 0
-  _name: P3/AND
+  _name: MAIN/P3/AND
 --- !u!114 &7503016075601230079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1217,7 +1220,7 @@ MonoBehaviour:
   input: 0
   output: 0
   collected: 0
-  _name: P0/EntryPoint2
+  _name: MAIN/P0/EntryPoint2
 --- !u!114 &8010331218013806407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1291,6 +1294,9 @@ MonoBehaviour:
         reroutePoints: []
       - fieldName: output
         node: {fileID: -6782670761626670594}
+        reroutePoints: []
+      - fieldName: output
+        node: {fileID: 1568424514948958628}
         reroutePoints: []
       _direction: 0
       _connectionType: 0

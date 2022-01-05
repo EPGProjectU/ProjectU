@@ -155,19 +155,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagHook:
-    tagName: P2/A
-    OnUpdate:
-      guid:
-        m_Value0: 1638158021
-        m_Value1: 366014796
-        m_Value2: 881886368
-        m_Value3: 458823384
-    OnInitialization:
-      guid:
-        m_Value0: 851395339
-        m_Value1: 821336041
-        m_Value2: 318371779
-        m_Value3: 428092866
+    tagName: MAIN/P2/A
+    OnUpdate: {}
+    OnInitialization: {}
 --- !u!212 &14306062
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -291,19 +281,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagHook:
-    tagName: P1
-    OnUpdate:
-      guid:
-        m_Value0: 2094434842
-        m_Value1: 1843022778
-        m_Value2: 609615136
-        m_Value3: 1423893445
-    OnInitialization:
-      guid:
-        m_Value0: 586812571
-        m_Value1: 2103930333
-        m_Value2: 1358416212
-        m_Value3: 662615048
+    tagName: MAIN/P1
+    OnUpdate: {}
+    OnInitialization: {}
 --- !u!212 &172186322
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -453,19 +433,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagHook:
-    tagName: SQ3/BR2/B
-    OnUpdate:
-      guid:
-        m_Value0: 1560103916
-        m_Value1: 1583880583
-        m_Value2: 1910631843
-        m_Value3: 576329679
-    OnInitialization:
-      guid:
-        m_Value0: 620735131
-        m_Value1: 1226506736
-        m_Value2: 2038617587
-        m_Value3: 31177345
+    tagName: SQ/BR2/B
+    OnUpdate: {}
+    OnInitialization: {}
 --- !u!212 &217324832
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -590,18 +560,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagHook:
     tagName: EX/UNLOCK/2
-    OnUpdate:
-      guid:
-        m_Value0: 803338631
-        m_Value1: 63451015
-        m_Value2: 1228373539
-        m_Value3: 533911424
-    OnInitialization:
-      guid:
-        m_Value0: 1654618581
-        m_Value1: 189541182
-        m_Value2: 99244279
-        m_Value3: 1224247383
+    OnUpdate: {}
+    OnInitialization: {}
 --- !u!212 &258714440
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -699,19 +659,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagHook:
-    tagName: P0/EntryPoint1
-    OnUpdate:
-      guid:
-        m_Value0: 66807304
-        m_Value1: 351004365
-        m_Value2: 2525310
-        m_Value3: 800390192
-    OnInitialization:
-      guid:
-        m_Value0: 1548855514
-        m_Value1: 7931066
-        m_Value2: 1039036567
-        m_Value3: 2098353889
+    tagName: MAIN/P0/EntryPoint1
+    OnUpdate: {}
+    OnInitialization: {}
 --- !u!212 &278746650
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -862,18 +812,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagHook:
     tagName: EX/LOCK_OUT
-    OnUpdate:
-      guid:
-        m_Value0: 1925710857
-        m_Value1: 131717772
-        m_Value2: 1577753825
-        m_Value3: 1569371727
-    OnInitialization:
-      guid:
-        m_Value0: 1777032526
-        m_Value1: 797992591
-        m_Value2: 1064426717
-        m_Value3: 1916805870
+    OnUpdate: {}
+    OnInitialization: {}
 --- !u!212 &379241232
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1032,19 +972,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagHook:
-    tagName: P1
-    OnUpdate:
-      guid:
-        m_Value0: 227534422
-        m_Value1: 1512298809
-        m_Value2: 374469741
-        m_Value3: 1188579852
-    OnInitialization:
-      guid:
-        m_Value0: 779946193
-        m_Value1: 1738546439
-        m_Value2: 1463557697
-        m_Value3: 421635315
+    tagName: MAIN/P1
+    OnUpdate: {}
+    OnInitialization: {}
 --- !u!212 &811068627
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1195,18 +1125,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagHook:
     tagName: EX/UNLOCK/1
-    OnUpdate:
-      guid:
-        m_Value0: 1890972431
-        m_Value1: 1314751211
-        m_Value2: 1274270008
-        m_Value3: 99755285
-    OnInitialization:
-      guid:
-        m_Value0: 602056038
-        m_Value1: 808505897
-        m_Value2: 901960556
-        m_Value3: 1099009637
+    OnUpdate: {}
+    OnInitialization: {}
 --- !u!212 &858562448
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17593,18 +17513,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagHook:
     tagName: EX/LOCK/1
-    OnUpdate:
-      guid:
-        m_Value0: 1504867022
-        m_Value1: 581497812
-        m_Value2: 1782650061
-        m_Value3: 1742507274
-    OnInitialization:
-      guid:
-        m_Value0: 1845162100
-        m_Value1: 1153287119
-        m_Value2: 1315167419
-        m_Value3: 274774135
+    OnUpdate: {}
+    OnInitialization: {}
 --- !u!212 &999137626
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17816,19 +17726,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagHook:
-    tagName: SQ3/BR2/D
-    OnUpdate:
-      guid:
-        m_Value0: 896655466
-        m_Value1: 1517842755
-        m_Value2: 1099728021
-        m_Value3: 293955666
-    OnInitialization:
-      guid:
-        m_Value0: 1541143570
-        m_Value1: 791980663
-        m_Value2: 963579754
-        m_Value3: 1913396439
+    tagName: SQ/BR2/D
+    OnUpdate: {}
+    OnInitialization: {}
 --- !u!212 &1547205758
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18070,19 +17970,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagHook:
-    tagName: SQ3/BR2/A
-    OnUpdate:
-      guid:
-        m_Value0: 72394040
-        m_Value1: 1299326345
-        m_Value2: 650532903
-        m_Value3: 1373552989
-    OnInitialization:
-      guid:
-        m_Value0: 55196451
-        m_Value1: 242944767
-        m_Value2: 270541892
-        m_Value3: 781100563
+    tagName: SQ/BR2/A
+    OnUpdate: {}
+    OnInitialization: {}
 --- !u!212 &1596358643
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18206,19 +18096,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagHook:
-    tagName: SQ3/BR2/C
-    OnUpdate:
-      guid:
-        m_Value0: 664802055
-        m_Value1: 1313990033
-        m_Value2: 2094013011
-        m_Value3: 1493539416
-    OnInitialization:
-      guid:
-        m_Value0: 360665078
-        m_Value1: 1853327879
-        m_Value2: 369026922
-        m_Value3: 2133135843
+    tagName: SQ/BR2/C
+    OnUpdate: {}
+    OnInitialization: {}
 --- !u!212 &1652807083
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18343,18 +18223,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagHook:
     tagName: EX/LOCK/2
-    OnUpdate:
-      guid:
-        m_Value0: 1925702892
-        m_Value1: 1155002562
-        m_Value2: 320851683
-        m_Value3: 1514828809
-    OnInitialization:
-      guid:
-        m_Value0: 940734859
-        m_Value1: 1435056136
-        m_Value2: 761213024
-        m_Value3: 1252324817
+    OnUpdate: {}
+    OnInitialization: {}
 --- !u!212 &1788879529
 SpriteRenderer:
   m_ObjectHideFlags: 0

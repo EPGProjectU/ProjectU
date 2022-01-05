@@ -65,7 +65,8 @@ public partial class ProgressionManager
 
     internal static void RegisterTagHook(TagHook hook)
     {
-        HookRegistry.Add(new WeakReference<TagHook>(hook));
+        if (!hook.Registered && (hook.Registered = true))
+            HookRegistry.Add(new WeakReference<TagHook>(hook));
     }
 
     internal void RegisterRuntimeTagHook(TagHook hook)
@@ -80,13 +81,21 @@ public partial class ProgressionManager
 
     internal void ReRegisterRuntimeTagHook(TagHook hook)
     {
-        if (hook.Tag == null)
+        if (_tags.Count == 0)
             return;
 
         var hookReference = new WeakReference<TagHook>(hook);
 
         // Removing hook under the tag reference from the call list
-        _hookCallList[hook.Tag].RemoveAll(reference => !reference.TryGetTarget(out var oldHook) || oldHook == hook);
+        if (hook.Tag != null)
+            _hookCallList[hook.Tag].RemoveAll(reference => !reference.TryGetTarget(out var oldHook) || oldHook == hook);
+
+        if (!_tags.ContainsKey(hook.tagName))
+        {
+            Debug.LogWarning($"Tag {hook.tagName} could not be found!");
+
+            return;
+        }
 
         hook.Tag = _tags[hook.TagName];
         _hookCallList[hook.Tag].Add(hookReference);
@@ -204,16 +213,10 @@ public partial class ProgressionManager
             if (!hookReference.TryGetTarget(out var hook))
                 continue;
 
-            if (hook.TagName == "")
-            {
-                Debug.LogWarning("Hook is missing tag name!");
-
-                continue;
-            }
-
             if (!_tags.ContainsKey(hook.TagName))
             {
-                Debug.LogWarning($"Could not link hook for {hook.TagName}! Tag {hook.TagName} does not exist in the current context!");
+                if (hook.TagName != "")
+                    Debug.LogWarning($"Could not link hook for {hook.TagName}! Tag {hook.TagName} does not exist in the current context!");
 
                 continue;
             }
@@ -222,6 +225,7 @@ public partial class ProgressionManager
             _hookCallList[hook.Tag].Add(hookReference);
         }
     }
+
     private void InitTagEventBuilders()
     {
         _tagEventBuilders = _tags.Select(progressionTag => new TagEventBuilder { NewState = progressionTag.Value.State, ProgressionTag = progressionTag.Value }).ToList();
@@ -235,6 +239,7 @@ public partial class ProgressionManager
             tagEventBuilder.NewState = tagEventBuilder.ProgressionTag.State;
         }
     }
+
     public static void SendTagNameChangeNotifications(string oldName, string newName, NodeGraph nodeGraph)
     {
         if (nodeGraph != Instance.progressionGraph)

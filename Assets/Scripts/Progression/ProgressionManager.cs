@@ -10,7 +10,7 @@ public partial class ProgressionManager : MonoBehaviour
 
     public static ProgressionTag GetTag(string tagName)
     {
-        return Instance._tags[tagName];
+        return !Instance._tags.ContainsKey(tagName) ? null : Instance._tags[tagName];
     }
 
     public static List<ProgressionTag> GetAllTags()
