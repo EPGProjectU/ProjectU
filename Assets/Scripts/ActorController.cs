@@ -24,6 +24,11 @@ public abstract class ActorController : MonoBehaviour
     private Rigidbody2D _rigidBody;
 
     /// <summary>
+    /// Amount of health that actor currently haves
+    /// </summary>
+    public int health;
+
+    /// <summary>
     /// Setup 
     /// </summary>
     public void Setup()

@@ -18,15 +18,27 @@ public class GameEventSystem : MonoBehaviour {
     }
 
     public event Action<int> OnPlayerTakesDamage;
+    public event Action OnPlayerDealsDamage;
     public event Action OnPlayerDead;
+    public event Action<int> OnEnemyTakesDamage;
 
-    public void PlayerGetsDamage(int damage)
+    public void PlayerTakesDamage(int damage)
     {
         OnPlayerTakesDamage?.Invoke(damage);
+    }
+
+    public void PlayerDealsDamage()
+    {
+        OnPlayerDealsDamage?.Invoke();
     }
 
     public void PlayerIsDead()
     {
         OnPlayerDead?.Invoke();
+    }
+
+    public void EnemyTakesDamage(int damage)
+    {
+        OnEnemyTakesDamage?.Invoke(damage);
     }
 }

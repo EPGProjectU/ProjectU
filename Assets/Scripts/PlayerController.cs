@@ -7,22 +7,34 @@ using UnityEngine;
 /// </summary>
 public class PlayerController : ActorController
 {
-    public int health = 3;
     private bool isDead;
+    public GameObject cannonballPrefab;
     // Start is called before the first frame update
     void Start()
     {
         // Calling setup of ActorController
         Setup();
         isDead = false;
-        GameEventSystem.Instance.OnPlayerTakesDamage += takeDamage;
+        health = 3;
+        GameEventSystem.Instance.OnPlayerTakesDamage += TakeDamage;
+        GameEventSystem.Instance.OnPlayerDealsDamage += DealDamage;
     }
 
     // Update is called once per frame
     void Update()
     {
         // Updating player speed base on the input
-        if(!isDead)UpdateVelocity(GetVelocityFromInput());
+        if (!isDead) 
+        { 
+            UpdateVelocity(GetVelocityFromInput());
+            Attack();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        GameEventSystem.Instance.OnPlayerTakesDamage -= TakeDamage;
+        GameEventSystem.Instance.OnPlayerDealsDamage -= DealDamage;
     }
 
     /// <summary>
@@ -41,7 +53,7 @@ public class PlayerController : ActorController
         return inputVector * (Input.GetKey("left shift") ? RunningSpeed : BaseSpeed);
     }
 
-    public void takeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         health -= damage;
         Debug.Log("Health = " + health);
@@ -51,6 +63,26 @@ public class PlayerController : ActorController
             GameEventSystem.Instance.PlayerIsDead();
             Debug.Log("Player is Dead");
         }
-        
+    }
+
+    public void DealDamage()
+    {
+        Debug.Log("Player Dealt "+1+" Damage");
+        GameEventSystem.Instance.EnemyTakesDamage(1);
+    }
+
+    void Attack()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            float xDisplacement = Input.GetAxis("Horizontal");
+            float yDisplacement = Input.GetAxis("Vertical");
+            Vector3 pos = transform.position;
+            pos.x += 1;
+            pos.y += 0;
+            float angle = Mathf.Atan2(yDisplacement, xDisplacement) * Mathf.Rad2Deg;
+            Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+            GameObject weapon = Instantiate(cannonballPrefab, pos, q);
+        }
     }
 }

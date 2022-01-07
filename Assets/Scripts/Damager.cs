@@ -20,8 +20,7 @@ public class Damager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameEventSystem.Instance.PlayerGetsDamage(3);
-            //Destroy(gameObject);
+            GameEventSystem.Instance.PlayerTakesDamage(3);
         }
     }
 }
