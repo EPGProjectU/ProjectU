@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerController : ActorController
 {
     private bool isDead;
-    public GameObject cannonballPrefab;
+    public GameObject weaponPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +16,8 @@ public class PlayerController : ActorController
         Setup();
         isDead = false;
         health = 3;
-        GameEventSystem.Instance.OnPlayerTakesDamage += TakeDamage;
-        GameEventSystem.Instance.OnPlayerDealsDamage += DealDamage;
+        DamageEventSystem.Instance.OnPlayerTakesDamage += TakeDamage;
+        DamageEventSystem.Instance.OnPlayerDealsDamage += DealDamage;
     }
 
     // Update is called once per frame
@@ -33,8 +33,8 @@ public class PlayerController : ActorController
 
     private void OnDestroy()
     {
-        GameEventSystem.Instance.OnPlayerTakesDamage -= TakeDamage;
-        GameEventSystem.Instance.OnPlayerDealsDamage -= DealDamage;
+        DamageEventSystem.Instance.OnPlayerTakesDamage -= TakeDamage;
+        DamageEventSystem.Instance.OnPlayerDealsDamage -= DealDamage;
     }
 
     /// <summary>
@@ -60,7 +60,7 @@ public class PlayerController : ActorController
         if (health < 1)
         {
             isDead = true;
-            GameEventSystem.Instance.PlayerIsDead();
+            DamageEventSystem.Instance.PlayerIsDead();
             Debug.Log("Player is Dead");
         }
     }
@@ -68,7 +68,7 @@ public class PlayerController : ActorController
     public void DealDamage()
     {
         Debug.Log("Player Dealt "+1+" Damage");
-        GameEventSystem.Instance.EnemyTakesDamage(1);
+        DamageEventSystem.Instance.EnemyTakesDamage(1);
     }
 
     void Attack()
@@ -82,7 +82,7 @@ public class PlayerController : ActorController
             pos.y += 0;
             float angle = Mathf.Atan2(yDisplacement, xDisplacement) * Mathf.Rad2Deg;
             Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-            GameObject weapon = Instantiate(cannonballPrefab, pos, q);
+            GameObject weapon = Instantiate(weaponPrefab, pos, q);
         }
     }
 }

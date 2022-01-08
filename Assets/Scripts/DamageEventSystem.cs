@@ -7,8 +7,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
 using UnityEngine;
 
-public class GameEventSystem : MonoBehaviour {
-    public static GameEventSystem Instance;
+public class DamageEventSystem : MonoBehaviour {
+    public static DamageEventSystem Instance;
 
     private void Awake() {
         if (Instance == null)

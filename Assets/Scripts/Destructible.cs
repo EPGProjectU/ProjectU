@@ -10,7 +10,7 @@ public class Destructible : MonoBehaviour
     void Start()
     {
         isHit = false;
-        GameEventSystem.Instance.OnEnemyTakesDamage += TakeDamage;
+        DamageEventSystem.Instance.OnEnemyTakesDamage += TakeDamage;
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class Destructible : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameEventSystem.Instance.OnPlayerTakesDamage -= TakeDamage;
+        DamageEventSystem.Instance.OnPlayerTakesDamage -= TakeDamage;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -29,7 +29,7 @@ public class Destructible : MonoBehaviour
         if (collision.gameObject.CompareTag("PlayersWeapon"))
         {
             isHit = true;
-            GameEventSystem.Instance.PlayerDealsDamage();
+            DamageEventSystem.Instance.PlayerDealsDamage();
             //Destroy(gameObject);
         }
     }
