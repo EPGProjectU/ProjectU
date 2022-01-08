@@ -62,3 +62,6 @@ crashlytics-build.properties
 
 # Resharper
 *.DotSettings
+
+# Rider
+.idea/

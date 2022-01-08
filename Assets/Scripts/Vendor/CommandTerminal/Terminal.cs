@@ -146,8 +146,6 @@ namespace CommandTerminal
         [RuntimeInitializeOnLoadMethod]
         static void OnRuntimeMethodLoad()
         {
-            Debug.Log("Creating terminal instance");
-
             var gameObject = new GameObject("Terminal");
             gameObject.AddComponent<Terminal>();
 
