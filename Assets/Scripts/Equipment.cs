@@ -11,7 +11,7 @@ public class Equipment : MonoBehaviour
     {
         foreach (Item item in items)
         {
-            Debug.Log(item.Name);
+            UnityEngine.Debug.Log(item.Name);
         }
     }
 

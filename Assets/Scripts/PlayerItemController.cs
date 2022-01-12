@@ -10,7 +10,7 @@ public class PlayerItemController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         StartCoroutine(ItemPickupZone(collision.GetComponent<Item>()));
-        Debug.Log("Test");
+        UnityEngine.Debug.Log("Test");
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
