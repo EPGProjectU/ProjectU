@@ -16,8 +16,6 @@ public class PlayerController : ActorController
         Setup();
         isDead = false;
         health = 3;
-        DamageEventSystem.Instance.OnPlayerTakesDamage += TakeDamage;
-        DamageEventSystem.Instance.OnPlayerDealsDamage += DealDamage;
     }
 
     // Update is called once per frame
@@ -29,12 +27,6 @@ public class PlayerController : ActorController
             UpdateVelocity(GetVelocityFromInput());
             Attack();
         }
-    }
-
-    private void OnDestroy()
-    {
-        DamageEventSystem.Instance.OnPlayerTakesDamage -= TakeDamage;
-        DamageEventSystem.Instance.OnPlayerDealsDamage -= DealDamage;
     }
 
     /// <summary>
@@ -65,10 +57,11 @@ public class PlayerController : ActorController
         }
     }
 
-    public void DealDamage()
+    public int DealDamage()
     {
         Debug.Log("Player Dealt "+1+" Damage");
-        DamageEventSystem.Instance.EnemyTakesDamage(1);
+        //DamageEventSystem.Instance.EnemyTakesDamage(1);
+        return 1;
     }
 
     void Attack()
@@ -78,11 +71,21 @@ public class PlayerController : ActorController
             float xDisplacement = Input.GetAxis("Horizontal");
             float yDisplacement = Input.GetAxis("Vertical");
             Vector3 pos = transform.position;
-            pos.x += 1;
-            pos.y += 0;
+            if(xDisplacement>0)pos.x += 1;
+            if(xDisplacement<0)pos.x += -1;
+            if(yDisplacement>0)pos.y += 1;
+            if(yDisplacement<0)pos.y += -1;
             float angle = Mathf.Atan2(yDisplacement, xDisplacement) * Mathf.Rad2Deg;
             Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
             GameObject weapon = Instantiate(weaponPrefab, pos, q);
+            weapon.GetComponent<DamageInfo>().damage = DealDamage();
+            StartCoroutine(DestroyWeapon(weapon));
         }
     }
+
+    IEnumerator DestroyWeapon(GameObject weapon) {
+        yield return new WaitForSeconds(0.5f);
+        Destroy(weapon);
+    }
+
 }

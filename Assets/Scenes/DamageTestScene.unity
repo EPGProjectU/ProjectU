@@ -8105,6 +8105,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4576093516806014912, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
+      propertyPath: weaponPrefab
+      value: 
+      objectReference: {fileID: 3429799109082714164, guid: 8a0cca00ee3ac83408ee9b72526c59b1, type: 3}
+    - target: {fileID: 4576093516806014912, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
       propertyPath: cannonballPrefab
       value: 
       objectReference: {fileID: 3429799109082714164, guid: 8a0cca00ee3ac83408ee9b72526c59b1, type: 3}

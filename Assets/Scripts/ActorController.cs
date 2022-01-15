@@ -24,7 +24,7 @@ public abstract class ActorController : MonoBehaviour
     private Rigidbody2D _rigidBody;
 
     /// <summary>
-    /// Amount of health that actor currently haves
+    /// Amount of health (in hearts) that actor currently haves
     /// </summary>
     public int health;
 
