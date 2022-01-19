@@ -76,7 +76,7 @@ public class Pathfinder
 
     }*/
 
-    public Vector3 moveUsingPathfinding(Transform current, Transform target, float speed) {
+    public Vector2 moveUsingPathfinding(Transform current, Transform target, float speed) {
 
         seeker.StartPath(current.position, target.position, OnPathComplete);   //every time calculates new path could be optimized
        
@@ -112,7 +112,49 @@ public class Pathfinder
 
         //controller.move(velocity)
         //current.position += velocity * Time.deltaTime;
-        Debug.Log(velocity);
+        //Debug.Log(velocity);
+
+        return new Vector2(velocity.x, velocity.y);
+
+    }
+
+    public Vector3 moveUsingPathfindingVec3(Transform current, Transform target, float speed) {
+
+        seeker.StartPath(current.position, target.position, OnPathComplete);   //every time calculates new path could be optimized
+
+
+        if (path == null) {
+            return Vector3.zero;
+        }
+
+        reachedDest = false;
+        float distanceToWaypoint;
+
+        while (true) {
+            distanceToWaypoint = Vector3.Distance(current.position, path.vectorPath[currentWaypoint]);
+
+            if (distanceToWaypoint < nextWaypointDistance) {
+                if (currentWaypoint + 1 < path.vectorPath.Count) {
+                    currentWaypoint++;
+                }
+                else {
+                    reachedDest = true;
+                    break;
+                }
+            }
+            else {
+                break;
+            }
+        }
+
+        var speedFactor = reachedDest ? Mathf.Sqrt(distanceToWaypoint / nextWaypointDistance) : 1f;
+
+        Vector3 dir = (path.vectorPath[currentWaypoint] - current.position).normalized;
+        Vector3 velocity = dir * speed * speedFactor;
+
+        //controller.move(velocity)
+        //current.position += velocity * Time.deltaTime;
+        //Debug.Log(velocity);
 
         return velocity;
 

@@ -1,3 +1,4 @@
+using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class EnemyController : ActorController
     // Start is called before the first frame update
     void Start()
     {
+        base.Setup();
+        pathfinder = new Pathfinder(GetComponent<Seeker>());
         //AIControlSystem = GetComponent<AIControlSystem>
     }
 
@@ -24,8 +27,9 @@ public class EnemyController : ActorController
         //AIControlSystem.UpdateTarget();
         UpdateTarget();
 
-        UpdateVelocity(pathfinder.moveUsingPathfinding(this.gameObject.transform, currentTarget, this.BaseSpeed));
+        UpdateVelocity(pathfinder.moveUsingPathfinding(transform, currentTarget, this.BaseSpeed));
     }
+
 
 
     //part of AI 
@@ -33,4 +37,8 @@ public class EnemyController : ActorController
     private void UpdateTarget() {
         currentTarget = GameObject.FindGameObjectWithTag("Player").transform; //temporary for test
     }
+
+  
+       
+
 }
