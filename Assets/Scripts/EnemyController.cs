@@ -8,9 +8,9 @@ using UnityEngine;
 public class EnemyController : ActorController
 {
 
+
     protected Pathfinder pathfinder;
     //AIControlSystem AIControlSystem
-
     protected Transform currentTarget;
 
     // Start is called before the first frame update
@@ -38,6 +38,5 @@ public class EnemyController : ActorController
     }
 
   
-       
-
+      
 }
