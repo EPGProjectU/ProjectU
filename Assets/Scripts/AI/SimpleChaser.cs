@@ -22,6 +22,5 @@ public class SimpleChaser : MonoBehaviour
         //vel = pathfinder.moveUsingPathfinding()
         //controller.move(vel)
         transform.position += pathfinder.moveUsingPathfinding(this.transform, target, speed) * Time.deltaTime;
-       
     }
 }
