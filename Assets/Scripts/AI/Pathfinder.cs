@@ -6,11 +6,11 @@ using Pathfinding;
 public class Pathfinder
 {
 
-    public Path path;
+    private Path path;
     private Seeker seeker;
-    public bool reachedDest;
+    private bool reachedDest;
 
-    public float nextWaypointDistance = 3;
+    private float nextWaypointDistance = 1;
     private int currentWaypoint = 0;
 
     public Pathfinder(Seeker seeker) {

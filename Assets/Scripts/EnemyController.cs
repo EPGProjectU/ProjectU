@@ -8,17 +8,17 @@ using UnityEngine;
 public class EnemyController : ActorController
 {
 
-    Pathfinder pathfinder;
+    protected Pathfinder pathfinder;
     //AIControlSystem AIControlSystem
 
-    private Transform currentTarget;
+    protected Transform currentTarget;
 
     // Start is called before the first frame update
     void Start()
     {
         base.Setup();
         pathfinder = new Pathfinder(GetComponent<Seeker>());
-        //AIControlSystem = GetComponent<AIControlSystem>
+        //AIControlSystem = GetComponent<AIControlSystem> //AiControlSystem is a script 
     }
 
     // Update is called once per frame
@@ -29,7 +29,6 @@ public class EnemyController : ActorController
 
         UpdateVelocity(pathfinder.moveUsingPathfinding(transform, currentTarget, this.BaseSpeed));
     }
-
 
 
     //part of AI 
