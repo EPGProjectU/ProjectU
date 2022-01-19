@@ -8,7 +8,6 @@ public class Pathfinder
 
     public Path path;
     private Seeker seeker;
-    public float speed = 2;
     public bool reachedDest;
 
     public float nextWaypointDistance = 3;
@@ -77,18 +76,13 @@ public class Pathfinder
 
     }*/
 
-    public void moveUsingPathfinding(Transform current, Transform target, float speed) {
+    public Vector3 moveUsingPathfinding(Transform current, Transform target, float speed) {
 
         seeker.StartPath(current.position, target.position, OnPathComplete);   //every time calculates new path could be optimized
-        void OnPathComplete(Path p) {
-            if (!path.error) {
-                path = p;
-                currentWaypoint = 0;
-            }
-        }
+       
 
         if (path == null) {
-            return;
+            return Vector3.zero;
         }
 
         reachedDest = false;
@@ -117,7 +111,17 @@ public class Pathfinder
         Vector3 velocity = dir * speed * speedFactor;
 
         //controller.move(velocity)
-        current.position += velocity * Time.deltaTime;
+        //current.position += velocity * Time.deltaTime;
+        Debug.Log(velocity);
 
+        return velocity;
+
+    }
+
+    private void OnPathComplete(Path p) {
+        if (!p.error) {
+            path = p;
+            currentWaypoint = 0;
+        }
     }
 }

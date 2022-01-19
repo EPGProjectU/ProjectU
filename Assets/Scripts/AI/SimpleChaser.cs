@@ -19,6 +19,9 @@ public class SimpleChaser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        pathfinder.moveUsingPathfinding(this.transform, target, speed);
+        //vel = pathfinder.moveUsingPathfinding()
+        //controller.move(vel)
+        transform.position += pathfinder.moveUsingPathfinding(this.transform, target, speed) * Time.deltaTime;
+       
     }
 }
