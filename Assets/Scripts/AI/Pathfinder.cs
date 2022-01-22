@@ -10,15 +10,15 @@ public class Pathfinder
     private Seeker seeker;
     private bool reachedDest;
 
-    private float nextWaypointDistance = 1;
+    private float nextWaypointDistance = 1;  //ability to skip waypoints 
     private int currentWaypoint = 0;
 
-    public Pathfinder(Seeker seeker) {
+    public Pathfinder(Seeker seeker, float nextWaypointDistance = 1) {
         this.seeker = seeker;
 
     }
 
-    public Vector2 moveUsingPathfinding(Transform current, Transform target, float speed) {
+    public Vector2 moveAlongPath(Transform current, Transform target, float speed) {
 
         seeker.StartPath(current.position, target.position, OnPathComplete);   //every time calculates new path could be optimized
        
