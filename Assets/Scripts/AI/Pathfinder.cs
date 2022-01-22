@@ -64,4 +64,20 @@ public class Pathfinder
             currentWaypoint = 0;
         }
     }
+
+   /* private virtual void CalculateNextRotation(float slowdown, out Quaternion nextRotation) {
+        if (lastDeltaTime > 0.00001f && enableRotation) {
+            Vector2 desiredRotationDirection;
+            desiredRotationDirection = velocity2D;
+
+            // Rotate towards the direction we are moving in.
+            // Don't rotate when we are very close to the target.
+            var currentRotationSpeed = rotationSpeed * Mathf.Max(0, (slowdown - 0.3f) / 0.7f);
+            nextRotation = SimulateRotationTowards(desiredRotationDirection, currentRotationSpeed * lastDeltaTime);
+        }
+        else {
+            // TODO: simulatedRotation
+            nextRotation = rotation;
+        }
+    }*/
 }
