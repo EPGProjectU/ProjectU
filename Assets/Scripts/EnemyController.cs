@@ -41,20 +41,21 @@ public class EnemyController : ActorController
 
     private bool checkIfPlayerVisible() {
         //if(Debug) smh true
-        UnityEngine.Debug.DrawRay(this.transform.position, currentTarget.position, Color.black, 10f, false);
+        //UnityEngine.Debug.DrawRay(this.transform.position, currentTarget.position - transform.position, Color.black, 0f, false);
 
-        RaycastHit2D objectHit = Physics2D.Raycast(this.transform.position, currentTarget.position, 
-                                                    Mathf.Infinity, 0, -Mathf.Infinity, Mathf.Infinity);
+        RaycastHit2D objectHit = Physics2D.Raycast(this.transform.position, currentTarget.position - transform.position);
 
-
-        UnityEngine.Debug.Log(objectHit.collider.gameObject.name);
+        //if (objectHit)
+        //UnityEngine.Debug.Log(objectHit.collider.gameObject.name);
 
         if (objectHit && objectHit.collider.gameObject.name == "Player")
             return true;
-        else if (playerDetected)
+        else if (playerDetected) //once detected player will be detected forever
             return true;
-        else
+        else 
+            //UnityEngine.Debug.Log("Nothing hit :/");
             return false;
+        
     }
 
         #endregion aiDetectionMashup
