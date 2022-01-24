@@ -7,23 +7,24 @@ using UnityEngine;
 public class EnemyController : ActorController
 {
     protected Pathfinder pathfinder;
-    //AISystem AISystem = new AISystem(BehaviourTree); 
+    //AISystem AISystem = new AISystem(BehaviourTree);  
 
     //temporary testing behaviour of enemy is chasing target
     public Transform currentTarget;
     bool playerDetected = false;
+    //
 
     void Start()
     {
         base.Setup();
-        //pathfinder needs Seeker component to work
+
+        //pathfinder needs Seeker component added to actor to work
         pathfinder = new Pathfinder(GetComponent<Seeker>());
     }
 
     void Update() {
 
         //AISystem.updateActor();
-
         //pathfinder calculates path and then next velocity vector based on the calculated path and progress on it
         //Vector2 newVelocity = pathfinder.moveAlongPath(transform, currentTarget, this.BaseSpeed);
         //UpdateVelocity(newVelocity);
@@ -50,7 +51,7 @@ public class EnemyController : ActorController
 
         if (objectHit && objectHit.collider.gameObject.name == "Player")
             return true;
-        else if (playerDetected) //once detected player will be detected forever
+        else if (playerDetected) //once detected player will be detected forever currently
             return true;
         else 
             //UnityEngine.Debug.Log("Nothing hit :/");
