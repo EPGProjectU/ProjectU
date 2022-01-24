@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class PlayerController : ActorController
 {
-    private bool isDead;
+    private bool isDead, isAttacking;
     public GameObject weaponPrefab;
     // Start is called before the first frame update
     void Start()
@@ -15,6 +15,7 @@ public class PlayerController : ActorController
         // Calling setup of ActorController
         Setup();
         isDead = false;
+        isAttacking = false;
         health = 3;
     }
 
@@ -25,7 +26,7 @@ public class PlayerController : ActorController
         if (!isDead) 
         { 
             UpdateVelocity(GetVelocityFromInput());
-            Attack();
+            if(!isAttacking)Attack();
         }
     }
 
@@ -68,24 +69,22 @@ public class PlayerController : ActorController
     {
         if (Input.GetButtonDown("Jump"))
         {
-            float xDisplacement = Input.GetAxis("Horizontal");
-            float yDisplacement = Input.GetAxis("Vertical");
-            Vector3 pos = transform.position;
-            if(xDisplacement>0)pos.x += 1;
-            if(xDisplacement<0)pos.x += -1;
-            if(yDisplacement>0)pos.y += 1;
-            if(yDisplacement<0)pos.y += -1;
-            float angle = Mathf.Atan2(yDisplacement, xDisplacement) * Mathf.Rad2Deg;
-            Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-            GameObject weapon = Instantiate(weaponPrefab, pos, q);
+            GameObject weapon = Instantiate(weaponPrefab);
             weapon.GetComponent<DamageInfo>().damage = DealDamage();
+            weapon.transform.SetParent(transform);
+            if(Input.GetKey(KeyCode.W)) weapon.GetComponent<Animator>().Play("Prototype_Swing_Up");
+            if(Input.GetKey(KeyCode.S)) weapon.GetComponent<Animator>().Play("Prototype_Swing_Down");
+            if(Input.GetKey(KeyCode.A)) weapon.GetComponent<Animator>().Play("Prototype_Swing_Left");
+            if(Input.GetKey(KeyCode.D)) weapon.GetComponent<Animator>().Play("Prototype_Swing_Right");
             StartCoroutine(DestroyWeapon(weapon));
+            isAttacking = true;
         }
     }
 
     IEnumerator DestroyWeapon(GameObject weapon) {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         Destroy(weapon);
+        isAttacking = false;
     }
 
 }
