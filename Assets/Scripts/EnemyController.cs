@@ -28,7 +28,7 @@ public class EnemyController : ActorController
         //Vector2 newVelocity = pathfinder.moveAlongPath(transform, currentTarget, this.BaseSpeed);
         //UpdateVelocity(newVelocity);
 
-        //#region aiDetectionMashup
+        #region aiDetectionMashup
         //temporary player detection prototype, every 5 frames for perfromance
         if(Time.frameCount % 5 == 0)
             playerDetected = checkIfPlayerVisible();
@@ -41,19 +41,22 @@ public class EnemyController : ActorController
 
     private bool checkIfPlayerVisible() {
         //if(Debug) smh true
-        //DrawRay(this.transform.position, currentTarget.position, Color.black, 10f, false);
+        UnityEngine.Debug.DrawRay(this.transform.position, currentTarget.position, Color.black, 10f, false);
 
-        RaycastHit2D objectHit = Physics2D.Raycast(this.transform.position, currentTarget.position - transform.position, 
+        RaycastHit2D objectHit = Physics2D.Raycast(this.transform.position, currentTarget.position, 
                                                     Mathf.Infinity, 0, -Mathf.Infinity, Mathf.Infinity);
 
-        Debug.Log(objectHit.collider.gameObject.name);
 
-        if (objectHit.collider.gameObject.name == "Player")
+        UnityEngine.Debug.Log(objectHit.collider.gameObject.name);
+
+        if (objectHit && objectHit.collider.gameObject.name == "Player")
+            return true;
+        else if (playerDetected)
             return true;
         else
             return false;
     }
 
-        //#endregion aiDetectionMashup
+        #endregion aiDetectionMashup
 
 }
