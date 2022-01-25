@@ -48,18 +48,18 @@ public class PlayerController : ActorController
     public void TakeDamage(int damage)
     {
         health -= damage;
-        Debug.Log("Health = " + health);
+        UnityEngine.Debug.Log("Health = " + health);
         if (health < 1)
         {
             isDead = true;
             DamageEventSystem.Instance.PlayerIsDead();
-            Debug.Log("Player is Dead");
+            UnityEngine.Debug.Log("Player is Dead");
         }
     }
 
     public int DealDamage()
     {
-        Debug.Log("Player Dealt "+1+" Damage");
+        UnityEngine.Debug.Log("Player Dealt "+1+" Damage");
         //DamageEventSystem.Instance.EnemyTakesDamage(1);
         return 1;
     }

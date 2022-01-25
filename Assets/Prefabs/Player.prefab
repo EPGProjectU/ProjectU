@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4981426620563412343}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -11.111112}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3488582782403761800}
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 5937921215725390038}
   - component: {fileID: 7497273680251759448}
   - component: {fileID: 4576093516806014912}
-  - component: {fileID: 8729337499161895595}
+  - component: {fileID: 7652324563208421296}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -96,7 +96,7 @@ Transform:
   m_GameObject: {fileID: 6903689724388049450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children:
   - {fileID: 4072244073113838774}
   m_Father: {fileID: 0}
@@ -142,7 +142,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -188,9 +188,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 10
   RunningSpeed: 20
-  health: 3
---- !u!61 &8729337499161895595
-BoxCollider2D:
+--- !u!58 &7652324563208421296
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -203,18 +202,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.5
 --- !u!1 &9091768768343686817
 GameObject:
   m_ObjectHideFlags: 0
