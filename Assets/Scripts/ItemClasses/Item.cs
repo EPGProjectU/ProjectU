@@ -14,4 +14,9 @@ public abstract class Item : MonoBehaviour
 
     public abstract void Pickup();
     public abstract void Drop();
+
+    public void DestroyItem()
+    {
+        this.gameObject.SetActive(false);
+    }
 }

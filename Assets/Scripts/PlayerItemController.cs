@@ -5,19 +5,23 @@ using UnityEngine;
 public class PlayerItemController : MonoBehaviour
 {
     public EquipmentController equipmentController;
-    private int itemsInTrigger;
+    private int itemsInTrigger = 0;
     private List<Item> items = new List<Item>();
 
     private void Update()
     {
         if (Input.GetButtonDown("Interact"))
         {
+            UnityEngine.Debug.Log("2");
             if (itemsInTrigger > 0)
             {
+                UnityEngine.Debug.Log("3");
                 equipmentController.PickupSingle(items[0]);
-                itemsInTrigger--;
-                items.RemoveAt(0);
+                UnityEngine.Debug.Log("4");
+                UnityEngine.Debug.Log("5");
+                UnityEngine.Debug.Log("6");
             }
+            UnityEngine.Debug.Log("7");
         }
     }
 
@@ -28,6 +32,7 @@ public class PlayerItemController : MonoBehaviour
         UnityEngine.Debug.Log("Test");
         itemsInTrigger += 1;
         items.Add(collision.GetComponent<Item>());
+        UnityEngine.Debug.Log("1");
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

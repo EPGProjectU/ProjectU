@@ -9,11 +9,13 @@ public class EquipmentController : MonoBehaviour
     public void PickupSingle(Item item)
     {
         equipment.items.Add(item);
+        item.DestroyItem();
         equipment.ShowEquipment();
     }
     public void PickupMultiple(Item item)
     {
         equipment.items.Add(item);
+        item.DestroyItem();
         equipment.ShowEquipment();
     }
     public void DropSingle(Item item)

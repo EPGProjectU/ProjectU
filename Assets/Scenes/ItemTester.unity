@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0260240d56df34085f3996c8994a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: iremtiem
+  Name: Red
   Damage: 1
 --- !u!1 &1164232617
 GameObject:
@@ -472,7 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0260240d56df34085f3996c8994a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: gamegame
+  Name: Green
   Damage: 1
 --- !u!1 &2020918867 stripped
 GameObject:
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0260240d56df34085f3996c8994a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: testtest
+  Name: Blue
   Damage: 1
 --- !u!1001 &8826705500897103807
 PrefabInstance:
