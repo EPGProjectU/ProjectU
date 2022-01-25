@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Damager
   - PlayersWeapon
+  - Item
   layers:
   - Default
   - TransparentFX
