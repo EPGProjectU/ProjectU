@@ -165,4 +165,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 3
   RunningSpeed: 20
+  health: 0
   currentTarget: {fileID: 0}
+  tagHook:
+    tagName: Enemy3
+    OnUpdate:
+      guid:
+        m_Value0: 446594972
+        m_Value1: 276644895
+        m_Value2: 1891329849
+        m_Value3: 1599728730
+    OnInitialization:
+      guid:
+        m_Value0: 1492218106
+        m_Value1: 692173878
+        m_Value2: 1725621880
+        m_Value3: 1432499992

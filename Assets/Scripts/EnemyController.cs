@@ -14,6 +14,8 @@ public class EnemyController : ActorController
     bool playerDetected = false;
     //
 
+    public TagHook tagHook;
+
     void Start()
     {
         base.Setup();
@@ -74,6 +76,9 @@ public class EnemyController : ActorController
     public void TakeDamage(int damage)
     {
         health -= damage;
-        if (health < 1) Destroy(gameObject);
+        if (health < 1) {
+            Destroy(gameObject);
+            tagHook?.Collect();
+        }
     }
 }
