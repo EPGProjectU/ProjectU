@@ -17,8 +17,9 @@ public class EnemyController : ActorController
     void Start()
     {
         base.Setup();
-
+        health = 2;
         //pathfinder needs Seeker component added to actor to work
+        //pathfinder needs Seeker component to work
         pathfinder = new Pathfinder(GetComponent<Seeker>());
     }
 
@@ -29,7 +30,6 @@ public class EnemyController : ActorController
         //Vector2 newVelocity = pathfinder.moveAlongPath(transform, currentTarget, this.BaseSpeed);
         //UpdateVelocity(newVelocity);
 
-        #region aiDetectionMashup
         //temporary player detection prototype, every 5 frames for perfromance
         if(Time.frameCount % 5 == 0)
             playerDetected = checkIfPlayerVisible();
@@ -39,7 +39,7 @@ public class EnemyController : ActorController
             UpdateVelocity(newVelocity);
         }
     }
-
+    
     private bool checkIfPlayerVisible() {
         //if(Debug) smh true
         //UnityEngine.Debug.DrawRay(this.transform.position, currentTarget.position - transform.position, Color.black, 0f, false);
@@ -58,7 +58,22 @@ public class EnemyController : ActorController
             return false;
         
     }
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(1);
+        }
+        if (collision.gameObject.CompareTag("PlayersWeapon"))
+        {
+            TakeDamage(collision.gameObject.GetComponent<DamageInfo>().damage);
+        }
+    }
 
-        #endregion aiDetectionMashup
-
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health < 1) Destroy(gameObject);
+    }
 }
