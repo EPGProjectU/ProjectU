@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
 
-public class DestroyOnTagCollected : MonoBehaviour
+public class DestroyOnTag : MonoBehaviour
 {
     public TagHook tagHook;
+    public ProgressionTag.TagState triggerState = ProgressionTag.TagState.Collected;
     
     // Start is called before the first frame update
     private void Start()
@@ -18,7 +19,7 @@ public class DestroyOnTagCollected : MonoBehaviour
 
     private void OnTagUpdate(TagHook.TagEvent e)
     {
-        if (e.NewState == ProgressionTag.TagState.Collected)
+        if (e.NewState == triggerState)
             Destroy(gameObject);
     }
 }
