@@ -35,6 +35,7 @@ public class PlayerItemController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //StartCoroutine(ItemPickupZone(collision.GetComponent<Item>()));
+
         if (collision.tag == "Item")
         {
             UnityEngine.Debug.Log("Test");
@@ -42,6 +43,7 @@ public class PlayerItemController : MonoBehaviour
             items.Add(collision.GetComponent<Item>());
             UnityEngine.Debug.Log("1");
         }
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

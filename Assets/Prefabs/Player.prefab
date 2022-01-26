@@ -188,6 +188,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 10
   RunningSpeed: 20
+  health: 0
+  weaponPrefab: {fileID: 3429799109082714164, guid: 8a0cca00ee3ac83408ee9b72526c59b1, type: 3}
 --- !u!58 &7652324563208421296
 CircleCollider2D:
   m_ObjectHideFlags: 0

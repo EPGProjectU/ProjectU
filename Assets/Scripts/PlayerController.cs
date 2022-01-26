@@ -17,7 +17,6 @@ public class PlayerController : ActorController
         Setup();
         isDead = false;
         isAttacking = false;
-        health = 3;
     }
 
     // Update is called once per frame
