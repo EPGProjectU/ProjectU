@@ -10,6 +10,7 @@ public class PlayerHealthUI : MonoBehaviour
     private Image[] hearts;
     public PlayerController pc;
     public Text gameOver;
+    public Text winGame;
 
     // Start is called before the first frame update
     void Start()
@@ -60,10 +61,18 @@ public class PlayerHealthUI : MonoBehaviour
             GameOver();
             pc.health = -1;
         }
+        if (ProgressionManager.GetTag("WinGame").IsCollected())
+        {
+            WinGame();
+        }
     }
 
     void GameOver()
     {
         gameOver.enabled = true;
+    }
+    void WinGame()
+    {
+        winGame.enabled = true;
     }
 }
