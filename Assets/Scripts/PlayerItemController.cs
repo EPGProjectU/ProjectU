@@ -29,6 +29,12 @@ public class PlayerItemController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //StartCoroutine(ItemPickupZone(collision.GetComponent<Item>()));
+
+        var item = collision.GetComponent<Item>();
+
+        if (item == null)
+            return;
+
         UnityEngine.Debug.Log("Test");
         itemsInTrigger += 1;
         items.Add(collision.GetComponent<Item>());

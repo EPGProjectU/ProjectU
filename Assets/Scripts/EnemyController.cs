@@ -19,7 +19,6 @@ public class EnemyController : ActorController
     void Start()
     {
         base.Setup();
-        health = 2;
         //pathfinder needs Seeker component added to actor to work
         //pathfinder needs Seeker component to work
         pathfinder = new Pathfinder(GetComponent<Seeker>());
