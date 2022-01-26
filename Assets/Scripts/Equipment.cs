@@ -7,16 +7,24 @@ public class Equipment : MonoBehaviour
 {
     public List<Item> items = new List<Item>();
     public Text text;
+    private int rigged = -1;
 
 
     public void ShowEquipment()
     {
         string testtext = "Ekwipunek: ";
-        foreach (Item item in items)
+        if (rigged >= 0)
         {
-            testtext += '\n' + (item.Name);
+            foreach (Item item in items)
+            {
+                testtext += '\n' + (item.Name);
+            }
+            text.text = testtext;
         }
-        text.text = testtext;
+        else
+        {
+            rigged++;
+        }
     }
 
 }

@@ -5,12 +5,16 @@ using UnityEngine;
 public class EquipmentController : MonoBehaviour
 {
     public Equipment equipment;
+    private int rigged = -1;
 
     public void PickupSingle(Item item)
     {
-        equipment.items.Add(item);
-        item.DestroyItem();
+        if (rigged >= 0)
+            equipment.items.Add(item);
+        else
+            rigged = 0;
         equipment.ShowEquipment();
+        item.DestroyItem();
     }
     public void PickupMultiple(Item item)
     {

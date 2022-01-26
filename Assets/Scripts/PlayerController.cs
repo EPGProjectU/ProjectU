@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// ActorController dedicated to the player with implemented input handling
@@ -23,10 +24,15 @@ public class PlayerController : ActorController
     void Update()
     {
         // Updating player speed base on the input
-        if (!isDead) 
-        { 
+        if (!isDead)
+        {
             UpdateVelocity(GetVelocityFromInput());
-            if(!isAttacking)Attack();
+            if (!isAttacking) Attack();
+
+        }
+        if (Input.GetButtonDown("Cancel"))
+        {
+            SceneManager.LoadScene("PauseMenu");
         }
     }
 
@@ -60,7 +66,7 @@ public class PlayerController : ActorController
 
     public int DealDamage()
     {
-        UnityEngine.Debug.Log("Player Dealt "+1+" Damage");
+        UnityEngine.Debug.Log("Player Dealt " + 1 + " Damage");
         //DamageEventSystem.Instance.EnemyTakesDamage(1);
         return 1;
     }
@@ -72,16 +78,18 @@ public class PlayerController : ActorController
             GameObject weapon = Instantiate(weaponPrefab);
             weapon.GetComponent<DamageInfo>().damage = DealDamage();
             weapon.transform.SetParent(transform);
-            if(Input.GetKey(KeyCode.W)) weapon.GetComponent<Animator>().Play("Prototype_Swing_Up");
-            if(Input.GetKey(KeyCode.S)) weapon.GetComponent<Animator>().Play("Prototype_Swing_Down");
-            if(Input.GetKey(KeyCode.A)) weapon.GetComponent<Animator>().Play("Prototype_Swing_Left");
-            if(Input.GetKey(KeyCode.D)) weapon.GetComponent<Animator>().Play("Prototype_Swing_Right");
+            if (Input.GetKey(KeyCode.W)) weapon.GetComponent<Animator>().Play("Prototype_Swing_Up");
+            if (Input.GetKey(KeyCode.S)) weapon.GetComponent<Animator>().Play("Prototype_Swing_Down");
+            if (Input.GetKey(KeyCode.A)) weapon.GetComponent<Animator>().Play("Prototype_Swing_Left");
+            if (Input.GetKey(KeyCode.D)) weapon.GetComponent<Animator>().Play("Prototype_Swing_Right");
             StartCoroutine(DestroyWeapon(weapon));
             isAttacking = true;
         }
     }
 
-    IEnumerator DestroyWeapon(GameObject weapon) {
+
+    IEnumerator DestroyWeapon(GameObject weapon)
+    {
         yield return new WaitForSeconds(0.3f);
         Destroy(weapon);
         isAttacking = false;

@@ -8,11 +8,13 @@ public class PlayerHealthUI : MonoBehaviour
     public Sprite emptyHeart;
     public Sprite fullHeart;
     private Image[] hearts;
-    public int hp;
+    public PlayerController pc;
+    public Text gameOver;
 
     // Start is called before the first frame update
     void Start()
     {
+        int hp = pc.health;
         string imgName = "Image0";
         hearts = new Image[hp];
         GameObject img = new GameObject(imgName);
@@ -42,6 +44,26 @@ public class PlayerHealthUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i >= pc.health)
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+            else
+            {
+                hearts[i].sprite = fullHeart;
+            }
+        }
+        if (pc.health == 0)
+        {
+            GameOver();
+            pc.health = -1;
+        }
+    }
 
+    void GameOver()
+    {
+        gameOver.enabled = true;
     }
 }
