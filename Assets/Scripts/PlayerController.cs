@@ -9,6 +9,7 @@ public class PlayerController : ActorController
 {
     private bool isDead, isAttacking;
     public GameObject weaponPrefab;
+    public int damage = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,6 @@ public class PlayerController : ActorController
         Setup();
         isDead = false;
         isAttacking = false;
-        health = 3;
     }
 
     // Update is called once per frame
@@ -53,16 +53,14 @@ public class PlayerController : ActorController
         if (health < 1)
         {
             isDead = true;
-            DamageEventSystem.Instance.PlayerIsDead();
             UnityEngine.Debug.Log("Player is Dead");
         }
     }
 
     public int DealDamage()
     {
-        UnityEngine.Debug.Log("Player Dealt "+1+" Damage");
-        //DamageEventSystem.Instance.EnemyTakesDamage(1);
-        return 1;
+        UnityEngine.Debug.Log("Player Dealt "+ damage + " Damage");
+        return damage;
     }
 
     void Attack()

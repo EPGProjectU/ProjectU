@@ -7,14 +7,13 @@ using UnityEngine;
 public class EnemyController : ActorController
 {
     protected Pathfinder pathfinder;
-    
+    public int damage = 1;
     //temporary testing behaviour of enemy is chasing target
     public Transform currentTarget;
 
     void Start()
     {
         base.Setup();
-        health = 2;
         //pathfinder needs Seeker component to work
         pathfinder = new Pathfinder(GetComponent<Seeker>());
     }
@@ -30,7 +29,7 @@ public class EnemyController : ActorController
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(1);
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
         }
         if (collision.gameObject.CompareTag("PlayersWeapon"))
         {
