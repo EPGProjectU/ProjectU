@@ -11,12 +11,21 @@ public class ExampleProgressionBehaviour : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        tagHook.onInitialization += OnTagInitialization;
         tagHook.onUpdate += OnTagUpdate;
 
         tagHook2.onUpdate += LogP1;
     }
-    
+
+    private void Start()
+    {
+        if (tagHook.IsLinked())
+        {
+            DebugTooltip.Draw(transform.position, tagHook.TagName, Color.magenta, 6);
+            
+            OnTagUpdate(tagHook.GetDummyTagEvent());
+        }
+    }
+
     private void OnDestroy()
     {
         tagHook.Release();
@@ -36,13 +45,6 @@ public class ExampleProgressionBehaviour : MonoBehaviour
     private void LogP1(TagHook.TagEvent e)
     {
         UnityEngine.Debug.Log($"P1: {e.oldState} -> {e.newState}");
-    }
-    
-    private void OnTagInitialization(TagHook.TagEvent e)
-    {
-        DebugTooltip.Draw(transform.position, e.hook.TagName, Color.magenta, 6);
-        
-        OnTagUpdate(e);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
