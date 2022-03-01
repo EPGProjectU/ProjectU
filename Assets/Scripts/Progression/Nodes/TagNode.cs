@@ -48,6 +48,9 @@ public class TagNode: Node, ProgressionTag
 
     public bool IsAvailable()
     {
+        if (active)
+            return true;
+        
         var values = GetInputPort("input").GetInputValues<bool>();
 
         return values.Length == 0 || MathHelper.Or(values);

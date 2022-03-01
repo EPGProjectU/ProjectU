@@ -47,9 +47,16 @@ public partial class TagHook
     /// <summary>
     /// Set collected <see cref="ProgressionTag.State"/> on the <see cref="ProgressionTag"/>
     /// </summary>
-    /// <param name="force">Collect  <see cref="ProgressionTag"/> even when it is not active</param>
-    /// <returns>If <see cref="ProgressionTag"/> was successfully collected<br/>When <see cref="ProgressionTag"/> is forced return indicates if it was necessary </returns>
+    /// <param name="force">Collect <see cref="ProgressionTag"/> even when it is not available or active</param>
+    /// <returns>If <see cref="ProgressionTag"/> was successfully collected<br/>When <see cref="ProgressionTag"/> is forced return indicates if it was necessary</returns>
     public bool Collect(bool force = false) => ProgressionManager.CollectTag(Tag, force);
+
+    /// <summary>
+    /// Set active <see cref="ProgressionTag.State"/> on the <see cref="ProgressionTag"/>
+    /// </summary>
+    /// <param name="state">True to activate False to inactivate</param>
+    /// <returns>If <see cref="ProgressionTag"/> had successfully changed active state</returns>
+    public bool SetActive(bool state = true) => ProgressionManager.SetActiveTag(Tag, state);
 
     /// <summary>
     /// Check if linked to <see cref="ProgressionTag"/>

@@ -42,9 +42,9 @@ public partial class ProgressionManager
         StartChange();
     }
 
-    public static void EndEditorChange(bool changeHappened = true, bool fireEvents = true)
+    public static void EndEditorChange(bool fireEvents = true)
     {
-        if (!_initialized || !changeHappened)
+        if (!_initialized)
             return;
 
         EndChange(fireEvents);

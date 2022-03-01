@@ -27,8 +27,9 @@ public class TagNodeEditor : NodeEditor
         Node.collected = GUILayout.Toggle(Node.collected, "Collected");
         GUILayout.EndHorizontal();
 
-        var changedHappened = serializedObject.ApplyModifiedProperties();
-        ProgressionManager.EndEditorChange(changedHappened, oldState != Node.State);
+        serializedObject.ApplyModifiedProperties();
+        
+        ProgressionManager.EndEditorChange(oldState != Node.State);
     }
 
     public override int GetWidth() => 160;

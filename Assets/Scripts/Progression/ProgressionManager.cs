@@ -51,4 +51,21 @@ public partial class ProgressionManager
         // Return if tag is available as a feedback to force flag
         return tagNode.IsAvailable();
     }
+
+    public static bool SetActiveTag(ProgressionTag progressionTag, bool state)
+    {
+        if (!(progressionTag is TagNode tagNode))
+            return false;
+
+        if (!progressionTag.IsAvailable())
+            return false;
+        
+        StartChange();
+
+        tagNode.active = true;
+
+        EndChange();
+
+        return true;
+    }
 }

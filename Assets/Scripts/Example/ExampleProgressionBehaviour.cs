@@ -38,6 +38,7 @@ public class ExampleProgressionBehaviour : MonoBehaviour
             ProgressionTag.TagState.Unavailable => Color.gray,
             ProgressionTag.TagState.Available => new Color(0.27f, 0.39f, 0.28f),
             ProgressionTag.TagState.Collected => new Color(0.13f, 0.2f, 0.14f),
+            ProgressionTag.TagState.Active => new Color(0.13f, 0.22f, 0.33f),
             _ => throw new ArgumentOutOfRangeException()
         };
     }
