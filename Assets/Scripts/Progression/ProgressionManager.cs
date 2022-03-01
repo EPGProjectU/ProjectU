@@ -14,21 +14,6 @@ public partial class ProgressionManager
         return (from e in Tags select e.Value).ToList();
     }
 
-    public static List<ProgressionTag> GetInactiveTags()
-    {
-        return (from e in Tags where !e.Value.IsActive() && !e.Value.IsCollected() select e.Value).ToList();
-    }
-
-    public static List<ProgressionTag> GetActiveTags()
-    {
-        return (from e in Tags where e.Value.IsActive() && !e.Value.IsCollected() select e.Value).ToList();
-    }
-
-    public static List<ProgressionTag> GetCollectedTags()
-    {
-        return (from e in Tags where e.Value.IsCollected() select e.Value).ToList();
-    }
-
     public static bool CollectTag(string tagName, bool force = false)
     {
         return CollectTag(Tags[tagName], force);
@@ -59,7 +44,7 @@ public partial class ProgressionManager
 
         if (!progressionTag.IsAvailable())
             return false;
-        
+
         StartChange();
 
         tagNode.active = true;

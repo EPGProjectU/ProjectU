@@ -431,7 +431,7 @@ MonoBehaviour:
   input: 0
   output: 0
   active: 0
-  collected: 1
+  collected: 0
   tagName: SQ/1
 --- !u!114 &-4031510013751740988
 MonoBehaviour:
@@ -711,7 +711,7 @@ MonoBehaviour:
   input: 0
   output: 0
   active: 0
-  collected: 1
+  collected: 0
   tagName: SQ/BR2/C
 --- !u!114 &11400000
 MonoBehaviour:
@@ -891,8 +891,8 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 1
-  collected: 1
+  active: 0
+  collected: 0
   tagName: SQ/BR2/A
 --- !u!114 &4147835467978345106
 MonoBehaviour:

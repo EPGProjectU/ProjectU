@@ -121,6 +121,7 @@ public partial class ProgressionManager
         }
     }
 
+    [OnExitingPlayMode]
     private static void ResetTagStates()
     {
         foreach (var node in Data.graph.nodes.OfType<TagNode>())

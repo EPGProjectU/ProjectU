@@ -14,14 +14,18 @@ namespace Debug
         }
 
 
-        [RegisterCommand(Name = "ShowProgressionTags", Help = "Displays list of progression tags categorized by: inactive, active and collected", MaxArgCount = 0)]
+        [RegisterCommand(Name = "ShowProgressionTags", Help = "Displays list of progression tags categorized by: - unavailable, + available, @ active and * collected", MaxArgCount = 0)]
         private static void ShowProgressionTags(CommandArg[] args)
         {
-            var result = ProgressionManager.GetInactiveTags().Aggregate("", (current, pTag) => current + "- " + pTag.Name + "\n");
+            var tags = ProgressionManager.GetAllTags();
 
-            result = ProgressionManager.GetActiveTags().Aggregate(result, (current, pTag) => current + "+ " + pTag.Name + "\n");
+            var result = tags.Where(tag => tag.State == ProgressionTag.TagState.Unavailable).Aggregate("", (current, tag) => current + "- " + tag.Name + "\n");
 
-            result = ProgressionManager.GetCollectedTags().Aggregate(result, (current, pTag) => current + "* " + pTag.Name + "\n");
+            result = tags.Where(tag => tag.State == ProgressionTag.TagState.Available).Aggregate(result, (current, tag) => current + "+ " + tag.Name + "\n");
+
+            result = tags.Where(tag => tag.State == ProgressionTag.TagState.Active).Aggregate(result, (current, tag) => current + "@ " + tag.Name + "\n");
+
+            result = tags.Where(tag => tag.State == ProgressionTag.TagState.Collected).Aggregate(result, (current, tag) => current + "* " + tag.Name + "\n");
 
             UnityEngine.Debug.Log(result);
         }
