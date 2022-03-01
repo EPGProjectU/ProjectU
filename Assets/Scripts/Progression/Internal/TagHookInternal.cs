@@ -31,7 +31,6 @@ public partial class TagHook : ISerializationCallbackReceiver
     {
         ProgressionManager.UnRegisterTagHook(this);
         onUpdate = null;
-        onInitialization = null;
     }
 
     private void SetTagName_Impl(string value)
@@ -49,17 +48,6 @@ public partial class TagHook : ISerializationCallbackReceiver
         onUpdate?.Invoke(e);
     }
 
-    internal void FireOnInitialization()
-    {
-        onInitialization?.Invoke(new TagEvent()
-        {
-            hook = this,
-            progressionTag = Tag,
-            oldState = Tag.State,
-            newState = Tag.State
-        });
-    }
-
     void ISerializationCallbackReceiver.OnBeforeSerialize()
     {
     }
@@ -67,5 +55,22 @@ public partial class TagHook : ISerializationCallbackReceiver
     void ISerializationCallbackReceiver.OnAfterDeserialize()
     {
         ProgressionManager.RegisterTagHook(this);
+    }
+    
+    private TagEvent GetDummyTagEvent_Impl()
+    {
+        var tagEvent = new TagEvent
+        {
+            hook = this,
+            progressionTag = Tag
+        };
+
+        if (Tag == null)
+            return tagEvent;
+
+        tagEvent.oldState = Tag.State;
+        tagEvent.newState = Tag.State;
+
+        return tagEvent;
     }
 }

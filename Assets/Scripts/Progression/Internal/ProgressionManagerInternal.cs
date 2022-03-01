@@ -178,13 +178,6 @@ public partial class ProgressionManager
         }
     }
 
-    [Start]
-    private static void SendTagInitializationEvents()
-    {
-        foreach (var hook in HookRegistry.Where(hook => hook.Tag != null))
-            hook.FireOnInitialization();
-    }
-
     private static void UnLinkHook(TagHook hook)
     {
         if (hook.Tag == null)
