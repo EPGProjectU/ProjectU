@@ -1,10 +1,11 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using XNode;
 
 [Serializable]
 [CreateNodeMenu("Progression/Tag", 0)]
-public class TagNode : Node, ProgressionTag
+public class TagNode: Node, ProgressionTag
 {
     [Input]
     public bool input;
@@ -12,36 +13,49 @@ public class TagNode : Node, ProgressionTag
     [Output]
     public bool output;
 
+    public bool active;
     public bool collected;
 
+    [FormerlySerializedAs("_name")]
     [SerializeField]
-    private string _name;
+    private string tagName;
 
     public string Name
     {
-        get => _name;
+        get => tagName;
         set
         {
-            ProgressionManager.SendTagNameChangeNotifications(_name, value, graph);
-            _name = value;
+#if UNITY_EDITOR
+            ProgressionManager.SendTagNameChangeNotifications(tagName, value, graph);
+#endif
+            tagName = value;
         }
     }
 
-    public ProgressionTag.TagState State => IsCollected() ? ProgressionTag.TagState.Collected : IsActive() ? ProgressionTag.TagState.Active : ProgressionTag.TagState.Inactive;
+    public ProgressionTag.TagState State =>
+        IsCollected() ? ProgressionTag.TagState.Collected :
+        IsActive() ? ProgressionTag.TagState.Active :
+        IsAvailable() ? ProgressionTag.TagState.Available :
+        ProgressionTag.TagState.Unavailable;
 
     public override object GetValue(NodePort port)
     {
         if (port.fieldName == "output")
-            return collected;
+            return IsCollected();
 
         return null;
     }
 
-    public bool IsActive()
+    public bool IsAvailable()
     {
         var values = GetInputPort("input").GetInputValues<bool>();
 
         return values.Length == 0 || MathHelper.Or(values);
+    }
+
+    public bool IsActive()
+    {
+        return active || IsCollected();
     }
 
     public bool IsCollected()
