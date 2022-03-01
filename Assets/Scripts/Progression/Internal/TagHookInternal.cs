@@ -1,61 +1,63 @@
 using System;
 using UnityEngine;
 
+[Serializable]
 public partial class TagHook : ISerializationCallbackReceiver
 {
     [SerializeField]
     internal string tagName;
 
-    [NonSerialized]
-    internal bool Registered;
-
-    private SerializableGUID Guid = SerializableGUID.Generate();
-
-    public SerializableGUID GetGUID() => Guid;
-
-    public partial struct TagEvent
-    {
-        internal static TagEvent CreateInitEvent(TagHook hook)
-        {
-            return new TagEvent
-            {
-                Hook = hook,
-                ProgressionTag = hook.Tag,
-                OldState = hook.Tag.State,
-                NewState = hook.Tag.State
-            };
-        }
-    }
-
     public delegate void TagDelegate(TagEvent e);
+    
+    [SerializeField]
+    private SerializableGUID guid = SerializableGUID.Generate(); 
 
     internal TagHook()
     {
     }
 
-    private static TagHook CreateInternal(string tagName)
+    private static TagHook Create_Impl(string tagName)
     {
-        var hook = new TagHook
-        {
-            tagName = tagName
-        };
+        var hook = new TagHook();
 
         ProgressionManager.RegisterTagHook(hook);
 
+        hook.SetTagName_Impl(tagName);
+        
         return hook;
     }
-
-    private void TagNameSetInternal(string value)
+    
+    private void Release_Impl()
     {
+        ProgressionManager.UnRegisterTagHook(this);
+        onUpdate = null;
+        onInitialization = null;
+    }
+
+    private void SetTagName_Impl(string value)
+    {
+        if (tagName == value)
+            return;
+        
         tagName = value;
 
-        if (Application.isPlaying)
-            ProgressionManager.Instance.ReRegisterRuntimeTagHook(this);
+        ProgressionManager.ReLinkTagHook(this);
     }
 
     internal void FireOnUpdate(TagEvent e)
     {
-        OnUpdate?.Invoke(e);
+        onUpdate?.Invoke(e);
+    }
+
+    internal void FireOnInitialization()
+    {
+        onInitialization?.Invoke(new TagEvent()
+        {
+            hook = this,
+            progressionTag = Tag,
+            oldState = Tag.State,
+            newState = Tag.State
+        });
     }
 
     void ISerializationCallbackReceiver.OnBeforeSerialize()

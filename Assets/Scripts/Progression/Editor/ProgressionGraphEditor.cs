@@ -6,10 +6,10 @@ using XNodeEditor;
 
 public class ProgressionGraphEditor : NodeEditorWindow
 {
-    [MenuItem("ProjectU/Show Graph")]
+    [MenuItem("ProjectU/Progression/Show Graph")]
     public static void ShowCurrentContextProgressionGraph()
     {
-        Open(ProgressionManager.Instance.progressionGraph);
+        Open(ProgressionManager.Data.graph);
     }
 
     [OnOpenAsset(-1)]

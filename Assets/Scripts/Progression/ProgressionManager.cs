@@ -1,41 +1,37 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
-[Serializable]
-public partial class ProgressionManager : MonoBehaviour
+
+public partial class ProgressionManager
 {
-    public ProgressionGraph progressionGraph;
-
     public static ProgressionTag GetTag(string tagName)
     {
-        return !Instance._tags.ContainsKey(tagName) ? null : Instance._tags[tagName];
+        return !Tags.ContainsKey(tagName) ? null : Tags[tagName];
     }
 
     public static List<ProgressionTag> GetAllTags()
     {
-        return (from e in Instance._tags select e.Value).ToList();
+        return (from e in Tags select e.Value).ToList();
     }
 
     public static List<ProgressionTag> GetInactiveTags()
     {
-        return (from e in Instance._tags where !e.Value.IsActive() && !e.Value.IsCollected() select e.Value).ToList();
+        return (from e in Tags where !e.Value.IsActive() && !e.Value.IsCollected() select e.Value).ToList();
     }
 
     public static List<ProgressionTag> GetActiveTags()
     {
-        return (from e in Instance._tags where e.Value.IsActive() && !e.Value.IsCollected() select e.Value).ToList();
+        return (from e in Tags where e.Value.IsActive() && !e.Value.IsCollected() select e.Value).ToList();
     }
 
     public static List<ProgressionTag> GetCollectedTags()
     {
-        return (from e in Instance._tags where e.Value.IsCollected() select e.Value).ToList();
+        return (from e in Tags where e.Value.IsCollected() select e.Value).ToList();
     }
 
     public static bool CollectTag(string tagName, bool force = false)
     {
-        return CollectTag(Instance._tags[tagName], force);
+        return CollectTag(Tags[tagName], force);
     }
 
     public static bool CollectTag(ProgressionTag progressionTag, bool force = false)
@@ -43,16 +39,16 @@ public partial class ProgressionManager : MonoBehaviour
         if (!(progressionTag is TagNode tagNode))
             return false;
 
-        if (!progressionTag.IsActive() && !force)
+        if (!progressionTag.IsAvailable() && !force)
             return false;
 
-        Instance.StartChange();
+        StartChange();
 
         tagNode.collected = true;
 
-        Instance.EndChange();
+        EndChange();
 
-        // Return if tag is active as a feedback to force flag
-        return tagNode.IsActive();
+        // Return if tag is available as a feedback to force flag
+        return tagNode.IsAvailable();
     }
 }

@@ -21,6 +21,8 @@ public class TagHookPropertyDrawer : PropertyDrawer
 
         var tagNameProperty = property.FindPropertyRelative("tagName");
 
+        ProgressionManager.SoftRefresh();
+        
         var tagList = (from pTag in ProgressionManager.GetAllTags() select pTag.Name).ToList();
 
         var index = tagList.FindIndex(t => t.Contains(tagNameProperty.stringValue));
