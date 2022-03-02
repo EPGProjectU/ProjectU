@@ -47,7 +47,7 @@ public partial class ProgressionManager
 
         StartChange();
 
-        tagNode.active = true;
+        tagNode.active = state;
 
         EndChange();
 
