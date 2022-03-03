@@ -2,7 +2,7 @@
 using XNode;
 
 [CreateNodeMenu("Progression/Branch", 1)]
-public class BranchNode : Node
+public class BranchNode: Node
 {
     [Input]
     public bool input;
@@ -34,7 +34,7 @@ public class BranchNode : Node
 
         var outputPort = GetOutputPort("output");
 
-        foreach (var tag in outputPort.GetConnections().Select(conn => conn.node).OfType<TagNode>().Where(tag => tag.IsActive()))
+        foreach (var _ in outputPort.GetConnections().Select(conn => conn.node).OfType<TagNode>().Where(tag => tag.IsActive()))
         {
             --branchLimit;
         }

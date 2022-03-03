@@ -3,7 +3,7 @@ using UnityEngine;
 using XNodeEditor;
 
 [CustomNodeEditor(typeof(LockNode))]
-public class LockNodeEditor : NodeEditor
+public class LockNodeEditor: NodeEditor
 {
     private LockNode _node;
     private LockNode Node => _node ??= target as LockNode;
@@ -20,9 +20,10 @@ public class LockNodeEditor : NodeEditor
 
         GUILayout.EndVertical();
         GUILayout.BeginVertical();
-        
-        EditorGUILayout.Popup(0, new[] { "Any", "All" }, GUILayout.Width(45));
-        EditorGUILayout.Popup(1, new[] { "Any", "All" }, GUILayout.Width(45));
+
+        _node.lockQuantifier = (LockNode.Quantifier)EditorGUILayout.Popup((int)_node.lockQuantifier, new[] { "Any", "All" }, GUILayout.Width(45));
+
+        _node.unlockQuantifier = (LockNode.Quantifier)EditorGUILayout.Popup((int)_node.unlockQuantifier, new[] { "Any", "All" }, GUILayout.Width(45));
 
         GUILayout.EndVertical();
         GUILayout.BeginVertical();

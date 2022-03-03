@@ -1196,6 +1196,8 @@ MonoBehaviour:
   inLock: 0
   inUnlock: 0
   output: 0
+  lockQuantifier: 0
+  unlockQuantifier: 1
 --- !u!114 &7523112777599465284
 MonoBehaviour:
   m_ObjectHideFlags: 0
