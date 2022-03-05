@@ -12,7 +12,16 @@ public class ProgressionGraphEditor : NodeEditorWindow
     [MenuItem("ProjectU/Progression/Show Graph")]
     public static void ShowCurrentContextProgressionGraph()
     {
-        // TODO handling of graph not being set
+        if (ProgressionManager.Data.graph == null)
+        {
+            var openSettings = EditorUtility.DisplayDialog("Progression Graph is not set!", "Set ProgressionGraph in progression settings", "Open Settings", "Dismiss");
+
+            if (!openSettings)
+                return;
+
+            ProgressionSettingsEditor.ShowWindow();
+        }
+
         Open(ProgressionManager.Data.graph);
     }
 
