@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 using System.IO;
 using System.Linq;
+using ProjectU.Core;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
@@ -10,30 +11,40 @@ using XNode;
 public partial class ProgressionManager
 {
     [DidReloadScripts]
-    private static void OnScriptReload()
+    private static void OnScriptReload() => LoadData();
+
+    [BeforeHotReload]
+    private static void BeforeHotReload() => Data.graph.SaveCurrentState(Application.persistentDataPath + GraphStateSavePath);
+
+    [AfterHotReload]
+    private static void AfterHotReload() => Init();
+
+    [OnExitingPlayMode]
+    private static void OnExitPlayMode()
     {
-        // For now OnScriptReload mimics Init function with difference of not resetting tags
-        // TODO make it call Init() again when serialization of tag states is done
-        LoadData();
+        Data.graph.SaveCurrentState(Application.persistentDataPath + GraphStateSavePath);
 
-        if (Data == null || Data.graph == null)
-        {
-            Debug.LogWarning("Progression graph is not set in ProjectU/Progression/Settings!");
+        _initialized = false;
 
-            return;
-        }
+        Reset();
 
-        InitTagReferences();
-
-        InitTagEventBuilders();
-
-        LinkAllHooks();
-
-        _initialized = true;
+        // Make progression graph dirty for unity to save it
+        EditorUtility.SetDirty(Data.graph);
     }
 
+    /// <summary>
+    /// Resets static fields
+    /// </summary>
     [InitializeOnEnterPlayMode]
-    private static void OnEnterPlayMode() => Reset();
+    private static void Reset()
+    {
+        HookRegistry.Clear();
+
+        HookCallList.Clear();
+        TagEventBuilders.Clear();
+
+        Tags.Clear();
+    }
 
     static ProgressionManager() => EditorApplication.delayCall += CreateDataFile;
 

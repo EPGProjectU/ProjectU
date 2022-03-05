@@ -49,7 +49,7 @@ public partial class ProgressionManager
 
         StartChange();
 
-        tagNode.collected = true;
+        tagNode.flags.collected = true;
 
         EndChange();
 
@@ -84,7 +84,7 @@ public partial class ProgressionManager
 
         StartChange();
 
-        tagNode.active = state;
+        tagNode.flags.active = state;
 
         EndChange();
 

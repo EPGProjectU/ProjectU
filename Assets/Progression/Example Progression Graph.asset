@@ -42,8 +42,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: SQ/BR2/D
 --- !u!114 &-8045693421809948763
 MonoBehaviour:
@@ -87,8 +88,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: MAIN/P0/EntryPoint1
 --- !u!114 &-7842843429907566467
 MonoBehaviour:
@@ -190,8 +192,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: MAIN/P3/OR
 --- !u!114 &-7647528920774060610
 MonoBehaviour:
@@ -283,8 +286,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: EX/LOCK_OUT
 --- !u!114 &-6782670761626670594
 MonoBehaviour:
@@ -385,8 +389,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: MAIN/P2/A
 --- !u!114 &-4710926220035158951
 MonoBehaviour:
@@ -430,8 +435,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: SQ/1
 --- !u!114 &-4031510013751740988
 MonoBehaviour:
@@ -475,8 +481,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: SQ/BR2/B
 --- !u!114 &-3275965754634845792
 MonoBehaviour:
@@ -520,8 +527,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: MAIN/P4/BR1/B
 --- !u!114 &-3230342944337600944
 MonoBehaviour:
@@ -565,8 +573,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: EX/LOCK/1
 --- !u!114 &-2744214207193380707
 MonoBehaviour:
@@ -610,8 +619,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: MAIN/P4/BR1/C
 --- !u!114 &-1987163435566084664
 MonoBehaviour:
@@ -710,8 +720,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: SQ/BR2/C
 --- !u!114 &11400000
 MonoBehaviour:
@@ -801,8 +812,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: MAIN/P2/B
 --- !u!114 &1568424514948958628
 MonoBehaviour:
@@ -846,8 +858,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: SQ/2
 --- !u!114 &2996666164581562401
 MonoBehaviour:
@@ -891,8 +904,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: SQ/BR2/A
 --- !u!114 &4147835467978345106
 MonoBehaviour:
@@ -936,8 +950,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: EX/LOCK/2
 --- !u!114 &4514963192819249816
 MonoBehaviour:
@@ -990,8 +1005,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: MAIN/P1
 --- !u!114 &4615220013187734995
 MonoBehaviour:
@@ -1035,8 +1051,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: EX/UNLOCK/1
 --- !u!114 &6379366467241791755
 MonoBehaviour:
@@ -1080,8 +1097,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: MAIN/P4/BR1/A
 --- !u!114 &7494430596948892267
 MonoBehaviour:
@@ -1128,8 +1146,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: MAIN/P3/AND
 --- !u!114 &7503016075601230079
 MonoBehaviour:
@@ -1240,8 +1259,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: MAIN/P0/EntryPoint2
 --- !u!114 &8010331218013806407
 MonoBehaviour:
@@ -1285,8 +1305,9 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  active: 0
-  collected: 0
+  flags:
+    active: 0
+    collected: 0
   tagName: EX/UNLOCK/2
 --- !u!114 &8212303023784682889
 MonoBehaviour:

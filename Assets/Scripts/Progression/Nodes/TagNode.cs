@@ -17,8 +17,14 @@ public class TagNode : Node, ProgressionTag
     [Output]
     public bool output;
 
-    public bool active;
-    public bool collected;
+    [Serializable]
+    public struct Flags
+    {
+        public bool active;
+        public bool collected;
+    }
+
+    public Flags flags;
 
     [FormerlySerializedAs("_name")]
     [SerializeField]
@@ -55,7 +61,7 @@ public class TagNode : Node, ProgressionTag
 
     public bool IsAvailable()
     {
-        if (active)
+        if (flags.active)
             return true;
 
         var values = GetInputPort("input").GetInputValues<bool>();
@@ -65,11 +71,11 @@ public class TagNode : Node, ProgressionTag
 
     public bool IsActive()
     {
-        return active || IsCollected();
+        return flags.active || IsCollected();
     }
 
     public bool IsCollected()
     {
-        return collected;
+        return flags.collected;
     }
 }

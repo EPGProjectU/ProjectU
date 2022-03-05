@@ -13,6 +13,8 @@ public partial class ProgressionManager
     /// </summary>
     public const string DataPath = "Progression/ProgressionManagerData";
 
+    public static string GraphStateSavePath = "/Progression/progression.data";
+
     /// <summary>
     /// <see cref="ProgressionManagerData"/>
     /// </summary>
@@ -69,7 +71,7 @@ public partial class ProgressionManager
             return;
         }
 
-        ResetTagStates();
+        Data.graph.LoadState(Application.persistentDataPath + GraphStateSavePath);
 
         InitTagReferences();
 
@@ -78,22 +80,6 @@ public partial class ProgressionManager
         LinkAllHooks();
 
         _initialized = true;
-    }
-
-    /// <summary>
-    /// Resets static fields
-    /// </summary>
-    [OnExitingPlayMode]
-    private static void Reset()
-    {
-        HookRegistry.Clear();
-
-        HookCallList.Clear();
-        TagEventBuilders.Clear();
-
-        Tags.Clear();
-
-        _initialized = false;
     }
 
     /// <summary>
@@ -177,8 +163,8 @@ public partial class ProgressionManager
     {
         foreach (var node in Data.graph.nodes.OfType<TagNode>())
         {
-            node.collected = false;
-            node.active = false;
+            node.flags.collected = false;
+            node.flags.active = false;
         }
     }
 

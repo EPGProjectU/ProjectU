@@ -27,8 +27,8 @@ public class TagNodeEditor : NodeEditor
 
         // Draw checkboxes for active and collected
         GUILayout.BeginHorizontal();
-        Node.active = GUILayout.Toggle(Node.active, "Active");
-        Node.collected = GUILayout.Toggle(Node.collected, "Collected");
+        Node.flags.active = GUILayout.Toggle(Node.flags.active, "Active");
+        Node.flags.collected = GUILayout.Toggle(Node.flags.collected, "Collected");
         GUILayout.EndHorizontal();
 
         serializedObject.ApplyModifiedProperties();
