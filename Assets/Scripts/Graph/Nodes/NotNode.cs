@@ -1,4 +1,7 @@
-﻿[CreateNodeMenuAttribute("Logic/Not", 2)]
+﻿/// <summary>
+/// Negates single input
+/// </summary>
+[CreateNodeMenuAttribute("Logic/Not", 2)]
 public class NotNode : BoolNode
 {
     public override bool GetValue()

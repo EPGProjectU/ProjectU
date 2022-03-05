@@ -6,19 +6,40 @@ using UnityEditor.Callbacks;
 using UnityEngine;
 using XNode;
 
+// Editor only functionality of the ProgressionManager
 public partial class ProgressionManager
 {
     [DidReloadScripts]
-    private static void OnScriptReload() => Init();
+    private static void OnScriptReload()
+    {
+        // For now OnScriptReload mimics Init function with difference of not resetting tags
+        // TODO make it call Init() again when serialization of tag states is done
+        LoadData();
+
+        if (Data == null || Data.graph == null)
+        {
+            Debug.LogWarning("Progression graph is not set in ProjectU/Progression/Settings!");
+
+            return;
+        }
+
+        InitTagReferences();
+
+        InitTagEventBuilders();
+
+        LinkAllHooks();
+
+        _initialized = true;
+    }
 
     [InitializeOnEnterPlayMode]
     private static void OnEnterPlayMode() => Reset();
 
-    static ProgressionManager()
-    {
-        EditorApplication.delayCall += CreateDataFile;
-    }
+    static ProgressionManager() => EditorApplication.delayCall += CreateDataFile;
 
+    /// <summary>
+    /// Creates <see cref="ProgressionManagerData"/> file if it does not exist
+    /// </summary>
     private static void CreateDataFile()
     {
         var fullDataPath = $"Assets/Resources/{DataPath}.asset";
@@ -34,6 +55,9 @@ public partial class ProgressionManager
         LoadData();
     }
 
+    /// <summary>
+    /// Editor version of <see cref="StartChange"/>
+    /// </summary>
     public static void StartEditorChange()
     {
         if (!_initialized)
@@ -42,6 +66,10 @@ public partial class ProgressionManager
         StartChange();
     }
 
+    /// <summary>
+    /// Editor version of <see cref="EndChange"/>
+    /// </summary>
+    /// <param name="fireEvents">If events for change should be triggered</param>
     public static void EndEditorChange(bool fireEvents = true)
     {
         if (!_initialized)
@@ -65,6 +93,10 @@ public partial class ProgressionManager
             hook.tagName = newName;
     }
 
+    /// <summary>
+    /// Reloads <see cref="ProgressionManagerData"/> and does reinitialize references
+    /// </summary>
+    /// <seealso cref="SoftRefresh"/>
     public static void HardRefresh()
     {
         LoadData();
@@ -72,6 +104,10 @@ public partial class ProgressionManager
         SoftRefresh();
     }
 
+    /// <summary>
+    /// Only reinitialize references
+    /// </summary>
+    /// <seealso cref="HardRefresh"/>
     public static void SoftRefresh()
     {
         InitTagReferences();
@@ -80,7 +116,7 @@ public partial class ProgressionManager
             InitTagEventBuilders();
     }
 
-    //TODO Access ProgressionManager in testing code through reflection
+    // TODO Access ProgressionManager in testing code through reflection
 #if UNITY_INCLUDE_TESTS
     public static void InitForTest()
     {

@@ -5,19 +5,19 @@
 public partial class TagHook
 {
     /// <summary>
-    /// Creates new instance of the TagHook
+    /// Creates new instance of the <see cref="TagHook"/>
     /// </summary>
-    /// <param name="tagName">Name of the Tag to be tracked</param>
-    /// <returns>Instantiated TagHook</returns>
+    /// <param name="tagName">Name of the <see cref="ProgressionTag"/> to be tracked</param>
+    /// <returns>Instantiated <see cref="TagHook"/></returns>
     public static TagHook Create(string tagName = "") => Create_Impl(tagName);
 
     /// <summary>
-    /// Breaks all links and removes hook from <see cref="ProgressionManager"/>
+    /// Breaks all links, removes hook from <see cref="ProgressionManager"/> and frees all callbacks of <see cref="onUpdate"/>
     /// </summary>
     public void Release() => Release_Impl();
 
     /// <summary>
-    /// Name of the Tag to track
+    /// Name of the <see cref="ProgressionTag"/> to track
     /// </summary>
     /// <remarks>
     /// Renaming existing Hook allows to change tracked <see cref="Tag"/>
@@ -29,7 +29,7 @@ public partial class TagHook
     }
 
     /// <summary>
-    /// Reference to the tracked Tag
+    /// Reference to the tracked <see cref="ProgressionTag"/>
     /// </summary>
     /// <remarks>
     /// The reference is set during runtime and only if there is a <see cref="ProgressionTag"/> with the given <see cref="TagName"/> exist in the current context
@@ -59,9 +59,9 @@ public partial class TagHook
     public bool SetActive(bool state = true) => ProgressionManager.SetActiveTag(Tag, state);
 
     /// <summary>
-    /// Check if linked to <see cref="ProgressionTag"/>
+    /// Checks if <see cref="TagHook"/> is linked to <see cref="ProgressionTag"/>
     /// </summary>
-    /// <returns>If linked to <see cref="ProgressionTag"/></returns>
+    /// <returns>If <see cref="TagHook"/> is linked to <see cref="ProgressionTag"/></returns>
     public bool IsLinked() => Tag != null;
 
     /// <summary>

@@ -1,8 +1,11 @@
 using UnityEngine;
 using XNodeEditor;
 
+/// <summary>
+/// Draws <see cref="TagNode"/> in <see cref="NodeGraphEditor"/>
+/// </summary>
 [CustomNodeEditor(typeof(TagNode))]
-public class TagNodeEditor : NodeEditor
+public class TagNodeEditor: NodeEditor
 {
     private TagNode _node;
     private TagNode Node => _node ??= target as TagNode;
@@ -10,25 +13,26 @@ public class TagNodeEditor : NodeEditor
     public override void OnBodyGUI()
     {
         serializedObject.Update();
-        
+
         ProgressionManager.StartEditorChange();
         var oldState = Node.State;
-        
+
         GUILayout.BeginHorizontal();
         NodeEditorGUILayout.PortField(new GUIContent("In"), target.GetInputPort("input"), GUILayout.MinWidth(0));
         NodeEditorGUILayout.PortField(new GUIContent("Out"), target.GetOutputPort("output"), GUILayout.MinWidth(0));
         GUILayout.EndHorizontal();
-        
 
+        // Draw input field for tag name
         Node.Name = GUILayout.TextField(Node.Name);
 
+        // Draw checkboxes for active and collected
         GUILayout.BeginHorizontal();
         Node.active = GUILayout.Toggle(Node.active, "Active");
         Node.collected = GUILayout.Toggle(Node.collected, "Collected");
         GUILayout.EndHorizontal();
 
         serializedObject.ApplyModifiedProperties();
-        
+
         ProgressionManager.EndEditorChange(oldState != Node.State);
     }
 

@@ -1,5 +1,12 @@
+
+/// <summary>
+/// Tag used for storing progression states
+/// </summary>
 public interface ProgressionTag
 {
+    /// <summary>
+    /// Possible states of <see cref="ProgressionTag"/>
+    /// </summary>
     public enum TagState
     {
         Unavailable,
@@ -8,11 +15,18 @@ public interface ProgressionTag
         Collected
     }
 
+    /// <summary>
+    /// Identifier of the <see cref="ProgressionTag"/>
+    /// </summary>
     public string Name
     {
         get;
     }
 
+    /// <summary>
+    /// Current <see cref="TagState"/> of <see cref="ProgressionTag"/>
+    /// </summary>
+    /// Also returns true for <see cref="TagState.Active"/> <see cref="TagState"/>
     public TagState State
     {
         get;

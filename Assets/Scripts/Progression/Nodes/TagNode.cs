@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using XNode;
 
+/// <summary>
+/// Implements <see cref="ProgressionTag"/> as a node for use in <see cref="ProgressionGraph"/>
+/// </summary>
 [Serializable]
 [CreateNodeMenu("Progression/Tag", 0)]
 public class TagNode: Node, ProgressionTag
@@ -32,6 +35,9 @@ public class TagNode: Node, ProgressionTag
         }
     }
 
+    /// <summary>
+    /// State is determined base on flags <see cref="active"/> and <see cref="collected"/>, if neither is set <see cref="input"/> is checked
+    /// </summary>
     public ProgressionTag.TagState State =>
         IsCollected() ? ProgressionTag.TagState.Collected :
         IsActive() ? ProgressionTag.TagState.Active :
@@ -50,7 +56,7 @@ public class TagNode: Node, ProgressionTag
     {
         if (active)
             return true;
-        
+
         var values = GetInputPort("input").GetInputValues<bool>();
 
         return values.Length == 0 || MathHelper.Or(values);

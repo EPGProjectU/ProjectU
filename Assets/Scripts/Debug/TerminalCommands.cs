@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 namespace Debug
 {
+    /// <summary>
+    /// Custom terminal commands
+    /// </summary>
     public static class TerminalCommands
     {
         [RegisterCommand(Name = "ReloadScene", Help = "Reloads current scene restarting its state", MaxArgCount = 0)]

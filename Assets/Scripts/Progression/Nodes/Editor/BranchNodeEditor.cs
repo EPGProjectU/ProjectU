@@ -1,8 +1,11 @@
 using UnityEngine;
 using XNodeEditor;
 
+/// <summary>
+/// Draws <see cref="BranchNode"/> in <see cref="NodeGraphEditor"/>
+/// </summary>
 [CustomNodeEditor(typeof(BranchNode))]
-public class BranchNodeEditor : NodeEditor
+public class BranchNodeEditor: NodeEditor
 {
     private BranchNode _node;
     private BranchNode Node => _node ??= target as BranchNode;
@@ -16,6 +19,7 @@ public class BranchNodeEditor : NodeEditor
         NodeEditorGUILayout.PortField(new GUIContent("Out"), target.GetOutputPort("output"), GUILayout.MinWidth(0));
         GUILayout.EndHorizontal();
 
+        // Draw int field for limit
         GUILayout.BeginHorizontal();
         GUILayout.Label("Limit");
 

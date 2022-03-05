@@ -2,6 +2,9 @@ using UnityEditor;
 using UnityEngine;
 using XNodeEditor;
 
+/// <summary>
+/// Draws <see cref="LockNode"/> in <see cref="NodeGraphEditor"/>
+/// </summary>
 [CustomNodeEditor(typeof(LockNode))]
 public class LockNodeEditor: NodeEditor
 {
@@ -19,6 +22,8 @@ public class LockNodeEditor: NodeEditor
         NodeEditorGUILayout.PortField(new GUIContent("Unlock"), target.GetInputPort("inUnlock"), GUILayout.MinWidth(0));
 
         GUILayout.EndVertical();
+        
+        // Draw dropdowns for selecting lock/unlock quantifiers
         GUILayout.BeginVertical();
 
         _node.lockQuantifier = (LockNode.Quantifier)EditorGUILayout.Popup((int)_node.lockQuantifier, new[] { "Any", "All" }, GUILayout.Width(45));

@@ -7,8 +7,11 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Delegate that persist through a HotReload
+/// </summary>
 [Serializable]
-public sealed class SerializableDelegate<TDelegate> : ISerializationCallbackReceiver where TDelegate : MulticastDelegate
+public sealed class SerializableDelegate<TDelegate>: ISerializationCallbackReceiver where TDelegate : MulticastDelegate
 {
     private TDelegate? _delegate;
 

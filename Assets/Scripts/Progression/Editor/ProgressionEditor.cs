@@ -1,29 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class ProgressionEditor : EditorWindow
+/// <summary>
+/// Window for controlling settings of progression system
+/// </summary>
+public class ProgressionSettingsEditor: EditorWindow
 {
     [MenuItem("ProjectU/Progression/Setting")]
     public static void ShowWindow()
     {
-        GetWindow(typeof(ProgressionEditor));
+        GetWindow(typeof(ProgressionSettingsEditor));
     }
 
-    void OnGUI()
+    private void OnGUI()
     {
-        GUILayout.Label("Main Graph", EditorStyles.boldLabel);
-
-        if (ProgressionManager.Data == null)
-            return;
-
         EditorGUI.BeginChangeCheck();
+        GUILayout.Label("Main Graph", EditorStyles.boldLabel);
         var newGraph = EditorGUILayout.ObjectField(ProgressionManager.Data.graph, typeof(ProgressionGraph), false) as ProgressionGraph;
 
         if (!EditorGUI.EndChangeCheck())
             return;
-        
+
+        // Makes unity save change to gameobject storing data
         EditorUtility.SetDirty(ProgressionManager.Data);
 
         ProgressionManager.Data.graph = newGraph;

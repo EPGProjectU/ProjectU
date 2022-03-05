@@ -49,7 +49,9 @@ namespace ProjectU.Core
         /// <remarks>Static constructor guarantees that callbacks are bound even after a hot reload</remarks>
         static CallbackAttributeController()
         {
+            // Will invoke methods with OnSceneLoaded attribute when receiving event from SceneManager
             SceneManager.sceneLoaded += (scene, mode) => InvokeMethodsWithAttribute(typeof(OnSceneLoaded));
+            
 #if UNITY_EDITOR
             EditorApplication.playModeStateChanged += InvokePlayModeStateChange;
 #endif
@@ -60,6 +62,7 @@ namespace ProjectU.Core
         /// Invokes callbacks for change in playmode state
         /// </summary>
         /// <param name="state"></param>
+        /// <remarks>Editor only functionality</remarks>
         private static void InvokePlayModeStateChange(PlayModeStateChange state)
         {
             switch (state)
@@ -131,16 +134,17 @@ namespace ProjectU.Core
         /// <param name="attributeType">Attribute that is searched for</param>
         private static void CacheMethodsWithAttribute(IEnumerable<MethodInfo> methodInfos, Type attributeType)
         {
+            // Filter out methods without the attribute
             var filteredMethodInfos = (from methodInfo in methodInfos
                 where methodInfo.GetCustomAttributes(attributeType, false).Length > 0
                 select methodInfo).ToArray();
             
-            // Convert filtered method infos into combined delegates
+            // Convert filtered method infos into combined delegate
             AttributeMethods[attributeType] = filteredMethodInfos.Any() ? filteredMethodInfos.Select(methodInfo => Delegate.CreateDelegate(typeof(Action), methodInfo)).Aggregate(Delegate.Combine) : null;
         }
 
         /// <summary>
-        /// Calls all static methods that have given attribute
+        /// Invokes cached delegate for given attribute
         /// </summary>
         /// <param name="attributeType"></param>
         private static void InvokeMethodsWithAttribute(Type attributeType)
@@ -151,7 +155,6 @@ namespace ProjectU.Core
         //--------------- Callbacks for MonoBehaviour methods ------------
         private void Awake() => InvokeMethodsWithAttribute(typeof(Awake));
         private void Start() => InvokeMethodsWithAttribute(typeof(Start));
-
         private void Update() => InvokeMethodsWithAttribute(typeof(OnUpdate));
         //----------------------------------------------------------------
     }

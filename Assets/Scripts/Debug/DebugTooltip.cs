@@ -1,8 +1,10 @@
 using UnityEngine;
 
-// Debug tooltip for drawing text in the game world
 namespace Debug
 {
+    /// <summary>
+    /// Draws in-game text for debug purposes
+    /// </summary>
     public class DebugTooltip
     {
         private readonly GameObject _gameObject;
@@ -30,7 +32,7 @@ namespace Debug
 
             // If duration is non negative, schedule destruction of the text
             if (duration >= 0)
-                Destroy(duration);
+                Object.Destroy(_gameObject, duration);
         }
 
         public static DebugTooltip Draw(Vector3 position, string text)
@@ -46,12 +48,6 @@ namespace Debug
         public static DebugTooltip Draw(Vector3 position, string text, Color color, float fontSize, float duration = -1.0f)
         {
             return new DebugTooltip(position, text, color, fontSize, duration);
-        }
-
-        // Destroys the text after a delay
-        public void Destroy(float delay = 0.0f)
-        {
-            Object.Destroy(_gameObject, delay);
         }
     }
 }
