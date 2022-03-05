@@ -1,8 +1,9 @@
 using System.Linq;
 using CommandTerminal;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Debug
+namespace DebugU
 {
     /// <summary>
     /// Custom terminal commands
@@ -13,7 +14,7 @@ namespace Debug
         private static void ReloadLevel(CommandArg[] args)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            UnityEngine.Debug.Log($"Scene {SceneManager.GetActiveScene().name} reloaded");
+            Debug.Log($"Scene {SceneManager.GetActiveScene().name} reloaded");
         }
 
 
@@ -30,7 +31,7 @@ namespace Debug
 
             result = tags.Where(tag => tag.State == ProgressionTag.TagState.Collected).Aggregate(result, (current, tag) => current + "* " + tag.Name + "\n");
 
-            UnityEngine.Debug.Log(result);
+            Debug.Log(result);
         }
 
         [RegisterCommand(Name = "GiveTag", Help = "Collects given tag/s", MinArgCount = 1)]

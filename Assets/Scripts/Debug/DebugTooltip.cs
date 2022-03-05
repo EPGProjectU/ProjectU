@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Debug
+namespace DebugU
 {
     /// <summary>
     /// Draws in-game text for debug purposes

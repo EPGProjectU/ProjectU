@@ -1,5 +1,5 @@
 using System;
-using Debug;
+using DebugU;
 using UnityEngine;
 
 /// <summary>
@@ -73,7 +73,7 @@ public class ExampleProgressionBehaviour : MonoBehaviour
     /// <param name="tagEvent">Event with old and current state of the <see cref="ProgressionTag"/></param>
     private void LogP1(TagHook.TagEvent tagEvent)
     {
-        UnityEngine.Debug.Log($"P1: {tagEvent.oldState} -> {tagEvent.newState}");
+        Debug.Log($"P1: {tagEvent.oldState} -> {tagEvent.newState}");
     }
 
     /// <summary>
