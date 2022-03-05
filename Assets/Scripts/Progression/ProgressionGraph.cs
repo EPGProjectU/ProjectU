@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
+using JetBrains.Annotations;
 using UnityEngine;
 using XNode;
 
@@ -11,15 +12,20 @@ using XNode;
 [CreateAssetMenu(menuName = "ProjectU/Progression Graph")]
 public class ProgressionGraph : NodeGraph
 {
-    public void SaveCurrentState(string filepath)
+    [SerializeField]
+    private SerializableGUID guid = SerializableGUID.Generate();
+
+    public void SaveCurrentState([NotNull] string directoryPath)
     {
         var data = from node in nodes.OfType<TagNode>().Where(tag => !string.IsNullOrEmpty(tag.Name))
             select (node.Name.ToString(), node.flags);
 
         var xml = new XmlSerializer(typeof((string, TagNode.Flags)[]));
 
-        if (!File.Exists(filepath))
-            Directory.CreateDirectory(Path.GetDirectoryName(filepath) ?? string.Empty);
+        if (!Directory.Exists(directoryPath))
+            Directory.CreateDirectory(directoryPath);
+
+        var filepath = directoryPath + "/ProgressionGraph_" + guid + ".data";
 
         var writer = new StreamWriter(filepath);
 
@@ -28,10 +34,16 @@ public class ProgressionGraph : NodeGraph
         writer.Close();
     }
 
-    public void LoadState(string filepath)
+    public void LoadState([NotNull] string directoryPath)
     {
-        if (!Directory.Exists(Path.GetDirectoryName(filepath) ?? string.Empty))
+        if (!Directory.Exists(directoryPath))
             return;
+
+        var filepath = directoryPath + "/ProgressionGraph_" + guid + ".data";
+
+        if (!File.Exists(filepath))
+            return;
+
 
         var xml = new XmlSerializer(typeof((string, TagNode.Flags)[]));
 

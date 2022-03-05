@@ -11,9 +11,12 @@ public partial class ProgressionManager
     /// <summary>
     /// Location of the <see cref="ProgressionManagerData"/> file inside of Resource folder
     /// </summary>
-    public const string DataPath = "Progression/ProgressionManagerData";
+    public const string ResourceDataPath = "Progression/ProgressionManagerData";
 
-    public static string GraphStateSavePath = "/Progression/progression.data";
+    /// <summary>
+    /// Location of the <see cref="ProgressionManagerData"/> file inside of Resource folder
+    /// </summary>
+    public static string GraphSavesDirectoryPath = "/Progression";
 
     /// <summary>
     /// <see cref="ProgressionManagerData"/>
@@ -47,11 +50,11 @@ public partial class ProgressionManager
     private static bool _initialized;
 
     /// <summary>
-    /// Loads <see cref="ProgressionManagerData"/> from <see cref="DataPath"/>
+    /// Loads <see cref="ProgressionManagerData"/> from <see cref="ResourceDataPath"/>
     /// </summary>
     private static void LoadData()
     {
-        Data = Resources.Load<ProgressionManagerData>(DataPath);
+        Data = Resources.Load<ProgressionManagerData>(ResourceDataPath);
     }
 
     /// <summary>
@@ -71,7 +74,7 @@ public partial class ProgressionManager
             return;
         }
 
-        Data.graph.LoadState(Application.persistentDataPath + GraphStateSavePath);
+        Data.graph.LoadState(Application.persistentDataPath + GraphSavesDirectoryPath);
 
         InitTagReferences();
 
@@ -157,7 +160,6 @@ public partial class ProgressionManager
     /// <summary>
     /// Resets all flags on <see cref="ProgressionTag"/>
     /// </summary>
-    /// TODO Serialization of tag states instead of resetting
     [OnExitingPlayMode]
     private static void ResetTagStates()
     {

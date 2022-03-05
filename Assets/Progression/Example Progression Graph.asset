@@ -764,6 +764,11 @@ MonoBehaviour:
   - {fileID: -6782670761626670594}
   - {fileID: 8212303023784682889}
   - {fileID: -7647528920774060610}
+  guid:
+    m_Value0: 876361389
+    m_Value1: 275229261
+    m_Value2: 686699651
+    m_Value3: 220719980
 --- !u!114 &954080784783757294
 MonoBehaviour:
   m_ObjectHideFlags: 0

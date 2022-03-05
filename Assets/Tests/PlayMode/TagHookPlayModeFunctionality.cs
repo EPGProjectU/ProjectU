@@ -13,7 +13,7 @@ public class TagHookPlayModeFunctionality
     public IEnumerator SetUp()
     {
         // Swapping currently used graph for a new one for duration of test
-        var data = Resources.Load<ProgressionManagerData>(ProgressionManager.DataPath);
+        var data = Resources.Load<ProgressionManagerData>(ProgressionManager.ResourceDataPath);
 
         _originalGraph = data.graph;
         data.graph = ScriptableObject.CreateInstance<ProgressionGraph>();
@@ -34,7 +34,7 @@ public class TagHookPlayModeFunctionality
     [UnityTearDown]
     public IEnumerator TearDown()
     {
-        var data = Resources.Load<ProgressionManagerData>(ProgressionManager.DataPath);
+        var data = Resources.Load<ProgressionManagerData>(ProgressionManager.ResourceDataPath);
 
         data.graph = _originalGraph;
 

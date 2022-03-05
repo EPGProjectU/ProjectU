@@ -16,7 +16,7 @@ public class TagHookEditorFunctionality
         // Reset ProgressionManager using reflection
         typeof(ProgressionManager).GetMethod("Reset", BindingFlags.Static | BindingFlags.NonPublic)?.Invoke(null, null);
 
-        var data = Resources.Load<ProgressionManagerData>(ProgressionManager.DataPath);
+        var data = Resources.Load<ProgressionManagerData>(ProgressionManager.ResourceDataPath);
 
         _originalGraph = data.graph;
         data.graph = ScriptableObject.CreateInstance<ProgressionGraph>();
@@ -35,7 +35,7 @@ public class TagHookEditorFunctionality
     [UnityTearDown]
     public IEnumerator TearDown()
     {
-        var data = Resources.Load<ProgressionManagerData>(ProgressionManager.DataPath);
+        var data = Resources.Load<ProgressionManagerData>(ProgressionManager.ResourceDataPath);
 
         data.graph = _originalGraph;
 

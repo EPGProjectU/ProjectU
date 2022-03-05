@@ -14,7 +14,7 @@ public partial class ProgressionManager
     private static void OnScriptReload() => LoadData();
 
     [BeforeHotReload]
-    private static void BeforeHotReload() => Data.graph.SaveCurrentState(Application.persistentDataPath + GraphStateSavePath);
+    private static void BeforeHotReload() => Data.graph.SaveCurrentState(Application.persistentDataPath + GraphSavesDirectoryPath);
 
     [AfterHotReload]
     private static void AfterHotReload() => Init();
@@ -22,7 +22,7 @@ public partial class ProgressionManager
     [OnExitingPlayMode]
     private static void OnExitPlayMode()
     {
-        Data.graph.SaveCurrentState(Application.persistentDataPath + GraphStateSavePath);
+        Data.graph.SaveCurrentState(Application.persistentDataPath + GraphSavesDirectoryPath);
 
         _initialized = false;
 
@@ -53,7 +53,7 @@ public partial class ProgressionManager
     /// </summary>
     private static void CreateDataFile()
     {
-        var fullDataPath = $"Assets/Resources/{DataPath}.asset";
+        var fullDataPath = $"Assets/Resources/{ResourceDataPath}.asset";
 
         if (AssetDatabase.LoadAssetAtPath<ProgressionManagerData>(fullDataPath))
             return;
