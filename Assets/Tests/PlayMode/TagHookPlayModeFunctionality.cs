@@ -1,37 +1,33 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Reflection;
 using NUnit.Framework;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
 using Object = UnityEngine.Object;
 
-// ReSharper disable InconsistentNaming
-
 public class TagHookPlayModeFunctionality
 {
     private ProgressionGraph _originalGraph;
-    
+
     [UnitySetUp]
     public IEnumerator SetUp()
     {
         // Swapping currently used graph for a new one for duration of test
         var data = Resources.Load<ProgressionManagerData>(ProgressionManager.DataPath);
-        
+
         _originalGraph = data.graph;
-        data.graph =  ScriptableObject.CreateInstance<ProgressionGraph>();
-        
+        data.graph = ScriptableObject.CreateInstance<ProgressionGraph>();
+
         // Populating the new graph
         for (var i = 0; i < 10; ++i)
         {
             var tagNode = data.graph.AddNode<TagNode>();
             tagNode.Name = "TestNode" + i;
         }
-        
+
         // Init ProgressionManager using reflection
         typeof(ProgressionManager).GetMethod("Init", BindingFlags.Static | BindingFlags.NonPublic)?.Invoke(null, null);
-        
+
         yield return null;
     }
 
@@ -39,13 +35,11 @@ public class TagHookPlayModeFunctionality
     public IEnumerator TearDown()
     {
         var data = Resources.Load<ProgressionManagerData>(ProgressionManager.DataPath);
-        
+
         data.graph = _originalGraph;
-        
+
         foreach (var gameObject in Object.FindObjectsOfType(typeof(MonoBehaviour)))
-        {
             Object.Destroy(gameObject);
-        }
 
         yield return null;
     }
@@ -55,7 +49,7 @@ public class TagHookPlayModeFunctionality
     {
         var hook = TagHook.Create("TestNode0");
         var hookNonExisting = TagHook.Create("NonExisting");
-        
+
         Assert.AreEqual(10, ProgressionManager.Data.graph.nodes.Count);
         Assert.AreSame(ProgressionManager.GetTag(hook.TagName), hook.Tag);
         Assert.NotNull(hook.Tag);
@@ -76,7 +70,6 @@ public class TagHookPlayModeFunctionality
 
         private void OnEnable()
         {
-            //_hookOnEnable.TagName = "TestNode0";
             _hookOnEnable = TagHook.Create("TestNode0");
         }
 
@@ -98,14 +91,14 @@ public class TagHookPlayModeFunctionality
             _hookStart.Release();
         }
 
-        public void CheckHookOnEnable()
-        {
-            Assert.AreEqual(ProgressionManager.GetTag(_hookOnEnable.TagName), _hookOnEnable.Tag);
-        }
-        
         public void CheckHookFieldInit()
         {
             Assert.AreEqual(ProgressionManager.GetTag(_hookFieldInit.TagName), _hookFieldInit.Tag);
+        }
+
+        public void CheckHookOnEnable()
+        {
+            Assert.AreEqual(ProgressionManager.GetTag(_hookOnEnable.TagName), _hookOnEnable.Tag);
         }
 
         public void CheckHookAwake()
@@ -118,7 +111,7 @@ public class TagHookPlayModeFunctionality
             Assert.AreEqual(ProgressionManager.GetTag(_hookStart.TagName), _hookStart.Tag);
         }
     }
-    
+
     [UnityTest]
     public IEnumerator StartUpInitializedHooks()
     {
@@ -126,6 +119,7 @@ public class TagHookPlayModeFunctionality
 
         yield return null;
 
+        hookClass.CheckHookFieldInit();
         hookClass.CheckHookOnEnable();
         hookClass.CheckHookAwake();
         hookClass.CheckHookStart();

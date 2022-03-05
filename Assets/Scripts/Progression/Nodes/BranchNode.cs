@@ -5,7 +5,7 @@ using XNode;
 /// Node that allows only limited number of <see cref="TagNode"/>s to be active/collected
 /// </summary>
 [CreateNodeMenu("Progression/Branch", 1)]
-public class BranchNode: Node
+public class BranchNode : Node
 {
     [Input]
     public bool input;
@@ -41,9 +41,7 @@ public class BranchNode: Node
         var outputPort = GetOutputPort("output");
 
         foreach (var _ in outputPort.GetConnections().Select(conn => conn.node).OfType<TagNode>().Where(tag => tag.IsActive()))
-        {
             --branchLimit;
-        }
 
         return branchLimit <= 0;
     }

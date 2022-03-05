@@ -6,7 +6,7 @@ using XNodeEditor;
 /// Draws <see cref="LockNode"/> in <see cref="NodeGraphEditor"/>
 /// </summary>
 [CustomNodeEditor(typeof(LockNode))]
-public class LockNodeEditor: NodeEditor
+public class LockNodeEditor : NodeEditor
 {
     private LockNode _node;
     private LockNode Node => _node ??= target as LockNode;
@@ -22,7 +22,7 @@ public class LockNodeEditor: NodeEditor
         NodeEditorGUILayout.PortField(new GUIContent("Unlock"), target.GetInputPort("inUnlock"), GUILayout.MinWidth(0));
 
         GUILayout.EndVertical();
-        
+
         // Draw dropdowns for selecting lock/unlock quantifiers
         GUILayout.BeginVertical();
 
@@ -43,5 +43,8 @@ public class LockNodeEditor: NodeEditor
 
     public override int GetWidth() => 170;
 
-    public override Color GetTint() => Node.CheckUnlocks() ? new Color(0.13f, 0.2f, 0.14f) : !Node.CheckLocks() ? new Color(0.27f, 0.39f, 0.28f) : new Color(0.42f, 0.44f, 0.08f);
+    public override Color GetTint() =>
+        Node.CheckUnlocks() ? new Color(0.13f, 0.2f, 0.14f) :
+        !Node.CheckLocks() ? new Color(0.27f, 0.39f, 0.28f) :
+        new Color(0.42f, 0.44f, 0.08f);
 }

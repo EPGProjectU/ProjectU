@@ -3,7 +3,7 @@ using UnityEngine;
 
 // Internal functionality of TagHook
 [Serializable]
-public partial class TagHook: ISerializationCallbackReceiver
+public partial class TagHook : ISerializationCallbackReceiver
 {
     [SerializeField]
     internal string tagName;

@@ -9,7 +9,7 @@ using XNode;
 /// </summary>
 [Serializable]
 [CreateNodeMenu("Progression/Tag", 0)]
-public class TagNode: Node, ProgressionTag
+public class TagNode : Node, ProgressionTag
 {
     [Input]
     public bool input;

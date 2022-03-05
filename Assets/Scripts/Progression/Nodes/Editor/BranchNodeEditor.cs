@@ -5,7 +5,7 @@ using XNodeEditor;
 /// Draws <see cref="BranchNode"/> in <see cref="NodeGraphEditor"/>
 /// </summary>
 [CustomNodeEditor(typeof(BranchNode))]
-public class BranchNodeEditor: NodeEditor
+public class BranchNodeEditor : NodeEditor
 {
     private BranchNode _node;
     private BranchNode Node => _node ??= target as BranchNode;
@@ -34,5 +34,8 @@ public class BranchNodeEditor: NodeEditor
 
     public override int GetWidth() => 100;
 
-    public override Color GetTint() => Node.IsLocked() ? new Color(0.42f, 0.44f, 0.08f) : Node.IsAvailable() ? new Color(0.27f, 0.39f, 0.28f) : base.GetTint();
+    public override Color GetTint() =>
+        Node.IsLocked() ? new Color(0.42f, 0.44f, 0.08f) :
+        Node.IsAvailable() ? new Color(0.27f, 0.39f, 0.28f) :
+        base.GetTint();
 }

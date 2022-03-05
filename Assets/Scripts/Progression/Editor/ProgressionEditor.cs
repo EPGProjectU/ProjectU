@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Window for controlling settings of progression system
 /// </summary>
-public class ProgressionSettingsEditor: EditorWindow
+public class ProgressionSettingsEditor : EditorWindow
 {
     [MenuItem("ProjectU/Progression/Setting")]
     public static void ShowWindow()

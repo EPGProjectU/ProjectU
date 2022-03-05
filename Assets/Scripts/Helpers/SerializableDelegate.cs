@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 /// Delegate that persist through a HotReload
 /// </summary>
 [Serializable]
-public sealed class SerializableDelegate<TDelegate>: ISerializationCallbackReceiver where TDelegate : MulticastDelegate
+public sealed class SerializableDelegate<TDelegate> : ISerializationCallbackReceiver where TDelegate : MulticastDelegate
 {
     private TDelegate? _delegate;
 
@@ -27,7 +27,7 @@ public sealed class SerializableDelegate<TDelegate>: ISerializationCallbackRecei
         return lhs;
     }
 
-    public static SerializableDelegate<TDelegate>? operator -(SerializableDelegate<TDelegate>? lhs, TDelegate rhs)
+    public static SerializableDelegate<TDelegate> operator -(SerializableDelegate<TDelegate>? lhs, TDelegate rhs)
     {
         if (lhs == null)
             return new SerializableDelegate<TDelegate>();
@@ -46,7 +46,7 @@ public sealed class SerializableDelegate<TDelegate>: ISerializationCallbackRecei
         SceneManager.sceneUnloaded += SceneUnloaded;
     }
 
-    void SceneUnloaded(Scene s)
+    private void SceneUnloaded(Scene s)
     {
         // Clearing serialization data on scene unload
         File.Delete($"Temp/DelegateTempFile-{guid}");
@@ -126,7 +126,7 @@ public sealed class SerializableDelegate<TDelegate>: ISerializationCallbackRecei
                 var del = Delegate.CreateDelegate(
                     typeof(TDelegate),
                     obj,
-                    info!, false);
+                    info, false);
 
                 // Bind created delegate
                 _delegate = (Delegate.Combine(_delegate, del) as TDelegate)!;

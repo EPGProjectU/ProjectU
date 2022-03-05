@@ -6,7 +6,7 @@ using XNode;
 /// Outputs false when <see cref="inLock"/> condition are meet until <see cref="inUnlock"/> meets its unlock condition
 /// </summary>
 [CreateNodeMenu("Progression/Lock", 2)]
-public class LockNode: Node
+public class LockNode : Node
 {
     [Input]
     public bool inLock;

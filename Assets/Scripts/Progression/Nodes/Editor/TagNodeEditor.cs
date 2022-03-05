@@ -5,7 +5,7 @@ using XNodeEditor;
 /// Draws <see cref="TagNode"/> in <see cref="NodeGraphEditor"/>
 /// </summary>
 [CustomNodeEditor(typeof(TagNode))]
-public class TagNodeEditor: NodeEditor
+public class TagNodeEditor : NodeEditor
 {
     private TagNode _node;
     private TagNode Node => _node ??= target as TagNode;

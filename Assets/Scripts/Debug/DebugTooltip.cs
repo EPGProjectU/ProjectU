@@ -7,18 +7,17 @@ namespace DebugU
     /// </summary>
     public class DebugTooltip
     {
-        private readonly GameObject _gameObject;
         private DebugTooltip(Vector3 position, string text, Color color, float fontSize = 1, float duration = -1.0f)
         {
-            _gameObject = new GameObject("Debug Text");
-            _gameObject.AddComponent<MeshRenderer>();
+            var gameObject = new GameObject("Debug Text");
+            gameObject.AddComponent<MeshRenderer>();
 
             // prevents text from appearing in the scene hierarchy
-            _gameObject.hideFlags = HideFlags.HideInHierarchy | HideFlags.HideInInspector;
+            gameObject.hideFlags = HideFlags.HideInHierarchy | HideFlags.HideInInspector;
 
-            _gameObject.transform.position = position;
+            gameObject.transform.position = position;
 
-            var textMesh = _gameObject.AddComponent<TextMesh>();
+            var textMesh = gameObject.AddComponent<TextMesh>();
 
             textMesh.color = color;
             textMesh.text = text;
@@ -32,7 +31,7 @@ namespace DebugU
 
             // If duration is non negative, schedule destruction of the text
             if (duration >= 0)
-                Object.Destroy(_gameObject, duration);
+                Object.Destroy(gameObject, duration);
         }
 
         public static DebugTooltip Draw(Vector3 position, string text)

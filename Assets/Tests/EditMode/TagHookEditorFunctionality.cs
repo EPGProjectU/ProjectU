@@ -39,11 +39,9 @@ public class TagHookEditorFunctionality
 
         data.graph = _originalGraph;
 
-        foreach (var gameObject in GameObject.FindObjectsOfType(typeof(MonoBehaviour)))
-        {
+        foreach (var gameObject in Object.FindObjectsOfType(typeof(MonoBehaviour)))
             Object.DestroyImmediate(gameObject);
-        }
-        
+
         ProgressionManager.HardRefresh();
 
         yield return null;
@@ -71,9 +69,6 @@ public class TagHookEditorFunctionality
     [Test]
     public void TagRenamingOfRegisteredHook()
     {
-        var numberOfHooks = NumberOfRegisteredHooks();
-
-
         var hook0 = TagHook.Create("TestNode0");
         var hookNonExisting = TagHook.Create("NonExisting");
 
@@ -83,9 +78,7 @@ public class TagHookEditorFunctionality
         var nodes = ProgressionManager.Data.graph.nodes.OfType<TagNode>().ToList();
 
         foreach (var node in nodes)
-        {
             node.Name += "_rename";
-        }
 
         Assert.AreEqual("TestNode0_rename", hook0.TagName);
         Assert.AreEqual("NonExisting", hookNonExisting.TagName);

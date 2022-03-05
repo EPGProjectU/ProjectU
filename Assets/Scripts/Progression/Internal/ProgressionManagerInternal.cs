@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Assertions;
 using ProjectU.Core;
@@ -56,6 +57,7 @@ public partial class ProgressionManager
     /// </summary>
     [Awake]
     [OnSceneLoaded]
+    [UsedImplicitly]
     private static void Init()
     {
         LoadData();
@@ -254,12 +256,8 @@ public partial class ProgressionManager
     /// </summary>
     private static void SendTagUpdateEvents()
     {
-        foreach (var tagEventBuilder in TagEventBuilders)
+        foreach (var tagEventBuilder in TagEventBuilders.Where(tagEventBuilder => tagEventBuilder.newState != tagEventBuilder.oldState))
         {
-            // Ignore unchanged tags
-            if (tagEventBuilder.newState == tagEventBuilder.oldState)
-                continue;
-
             // Using raw for loop to allow hook re-registration during the event handling, which would invalidate any iterator
             for (var i = 0; i < HookCallList[tagEventBuilder.progressionTag].Count; i++)
             {

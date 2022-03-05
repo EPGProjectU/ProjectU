@@ -32,7 +32,7 @@ public class ProgressionGraphEditor : NodeEditorWindow
     public new static ProgressionGraphEditor Open(NodeGraph graph)
     {
         var window = NodeEditorWindow.Open(graph);
-        
+
         // Set custom icon for the tab
         var icon = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Gizmos/ProgressionGraph Icon.png");
         window.titleContent = new GUIContent("Progression Graph", icon);

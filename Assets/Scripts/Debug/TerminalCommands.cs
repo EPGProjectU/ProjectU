@@ -1,5 +1,6 @@
 using System.Linq;
 using CommandTerminal;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,7 @@ namespace DebugU
     /// </summary>
     public static class TerminalCommands
     {
+        [UsedImplicitly]
         [RegisterCommand(Name = "ReloadScene", Help = "Reloads current scene restarting its state", MaxArgCount = 0)]
         private static void ReloadLevel(CommandArg[] args)
         {
@@ -17,7 +19,7 @@ namespace DebugU
             Debug.Log($"Scene {SceneManager.GetActiveScene().name} reloaded");
         }
 
-
+        [UsedImplicitly]
         [RegisterCommand(Name = "ShowProgressionTags", Help = "Displays list of progression tags categorized by: - unavailable, + available, @ active and * collected", MaxArgCount = 0)]
         private static void ShowProgressionTags(CommandArg[] args)
         {
@@ -34,6 +36,7 @@ namespace DebugU
             Debug.Log(result);
         }
 
+        [UsedImplicitly]
         [RegisterCommand(Name = "GiveTag", Help = "Collects given tag/s", MinArgCount = 1)]
         private static void GiveTag(CommandArg[] args)
         {

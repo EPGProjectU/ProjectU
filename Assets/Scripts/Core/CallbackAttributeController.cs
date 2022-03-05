@@ -11,7 +11,7 @@ namespace ProjectU.Core
     /// <summary>
     /// Invokes methods with callback attributes
     /// </summary>
-    public class CallbackAttributeController: MonoBehaviour
+    public class CallbackAttributeController : MonoBehaviour
     {
         /// <summary>
         /// Prepares StaticCallbackController
@@ -51,7 +51,7 @@ namespace ProjectU.Core
         {
             // Will invoke methods with OnSceneLoaded attribute when receiving event from SceneManager
             SceneManager.sceneLoaded += (scene, mode) => InvokeMethodsWithAttribute(typeof(OnSceneLoaded));
-            
+
 #if UNITY_EDITOR
             EditorApplication.playModeStateChanged += InvokePlayModeStateChange;
 #endif
@@ -138,7 +138,7 @@ namespace ProjectU.Core
             var filteredMethodInfos = (from methodInfo in methodInfos
                 where methodInfo.GetCustomAttributes(attributeType, false).Length > 0
                 select methodInfo).ToArray();
-            
+
             // Convert filtered method infos into combined delegate
             AttributeMethods[attributeType] = filteredMethodInfos.Any() ? filteredMethodInfos.Select(methodInfo => Delegate.CreateDelegate(typeof(Action), methodInfo)).Aggregate(Delegate.Combine) : null;
         }

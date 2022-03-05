@@ -6,6 +6,4 @@ using XNode;
 /// </summary>
 /// TODO System to keep ProgressionTag names unique
 [CreateAssetMenu(menuName = "ProjectU/Progression Graph")]
-public class ProgressionGraph : NodeGraph
-{
-}
+public class ProgressionGraph : NodeGraph {}

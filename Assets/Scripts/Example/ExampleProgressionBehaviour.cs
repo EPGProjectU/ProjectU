@@ -10,6 +10,7 @@ public class ExampleProgressionBehaviour : MonoBehaviour
     // TagHook can be either exposed to editor
     [SerializeField]
     private TagHook tagHook;
+
     // or set in code
     private TagHook tagHook2 = TagHook.Create("MAIN/P1");
 
@@ -35,7 +36,7 @@ public class ExampleProgressionBehaviour : MonoBehaviour
         {
             // Name could be also be accessed through tagHook.TagName, in which case it is accessible even without being linked to a tag
             DebugTooltip.Draw(transform.position, tagHook.Tag.Name, Color.magenta, 6);
-            
+
             // Using DummyTagEvent to offload portion of initialization to callback created for getting updates from tagHook
             ChangeColorOnTagUpdate(tagHook.GetDummyTagEvent());
         }
