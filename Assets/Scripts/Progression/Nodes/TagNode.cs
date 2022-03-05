@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 using XNode;
@@ -59,7 +60,7 @@ public class TagNode: Node, ProgressionTag
 
         var values = GetInputPort("input").GetInputValues<bool>();
 
-        return values.Length == 0 || MathHelper.Or(values);
+        return values.Length == 0 || values.Any(b => b);
     }
 
     public bool IsActive()

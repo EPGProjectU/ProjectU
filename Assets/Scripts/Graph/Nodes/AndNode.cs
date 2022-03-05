@@ -1,3 +1,5 @@
+using System.Linq;
+
 /// <summary>
 /// Checks if all inputs are true
 /// </summary>
@@ -6,6 +8,6 @@ public class AndNode : BoolNode
 {
     public override bool GetValue()
     {
-        return MathHelper.And(GetInputValues("input", input));
+        return GetInputValues("input", input).All(b => b);
     }
 }

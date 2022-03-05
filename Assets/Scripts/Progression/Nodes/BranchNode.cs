@@ -27,7 +27,7 @@ public class BranchNode: Node
     {
         var values = GetInputPort("input").GetInputValues<bool>();
 
-        return values.Length == 0 || MathHelper.Or(values);
+        return values.Length == 0 || values.Any(b => b);
     }
 
     /// <summary>
