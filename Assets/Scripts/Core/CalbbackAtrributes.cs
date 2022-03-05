@@ -46,4 +46,24 @@ namespace ProjectU.Core
     /// <remarks>Only for use with static methods with no parameters
     /// <br/>Works only in Editor</remarks>
     public class OnExitingPlayMode : CallbackAttribute {}
+
+    /// <summary>Invokes method before assembly reload</summary>
+    /// <remarks>Only for use with static methods with no parameters
+    /// <br/>Works only in Editor</remarks>
+    public class BeforeAssemblyReload : CallbackAttribute {}
+
+    /// <summary>Invokes method after assembly reload</summary>
+    /// <remarks>Only for use with static methods with no parameters
+    /// <br/>Works only in Editor</remarks>
+    public class AfterAssemblyReload : CallbackAttribute {}
+
+    /// <summary>Invokes method before HotReload</summary>
+    /// <remarks>Only for use with static methods with no parameters
+    /// <br/>Works only in Editor</remarks>
+    public class BeforeHotReload : CallbackAttribute {}
+
+    /// <summary>Invokes method after HotReload</summary>
+    /// <remarks>Only for use with static methods with no parameters
+    /// <br/>Works only in Editor</remarks>
+    public class AfterHotReload : CallbackAttribute {}
 }

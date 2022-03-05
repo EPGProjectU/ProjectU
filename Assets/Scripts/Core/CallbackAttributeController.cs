@@ -11,22 +11,37 @@ namespace ProjectU.Core
     /// <summary>
     /// Invokes methods with callback attributes
     /// </summary>
-    public class CallbackAttributeController : MonoBehaviour
+    public class CallbackAttributeController : MonoBehaviour, ISerializationCallbackReceiver
     {
+        /// <summary>
+        /// Indicates playmode status
+        /// </summary>
+        private static bool _isInPlaymode;
+
+        /// <summary>
+        /// Used for serialization of <see cref="_isInPlaymode"/>
+        /// </summary>
+        private bool _isInPlaymodeSerialization;
+
+        /// <summary>
+        /// Stores cached delegates of methods with callback attributes
+        /// </summary>
+        private static readonly Dictionary<Type, Delegate> AttributeMethods = new Dictionary<Type, Delegate>();
+
+
         /// <summary>
         /// Prepares StaticCallbackController
         /// </summary>
         [RuntimeInitializeOnLoadMethod]
         private static void Init()
         {
+            _isInPlaymode = true;
             CacheAttributeReferences();
             CreateInstance();
         }
 
-        /// <summary>
-        /// Stores cached delegates of methods with callback attributes
-        /// </summary>
-        private static readonly Dictionary<Type, Delegate> AttributeMethods = new Dictionary<Type, Delegate>();
+        [OnExitingPlayMode]
+        private static void OnExit() => _isInPlaymode = false;
 
         /// <summary>
         /// Creates a single instance of <see cref="CallbackAttributeController"/> that persist for the duration of playtime
@@ -53,6 +68,9 @@ namespace ProjectU.Core
             SceneManager.sceneLoaded += (scene, mode) => InvokeMethodsWithAttribute(typeof(OnSceneLoaded));
 
 #if UNITY_EDITOR
+            AssemblyReloadEvents.beforeAssemblyReload += () => InvokeMethodsWithAttribute(typeof(BeforeAssemblyReload));
+            AssemblyReloadEvents.afterAssemblyReload += () => InvokeMethodsWithAttribute(typeof(AfterAssemblyReload));
+
             EditorApplication.playModeStateChanged += InvokePlayModeStateChange;
 #endif
         }
@@ -82,6 +100,26 @@ namespace ProjectU.Core
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }
+        }
+
+        /// <summary>
+        /// Invokes BeforeHotReload during BeforeAssemblyReload if in playmode
+        /// </summary>
+        [BeforeAssemblyReload]
+        private static void InvokeBeforeHotReload()
+        {
+            if (_isInPlaymode)
+                InvokeMethodsWithAttribute(typeof(BeforeHotReload));
+        }
+
+        /// <summary>
+        /// Invokes AfterHotReload during AfterAssemblyReload if in playmode
+        /// </summary>
+        [AfterAssemblyReload]
+        private static void InvokeAfterHotReload()
+        {
+            if (_isInPlaymode)
+                InvokeMethodsWithAttribute(typeof(AfterHotReload));
         }
 #endif
 
@@ -125,6 +163,10 @@ namespace ProjectU.Core
             CacheMethodsWithAttribute(staticMethods, typeof(OnExitingEditMode));
             CacheMethodsWithAttribute(staticMethods, typeof(OnEnteredPlayMode));
             CacheMethodsWithAttribute(staticMethods, typeof(OnExitingPlayMode));
+            CacheMethodsWithAttribute(staticMethods, typeof(BeforeAssemblyReload));
+            CacheMethodsWithAttribute(staticMethods, typeof(AfterAssemblyReload));
+            CacheMethodsWithAttribute(staticMethods, typeof(BeforeHotReload));
+            CacheMethodsWithAttribute(staticMethods, typeof(AfterHotReload));
         }
 
         /// <summary>
@@ -155,7 +197,12 @@ namespace ProjectU.Core
         //--------------- Callbacks for MonoBehaviour methods ------------
         private void Awake() => InvokeMethodsWithAttribute(typeof(Awake));
         private void Start() => InvokeMethodsWithAttribute(typeof(Start));
+
         private void Update() => InvokeMethodsWithAttribute(typeof(OnUpdate));
         //----------------------------------------------------------------
+
+        public void OnBeforeSerialize() => _isInPlaymodeSerialization = _isInPlaymode;
+
+        public void OnAfterDeserialize() => _isInPlaymode = _isInPlaymodeSerialization;
     }
 }
