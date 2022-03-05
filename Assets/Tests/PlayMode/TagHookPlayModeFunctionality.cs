@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Reflection;
 using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
@@ -27,8 +28,9 @@ public class TagHookPlayModeFunctionality
             var tagNode = data.graph.AddNode<TagNode>();
             tagNode.Name = "TestNode" + i;
         }
-
-        ProgressionManager.InitForTest();
+        
+        // Init ProgressionManager using reflection
+        typeof(ProgressionManager).GetMethod("Init", BindingFlags.Static | BindingFlags.NonPublic)?.Invoke(null, null);
         
         yield return null;
     }

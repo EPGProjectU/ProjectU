@@ -1,5 +1,7 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -11,7 +13,9 @@ public class TagHookEditorFunctionality
     [UnitySetUp]
     public IEnumerator SetUp()
     {
-        ProgressionManager.ResetForTest();
+        // Reset ProgressionManager using reflection
+        typeof(ProgressionManager).GetMethod("Reset", BindingFlags.Static | BindingFlags.NonPublic)?.Invoke(null, null);
+
         var data = Resources.Load<ProgressionManagerData>(ProgressionManager.DataPath);
 
         _originalGraph = data.graph;
@@ -45,21 +49,29 @@ public class TagHookEditorFunctionality
         yield return null;
     }
 
+    private static int NumberOfRegisteredHooks()
+    {
+        if (typeof(ProgressionManager).GetField("HookRegistry", BindingFlags.Static | BindingFlags.NonPublic)?.GetValue(null) is List<TagHook> registry)
+            return registry.Count;
+
+        return -1;
+    }
+
     [Test]
     public void HookRegistration()
     {
-        var numberOfHooks = ProgressionManager.NumberOfRegisteredHooks();
+        var numberOfHooks = NumberOfRegisteredHooks();
 
         var hook = TagHook.Create("NonExisting");
 
-        Assert.AreEqual(numberOfHooks + 1, ProgressionManager.NumberOfRegisteredHooks());
+        Assert.AreEqual(numberOfHooks + 1, NumberOfRegisteredHooks());
         Assert.AreEqual(null, hook.Tag);
     }
 
     [Test]
     public void TagRenamingOfRegisteredHook()
     {
-        var numberOfHooks = ProgressionManager.NumberOfRegisteredHooks();
+        var numberOfHooks = NumberOfRegisteredHooks();
 
 
         var hook0 = TagHook.Create("TestNode0");

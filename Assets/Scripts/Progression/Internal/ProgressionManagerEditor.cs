@@ -115,23 +115,5 @@ public partial class ProgressionManager
         if (_initialized)
             InitTagEventBuilders();
     }
-
-    // TODO Access ProgressionManager in testing code through reflection
-#if UNITY_INCLUDE_TESTS
-    public static void InitForTest()
-    {
-        Init();
-    }
-
-    public static void ResetForTest()
-    {
-        Reset();
-    }
-
-    public static int NumberOfRegisteredHooks()
-    {
-        return HookRegistry.Count;
-    }
-#endif
 }
 #endif
