@@ -16,10 +16,10 @@ public class EnemyController : ActorController
         base.Setup();
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.speed = BaseSpeed;
-        agent.updateRotation = false;
+        agent.updateRotation = false; //rotation to face towards target will be handled by animation system
         agent.updateUpAxis = false;
-        agent.destination = currentTarget.position;
-  
+        agent.destination = currentTarget.position; 
+
     }
 
     void Update() {
