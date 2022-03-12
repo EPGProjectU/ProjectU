@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemyController : ActorController
 {    
     public Transform currentTarget;  //change to private and calculate based on AI module
-    UnityEngine.AI.NavMeshAgent agent;
+    private UnityEngine.AI.NavMeshAgent agent;
 
     void Start()
     {
@@ -32,5 +32,4 @@ public class EnemyController : ActorController
             agent.destination = currentTarget.position;
         }
     }
-
 }
