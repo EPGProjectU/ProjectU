@@ -1,27 +1,35 @@
-using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
+
 public class EnemyController : ActorController
-{
-    protected Pathfinder pathfinder;
-    
-    //temporary testing behaviour of enemy is chasing target
-    public Transform currentTarget;
+{    
+    public Transform currentTarget;  //change to private and calculate based on AI module
+    private UnityEngine.AI.NavMeshAgent agent;
 
     void Start()
     {
         base.Setup();
-        //pathfinder needs Seeker component to work
-        pathfinder = new Pathfinder(GetComponent<Seeker>());
+        SetupAgent();
     }
 
     void Update() {
+        UpdateAgent();
+    }
 
-        //pathfinder calculates path and then next velocity vector based on the calculated path and progress on it
-        Vector2 newVelocity = pathfinder.moveAlongPath(transform, currentTarget, this.BaseSpeed);
-        UpdateVelocity(newVelocity);
+    private void SetupAgent() {
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        agent.speed = BaseSpeed;
+        agent.updateRotation = false; //rotation to face towards target will be handled by animation system
+        agent.updateUpAxis = false;
+    }
+
+    private void UpdateAgent() {
+        // Update agent destination if the target moves one unit
+        if (Vector3.Distance(agent.destination, currentTarget.position) > 1.0f) {
+            agent.destination = currentTarget.position;
+        }
     }
 }
