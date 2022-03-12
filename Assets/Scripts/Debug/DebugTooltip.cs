@@ -1,22 +1,23 @@
 using UnityEngine;
 
-// Debug tooltip for drawing text in the game world
-namespace Debug
+namespace DebugU
 {
+    /// <summary>
+    /// Draws in-game text for debug purposes
+    /// </summary>
     public class DebugTooltip
     {
-        private readonly GameObject _gameObject;
         private DebugTooltip(Vector3 position, string text, Color color, float fontSize = 1, float duration = -1.0f)
         {
-            _gameObject = new GameObject("Debug Text");
-            _gameObject.AddComponent<MeshRenderer>();
+            var gameObject = new GameObject("Debug Text");
+            gameObject.AddComponent<MeshRenderer>();
 
             // prevents text from appearing in the scene hierarchy
-            _gameObject.hideFlags = HideFlags.HideInHierarchy | HideFlags.HideInInspector;
+            gameObject.hideFlags = HideFlags.HideInHierarchy | HideFlags.HideInInspector;
 
-            _gameObject.transform.position = position;
+            gameObject.transform.position = position;
 
-            var textMesh = _gameObject.AddComponent<TextMesh>();
+            var textMesh = gameObject.AddComponent<TextMesh>();
 
             textMesh.color = color;
             textMesh.text = text;
@@ -30,7 +31,7 @@ namespace Debug
 
             // If duration is non negative, schedule destruction of the text
             if (duration >= 0)
-                Destroy(duration);
+                Object.Destroy(gameObject, duration);
         }
 
         public static DebugTooltip Draw(Vector3 position, string text)
@@ -46,12 +47,6 @@ namespace Debug
         public static DebugTooltip Draw(Vector3 position, string text, Color color, float fontSize, float duration = -1.0f)
         {
             return new DebugTooltip(position, text, color, fontSize, duration);
-        }
-
-        // Destroys the text after a delay
-        public void Destroy(float delay = 0.0f)
-        {
-            Object.Destroy(_gameObject, delay);
         }
     }
 }
