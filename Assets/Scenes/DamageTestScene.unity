@@ -8388,7 +8388,7 @@ PrefabInstance:
       objectReference: {fileID: 3429799109082714164, guid: 8a0cca00ee3ac83408ee9b72526c59b1, type: 3}
     - target: {fileID: 4576093516806014912, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
       propertyPath: invincibleTime
-      value: 0.3
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4576093516806014912, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
       propertyPath: cannonballPrefab
@@ -8489,6 +8489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6064da5ea01f935489ccf7e2d82f7f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
 --- !u!70 &9021716839682873316
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

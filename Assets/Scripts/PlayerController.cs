@@ -48,6 +48,9 @@ public class PlayerController : ActorController
         return inputVector * (Input.GetKey("left shift") ? RunningSpeed : BaseSpeed);
     }
 
+    /// <summary>
+    /// Calculate amount of damage that will be taken by Player if he isn't invincilbe and change isdead to true when health drops below 1 (player is dead)
+    /// </summary>
     public void TakeDamage(int damage)
     {
         if (!isInvincible) 
@@ -64,6 +67,10 @@ public class PlayerController : ActorController
         }
     }
 
+    /// <summary>
+    /// Calculate amount of damage that will be dealt to enemy
+    /// </summary>
+    /// <returns>Amount of Damage (int)</returns>
     public int DealDamage()
     {
         UnityEngine.Debug.Log("Player Dealt "+ damage + " Damage");
@@ -86,9 +93,9 @@ public class PlayerController : ActorController
                 weapon.transform.SetParent(transform);
 
                 if (attackDir.x < 0.7 && attackDir.x > -0.7 && attackDir.y > 0) weapon.GetComponent<Animator>().Play("Prototype_Swing_Up");
-                if (attackDir.x < 0.7 && attackDir.x > -0.7 && attackDir.y < 0) weapon.GetComponent<Animator>().Play("Prototype_Swing_Down");
-                if (attackDir.x < 0 && attackDir.y < 0.7 && attackDir.y > -0.7) weapon.GetComponent<Animator>().Play("Prototype_Swing_Left");
-                if (attackDir.x > 0 && attackDir.y < 0.7 && attackDir.y > -0.7) weapon.GetComponent<Animator>().Play("Prototype_Swing_Right");
+                else if (attackDir.x < 0.7 && attackDir.x > -0.7 && attackDir.y < 0) weapon.GetComponent<Animator>().Play("Prototype_Swing_Down");
+                else if (attackDir.x < 0 && attackDir.y < 0.7 && attackDir.y > -0.7) weapon.GetComponent<Animator>().Play("Prototype_Swing_Left");
+                else if (attackDir.x > 0 && attackDir.y < 0.7 && attackDir.y > -0.7) weapon.GetComponent<Animator>().Play("Prototype_Swing_Right");
                 StartCoroutine(DestroyWeapon(weapon));
                 isAttacking = true;
             }
