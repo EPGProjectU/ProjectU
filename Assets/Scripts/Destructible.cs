@@ -23,8 +23,6 @@ public class Destructible : MonoBehaviour
         if (collision.gameObject.CompareTag("PlayersWeapon"))
         {
             TakeDamage(collision.gameObject.GetComponent<DamageInfo>().damage);
-            //DamageEventSystem.Instance.PlayerDealsDamage();
-            //Destroy(gameObject);
         }
     }
 

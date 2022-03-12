@@ -7,9 +7,10 @@ using UnityEngine;
 /// </summary>
 public class PlayerController : ActorController
 {
-    private bool isDead, isAttacking;
+    private bool isDead, isAttacking, isInvincible;
     public GameObject weaponPrefab;
     public int damage = 1;
+    public float invincibleTime = 0.5f ;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,7 @@ public class PlayerController : ActorController
         Setup();
         isDead = false;
         isAttacking = false;
+        isInvincible = false;
     }
 
     // Update is called once per frame
@@ -48,12 +50,17 @@ public class PlayerController : ActorController
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        UnityEngine.Debug.Log("Health = " + health);
-        if (health < 1)
+        if (!isInvincible) 
         {
-            isDead = true;
-            UnityEngine.Debug.Log("Player is Dead");
+            isInvincible = true;
+            health -= damage;
+            UnityEngine.Debug.Log("Health = " + health);
+            if (health < 1)
+            {
+                isDead = true;
+                UnityEngine.Debug.Log("Player is Dead");
+            }
+            StartCoroutine(InvincibleTimer());
         }
     }
 
@@ -65,17 +72,26 @@ public class PlayerController : ActorController
 
     void Attack()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetMouseButtonDown(0)) //left mouse button
         {
-            GameObject weapon = Instantiate(weaponPrefab);
-            weapon.GetComponent<DamageInfo>().damage = DealDamage();
-            weapon.transform.SetParent(transform);
-            if(Input.GetKey(KeyCode.W)) weapon.GetComponent<Animator>().Play("Prototype_Swing_Up");
-            if(Input.GetKey(KeyCode.S)) weapon.GetComponent<Animator>().Play("Prototype_Swing_Down");
-            if(Input.GetKey(KeyCode.A)) weapon.GetComponent<Animator>().Play("Prototype_Swing_Left");
-            if(Input.GetKey(KeyCode.D)) weapon.GetComponent<Animator>().Play("Prototype_Swing_Right");
-            StartCoroutine(DestroyWeapon(weapon));
-            isAttacking = true;
+            if(weaponPrefab != null)
+            {
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mousePosition.z = 0f;
+                Vector3 attackDir = (mousePosition - transform.position).normalized;
+                //UnityEngine.Debug.Log(attackDir);
+
+                GameObject weapon = Instantiate(weaponPrefab);
+                weapon.GetComponent<DamageInfo>().damage = DealDamage();
+                weapon.transform.SetParent(transform);
+
+                if (attackDir.x < 0.7 && attackDir.x > -0.7 && attackDir.y > 0) weapon.GetComponent<Animator>().Play("Prototype_Swing_Up");
+                if (attackDir.x < 0.7 && attackDir.x > -0.7 && attackDir.y < 0) weapon.GetComponent<Animator>().Play("Prototype_Swing_Down");
+                if (attackDir.x < 0 && attackDir.y < 0.7 && attackDir.y > -0.7) weapon.GetComponent<Animator>().Play("Prototype_Swing_Left");
+                if (attackDir.x > 0 && attackDir.y < 0.7 && attackDir.y > -0.7) weapon.GetComponent<Animator>().Play("Prototype_Swing_Right");
+                StartCoroutine(DestroyWeapon(weapon));
+                isAttacking = true;
+            }
         }
     }
 
@@ -85,4 +101,9 @@ public class PlayerController : ActorController
         isAttacking = false;
     }
 
+    IEnumerator InvincibleTimer()
+    {
+        yield return new WaitForSeconds(invincibleTime);
+        isInvincible = false;
+    }
 }
