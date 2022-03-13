@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 
 /// <summary>
 /// Abstract class responsible for controlling actions of an actor
@@ -8,6 +7,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class ActorController : MonoBehaviour
 {
+    public Animator ActorAnimator;
+
+    public float speed;
+
+    private Vector2 oldPosition;
+
     /// <summary>
     /// Base movement speed in units per second
     /// </summary>
@@ -23,6 +28,8 @@ public abstract class ActorController : MonoBehaviour
     /// </summary>
     private Rigidbody2D _rigidBody;
 
+    private static readonly int SpeedProperty = Animator.StringToHash("Speed");
+
     /// <summary>
     /// Setup 
     /// </summary>
@@ -30,6 +37,7 @@ public abstract class ActorController : MonoBehaviour
     {
         // Caching phase
         _rigidBody = GetComponent<Rigidbody2D>();
+        oldPosition = transform.position;
     }
 
     /// <summary>
@@ -39,5 +47,15 @@ public abstract class ActorController : MonoBehaviour
     protected void UpdateVelocity(Vector2 velocity)
     {
         _rigidBody.velocity = velocity;
+    }
+
+    private void FixedUpdate()
+    {
+        var position = (Vector2)transform.position;
+        var realVelocity = (oldPosition - position) / Time.fixedDeltaTime;
+
+        speed = realVelocity.magnitude;
+        ActorAnimator.SetFloat(SpeedProperty, speed);
+        oldPosition = position;
     }
 }
