@@ -17,8 +17,9 @@ MonoBehaviour:
     layerMask:
       serializedVersion: 2
       m_Bits: 64
-    Event: 500
-    blitMat: {fileID: 2100000, guid: 9d7b9522cf7f73340abc7d179e778285, type: 2}
+    event: 450
+    blitShader: {fileID: 4800000, guid: 936ca59d975c41e42a103e54a8fddf4a, type: 3}
+    outlineColor: {r: 0, g: 0, b: 0, a: 1}
     pixelsPerUnit: 32
 --- !u!114 &11400000
 MonoBehaviour:
