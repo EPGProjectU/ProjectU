@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 
@@ -28,41 +29,42 @@ public static class ToggleStateExtensions
 /// <summary>
 /// ActorController dedicated to the player with implemented input handling
 /// </summary>
-public class PlayerController : ActorController
+public class PlayerController : ActorController, ITakeDamage
 {
     private static readonly int Attack = Animator.StringToHash("Attack");
 
     public ToggleState sprinting;
 
-    private bool isDead, isAttacking, isInvincible;
-    public GameObject weaponPrefab;
+    private bool isDead, isInvincible;
+    public GameObject weapon;
     public int damage = 1;
     public float invincibleTime = 0.5f ;
+
     // Start is called before the first frame update
     void Start()
     {
         // Calling setup of ActorController
         Setup();
         isDead = false;
-        isAttacking = false;
         isInvincible = false;
+        weapon.GetComponent<Collider2D>().enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        var velocity = GetVelocityFromInput();
-
-        if (velocity.magnitude > 0)
-            UpdateModelRotation(Vector2.SignedAngle(velocity, Vector2.down));
-
-        ActorAnimator.SetBool(Attack, Input.GetAxisRaw("Fire1") > 0f);
-
         // Updating player speed base on the input
         if (!isDead) 
         {
+            var velocity = GetVelocityFromInput();
+
+            if (velocity.magnitude > 0)
+                UpdateModelRotation(Vector2.SignedAngle(velocity, Vector2.down));
+
+            ActorAnimator.SetBool(Attack, Input.GetAxisRaw("Fire1") > 0f);
+            
             UpdateVelocity(velocity);
-            if (!isAttacking)Attack();
+            Attacking();
         }
     }
 
@@ -152,35 +154,31 @@ public class PlayerController : ActorController
         return damage;
     }
 
-    void Attack()
+    void Attacking()
     {
         if (Input.GetMouseButtonDown(0)) //left mouse button
         {
-            if(weaponPrefab != null)
+            if(weapon != null)
             {
+                StartCoroutine(DisableWeapon(weapon));
+
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 mousePosition.z = 0f;
                 Vector3 attackDir = (mousePosition - transform.position).normalized;
                 //UnityEngine.Debug.Log(attackDir);
 
-                GameObject weapon = Instantiate(weaponPrefab);
-                weapon.GetComponent<DamageInfo>().damage = DealDamage();
-                weapon.transform.SetParent(transform);
+                UpdateModelRotation(Vector2.SignedAngle(attackDir, Vector2.down));
 
-                if (attackDir.x < 0.7 && attackDir.x > -0.7 && attackDir.y > 0) weapon.GetComponent<Animator>().Play("Prototype_Swing_Up");
-                else if (attackDir.x < 0.7 && attackDir.x > -0.7 && attackDir.y < 0) weapon.GetComponent<Animator>().Play("Prototype_Swing_Down");
-                else if (attackDir.x < 0 && attackDir.y < 0.7 && attackDir.y > -0.7) weapon.GetComponent<Animator>().Play("Prototype_Swing_Left");
-                else if (attackDir.x > 0 && attackDir.y < 0.7 && attackDir.y > -0.7) weapon.GetComponent<Animator>().Play("Prototype_Swing_Right");
-                StartCoroutine(DestroyWeapon(weapon));
-                isAttacking = true;
+                weapon.GetComponent<DamageInfo>().damage = DealDamage();
             }
         }
     }
 
-    IEnumerator DestroyWeapon(GameObject weapon) {
-        yield return new WaitForSeconds(0.3f);
-        Destroy(weapon);
-        isAttacking = false;
+    IEnumerator DisableWeapon(GameObject weapon) {
+        yield return new WaitForSeconds(0.2f);
+        weapon.GetComponent<Collider2D>().enabled = true;
+        yield return new WaitForSeconds(0.9f);
+        weapon.GetComponent<Collider2D>().enabled = false;
     }
 
     IEnumerator InvincibleTimer()

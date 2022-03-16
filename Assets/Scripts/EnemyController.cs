@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public class EnemyController : ActorController
+public class EnemyController : ActorController ,ITakeDamage
 {    
     public Transform currentTarget;  //change to private and calculate based on AI module
     private UnityEngine.AI.NavMeshAgent agent;
