@@ -4,6 +4,7 @@ Shader "Unlit/SobelFilter"
     {
         [HideInInspector]_MainTex ("Base (RGB)", 2D) = "white" {}
         [HideInInspector]_OrthographicSize ("OrthographicSize", float) = 1
+        _OutlineColor ("Outline Color", COLOR) = (0, 0, 0, 1)
         _PixelDensity ("Pixel Density", float) = 10
         _Power ("Power", float) = 50
         _PosterizationCount ("Count", int) = 8
@@ -41,6 +42,7 @@ Shader "Unlit/SobelFilter"
 
             float _OrthographicSize;
 
+            half4 _OutlineColor;
             float _PixelDensity;
             int _PosterizationCount;
             float _Power;
@@ -111,8 +113,9 @@ Shader "Unlit/SobelFilter"
 
                 s = lerp(1.0, s, ceil(sobel_data.y - d.x));
                 depth = lerp(sobel_data.y, sample_depth(input.uv), s);
-                col.rgb *= s;
-                col.a += 1 - s;
+                const float s_1 = 1 - s;
+                col.rgb = s * col.rgb + s_1 * _OutlineColor;
+                col.a += s_1;
 
 
                 return col;
