@@ -18,7 +18,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 64
     event: 450
-    blitShader: {fileID: 4800000, guid: 936ca59d975c41e42a103e54a8fddf4a, type: 3}
+    blitMaterial: {fileID: 2100000, guid: 270df3dc96e065244b467d915dc18fc6, type: 2}
     outlineColor: {r: 0, g: 0, b: 0, a: 1}
     pixelsPerUnit: 32
 --- !u!114 &11400000

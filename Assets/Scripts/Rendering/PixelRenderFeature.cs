@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 namespace Rendering
 {
     /// <summary>
-    /// 
+    /// URP feature for rending pixelated layers
     /// </summary>
     public class PixelRenderFeature : ScriptableRendererFeature
     {
@@ -15,9 +15,10 @@ namespace Rendering
         {
             public LayerMask layerMask = 0;
 
-            public RenderPassEvent Event = RenderPassEvent.BeforeRenderingTransparents;
+            public RenderPassEvent @event = RenderPassEvent.BeforeRenderingTransparents;
 
-            public Material blitMat = null;
+            public Material blitMaterial = null;
+            public Color outlineColor = Color.black;
 
             [FormerlySerializedAs("pixels")]
             [Range(4f, 512f)]
@@ -30,7 +31,7 @@ namespace Rendering
 
         public override void Create()
         {
-            pass = new PixelFeatureRenderPass(settings.Event, settings.blitMat, settings.pixelsPerUnit, settings.layerMask);
+            pass = new PixelFeatureRenderPass(settings.@event, settings.blitMaterial, settings.outlineColor, settings.pixelsPerUnit, settings.layerMask);
         }
 
         public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)

@@ -21,6 +21,7 @@ namespace Rendering
         private static readonly int PixelDepthID = Shader.PropertyToID("_DepthTex");
         private static readonly int CameraID = Shader.PropertyToID("_CameraColorTexture");
         private static readonly int OrthographicSize = Shader.PropertyToID("_OrthographicSize");
+        private static readonly int OutlineColor = Shader.PropertyToID("_OutlineColor");
         private static readonly int PixelDensity = Shader.PropertyToID("_PixelDensity");
 
         /// <summary>
@@ -28,16 +29,20 @@ namespace Rendering
         /// </summary>
         /// <param name="renderEvent"></param>
         /// <param name="blitMaterial"></param>
+        /// <param name="outlineColor"></param>
         /// <param name="ppu">Pixels Per Unit</param>
         /// <param name="layerMask"></param>
-        public PixelFeatureRenderPass(RenderPassEvent renderEvent, Material blitMaterial, float ppu, int layerMask)
+        public PixelFeatureRenderPass(RenderPassEvent renderEvent, Material blitMaterial
+            , Color outlineColor , float ppu, int layerMask)
         {
             _mProfilingSampler = new ProfilingSampler("BasicFeature");
             this.renderPassEvent = renderEvent;
             _blitMat = blitMaterial;
+            
             // Converts pixel per unit to pixel density
             _pixelDensity = 1 / ppu;
             _blitMat.SetFloat(PixelDensity, _pixelDensity);
+            _blitMat.SetColor(OutlineColor, outlineColor);
 
             _mFilteringSettings = new FilteringSettings(RenderQueueRange.opaque, layerMask);
 
