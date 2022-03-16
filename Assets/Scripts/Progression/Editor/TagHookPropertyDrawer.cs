@@ -2,6 +2,9 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Draws <see cref="TagHook"/> in inspector as a field of a GameObject
+/// </summary>
 [CustomPropertyDrawer(typeof(TagHook))]
 public class TagHookPropertyDrawer : PropertyDrawer
 {
@@ -11,22 +14,27 @@ public class TagHookPropertyDrawer : PropertyDrawer
         // prefab override logic works on the entire property.
         EditorGUI.BeginProperty(position, label, property);
 
-        // Draw label
+        // Draw field name label
         position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
 
-        // Don't make child fields be indented
+        // Remove indent
         var indent = EditorGUI.indentLevel;
         EditorGUI.indentLevel = 0;
 
 
         var tagNameProperty = property.FindPropertyRelative("tagName");
 
+        // Refresh ProgressionManager to make sure ProgressionTags are cached
+        ProgressionManager.SoftRefresh();
+
         var tagList = (from pTag in ProgressionManager.GetAllTags() select pTag.Name).ToList();
 
+        // Get index of the current selected tag
         var index = tagList.FindIndex(t => t.Contains(tagNameProperty.stringValue));
 
         var defaultGUIColor = GUI.color;
 
+        // If currently set tag name does not exist in current context make field yellow to indicate this
         if (index < 0)
             GUI.color = Color.yellow;
 
@@ -34,9 +42,7 @@ public class TagHookPropertyDrawer : PropertyDrawer
         index = EditorGUI.Popup(position, index, tagList.ToArray());
 
         if (EditorGUI.EndChangeCheck())
-        {
             tagNameProperty.stringValue = tagList[index];
-        }
 
         EditorGUI.PropertyField(position, tagNameProperty, GUIContent.none);
         GUI.color = defaultGUIColor;
