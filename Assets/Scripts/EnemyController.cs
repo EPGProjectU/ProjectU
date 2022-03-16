@@ -8,6 +8,7 @@ public class EnemyController : ActorController
 {    
     public Transform currentTarget;  //change to private and calculate based on AI module
     private UnityEngine.AI.NavMeshAgent agent;
+    public int damage = 1;
 
     void Start()
     {
