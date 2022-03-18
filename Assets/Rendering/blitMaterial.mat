@@ -105,7 +105,6 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _OrthographicSize: 9.786845
     - _Parallax: 0.005
     - _PixelDensity: 0.03125
     - _PosterizationCount: 8
