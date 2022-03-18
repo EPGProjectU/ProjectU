@@ -20,9 +20,9 @@ public class Damager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.GetComponent<ITakeDamage>() != null)
         {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
+            collision.gameObject.GetComponent<ITakeDamage>().TakeDamage(damage);
         }
     }
 }

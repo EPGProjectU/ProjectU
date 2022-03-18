@@ -150,7 +150,7 @@ public class PlayerController : ActorController, ITakeDamage
     /// <returns>Amount of Damage (int)</returns>
     public int DealDamage()
     {
-        UnityEngine.Debug.Log("Player Dealt "+ damage + " Damage");
+        //UnityEngine.Debug.Log("Player Dealt "+ damage + " Damage");
         return damage;
     }
 
@@ -165,7 +165,6 @@ public class PlayerController : ActorController, ITakeDamage
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 mousePosition.z = 0f;
                 Vector3 attackDir = (mousePosition - transform.position).normalized;
-                //UnityEngine.Debug.Log(attackDir);
 
                 UpdateModelRotation(Vector2.SignedAngle(attackDir, Vector2.down));
 
