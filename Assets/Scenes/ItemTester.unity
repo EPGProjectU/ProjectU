@@ -263,6 +263,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 587165659}
   m_CullTransparentMesh: 1
+--- !u!1 &778115666 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7649322890496266106, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
+  m_PrefabInstance: {fileID: 367378628}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &778115667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778115666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 088a1926e0d81be42b0d1c10faf9d07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipment: {fileID: 778115668}
+--- !u!114 &778115668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778115666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aa61fea496d153468414b2471664054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
+  text: {fileID: 587165661}
+--- !u!114 &778115673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778115666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d5b93701a553fb45b86bec7cb2c9933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentController: {fileID: 778115667}
 --- !u!1001 &1008766366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -349,6 +394,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0260240d56df34085f3996c8994a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tagHook:
+    tagName: 
+    onUpdate:
+      guid:
+        m_Value0: 628973654
+        m_Value1: 795097620
+        m_Value2: 257175245
+        m_Value3: 1505792448
   Name: Red
   Damage: 1
 --- !u!1 &1164232617
@@ -405,7 +458,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -429,11 +482,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164232617}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8541293, y: 0.584011, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1164232621
 MonoBehaviour:
@@ -651,53 +704,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0260240d56df34085f3996c8994a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tagHook:
+    tagName: 
+    onUpdate:
+      guid:
+        m_Value0: 1432551560
+        m_Value1: 1127485262
+        m_Value2: 542909980
+        m_Value3: 335629142
   Name: Green
   Damage: 1
---- !u!1 &2020918867 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6903689724388049450, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
-  m_PrefabInstance: {fileID: 367378628}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2020918868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2020918867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aa61fea496d153468414b2471664054, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  text: {fileID: 587165661}
---- !u!114 &2020918869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2020918867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 088a1926e0d81be42b0d1c10faf9d07a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  equipment: {fileID: 2020918868}
---- !u!114 &2020918875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2020918867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d5b93701a553fb45b86bec7cb2c9933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  equipmentController: {fileID: 2020918869}
 --- !u!1 &2060729902
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,6 +797,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0260240d56df34085f3996c8994a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tagHook:
+    tagName: 
+    onUpdate:
+      guid:
+        m_Value0: 50621895
+        m_Value1: 1685317272
+        m_Value2: 1896604920
+        m_Value3: 1645762177
   Name: Blue
   Damage: 1
 --- !u!1001 &8826705500897103807
