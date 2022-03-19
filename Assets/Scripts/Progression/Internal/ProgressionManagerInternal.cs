@@ -1,276 +1,298 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
+using JetBrains.Annotations;
 using UnityEngine;
-using XNode;
+using UnityEngine.Assertions;
+using ProjectU.Core;
 
+// Internal functionality of the ProgressionManager
 public partial class ProgressionManager
 {
-    private Dictionary<string, ProgressionTag> _tags = new Dictionary<string, ProgressionTag>();
+    /// <summary>
+    /// Location of the <see cref="ProgressionManagerData"/> file inside of Resource folder
+    /// </summary>
+    public const string ResourceDataPath = "Progression/ProgressionManagerData";
 
-    private static readonly List<WeakReference<TagHook>> HookRegistry = new List<WeakReference<TagHook>>();
+    /// <summary>
+    /// Location of the <see cref="ProgressionManagerData"/> file inside of Resource folder
+    /// </summary>
+    public static string GraphSavesDirectoryPath = "/Progression";
 
-    private Dictionary<ProgressionTag, List<WeakReference<TagHook>>> _hookCallList = new Dictionary<ProgressionTag, List<WeakReference<TagHook>>>();
+    /// <summary>
+    /// <see cref="ProgressionManagerData"/>
+    /// </summary>
+    public static ProgressionManagerData Data { get; private set; }
 
-    private List<TagEventBuilder> _tagEventBuilders;
+    /// <summary>
+    /// List of live <see cref="TagHook"/>s
+    /// </summary>
+    private static readonly List<TagHook> HookRegistry = new List<TagHook>();
 
-    private bool _dirty = true;
+    /// <summary>
+    /// Dictionary of cached <see cref="ProgressionTag"/>s for faster access time
+    /// </summary>
+    private static readonly Dictionary<string, ProgressionTag> Tags = new Dictionary<string, ProgressionTag>();
 
+    /// <summary>
+    /// Dictionary that stores <see cref="TagHook"/>s indexed by linked <see cref="ProgressionTag"/>
+    /// </summary>
+    /// TODO Might be better to store delegates instead of list, maybe even stored directly by ProgressionTag
+    private static readonly Dictionary<ProgressionTag, List<TagHook>> HookCallList = new Dictionary<ProgressionTag, List<TagHook>>();
 
-    private static ProgressionManager _instance;
+    /// <summary>
+    /// Stores <see cref="TagEventBuilder"/>s used for checking for changes of <see cref="ProgressionTag"/>.<see cref="ProgressionTag.State"/>
+    /// </summary>
+    private static readonly List<TagEventBuilder> TagEventBuilders = new List<TagEventBuilder>();
 
-    public static ProgressionManager Instance
+    /// <summary>
+    /// Indicates if the <see cref="ProgressionManager"/> has been initialized
+    /// </summary>
+    private static bool _initialized;
+
+    /// <summary>
+    /// Loads <see cref="ProgressionManagerData"/> from <see cref="ResourceDataPath"/>
+    /// </summary>
+    private static void LoadData()
     {
-        get
+        Data = Resources.Load<ProgressionManagerData>(ResourceDataPath);
+    }
+
+    /// <summary>
+    /// Initializes <see cref="ProgressionManager"/>
+    /// </summary>
+    [Awake]
+    [OnSceneLoaded]
+    [UsedImplicitly]
+    private static void Init()
+    {
+        LoadData();
+
+        if (Data == null || Data.graph == null)
         {
-            if (_instance != null)
-                return _instance;
+            Debug.LogWarning("Progression graph is not set in ProjectU/Progression/Settings!");
 
-            var pm = FindObjectsOfType<ProgressionManager>();
-
-            if (pm.Length > 0)
-                return _instance = pm[0];
-
-            // Creating new instance if does not exist
-            return _instance = new GameObject("Progression Manager").AddComponent<ProgressionManager>();
-        }
-    }
-
-    private void Start()
-    {
-        if (progressionGraph != null)
-            progressionGraph = progressionGraph.Copy() as ProgressionGraph;
-
-        InitTagEventBuilders();
-        ReinitializeTagReferences();
-
-        LinkHooks();
-
-        foreach (var hookReference in HookRegistry)
-            if (hookReference.TryGetTarget(out var hook) && hook.Tag != null)
-                hook.OnInitialization?.Invoke(TagHook.TagEvent.CreateInitEvent(hook));
-
-        InitTagEventBuilders();
-    }
-
-    private void Update()
-    {
-        if (!_dirty)
             return;
+        }
 
-        RemoveDeadHookReferences();
-        _dirty = false;
+        Data.graph.LoadState(Application.persistentDataPath + GraphSavesDirectoryPath);
+
+        InitTagReferences();
+
+        InitTagEventBuilders();
+
+        LinkAllHooks();
+
+        _initialized = true;
     }
 
+    /// <summary>
+    /// Adds <see cref="TagHook"/> to <see cref="HookRegistry"/>
+    /// </summary>
+    /// <param name="hook"></param>
     internal static void RegisterTagHook(TagHook hook)
     {
-        if (!hook.Registered && (hook.Registered = true))
-            HookRegistry.Add(new WeakReference<TagHook>(hook));
-    }
+        //Assert.IsFalse(HookRegistry.Contains(hook), $"Hook {hook.tagName} is already in the registry!");
 
-    internal void RegisterRuntimeTagHook(TagHook hook)
-    {
-        var hookReference = new WeakReference<TagHook>(hook);
-        HookRegistry.Add(hookReference);
-
-        hook.Tag = _tags[hook.TagName];
-        _hookCallList[hook.Tag].Add(hookReference);
-        hook.OnInitialization?.Invoke(TagHook.TagEvent.CreateInitEvent(hook));
-    }
-
-    internal void ReRegisterRuntimeTagHook(TagHook hook)
-    {
-        if (_tags.Count == 0)
+        // Ignore empty and already registered TagHooks
+        if (hook.TagName == "" || HookRegistry.Contains(hook))
             return;
 
-        var hookReference = new WeakReference<TagHook>(hook);
-
-        // Removing hook under the tag reference from the call list
-        if (hook.Tag != null)
-            _hookCallList[hook.Tag].RemoveAll(reference => !reference.TryGetTarget(out var oldHook) || oldHook == hook);
-
-        if (!_tags.ContainsKey(hook.tagName))
-        {
-            Debug.LogWarning($"Tag {hook.tagName} could not be found!");
-
-            return;
-        }
-
-        hook.Tag = _tags[hook.TagName];
-        _hookCallList[hook.Tag].Add(hookReference);
+        HookRegistry.Add(hook);
     }
 
-    [Serializable]
-    public class TagEventBuilder
+    /// <summary>
+    /// Removes <see cref="TagHook"/> to <see cref="HookRegistry"/>
+    /// </summary>
+    /// <param name="hook"></param>
+    internal static void UnRegisterTagHook(TagHook hook)
     {
-        public ProgressionTag.TagState OldState;
-        public ProgressionTag.TagState NewState;
-        public ProgressionTag ProgressionTag;
+        // There is no need to unregister hooks when ProgressionManger is inactive
+        if (!_initialized)
+            return;
 
+        Assert.IsTrue(HookRegistry.Contains(hook), $"UnRegisterTagHook was called while hook {hook.tagName} is not in the registry!");
+
+        UnLinkHook(hook);
+        HookRegistry.Remove(hook);
+    }
+
+    /// <summary>
+    /// Breaks old <see cref="TagHook"/> to <see cref="ProgressionTag"/> link and creates a new one based on current <see cref="TagHook"/> state
+    /// </summary>
+    /// <param name="hook"></param>
+    internal static void ReLinkTagHook(TagHook hook)
+    {
+        if (!_initialized)
+            return;
+
+        Assert.IsTrue(HookRegistry.Contains(hook), $"Hook {hook.tagName} is not in the registry!");
+
+        UnLinkHook(hook);
+        LinkHook(hook);
+    }
+
+    /// <summary>
+    /// Stores a snapshot of <see cref="progressionTag"/>
+    /// </summary>
+    private class TagEventBuilder
+    {
+        public ProgressionTag.TagState oldState;
+        public ProgressionTag.TagState newState;
+        public ProgressionTag progressionTag;
+
+        /// <summary>
+        /// Creates event for <see cref="TagHook"/>
+        /// </summary>
+        /// <param name="hook"></param>
+        /// <returns><see cref="TagHook.TagEvent"/> ready to be used with <see cref="TagHook.onUpdate"/></returns>
         public TagHook.TagEvent GetEvent(TagHook hook)
         {
             return new TagHook.TagEvent
             {
-                Hook = hook,
-                ProgressionTag = ProgressionTag,
-                OldState = OldState,
-                NewState = NewState
+                hook = hook,
+                progressionTag = progressionTag,
+                oldState = oldState,
+                newState = newState
             };
         }
     }
 
-    private void StartChange()
+    /// <summary>
+    /// Resets all flags on <see cref="ProgressionTag"/>
+    /// </summary>
+    [OnExitingPlayMode]
+    private static void ResetTagStates()
     {
-        UpdateTagEventBuilders();
+        foreach (var node in Data.graph.nodes.OfType<TagNode>())
+        {
+            node.flags.collected = false;
+            node.flags.active = false;
+        }
     }
-
-    private void EndChange()
-    {
-        UpdateTagEventBuilders();
-        SendTagUpdateEvents();
-    }
-
-#if UNITY_EDITOR
-    public static void StartEditorChange()
-    {
-        if (!Application.isPlaying)
-            return;
-
-        Instance.UpdateTagEventBuilders();
-    }
-
-    public static void EndEditorChange(bool fireEvents = true)
-    {
-        if (!Application.isPlaying)
-            return;
-
-        Instance.UpdateTagEventBuilders();
-
-        if (fireEvents)
-            Instance.SendTagUpdateEvents();
-    }
-#endif
 
     /// <summary>
-    /// Sends tag update event to all hook that linked to tags that had changed
+    /// Removes <see cref="TagHook"/> from <see cref="HookCallList"/> and removes link to <see cref="ProgressionTag"/>
     /// </summary>
-    private void SendTagUpdateEvents()
+    /// <param name="hook"></param>
+    private static void UnLinkHook(TagHook hook)
     {
-        foreach (var tagEventBuilder in _tagEventBuilders)
+        if (hook.Tag == null)
+            return;
+
+        Assert.IsTrue(HookCallList.ContainsKey(hook.Tag));
+
+        // Removing hook under the tag reference from the call list
+        HookCallList[hook.Tag].Remove(hook);
+    }
+
+    /// <summary>
+    /// Links all <see cref="TagHook"/>s currently stored in <see cref="HookRegistry"/>
+    /// </summary>
+    private static void LinkAllHooks()
+    {
+        HookCallList.Clear();
+
+        // Populate _hookCallList with empty list for each progression tag
+        foreach (var pair in Tags)
+            HookCallList[pair.Value] = new List<TagHook>();
+
+        foreach (var hook in HookRegistry)
+            LinkHook(hook);
+    }
+
+    /// <summary>
+    /// Adds <see cref="TagHook"/> to <see cref="HookCallList"/> and creates link to <see cref="ProgressionTag"/>
+    /// </summary>
+    private static void LinkHook(TagHook hook)
+    {
+        if (hook.TagName == "")
+            return;
+
+        if (!Tags.ContainsKey(hook.tagName))
         {
-            if (tagEventBuilder.NewState == tagEventBuilder.OldState)
-                continue;
+            Debug.LogWarning($"Tag {hook.tagName} could not be found in the current context!");
 
-            foreach (var hookReference in _hookCallList[tagEventBuilder.ProgressionTag])
+            return;
+        }
+
+        hook.Tag = Tags[hook.TagName];
+        HookCallList[hook.Tag].Add(hook);
+    }
+
+    /// <summary>
+    /// Creates a snapshot of current <see cref="ProgressionTag"/> state stored in <see cref="TagEventBuilders"/>
+    /// </summary>
+    private static void StartChange()
+    {
+        UpdateTagEventBuilders();
+    }
+
+    /// <summary>
+    /// Updates snapshot of <see cref="ProgressionTag"/> state stored in <see cref="TagEventBuilders"/> with the new <see cref="ProgressionTag.State"/>
+    /// </summary>
+    /// <param name="fireEvents">If events should be fired for the <see cref="ProgressionTag"/>s that changed states</param>
+    private static void EndChange(bool fireEvents = true)
+    {
+        UpdateTagEventBuilders();
+
+        if (fireEvents)
+            SendTagUpdateEvents();
+    }
+
+    /// <summary>
+    /// Sends update event to all <see cref="TagHook"/>s  linked to <see cref="ProgressionTag"/>s that had changed their state
+    /// </summary>
+    private static void SendTagUpdateEvents()
+    {
+        foreach (var tagEventBuilder in TagEventBuilders.Where(tagEventBuilder => tagEventBuilder.newState != tagEventBuilder.oldState))
+        {
+            // Using raw for loop to allow hook re-registration during the event handling, which would invalidate any iterator
+            for (var i = 0; i < HookCallList[tagEventBuilder.progressionTag].Count; i++)
             {
-                if (!hookReference.TryGetTarget(out var hook))
-                {
-                    _dirty = true;
-
-                    continue;
-                }
-
+                var hook = HookCallList[tagEventBuilder.progressionTag][i];
                 hook.FireOnUpdate(tagEventBuilder.GetEvent(hook));
             }
         }
     }
 
-    private void RemoveDeadHookReferences()
+    /// <summary>
+    /// Stores references to all <see cref="ProgressionTag"/>s in the <see cref="ProgressionGraph"/> in <see cref="Tags"/> dictionary
+    /// </summary>
+    private static void InitTagReferences()
     {
-        HookRegistry.RemoveAll(reference => !reference.TryGetTarget(out _));
+        Tags.Clear();
 
-        foreach (var hookReference in _hookCallList)
-            hookReference.Value.RemoveAll(reference => !reference.TryGetTarget(out _));
-    }
-
-    private void ReinitializeTagReferences()
-    {
-        _tags.Clear();
-
-        if (progressionGraph == null)
+        if (Data == null || Data.graph == null)
             return;
 
-        var nodeList = progressionGraph.nodes.OfType<ProgressionTag>().ToList();
+        var nodeList = Data.graph.nodes.OfType<ProgressionTag>().ToList();
 
         nodeList.Sort((left, right) => string.CompareOrdinal(left.Name, right.Name));
 
-        foreach (var progressionTag in nodeList)
-            _tags.Add(progressionTag.Name, progressionTag);
+        foreach (var progressionTag in nodeList.Where(progressionTag => !string.IsNullOrEmpty(progressionTag.Name)))
+            Tags.Add(progressionTag.Name, progressionTag);
     }
 
-    private void LinkHooks()
+    /// <summary>
+    /// Initializes <see cref="TagEventBuilders"/>
+    /// </summary>
+    private static void InitTagEventBuilders()
     {
-        _hookCallList.Clear();
+        TagEventBuilders.Clear();
 
-        foreach (var pair in _tags)
-            _hookCallList[pair.Value] = new List<WeakReference<TagHook>>();
+        foreach (var progressionTag in Tags)
+            TagEventBuilders.Add(new TagEventBuilder { newState = progressionTag.Value.State, progressionTag = progressionTag.Value });
+    }
 
-        RemoveDeadHookReferences();
-
-        foreach (var hookReference in HookRegistry)
+    /// <summary>
+    /// Updates <see cref="ProgressionTag.State"/>s of <see cref="TagEventBuilders"/>
+    /// </summary>
+    private static void UpdateTagEventBuilders()
+    {
+        foreach (var tagEventBuilder in TagEventBuilders)
         {
-            if (!hookReference.TryGetTarget(out var hook))
-                continue;
-
-            if (!_tags.ContainsKey(hook.TagName))
-            {
-                if (hook.TagName != "")
-                    Debug.LogWarning($"Could not link hook for {hook.TagName}! Tag {hook.TagName} does not exist in the current context!");
-
-                continue;
-            }
-
-            hook.Tag = _tags[hook.TagName];
-            _hookCallList[hook.Tag].Add(hookReference);
+            tagEventBuilder.oldState = tagEventBuilder.newState;
+            tagEventBuilder.newState = tagEventBuilder.progressionTag.State;
         }
     }
-
-    private void InitTagEventBuilders()
-    {
-        _tagEventBuilders = _tags.Select(progressionTag => new TagEventBuilder { NewState = progressionTag.Value.State, ProgressionTag = progressionTag.Value }).ToList();
-    }
-
-    private void UpdateTagEventBuilders()
-    {
-        foreach (var tagEventBuilder in _tagEventBuilders)
-        {
-            tagEventBuilder.OldState = tagEventBuilder.NewState;
-            tagEventBuilder.NewState = tagEventBuilder.ProgressionTag.State;
-        }
-    }
-
-    public static void SendTagNameChangeNotifications(string oldName, string newName, NodeGraph nodeGraph)
-    {
-        if (nodeGraph != Instance.progressionGraph)
-            return;
-
-        foreach (var hookReference in HookRegistry)
-        {
-            if (!hookReference.TryGetTarget(out var hook))
-                continue;
-
-            if (hook.TagName == oldName)
-                hook.tagName = newName;
-        }
-    }
-
-#if UNITY_EDITOR
-    public void OnValidate()
-    {
-        RemoveDeadHookReferences();
-
-        if (Application.isPlaying)
-        {
-            ReinitializeTagReferences();
-            LinkHooks();
-        }
-        else
-        {
-            EditorApplication.delayCall += ReinitializeTagReferences;
-        }
-
-        InitTagEventBuilders();
-    }
-#endif
 }

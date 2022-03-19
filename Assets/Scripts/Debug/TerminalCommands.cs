@@ -1,31 +1,42 @@
 using System.Linq;
 using CommandTerminal;
+using JetBrains.Annotations;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Debug
+namespace DebugU
 {
+    /// <summary>
+    /// Custom terminal commands
+    /// </summary>
     public static class TerminalCommands
     {
+        [UsedImplicitly]
         [RegisterCommand(Name = "ReloadScene", Help = "Reloads current scene restarting its state", MaxArgCount = 0)]
         private static void ReloadLevel(CommandArg[] args)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            UnityEngine.Debug.Log($"Scene {SceneManager.GetActiveScene().name} reloaded");
+            Debug.Log($"Scene {SceneManager.GetActiveScene().name} reloaded");
         }
 
-
-        [RegisterCommand(Name = "ShowProgressionTags", Help = "Displays list of progression tags categorized by: inactive, active and collected", MaxArgCount = 0)]
+        [UsedImplicitly]
+        [RegisterCommand(Name = "ShowProgressionTags", Help = "Displays list of progression tags categorized by: - unavailable, + available, @ active and * collected", MaxArgCount = 0)]
         private static void ShowProgressionTags(CommandArg[] args)
         {
-            var result = ProgressionManager.GetInactiveTags().Aggregate("", (current, pTag) => current + "- " + pTag.Name + "\n");
+            var tags = ProgressionManager.GetAllTags();
 
-            result = ProgressionManager.GetActiveTags().Aggregate(result, (current, pTag) => current + "+ " + pTag.Name + "\n");
+            var result = tags.Where(tag => tag.State == ProgressionTag.TagState.Unavailable).Aggregate("", (current, tag) => current + "- " + tag.Name + "\n");
 
-            result = ProgressionManager.GetCollectedTags().Aggregate(result, (current, pTag) => current + "* " + pTag.Name + "\n");
+            result = tags.Where(tag => tag.State == ProgressionTag.TagState.Available).Aggregate(result, (current, tag) => current + "+ " + tag.Name + "\n");
 
-            UnityEngine.Debug.Log(result);
+            result = tags.Where(tag => tag.State == ProgressionTag.TagState.Active).Aggregate(result, (current, tag) => current + "@ " + tag.Name + "\n");
+
+            result = tags.Where(tag => tag.State == ProgressionTag.TagState.Collected).Aggregate(result, (current, tag) => current + "* " + tag.Name + "\n");
+
+            Debug.Log(result);
         }
 
+        [UsedImplicitly]
         [RegisterCommand(Name = "GiveTag", Help = "Collects given tag/s", MinArgCount = 1)]
         private static void GiveTag(CommandArg[] args)
         {

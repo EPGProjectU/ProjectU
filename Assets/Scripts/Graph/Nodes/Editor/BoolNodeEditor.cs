@@ -1,6 +1,9 @@
 using UnityEngine;
 using XNodeEditor;
 
+/// <summary>
+/// Draws <see cref="BoolNode"/> in <see cref="NodeGraphEditor"/>
+/// </summary>
 [CustomNodeEditor(typeof(BoolNode))]
 public class BoolNodeEditor : NodeEditor
 {

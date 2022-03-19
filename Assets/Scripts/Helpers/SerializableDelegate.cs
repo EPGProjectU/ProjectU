@@ -7,6 +7,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Delegate that persist through a HotReload
+/// </summary>
 [Serializable]
 public sealed class SerializableDelegate<TDelegate> : ISerializationCallbackReceiver where TDelegate : MulticastDelegate
 {
@@ -15,7 +18,7 @@ public sealed class SerializableDelegate<TDelegate> : ISerializationCallbackRece
     [SerializeField]
     private SerializableGUID guid;
 
-    public static SerializableDelegate<TDelegate> operator +(SerializableDelegate<TDelegate> lhs, TDelegate rhs)
+    public static SerializableDelegate<TDelegate> operator +(SerializableDelegate<TDelegate>? lhs, TDelegate rhs)
     {
         lhs ??= new SerializableDelegate<TDelegate>();
 
@@ -24,7 +27,7 @@ public sealed class SerializableDelegate<TDelegate> : ISerializationCallbackRece
         return lhs;
     }
 
-    public static SerializableDelegate<TDelegate> operator -(SerializableDelegate<TDelegate> lhs, TDelegate rhs)
+    public static SerializableDelegate<TDelegate> operator -(SerializableDelegate<TDelegate>? lhs, TDelegate rhs)
     {
         if (lhs == null)
             return new SerializableDelegate<TDelegate>();
@@ -34,16 +37,7 @@ public sealed class SerializableDelegate<TDelegate> : ISerializationCallbackRece
         return lhs;
     }
 
-    public void Invoke(params object?[]? e)
-    {
-        var invocationList = _delegate?.GetInvocationList();
-
-        if (invocationList == null)
-            return;
-
-        foreach (var invocation in invocationList)
-            invocation.DynamicInvoke(e);
-    }
+    public void Invoke(params object?[]? e) => _delegate?.DynamicInvoke(e);
 
 #if UNITY_EDITOR
     public SerializableDelegate()
@@ -52,7 +46,7 @@ public sealed class SerializableDelegate<TDelegate> : ISerializationCallbackRece
         SceneManager.sceneUnloaded += SceneUnloaded;
     }
 
-    void SceneUnloaded(Scene s)
+    private void SceneUnloaded(Scene s)
     {
         // Clearing serialization data on scene unload
         File.Delete($"Temp/DelegateTempFile-{guid}");
@@ -98,7 +92,6 @@ public sealed class SerializableDelegate<TDelegate> : ISerializationCallbackRece
     void ISerializationCallbackReceiver.OnAfterDeserialize()
     {
 #if UNITY_EDITOR
-        //Debug.Log(guid);
         // Delay call as Unity API is required
         EditorApplication.delayCall += () =>
         {
@@ -133,7 +126,7 @@ public sealed class SerializableDelegate<TDelegate> : ISerializationCallbackRece
                 var del = Delegate.CreateDelegate(
                     typeof(TDelegate),
                     obj,
-                    info!, false);
+                    info, false);
 
                 // Bind created delegate
                 _delegate = (Delegate.Combine(_delegate, del) as TDelegate)!;
