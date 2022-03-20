@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 
 /// <summary>
@@ -11,26 +10,23 @@ public abstract class ActorController : MonoBehaviour
     private Animator _actorAnimator;
 
     public bool running;
-    
+
+    public ActorMotionData motionData;
+
     /// <summary>
     /// Vector representing actor's movement
     /// </summary>
     public Vector2 MovementVector { get; protected set; }
+
     /// <summary>
     /// Vector representing actor's rotation
     /// </summary>
     public Vector2 LookVector { get; protected set; }
-    
+
     /// <summary>
     /// Used to determinate if look vector should be equal MovementVector
     /// </summary>
     protected bool useMovementVectorForLook = true;
-
-    public float rotationSpeed = 360f;
-
-    // Animator properties
-    private static readonly int SpeedAnimatorProperty = Animator.StringToHash("Speed");
-    private static readonly int AttackAnimatorProperty = Animator.StringToHash("Attack");
 
     /// <summary>
     /// Retrieves and sets rotation on game object with animator
@@ -42,22 +38,17 @@ public abstract class ActorController : MonoBehaviour
     }
 
     /// <summary>
-    /// Base movement speed in units per second
-    /// </summary>
-    public float BaseSpeed = 1f;
-
-    /// <summary>
-    /// Alternative movement speed in units per second
-    /// </summary>
-    public float RunningSpeed = 20f;
-
-    /// <summary>
     /// Cached reference to rigidBody to which all movement is applied
     /// </summary>
     private Rigidbody2D _rigidBody;
+    
+    // Animator properties
+    private static readonly int SpeedAnimatorProperty = Animator.StringToHash("Speed");
+    private static readonly int AttackAnimatorProperty = Animator.StringToHash("Attack");
 
+    
     /// <summary>
-    /// Setup 
+    /// Caches references
     /// </summary>
     public void Setup()
     {
@@ -69,19 +60,20 @@ public abstract class ActorController : MonoBehaviour
         if (!_actorAnimator)
             _actorAnimator = gameObject.AddComponent<Animator>();
     }
-    
+
     private void FixedUpdate()
     {
         var rotationDelta = Mathf.DeltaAngle(CharacterRotation, Vector2.SignedAngle(LookVector, Vector2.up));
 
-        var deltaRotationSpeed = rotationSpeed * Time.fixedDeltaTime;
-        
-        CharacterRotation += Mathf.Clamp(rotationDelta, -deltaRotationSpeed, deltaRotationSpeed);
-        
+        var deltaRotationSpeed = motionData.rotationSpeed * Time.fixedDeltaTime;
+
+        //CharacterRotation += 
+
         _actorAnimator.SetFloat(SpeedAnimatorProperty, _rigidBody.velocity.magnitude);
 
+        CharacterRotation += Mathf.Clamp(rotationDelta, -deltaRotationSpeed, deltaRotationSpeed);
         // Rigid body velocity does not use delta time
-        _rigidBody.velocity = MovementVector * (running ? RunningSpeed : BaseSpeed);
+        _rigidBody.velocity = MovementVector * (running ? motionData.runningSpeed : motionData.baseSpeed);
     }
 
     protected void Attack()

@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 570c92479cbfa1d46a96ad9f90774ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseSpeed: 3
-  RunningSpeed: 20
+  running: 0
+  motionData: {fileID: 11400000, guid: 55fad9c184b281046a50d92558e8e3d1, type: 2}
   currentTarget: {fileID: 0}
 --- !u!195 &1883101933
 NavMeshAgent:
