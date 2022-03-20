@@ -1,114 +1,149 @@
 using System;
+using System.Collections.Generic;
+using ProjectU.Core;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-
-// Quick hack to implement input toggle
-// TODO write input manager and move this code there
-public enum ToggleState
-{
-    Default,
-    ToggledOn,
-    Active,
-    ToggledOff
-}
-
-public static class ToggleStateExtensions
-{
-    public static bool ToBoolean(this ToggleState value)
-    {
-        return value switch
-        {
-            ToggleState.ToggledOn => true,
-            ToggleState.Active => true,
-            _ => false
-        };
-    }
-}
 
 /// <summary>
 /// ActorController dedicated to the player with implemented input handling
 /// </summary>
 public class PlayerController : ActorController
 {
-    private static readonly int Attack = Animator.StringToHash("Attack");
+    private PlayerInput _playerInput;
 
-    public ToggleState sprinting;
+    /// <summary>
+    /// Stores bindings for performed inputs
+    /// </summary>
+    private readonly Dictionary<string, Action<InputAction.CallbackContext>> _performedInputBindings = new Dictionary<string, Action<InputAction.CallbackContext>>();
+    /// <summary>
+    /// Stores bindings for canceled inputs
+    /// </summary>
+    private readonly Dictionary<string, Action<InputAction.CallbackContext>> _canceledInputBindings = new Dictionary<string, Action<InputAction.CallbackContext>>();
 
     // Start is called before the first frame update
     void Start()
     {
         // Calling setup of ActorController
         Setup();
+        InputSetup();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        var velocity = GetVelocityFromInput();
-
-        if (velocity.magnitude > 0)
-            UpdateModelRotation(Vector2.SignedAngle(velocity, Vector2.down));
-
-        ActorAnimator.SetBool(Attack, Input.GetAxisRaw("Fire1") > 0f);
-
-        // Updating player speed base on the input
-        UpdateVelocity(velocity);
+        BreakInputBindings();
     }
 
-    void UpdateModelRotation(float facingAngle)
+    private void InputSetup()
     {
-        const float snapAngle = 360f / 32f;
-        var round = Mathf.Round(facingAngle / snapAngle);
-
-        // Set rotation of character model base on current input
-        ActorAnimator.transform.localRotation = Quaternion.Euler(0, round * snapAngle, 0);
+        // Cache PlayerInput
+        _playerInput = GetComponent<PlayerInput>();
+        BindInputs();
     }
 
     /// <summary>
-    /// Applies speed and (if need) normalizes input to get current velocity of the player
+    /// Binds actions to Player Inputs using binding names
     /// </summary>
-    /// <returns>Velocity with applied speed and direction from the input</returns>
-    private Vector2 GetVelocityFromInput()
+    private void BindInputs()
     {
-        var inputVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
-        // Normalizing inputVector to avoid difference between max speeds of cardinal and diagonal directions
-        if (inputVector.magnitude > 1.0)
-            inputVector.Normalize();
-
-        // Hack to get input toggle functionality
-        // TODO remove when input manager is done
-        switch (sprinting)
+        _performedInputBindings["Move"] = context =>
         {
-            case ToggleState.Default:
-                if (Input.GetAxisRaw("ToggleSprint") > 0)
-                    sprinting = ToggleState.ToggledOn;
+            MovementVector = context.ReadValue<Vector2>();
 
-                break;
-            case ToggleState.ToggledOn:
-                if (Input.GetAxisRaw("ToggleSprint") == 0)
-                    sprinting = ToggleState.Active;
+            if (useMovementVectorForLook)
+                LookVector = MovementVector;
+        };
 
-                break;
-            case ToggleState.Active:
-                if (Input.GetAxisRaw("ToggleSprint") > 0)
-                    sprinting = ToggleState.ToggledOff;
+        _canceledInputBindings["Move"] = context =>
+        {
+            running = false;
+            MovementVector = Vector2.zero;
+        };
 
-                break;
-            case ToggleState.ToggledOff:
-                if (Input.GetAxisRaw("ToggleSprint") == 0)
-                    sprinting = ToggleState.Default;
+        _performedInputBindings["Look"] = context =>
+        {
+            useMovementVectorForLook = false;
+            LookVector = context.ReadValue<Vector2>();
+        };
 
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
+        _canceledInputBindings["Look"] = context =>
+        {
+            useMovementVectorForLook = true;
+            
+            if (MovementVector.magnitude > 0f)
+                LookVector = MovementVector;
+        };
+
+        _performedInputBindings["Cursor"] = context =>
+        {
+            if (useMovementVectorForLook)
+                return;
+            SetLookVectorFromCursor(context.ReadValue<Vector2>());
+        };
+
+        _performedInputBindings["Run"] = context =>
+        {
+            running = !running;
+        };
+
+        _performedInputBindings["Attack"] = context =>
+        {
+            Attack();
+        };
+
+        _performedInputBindings["ToggleCursor"] = context =>
+        {
+            useMovementVectorForLook = !useMovementVectorForLook;
+            SetLookVectorFromCursor(Mouse.current.position.ReadValue());
+        };
+
+
+        foreach (var inputBinding in _performedInputBindings)
+        {
+            _playerInput.actions[inputBinding.Key].performed += inputBinding.Value;
         }
 
-        // Disable sprint on released input
-        if (inputVector.magnitude < 0.5)
-            sprinting = ToggleState.Default;
+        foreach (var inputBinding in _canceledInputBindings)
+        {
+            _playerInput.actions[inputBinding.Key].canceled += inputBinding.Value;
+        }
+    }
 
-        // Multiplying input vector by the selected movement speed
-        return inputVector * (sprinting.ToBoolean() ? RunningSpeed : BaseSpeed);
+    /// <summary>
+    /// Removes all input bindings
+    /// </summary>
+    private void BreakInputBindings()
+    {
+        foreach (var inputBinding in _performedInputBindings)
+        {
+            _playerInput.actions[inputBinding.Key].performed -= inputBinding.Value;
+        }
+
+        foreach (var inputBinding in _canceledInputBindings)
+        {
+            _playerInput.actions[inputBinding.Key].canceled -= inputBinding.Value;
+        }
+    }
+
+    /// <summary>
+    /// Calculates look vector using mouse position
+    /// </summary>
+    /// <param name="cursorPosition"></param>
+    private void SetLookVectorFromCursor(Vector2 cursorPosition)
+    {
+        Vector2 playerScreenPosition = Camera.main!.WorldToScreenPoint(transform.position);
+
+        LookVector = (cursorPosition - playerScreenPosition).normalized;
+    }
+
+    /// <summary>
+    /// Rebinds inputs after HotReload
+    /// </summary>
+    [AfterHotReload]
+    private static void HotReloadRebinding()
+    {
+        var player = FindObjectOfType<PlayerController>();
+        
+        player.InputSetup();
     }
 }

@@ -141,14 +141,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5834695493591698208}
-  m_LocalRotation: {x: 0, y: 0.9659258, z: -0.2588191, w: 0}
+  m_LocalRotation: {x: -0.258819, y: 0, z: 0, w: 0.9659259}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2459767659498537501}
   m_Father: {fileID: 8181707218967104488}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 30, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: -30, y: 0, z: 0}
 --- !u!1 &7649322890496266106
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,10 +219,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActorAnimator: {fileID: 8413556931961706599}
-  speed: 0
+  running: 0
+  rotationSpeed: 360
   BaseSpeed: 5
   RunningSpeed: 7
-  sprinting: 0
 --- !u!114 &8058215983871690817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,6 +385,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c9cc4b6a1e99b54f89766ccfa1c170d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2786927872056588966, guid: 1c9cc4b6a1e99b54f89766ccfa1c170d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2786927872056588966, guid: 1c9cc4b6a1e99b54f89766ccfa1c170d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2786927872056588966, guid: 1c9cc4b6a1e99b54f89766ccfa1c170d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2786927872056588966, guid: 1c9cc4b6a1e99b54f89766ccfa1c170d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2786927872056588966, guid: 1c9cc4b6a1e99b54f89766ccfa1c170d, type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2719413833754189537, guid: 1c9cc4b6a1e99b54f89766ccfa1c170d, type: 3}
