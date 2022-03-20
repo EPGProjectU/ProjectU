@@ -41,12 +41,12 @@ public abstract class ActorController : MonoBehaviour
     /// Cached reference to rigidBody to which all movement is applied
     /// </summary>
     private Rigidbody2D _rigidBody;
-    
+
     // Animator properties
     private static readonly int SpeedAnimatorProperty = Animator.StringToHash("Speed");
     private static readonly int AttackAnimatorProperty = Animator.StringToHash("Attack");
 
-    
+
     /// <summary>
     /// Caches references
     /// </summary>
@@ -67,13 +67,13 @@ public abstract class ActorController : MonoBehaviour
 
         var deltaRotationSpeed = motionData.rotationSpeed * Time.fixedDeltaTime;
 
-        //CharacterRotation += 
+        var playerMoveAngle = Vector2.SignedAngle(MovementVector, Vector2.down);
 
         _actorAnimator.SetFloat(SpeedAnimatorProperty, _rigidBody.velocity.magnitude);
 
-        CharacterRotation += Mathf.Clamp(rotationDelta, -deltaRotationSpeed, deltaRotationSpeed);
+        CharacterRotation += Mathf.Clamp(rotationDelta, -deltaRotationSpeed, deltaRotationSpeed) * Mathf.Sqrt(LookVector.magnitude);
         // Rigid body velocity does not use delta time
-        _rigidBody.velocity = MovementVector * (running ? motionData.runningSpeed : motionData.baseSpeed);
+        _rigidBody.velocity = MovementVector * (running ? motionData.runningSpeed : motionData.baseSpeed) * motionData.EvaluateMotionForAngle(Mathf.DeltaAngle(playerMoveAngle, CharacterRotation));
     }
 
     protected void Attack()

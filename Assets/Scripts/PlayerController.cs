@@ -16,6 +16,7 @@ public class PlayerController : ActorController
     /// Stores bindings for performed inputs
     /// </summary>
     private readonly Dictionary<string, Action<InputAction.CallbackContext>> _performedInputBindings = new Dictionary<string, Action<InputAction.CallbackContext>>();
+
     /// <summary>
     /// Stores bindings for canceled inputs
     /// </summary>
@@ -69,7 +70,7 @@ public class PlayerController : ActorController
         _canceledInputBindings["Look"] = context =>
         {
             useMovementVectorForLook = true;
-            
+
             if (MovementVector.magnitude > 0f)
                 LookVector = MovementVector;
         };
@@ -78,23 +79,22 @@ public class PlayerController : ActorController
         {
             if (useMovementVectorForLook)
                 return;
+
             SetLookVectorFromCursor(context.ReadValue<Vector2>());
         };
 
-        _performedInputBindings["Run"] = context =>
-        {
-            running = !running;
-        };
+        _performedInputBindings["Run"] = context => { running = !running; };
 
-        _performedInputBindings["Attack"] = context =>
-        {
-            Attack();
-        };
+        _performedInputBindings["Attack"] = context => { Attack(); };
 
         _performedInputBindings["ToggleCursor"] = context =>
         {
             useMovementVectorForLook = !useMovementVectorForLook;
-            SetLookVectorFromCursor(Mouse.current.position.ReadValue());
+
+            if (useMovementVectorForLook)
+                LookVector = MovementVector;
+            else
+                SetLookVectorFromCursor(Mouse.current.position.ReadValue());
         };
 
 
@@ -143,7 +143,7 @@ public class PlayerController : ActorController
     private static void HotReloadRebinding()
     {
         var player = FindObjectOfType<PlayerController>();
-        
+
         player.InputSetup();
     }
 }
