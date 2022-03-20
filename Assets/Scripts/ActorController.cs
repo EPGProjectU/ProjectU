@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -5,7 +6,7 @@ using UnityEngine;
 /// Abstract class responsible for controlling actions of an actor
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
-public abstract class ActorController : MonoBehaviour
+public abstract partial class ActorController : MonoBehaviour
 {
     private Animator _actorAnimator;
 
@@ -37,6 +38,15 @@ public abstract class ActorController : MonoBehaviour
         protected set => _actorAnimator.transform.localRotation = Quaternion.Euler(0, value, 0);
     }
 
+    private void OnValidate()
+    {
+        _actorAnimator = GetComponentInChildren<Animator>();
+
+        // If animator was not found a dummy animator is set to avoid exceptions
+        if (!_actorAnimator)
+            _actorAnimator = gameObject.AddComponent<Animator>();
+    }
+
     /// <summary>
     /// Cached reference to rigidBody to which all movement is applied
     /// </summary>
@@ -54,11 +64,6 @@ public abstract class ActorController : MonoBehaviour
     {
         // Caching phase
         _rigidBody = GetComponent<Rigidbody2D>();
-        _actorAnimator = GetComponentInChildren<Animator>();
-
-        // If animator was not found a dummy animator is set to avoid exceptions
-        if (!_actorAnimator)
-            _actorAnimator = gameObject.AddComponent<Animator>();
     }
 
     private void FixedUpdate()

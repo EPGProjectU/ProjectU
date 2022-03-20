@@ -131,7 +131,8 @@ public class PlayerController : ActorController
     /// <param name="cursorPosition"></param>
     private void SetLookVectorFromCursor(Vector2 cursorPosition)
     {
-        Vector2 playerScreenPosition = Camera.main!.WorldToScreenPoint(transform.position);
+        Debug.Assert(Camera.main != null, "Main camera is missing tag \"MainCamera\" or does not exist");
+        Vector2 playerScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
 
         LookVector = (cursorPosition - playerScreenPosition).normalized;
     }
