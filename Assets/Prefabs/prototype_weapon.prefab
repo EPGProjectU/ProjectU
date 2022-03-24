@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1603834103497791058}
   - component: {fileID: 5545160874646652726}
   - component: {fileID: 7420517872781204213}
-  - component: {fileID: -5117708201860983250}
   - component: {fileID: 323977800404393417}
   m_Layer: 0
   m_Name: prototype_weapon
@@ -133,19 +132,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-5117708201860983250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3429799109082714164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdec120c213073b40afcbfa851dcee29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!95 &323977800404393417
 Animator:
   serializedVersion: 3
