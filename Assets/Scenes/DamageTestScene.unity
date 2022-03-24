@@ -469,7 +469,7 @@ PrefabInstance:
     - target: {fileID: 2113265057265413657, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
       propertyPath: currentTarget
       value: 
-      objectReference: {fileID: 1349492582}
+      objectReference: {fileID: 916104636}
     - target: {fileID: 6366151426553528117, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1647,6 +1647,33 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!1 &916104635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7649322890496266106, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
+  m_PrefabInstance: {fileID: 5740638309658088524}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &916104636 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8181707218967104488, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
+  m_PrefabInstance: {fileID: 5740638309658088524}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &916104640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916104635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6190bf6ea4a1caf4da6142c75d1b5c57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  weapon: {fileID: 0}
+  damage:
+    damage: 1
+  invincibleTime: 0.5
 --- !u!1 &977844448
 GameObject:
   m_ObjectHideFlags: 0
@@ -8247,11 +8274,24 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!4 &1349492582 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3884653325065613933, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
-  m_PrefabInstance: {fileID: 5740638309658088524}
+--- !u!1 &1393088417 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1601877739371584468, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
+  m_PrefabInstance: {fileID: 293969699}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1393088418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393088417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0400f299d4e2cb5479dd8c7c7c1aa9a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
 --- !u!1 &1759989722 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4118654352885185399, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
@@ -8269,19 +8309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d314fe87a0f6d428c32e4ab0723ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1759989728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1759989722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdec120c213073b40afcbfa851dcee29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
+  damage:
+    damage: 1
 --- !u!1 &3110826296210869848
 GameObject:
   m_ObjectHideFlags: 0
@@ -8517,13 +8546,17 @@ PrefabInstance:
     - target: {fileID: 749993721634851472, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 1759989722}
+      objectReference: {fileID: 0}
     - target: {fileID: 749993721634851472, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
       propertyPath: weaponPrefab
       value: 
       objectReference: {fileID: 1759989722}
     - target: {fileID: 2461386795204074146, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4118654352885185399, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4118654352885185399, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
@@ -8641,7 +8674,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6064da5ea01f935489ccf7e2d82f7f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage:
+    damage: 1
 --- !u!70 &9021716839682873316
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
