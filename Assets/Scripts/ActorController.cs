@@ -31,11 +31,6 @@ public abstract class ActorController : MonoBehaviour
     private static readonly int SpeedProperty = Animator.StringToHash("Speed");
 
     /// <summary>
-    /// Amount of health (in hearts) that actor currently haves
-    /// </summary>
-    public int health;
-
-    /// <summary>
     /// Setup 
     /// </summary>
     public void Setup()

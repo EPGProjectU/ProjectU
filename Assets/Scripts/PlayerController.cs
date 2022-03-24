@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 
@@ -29,32 +30,28 @@ public static class ToggleStateExtensions
 /// <summary>
 /// ActorController dedicated to the player with implemented input handling
 /// </summary>
-public class PlayerController : ActorController, ITakeDamage
+public class PlayerController : ActorController
 {
     private static readonly int Attack = Animator.StringToHash("Attack");
 
     public ToggleState sprinting;
 
-    private bool isDead, isInvincible;
-    public GameObject weapon;
-    public int damage = 1;
-    public float invincibleTime = 0.5f ;
+    private bool isDead;
+    public bool IsDead { get => isDead; set => isDead = value; }
 
     // Start is called before the first frame update
     void Start()
     {
         // Calling setup of ActorController
         Setup();
-        isDead = false;
-        isInvincible = false;
-        weapon.GetComponent<Collider2D>().enabled = false;
+        IsDead = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         // Updating player speed base on the input
-        if (!isDead) 
+        if (!IsDead) 
         {
             var velocity = GetVelocityFromInput();
 
@@ -62,9 +59,8 @@ public class PlayerController : ActorController, ITakeDamage
                 UpdateModelRotation(Vector2.SignedAngle(velocity, Vector2.down));
 
             ActorAnimator.SetBool(Attack, Input.GetAxisRaw("Fire1") > 0f);
-            
+
             UpdateVelocity(velocity);
-            Attacking();
         }
     }
 
@@ -124,65 +120,5 @@ public class PlayerController : ActorController, ITakeDamage
         // Multiplying input vector by the selected movement speed
         return inputVector * (sprinting.ToBoolean() ? RunningSpeed : BaseSpeed);
     }
-
-    /// <summary>
-    /// Calculate amount of damage that will be taken by Player if he isn't invincilbe and change isdead to true when health drops below 1 (player is dead)
-    /// </summary>
-    public void TakeDamage(int damage)
-    {
-        if (!isInvincible) 
-        {
-            isInvincible = true;
-            health -= damage;
-            UnityEngine.Debug.Log("Health = " + health);
-            if (health < 1)
-            {
-                isDead = true;
-                UnityEngine.Debug.Log("Player is Dead");
-            }
-            StartCoroutine(InvincibleTimer());
-        }
-    }
-
-    /// <summary>
-    /// Calculate amount of damage that will be dealt to enemy
-    /// </summary>
-    /// <returns>Amount of Damage (int)</returns>
-    public int DealDamage()
-    {
-        //UnityEngine.Debug.Log("Player Dealt "+ damage + " Damage");
-        return damage;
-    }
-
-    void Attacking()
-    {
-        if (Input.GetMouseButtonDown(0)) //left mouse button
-        {
-            if(weapon != null)
-            {
-                StartCoroutine(DisableWeapon(weapon));
-
-                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                mousePosition.z = 0f;
-                Vector3 attackDir = (mousePosition - transform.position).normalized;
-
-                UpdateModelRotation(Vector2.SignedAngle(attackDir, Vector2.down));
-
-                weapon.GetComponent<DamageInfo>().damage = DealDamage();
-            }
-        }
-    }
-
-    IEnumerator DisableWeapon(GameObject weapon) {
-        yield return new WaitForSeconds(0.2f);
-        weapon.GetComponent<Collider2D>().enabled = true;
-        yield return new WaitForSeconds(0.9f);
-        weapon.GetComponent<Collider2D>().enabled = false;
-    }
-
-    IEnumerator InvincibleTimer()
-    {
-        yield return new WaitForSeconds(invincibleTime);
-        isInvincible = false;
-    }
+   
 }

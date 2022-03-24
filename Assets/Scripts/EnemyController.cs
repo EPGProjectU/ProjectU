@@ -4,11 +4,10 @@ using UnityEngine;
 
 
 
-public class EnemyController : ActorController ,ITakeDamage
+public class EnemyController : ActorController
 {    
     public Transform currentTarget;  //change to private and calculate based on AI module
     private UnityEngine.AI.NavMeshAgent agent;
-    public int damage = 1;
 
     void Start()
     {
@@ -34,21 +33,12 @@ public class EnemyController : ActorController ,ITakeDamage
         }
     }
 
+    //should be removed when enemy will have weapon
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.GetComponent<HealthSystem>())
         {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
+            if (!collision.gameObject.GetComponent<HealthSystem>().allies.Contains(Ally.Enemy)) collision.gameObject.GetComponent<PlayerHealthSystem>().TakeDamage(new DamageInfo(1));
         }
-        if (collision.gameObject.CompareTag("PlayersWeapon"))
-        {
-            TakeDamage(collision.gameObject.GetComponent<DamageInfo>().damage);
-        }
-    }
-
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health < 1) Destroy(gameObject);
     }
 }
