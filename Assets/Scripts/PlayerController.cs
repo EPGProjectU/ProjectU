@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 
@@ -34,25 +36,32 @@ public class PlayerController : ActorController
 
     public ToggleState sprinting;
 
+    private bool isDead;
+    public bool IsDead { get => isDead; set => isDead = value; }
+
     // Start is called before the first frame update
     void Start()
     {
         // Calling setup of ActorController
         Setup();
+        IsDead = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        var velocity = GetVelocityFromInput();
-
-        if (velocity.magnitude > 0)
-            UpdateModelRotation(Vector2.SignedAngle(velocity, Vector2.down));
-
-        ActorAnimator.SetBool(Attack, Input.GetAxisRaw("Fire1") > 0f);
-
         // Updating player speed base on the input
-        UpdateVelocity(velocity);
+        if (!IsDead) 
+        {
+            var velocity = GetVelocityFromInput();
+
+            if (velocity.magnitude > 0)
+                UpdateModelRotation(Vector2.SignedAngle(velocity, Vector2.down));
+
+            ActorAnimator.SetBool(Attack, Input.GetAxisRaw("Fire1") > 0f);
+
+            UpdateVelocity(velocity);
+        }
     }
 
     void UpdateModelRotation(float facingAngle)
@@ -111,4 +120,5 @@ public class PlayerController : ActorController
         // Multiplying input vector by the selected movement speed
         return inputVector * (sprinting.ToBoolean() ? RunningSpeed : BaseSpeed);
     }
+   
 }
