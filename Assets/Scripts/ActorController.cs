@@ -64,6 +64,8 @@ public abstract partial class ActorController : MonoBehaviour
     {
         // Caching phase
         _rigidBody = GetComponent<Rigidbody2D>();
+        
+        OnValidate();
     }
 
     private void FixedUpdate()
