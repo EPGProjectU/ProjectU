@@ -30,4 +30,13 @@ public class EnemyController : ActorController
             agent.destination = currentTarget.position;
         }
     }
+
+    //should be removed when enemy will have weapon
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<HealthSystem>())
+        {
+            if (!collision.gameObject.GetComponent<HealthSystem>().allies.Contains(Ally.Enemy)) collision.gameObject.GetComponent<PlayerHealthSystem>().TakeDamage(new DamageInfo(1));
+        }
+    }
 }

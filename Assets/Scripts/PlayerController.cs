@@ -11,6 +11,19 @@ using UnityEngine.InputSystem;
 public class PlayerController : ActorController
 {
     private PlayerInput _playerInput;
+    
+    private bool isDead;
+    public bool IsDead
+    {
+        get => isDead;
+        set
+        {
+            isDead = value;
+            
+            if (isDead)
+                BreakInputBindings();
+        }
+    }
 
     /// <summary>
     /// Stores bindings for performed inputs
@@ -37,6 +50,9 @@ public class PlayerController : ActorController
 
     private void InputSetup()
     {
+        if (isDead)
+            return;
+        
         // Cache PlayerInput
         _playerInput = GetComponent<PlayerInput>();
         BindInputs();
