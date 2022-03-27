@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 // Quick hack to implement input toggle
@@ -50,17 +51,32 @@ public class PlayerController : ActorController
     // Update is called once per frame
     void Update()
     {
-        // Updating player speed base on the input
-        if (!IsDead) 
+        //This will work only, if game is not frozen
+        if (Time.timeScale != 0)
         {
-            var velocity = GetVelocityFromInput();
+            // Updating player speed base on the input
+            if (!IsDead)
+            {
+                var velocity = GetVelocityFromInput();
 
-            if (velocity.magnitude > 0)
-                UpdateModelRotation(Vector2.SignedAngle(velocity, Vector2.down));
+                if (velocity.magnitude > 0)
+                    UpdateModelRotation(Vector2.SignedAngle(velocity, Vector2.down));
 
-            ActorAnimator.SetBool(Attack, Input.GetAxisRaw("Fire1") > 0f);
+                ActorAnimator.SetBool(Attack, Input.GetAxisRaw("Fire1") > 0f);
 
-            UpdateVelocity(velocity);
+                UpdateVelocity(velocity);
+            }
+            //Loads Pause menu (later there'll be a need to lock all input when game is paused
+            if (Input.GetButtonDown("Cancel"))
+            {
+                if (!SceneManager.GetSceneByBuildIndex(5).isLoaded)
+                {
+                    Time.timeScale = 0;
+                    this.enabled = false;
+                    AudioListener.pause = true;
+                    SceneManager.LoadScene(5, LoadSceneMode.Additive);
+                }
+            }
         }
     }
 
@@ -120,5 +136,5 @@ public class PlayerController : ActorController
         // Multiplying input vector by the selected movement speed
         return inputVector * (sprinting.ToBoolean() ? RunningSpeed : BaseSpeed);
     }
-   
+
 }
