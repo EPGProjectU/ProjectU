@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// ActorController dedicated to the player with implemented input handling
@@ -17,8 +18,27 @@ public class PlayerController : ActorController
     // Update is called once per frame
     void Update()
     {
-        // Updating player speed base on the input
-        UpdateVelocity(GetVelocityFromInput());
+
+        //This will work only, if game is not frozen
+        if (Time.timeScale != 0)
+        {
+            // Updating player speed base on the input
+            UpdateVelocity(GetVelocityFromInput());
+
+            //Loads Pause menu (later there'll be a need to lock all input when game is paused
+            if (Input.GetButtonDown("Cancel"))
+            {
+                if (!SceneManager.GetSceneByBuildIndex(5).isLoaded)
+                {
+                    Time.timeScale = 0;
+                    this.enabled = false;
+                    AudioListener.pause = true;
+                    SceneManager.LoadScene(5, LoadSceneMode.Additive);
+                }
+            }
+        }
+
+
     }
 
     /// <summary>
