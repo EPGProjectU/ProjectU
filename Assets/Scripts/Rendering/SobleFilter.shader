@@ -3,7 +3,6 @@ Shader "Unlit/SobelFilter"
     Properties
     {
         [HideInInspector]_MainTex ("Base (RGB)", 2D) = "white" {}
-        [HideInInspector]_OrthographicSize ("OrthographicSize", float) = 1
         _OutlineColor ("Outline Color", COLOR) = (0, 0, 0, 1)
         _PixelDensity ("Pixel Density", float) = 10
         _Power ("Power", float) = 50
