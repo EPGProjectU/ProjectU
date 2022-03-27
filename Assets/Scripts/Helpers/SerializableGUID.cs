@@ -1,8 +1,10 @@
 using System;
 using UnityEngine;
 using Random = System.Random;
-// ReSharper disable NonReadonlyMemberInGetHashCode
 
+/// <summary>
+/// Custom serializable GUID
+/// </summary>
 [Serializable]
 public struct SerializableGUID : IComparable, IComparable<SerializableGUID>, IEquatable<SerializableGUID>
 {

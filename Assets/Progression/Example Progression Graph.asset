@@ -42,8 +42,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: SQ/BR2/D
+  flags:
+    active: 0
+    collected: 0
+  tagName: SQ/BR2/D
 --- !u!114 &-8045693421809948763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,7 +59,7 @@ MonoBehaviour:
   m_Name: Tag
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -696, y: -88}
+  position: {x: -680, y: -88}
   ports:
     keys:
     - input
@@ -86,8 +88,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: MAIN/P0/EntryPoint1
+  flags:
+    active: 0
+    collected: 0
+  tagName: MAIN/P0/EntryPoint1
 --- !u!114 &-7842843429907566467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,8 +192,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: MAIN/P3/OR
+  flags:
+    active: 0
+    collected: 0
+  tagName: MAIN/P3/OR
 --- !u!114 &-7647528920774060610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,8 +286,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: EX/LOCK_OUT
+  flags:
+    active: 0
+    collected: 0
+  tagName: EX/LOCK_OUT
 --- !u!114 &-6782670761626670594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,8 +389,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: MAIN/P2/A
+  flags:
+    active: 0
+    collected: 0
+  tagName: MAIN/P2/A
 --- !u!114 &-4710926220035158951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,8 +435,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: SQ/1
+  flags:
+    active: 0
+    collected: 0
+  tagName: SQ/1
 --- !u!114 &-4031510013751740988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,8 +481,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: SQ/BR2/B
+  flags:
+    active: 0
+    collected: 0
+  tagName: SQ/BR2/B
 --- !u!114 &-3275965754634845792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,8 +527,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: MAIN/P4/BR1/B
+  flags:
+    active: 0
+    collected: 0
+  tagName: MAIN/P4/BR1/B
 --- !u!114 &-3230342944337600944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,8 +573,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: EX/LOCK/1
+  flags:
+    active: 0
+    collected: 0
+  tagName: EX/LOCK/1
 --- !u!114 &-2744214207193380707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -601,8 +619,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: MAIN/P4/BR1/C
+  flags:
+    active: 0
+    collected: 0
+  tagName: MAIN/P4/BR1/C
 --- !u!114 &-1987163435566084664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -640,9 +660,6 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: input
-        node: {fileID: 2996666164581562401}
-        reroutePoints: []
-      - fieldName: input
         node: {fileID: -4031510013751740988}
         reroutePoints: []
       - fieldName: input
@@ -650,6 +667,9 @@ MonoBehaviour:
         reroutePoints: []
       - fieldName: input
         node: {fileID: -8904673417729661516}
+        reroutePoints: []
+      - fieldName: input
+        node: {fileID: 2996666164581562401}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -700,8 +720,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: SQ/BR2/C
+  flags:
+    active: 0
+    collected: 0
+  tagName: SQ/BR2/C
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -742,6 +764,11 @@ MonoBehaviour:
   - {fileID: -6782670761626670594}
   - {fileID: 8212303023784682889}
   - {fileID: -7647528920774060610}
+  guid:
+    m_Value0: 876361389
+    m_Value1: 275229261
+    m_Value2: 686699651
+    m_Value3: 220719980
 --- !u!114 &954080784783757294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,8 +817,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: MAIN/P2/B
+  flags:
+    active: 0
+    collected: 0
+  tagName: MAIN/P2/B
 --- !u!114 &1568424514948958628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -834,8 +863,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: SQ/2
+  flags:
+    active: 0
+    collected: 0
+  tagName: SQ/2
 --- !u!114 &2996666164581562401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -878,8 +909,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: SQ/BR2/A
+  flags:
+    active: 0
+    collected: 0
+  tagName: SQ/BR2/A
 --- !u!114 &4147835467978345106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -922,8 +955,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: EX/LOCK/2
+  flags:
+    active: 0
+    collected: 0
+  tagName: EX/LOCK/2
 --- !u!114 &4514963192819249816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -975,8 +1010,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: MAIN/P1
+  flags:
+    active: 0
+    collected: 0
+  tagName: MAIN/P1
 --- !u!114 &4615220013187734995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1019,8 +1056,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: EX/UNLOCK/1
+  flags:
+    active: 0
+    collected: 0
+  tagName: EX/UNLOCK/1
 --- !u!114 &6379366467241791755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1063,8 +1102,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: MAIN/P4/BR1/A
+  flags:
+    active: 0
+    collected: 0
+  tagName: MAIN/P4/BR1/A
 --- !u!114 &7494430596948892267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1110,8 +1151,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: MAIN/P3/AND
+  flags:
+    active: 0
+    collected: 0
+  tagName: MAIN/P3/AND
 --- !u!114 &7503016075601230079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1177,6 +1220,8 @@ MonoBehaviour:
   inLock: 0
   inUnlock: 0
   output: 0
+  lockQuantifier: 0
+  unlockQuantifier: 1
 --- !u!114 &7523112777599465284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1190,7 +1235,7 @@ MonoBehaviour:
   m_Name: Tag
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -696, y: 24}
+  position: {x: -680, y: 24}
   ports:
     keys:
     - input
@@ -1219,8 +1264,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: MAIN/P0/EntryPoint2
+  flags:
+    active: 0
+    collected: 0
+  tagName: MAIN/P0/EntryPoint2
 --- !u!114 &8010331218013806407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1263,8 +1310,10 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
-  collected: 0
-  _name: EX/UNLOCK/2
+  flags:
+    active: 0
+    collected: 0
+  tagName: EX/UNLOCK/2
 --- !u!114 &8212303023784682889
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,8 @@
 ﻿using XNode;
 
+/// <summary>
+/// Base for logic nodes
+/// </summary>
 public abstract class BoolNode : Node
 {
     [Input]
@@ -16,5 +19,9 @@ public abstract class BoolNode : Node
         return null;
     }
 
+    /// <summary>
+    /// Function to be overloaded in subsequent inherent nodes
+    /// </summary>
+    /// <returns>Output value of logic arithmetics</returns>
     public abstract bool GetValue();
 }
