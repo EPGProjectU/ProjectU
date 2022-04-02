@@ -15,11 +15,16 @@ public class PlayerFreezeCheck : MonoBehaviour
     void Update()
     {
         //Checks, if PauseMenu is open, and unlocks Player if it's not
-        if (!SceneManager.GetSceneByBuildIndex(5).isLoaded && this.GetComponent<PlayerController>().enabled == false)
+        if (this.GetComponent<PlayerController>().enabled == false && Time.timeScale == 0f)
         {
-            this.GetComponent<PlayerController>().enabled = true;
-            Time.timeScale = 1;
-            AudioListener.pause = false;
+
+            if (!SceneManager.GetSceneByBuildIndex(5).isLoaded)
+            {
+                this.GetComponent<PlayerController>().enabled = true;
+
+
+                AudioListener.pause = false;
+            }
         }
     }
 }

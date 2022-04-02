@@ -25,14 +25,16 @@ public class SceneController : MonoBehaviour
             SceneManager.LoadScene(sceneName);
         }
 
-        if (SceneManager.GetSceneByBuildIndex(0).isLoaded)
+        if (SceneManager.GetSceneByBuildIndex(5).isLoaded)
         {
             Time.timeScale = 0f;
+            Debug.Log("timescale = 0");
             AudioListener.pause = true;
         }
         else
         {
             Time.timeScale = 1;
+            Debug.Log("timescale = 1");
             AudioListener.pause = false;
         }
     }

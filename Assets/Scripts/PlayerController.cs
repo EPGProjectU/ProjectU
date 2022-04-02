@@ -52,7 +52,7 @@ public class PlayerController : ActorController
     void Update()
     {
         //This will work only, if game is not frozen
-        if (Time.timeScale != 0)
+        if (Time.timeScale != 0f)
         {
             // Updating player speed base on the input
             if (!IsDead)
@@ -71,10 +71,15 @@ public class PlayerController : ActorController
             {
                 if (!SceneManager.GetSceneByBuildIndex(5).isLoaded)
                 {
-                    Time.timeScale = 0;
+
+
+
                     this.enabled = false;
                     AudioListener.pause = true;
-                    SceneManager.LoadScene(5, LoadSceneMode.Additive);
+                    SceneManager.LoadSceneAsync(5, LoadSceneMode.Additive);
+                    Debug.Log("Scena za³adowana");
+                    Time.timeScale = 0f;
+                    Debug.Log("timescale = 0");
                 }
             }
         }
