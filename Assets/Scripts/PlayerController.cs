@@ -11,19 +11,25 @@ using UnityEngine.InputSystem;
 public class PlayerController : ActorController
 {
     private PlayerInput _playerInput;
-    
-    private bool isDead;
+
+    private bool _isDead;
+
     public bool IsDead
     {
-        get => isDead;
+        get => _isDead;
         set
         {
-            isDead = value;
-            
-            if (isDead)
+            _isDead = value;
+
+            if (_isDead)
                 BreakInputBindings();
         }
     }
+
+    /// <summary>
+    /// Used to determinate if look vector should be equal MovementVector
+    /// </summary>
+    private bool _useMovementVectorForLook = true;
 
     /// <summary>
     /// Stores bindings for performed inputs
@@ -50,9 +56,9 @@ public class PlayerController : ActorController
 
     private void InputSetup()
     {
-        if (isDead)
+        if (_isDead)
             return;
-        
+
         // Cache PlayerInput
         _playerInput = GetComponent<PlayerInput>();
         BindInputs();
@@ -67,7 +73,7 @@ public class PlayerController : ActorController
         {
             MovementVector = context.ReadValue<Vector2>();
 
-            if (useMovementVectorForLook)
+            if (_useMovementVectorForLook)
                 LookVector = MovementVector;
         };
 
@@ -79,13 +85,13 @@ public class PlayerController : ActorController
 
         _performedInputBindings["Look"] = context =>
         {
-            useMovementVectorForLook = false;
+            _useMovementVectorForLook = false;
             LookVector = context.ReadValue<Vector2>();
         };
 
         _canceledInputBindings["Look"] = context =>
         {
-            useMovementVectorForLook = true;
+            _useMovementVectorForLook = true;
 
             if (MovementVector.magnitude > 0f)
                 LookVector = MovementVector;
@@ -93,7 +99,7 @@ public class PlayerController : ActorController
 
         _performedInputBindings["Cursor"] = context =>
         {
-            if (useMovementVectorForLook)
+            if (_useMovementVectorForLook)
                 return;
 
             SetLookVectorFromCursor(context.ReadValue<Vector2>());
@@ -105,9 +111,9 @@ public class PlayerController : ActorController
 
         _performedInputBindings["ToggleCursor"] = context =>
         {
-            useMovementVectorForLook = !useMovementVectorForLook;
+            _useMovementVectorForLook = !_useMovementVectorForLook;
 
-            if (useMovementVectorForLook)
+            if (_useMovementVectorForLook)
                 LookVector = MovementVector;
             else
                 SetLookVectorFromCursor(Mouse.current.position.ReadValue());

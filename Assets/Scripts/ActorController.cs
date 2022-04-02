@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 
@@ -10,9 +9,11 @@ public abstract partial class ActorController : MonoBehaviour
 {
     private Animator _actorAnimator;
 
-    public bool running;
+    protected bool running;
 
     public ActorMotionData motionData;
+
+    protected float CurrentMaxSpeed => running ? motionData.runningSpeed : motionData.baseSpeed;
 
     /// <summary>
     /// Vector representing actor's movement
@@ -23,11 +24,6 @@ public abstract partial class ActorController : MonoBehaviour
     /// Vector representing actor's rotation
     /// </summary>
     public Vector2 LookVector { get; protected set; }
-
-    /// <summary>
-    /// Used to determinate if look vector should be equal MovementVector
-    /// </summary>
-    protected bool useMovementVectorForLook = true;
 
     /// <summary>
     /// Retrieves and sets rotation on game object with animator
@@ -64,23 +60,28 @@ public abstract partial class ActorController : MonoBehaviour
     {
         // Caching phase
         _rigidBody = GetComponent<Rigidbody2D>();
-        
+
         OnValidate();
     }
 
     private void FixedUpdate()
     {
-        var rotationDelta = Mathf.DeltaAngle(CharacterRotation, Vector2.SignedAngle(LookVector, Vector2.up));
+        if (LookVector.magnitude > 0.1)
+        {
+            var rotationDelta = Mathf.DeltaAngle(CharacterRotation, Vector2.SignedAngle(LookVector, Vector2.up));
 
-        var deltaRotationSpeed = motionData.rotationSpeed * Time.fixedDeltaTime;
+            var deltaRotationSpeed = motionData.rotationSpeed * Time.fixedDeltaTime;
+
+            CharacterRotation += Mathf.Clamp(rotationDelta, -deltaRotationSpeed, deltaRotationSpeed) * Mathf.Sqrt(LookVector.magnitude);
+
+        }
 
         var playerMoveAngle = Vector2.SignedAngle(MovementVector, Vector2.down);
 
         _actorAnimator.SetFloat(SpeedAnimatorProperty, _rigidBody.velocity.magnitude);
 
-        CharacterRotation += Mathf.Clamp(rotationDelta, -deltaRotationSpeed, deltaRotationSpeed) * Mathf.Sqrt(LookVector.magnitude);
         // Rigid body velocity does not use delta time
-        _rigidBody.velocity = MovementVector * (running ? motionData.runningSpeed : motionData.baseSpeed) * motionData.EvaluateMotionForAngle(Mathf.DeltaAngle(playerMoveAngle, CharacterRotation));
+        _rigidBody.velocity = MovementVector * CurrentMaxSpeed * motionData.EvaluateMotionForAngle(Mathf.DeltaAngle(playerMoveAngle, CharacterRotation));
     }
 
     protected void Attack()
