@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -5,57 +6,85 @@ using UnityEngine;
 /// Abstract class responsible for controlling actions of an actor
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
-public abstract class ActorController : MonoBehaviour
+public abstract partial class ActorController : MonoBehaviour
 {
-    public Animator ActorAnimator;
+    private Animator _actorAnimator;
 
-    public float speed;
+    public bool running;
 
-    private Vector2 oldPosition;
-
-    /// <summary>
-    /// Base movement speed in units per second
-    /// </summary>
-    public float BaseSpeed = 1f;
+    public ActorMotionData motionData;
 
     /// <summary>
-    /// Alternative movement speed in units per second
+    /// Vector representing actor's movement
     /// </summary>
-    public float RunningSpeed = 20f;
+    public Vector2 MovementVector { get; protected set; }
+
+    /// <summary>
+    /// Vector representing actor's rotation
+    /// </summary>
+    public Vector2 LookVector { get; protected set; }
+
+    /// <summary>
+    /// Used to determinate if look vector should be equal MovementVector
+    /// </summary>
+    protected bool useMovementVectorForLook = true;
+
+    /// <summary>
+    /// Retrieves and sets rotation on game object with animator
+    /// </summary>
+    public float CharacterRotation
+    {
+        get => _actorAnimator.transform.localEulerAngles.y;
+        protected set => _actorAnimator.transform.localRotation = Quaternion.Euler(0, value, 0);
+    }
+
+    private void OnValidate()
+    {
+        _actorAnimator = GetComponentInChildren<Animator>();
+
+        // If animator was not found a dummy animator is set to avoid exceptions
+        if (!_actorAnimator)
+            _actorAnimator = gameObject.AddComponent<Animator>();
+    }
 
     /// <summary>
     /// Cached reference to rigidBody to which all movement is applied
     /// </summary>
     private Rigidbody2D _rigidBody;
 
-    private static readonly int SpeedProperty = Animator.StringToHash("Speed");
+    // Animator properties
+    private static readonly int SpeedAnimatorProperty = Animator.StringToHash("Speed");
+    private static readonly int AttackAnimatorProperty = Animator.StringToHash("Attack");
+
 
     /// <summary>
-    /// Setup 
+    /// Caches references
     /// </summary>
     public void Setup()
     {
         // Caching phase
         _rigidBody = GetComponent<Rigidbody2D>();
-        oldPosition = transform.position;
-    }
-
-    /// <summary>
-    /// Updates velocity of the rigidBody allowing actor to move
-    /// </summary>
-    /// <param name="velocity">velocity with already applied direction and speed</param>
-    protected void UpdateVelocity(Vector2 velocity)
-    {
-        _rigidBody.velocity = velocity;
+        
+        OnValidate();
     }
 
     private void FixedUpdate()
     {
-        var position = (Vector2)transform.position;
-        var realVelocity = (oldPosition - position) / Time.fixedDeltaTime;
+        var rotationDelta = Mathf.DeltaAngle(CharacterRotation, Vector2.SignedAngle(LookVector, Vector2.up));
 
-        speed = realVelocity.magnitude;
-        ActorAnimator.SetFloat(SpeedProperty, speed);
-        oldPosition = position;
+        var deltaRotationSpeed = motionData.rotationSpeed * Time.fixedDeltaTime;
+
+        var playerMoveAngle = Vector2.SignedAngle(MovementVector, Vector2.down);
+
+        _actorAnimator.SetFloat(SpeedAnimatorProperty, _rigidBody.velocity.magnitude);
+
+        CharacterRotation += Mathf.Clamp(rotationDelta, -deltaRotationSpeed, deltaRotationSpeed) * Mathf.Sqrt(LookVector.magnitude);
+        // Rigid body velocity does not use delta time
+        _rigidBody.velocity = MovementVector * (running ? motionData.runningSpeed : motionData.baseSpeed) * motionData.EvaluateMotionForAngle(Mathf.DeltaAngle(playerMoveAngle, CharacterRotation));
+    }
+
+    protected void Attack()
+    {
+        _actorAnimator.SetBool(AttackAnimatorProperty, true);
     }
 }

@@ -1,0 +1,16 @@
+{
+    "name": "CommandTerminal",
+    "rootNamespace": "",
+    "references": [
+        "GUID:a9658949e17e17e449796bb014a85711"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

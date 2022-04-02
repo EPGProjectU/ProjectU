@@ -75,7 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847,
+    type: 3}
   m_Color: {r: 0.6037736, g: 0.18511927, b: 0.20499223, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -137,8 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActorAnimator: {fileID: 0}
   speed: 0
-  BaseSpeed: 3
-  RunningSpeed: 20
+  running: 0
+  motionData: {fileID: 11400000, guid: 55fad9c184b281046a50d92558e8e3d1, type: 2}
   health: 1
   currentTarget: {fileID: 0}
   damage: 1

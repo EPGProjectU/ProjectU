@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -21,7 +19,7 @@ public class EnemyController : ActorController
 
     private void SetupAgent() {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        agent.speed = BaseSpeed;
+        agent.speed = motionData.baseSpeed;
         agent.updateRotation = false; //rotation to face towards target will be handled by animation system
         agent.updateUpAxis = false;
     }
