@@ -1,34 +1,42 @@
 using UnityEngine;
 
 
-
 public class EnemyController : ActorController
-{    
-    public Transform currentTarget;  //change to private and calculate based on AI module
+{
+    public Transform currentTarget; //change to private and calculate based on AI module
     private UnityEngine.AI.NavMeshAgent agent;
 
-    void Start()
+    private void Start()
     {
         base.Setup();
         SetupAgent();
     }
 
-    void Update() {
+    private void Update()
+    {
         UpdateAgent();
     }
 
-    private void SetupAgent() {
+    private void SetupAgent()
+    {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.speed = motionData.baseSpeed;
         agent.updateRotation = false; //rotation to face towards target will be handled by animation system
         agent.updateUpAxis = false;
+        agent.updatePosition = false;
     }
 
-    private void UpdateAgent() {
+    private void UpdateAgent()
+    {
         // Update agent destination if the target moves one unit
-        if (Vector3.Distance(agent.destination, currentTarget.position) > 1.0f) {
+        if (Vector3.Distance(agent.destination, currentTarget.position) > 1.0f)
+        {
             agent.destination = currentTarget.position;
         }
+
+        MovementVector = agent.velocity / CurrentMaxSpeed;
+        LookVector = MovementVector;
+        agent.nextPosition = transform.position;
     }
 
     //should be removed when enemy will have weapon
