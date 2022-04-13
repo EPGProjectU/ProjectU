@@ -1,5 +1,4 @@
 using System;
-using DebugU;
 using UnityEngine;
 
 /// <summary>
@@ -34,8 +33,10 @@ public class ExampleProgressionBehaviour : MonoBehaviour
         // Checking if tagHook is linked in case it was not setup
         if (tagHook.IsLinked())
         {
+            DebugU.PushSettings(Color.magenta, -1f);
             // Name could be also be accessed through tagHook.TagName, in which case it is accessible even without being linked to a tag
-            DebugTooltip.Draw(transform.position, tagHook.Tag.Name, Color.magenta, 6);
+            DebugU.Tooltip(transform.position + Vector3.back, tagHook.Tag.Name, 6);
+            DebugU.PopSettings();
 
             // Using DummyTagEvent to offload portion of initialization to callback created for getting updates from tagHook
             ChangeColorOnTagUpdate(tagHook.GetDummyTagEvent());
