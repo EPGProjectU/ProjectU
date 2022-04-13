@@ -67,21 +67,7 @@ public class PlayerController : ActorController
                 UpdateVelocity(velocity);
             }
             //Loads Pause menu (later there'll be a need to lock all input when game is paused
-            if (Input.GetButtonDown("Cancel"))
-            {
-                if (!SceneManager.GetSceneByBuildIndex(5).isLoaded)
-                {
 
-
-
-                    this.enabled = false;
-                    AudioListener.pause = true;
-                    SceneManager.LoadSceneAsync(5, LoadSceneMode.Additive);
-                    Debug.Log("Scena za³adowana");
-                    Time.timeScale = 0f;
-                    Debug.Log("timescale = 0");
-                }
-            }
         }
     }
 

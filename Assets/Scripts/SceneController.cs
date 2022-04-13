@@ -6,26 +6,27 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public void ChangeScene(int sceneName)
+    public void ChangeScene(string sceneName)
     {
-        if (sceneName == 1)
+        if (sceneName.Equals("MainMenu"))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("MainMenu");
 
         }
-        else if (sceneName == 0)
+        else if (sceneName.Equals("SampleScene"))
         {
-            if (SceneManager.GetSceneByBuildIndex(5).isLoaded)
-                SceneManager.UnloadSceneAsync(5);
-            if (!SceneManager.GetSceneByBuildIndex(0).isLoaded)
-                SceneManager.LoadScene(0);
+            if (!SceneManager.GetSceneByName("PauseMenu").isLoaded)
+                SceneManager.LoadScene("SampleScene");
+            if (SceneManager.GetSceneByName("PauseMenu").isLoaded)
+                SceneManager.UnloadSceneAsync("PauseMenu");
+
         }
         else
         {
             SceneManager.LoadScene(sceneName);
         }
 
-        if (SceneManager.GetSceneByBuildIndex(5).isLoaded)
+        if (SceneManager.GetSceneByName("PauseMenu").isLoaded)
         {
             Time.timeScale = 0f;
             Debug.Log("timescale = 0");
