@@ -17,5 +17,9 @@ public class Miscellaineous : Item
 
     public int ItemType;
 
-
+    public override string ToString()
+    {
+        return base.ToString() + "\n"
+            + "ItemType: " + (ItemTypes)ItemType;
+    }
 }

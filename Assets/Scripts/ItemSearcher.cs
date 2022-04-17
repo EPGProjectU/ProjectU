@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class ItemSearcher : MonoBehaviour
 {
-    public List<GameObject> items = new List<GameObject>();
-    
-    // Start is called before the first frame update
-    void Start()
+
+
+    public static ItemInfo findClosestItem()
     {
-        
+        Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+        GameObject closestObject = null;
+        float closestDistance = -1f ;
+        foreach(GameObject item in GameObject.FindGameObjectsWithTag("Item"))
+        {
+            float dist = Vector3.Distance(item.transform.position, playerPosition);
+            if(closestDistance == -1f || closestDistance > dist)
+            {
+                closestDistance = dist;
+                closestObject = item;
+            }
+        }
+        return new ItemInfo(closestDistance, closestObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

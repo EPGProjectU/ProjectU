@@ -10,4 +10,10 @@ public class Weapon : Item
     public int Damage;
     public float Range;
 
+    public override string ToString()
+    {
+        return base.ToString() + "\n"
+            + "Damage: " + Damage + "\n"
+            + "Range: " + Range;
+    }
 }

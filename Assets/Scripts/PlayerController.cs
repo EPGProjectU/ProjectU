@@ -13,6 +13,8 @@ public class PlayerController : ActorController
     private PlayerInput _playerInput;
 
     private bool _isDead;
+    //testing
+    public float pickupRange;
 
     public bool IsDead
     {
@@ -108,6 +110,18 @@ public class PlayerController : ActorController
         _performedInputBindings["Run"] = context => { running = !running; };
 
         _performedInputBindings["Attack"] = context => { Attack(); };
+        //testing
+        _performedInputBindings["Interact"] = context => 
+        {
+            ItemInfo itemInfo = ItemSearcher.findClosestItem();
+            if (itemInfo.distance != -1 && itemInfo.distance <= pickupRange) 
+            {
+                Pickup(itemInfo.item);
+                Destroy(itemInfo.item);
+            }
+               
+
+        };
 
         _performedInputBindings["ToggleCursor"] = context =>
         {
@@ -157,6 +171,12 @@ public class PlayerController : ActorController
         Vector2 playerScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
 
         LookVector = (cursorPosition - playerScreenPosition).normalized;
+    }
+
+    private void Pickup(GameObject item)
+    {
+        this.GetComponent<Equipment>().items.Add(item.GetComponent<ItemDisplay>().item);
+        this.GetComponent<Equipment>().ShowEquipment();
     }
 
     /// <summary>

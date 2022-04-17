@@ -8,4 +8,9 @@ public class Consumable : Item
     // Start is called before the first frame update
     public int Value;
 
+    public override string ToString()
+    {
+        return base.ToString() + "\n"
+            + "Value: " + Value;
+    }
 }

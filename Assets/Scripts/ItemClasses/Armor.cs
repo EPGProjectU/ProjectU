@@ -9,4 +9,10 @@ public class Armor : Item
     public int ArmorValue;
     public float Durability;
 
+    public override string ToString()
+    {
+        return base.ToString() + "\n"
+            + "ArmorValue: " + ArmorValue + "\n"
+            + "Durability: " + Durability;
+    }
 }

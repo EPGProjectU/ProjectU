@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7cc0128bfad48547bdfef32d1a1af18, type: 3}
   m_Name: TestArmor
   m_EditorClassIdentifier: 
-  Name: 
-  ArmorValue: 0
-  Durability: 0
+  Name: Armour
+  sprite: {fileID: 0}
+  ArmorValue: 15
+  Durability: 60

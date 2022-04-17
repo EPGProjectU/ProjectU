@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a4d9a1dc73c194c952defada665106, type: 3}
   m_Name: TestItem
   m_EditorClassIdentifier: 
-  Name: 
-  ItemType: 0
+  Name: Test
+  sprite: {fileID: 0}
+  ItemType: 2

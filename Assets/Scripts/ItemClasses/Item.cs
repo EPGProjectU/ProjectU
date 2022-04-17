@@ -6,6 +6,14 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     public string Name;
+    public Sprite sprite;
+
+    public override string ToString()
+    {
+        return "Nazwa: " + Name;
+    }
+
+
 
 
 

@@ -14,7 +14,7 @@ public class Equipment : MonoBehaviour
         string testtext = "Ekwipunek: ";
         foreach (Item item in items)
         {
-            testtext += '\n' + (item.Name);
+            testtext +="\n" +  item;
         }
         text.text = testtext;
     }
