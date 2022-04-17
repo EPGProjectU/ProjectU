@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerItemController : MonoBehaviour
 {
-    public EquipmentController equipmentController;
+    /*public EquipmentController equipmentController;
     private int itemsInTrigger = 0;
     private List<Item> items = new List<Item>();
 
@@ -58,4 +58,5 @@ public class PlayerItemController : MonoBehaviour
             yield return new WaitForSeconds(0.02f);
         }
     }
+    */
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EquipmentController : MonoBehaviour
 {
+    /*
     public Equipment equipment;
 
 
@@ -36,5 +37,6 @@ public class EquipmentController : MonoBehaviour
         equipment.items.Remove(item);
         equipment.ShowEquipment();
     }
+    */
 
 }
