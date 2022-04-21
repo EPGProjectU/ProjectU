@@ -54,16 +54,15 @@ public partial class ProgressionManager
     private static void CreateDataFile()
     {
         var fullDataPath = $"Assets/Resources/{ResourceDataPath}.asset";
-
-        if (AssetDatabase.LoadAssetAtPath<ProgressionManagerData>(fullDataPath))
+        Data = AssetDatabase.LoadAssetAtPath<ProgressionManagerData>(fullDataPath);
+        
+        if (Data)
             return;
 
         Debug.Log("ProgressionManagerData does not exist. Creating a new instance.");
         Directory.CreateDirectory(Path.GetDirectoryName(fullDataPath)!);
-        var data = ScriptableObject.CreateInstance<ProgressionManagerData>();
-        AssetDatabase.CreateAsset(data, fullDataPath);
-
-        LoadData();
+        Data = ScriptableObject.CreateInstance<ProgressionManagerData>();
+        AssetDatabase.CreateAsset(Data, fullDataPath);
     }
 
     /// <summary>
