@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 using ProjectU.Core;
 
 // Internal functionality of the ProgressionManager
-public partial class ProgressionManager
+public static partial class ProgressionManager
 {
     /// <summary>
     /// Location of the <see cref="ProgressionManagerData"/> file inside of Resource folder

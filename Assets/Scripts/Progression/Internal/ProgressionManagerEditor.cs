@@ -8,7 +8,7 @@ using UnityEngine;
 using XNode;
 
 // Editor only functionality of the ProgressionManager
-public partial class ProgressionManager
+public static partial class ProgressionManager
 {
     [DidReloadScripts]
     private static void OnScriptReload() => LoadData();
