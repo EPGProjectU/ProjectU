@@ -38,6 +38,11 @@ public partial class ProgressionManager
     [InitializeOnEnterPlayMode]
     private static void Reset()
     {
+        foreach (var hook in HookCallList.SelectMany(kv => kv.Value))
+        {
+            hook.Tag = null;
+        }
+        
         HookRegistry.Clear();
 
         HookCallList.Clear();

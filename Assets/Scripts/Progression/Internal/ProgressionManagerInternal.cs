@@ -98,6 +98,9 @@ public partial class ProgressionManager
             return;
 
         HookRegistry.Add(hook);
+        
+        if (_initialized)
+            LinkHook(hook);
     }
 
     /// <summary>
