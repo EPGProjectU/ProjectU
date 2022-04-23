@@ -5,7 +5,7 @@ using UnityEngine;
 using XNode;
 
 
-namespace BehaviourTree {
+
 
     [CreateAssetMenu(menuName = "ProjectU/AI/BehaviourTree", fileName = "BehaviourTree")]
     public class BehaviourTree : NodeGraph {
@@ -31,4 +31,4 @@ namespace BehaviourTree {
                 _root.Evaluate(controller);
         }
     }
-}
+

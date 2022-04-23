@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BehaviourTree;
 
 public class TaskPatrol : BehaviourNode
 {
+    public List<Transform> waypointList;
+    
 
     public TaskPatrol() { }
 

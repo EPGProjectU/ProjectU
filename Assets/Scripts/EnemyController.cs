@@ -1,20 +1,31 @@
+using System.Collections.Generic;
 using UnityEngine;
-
 
 public class EnemyController : ActorController
 {
-    public Transform currentTarget; //change to private and calculate based on AI module
-    private UnityEngine.AI.NavMeshAgent agent;
+
+    [HideInInspector] public UnityEngine.AI.NavMeshAgent agent;
+    [HideInInspector] public int nextWayPoint;
+    public BehaviourTree behaviourTree;
+
+
+    public Transform target;
+    public float sightRadius;
+    public List<Transform> wayPointList;
+
+    
 
     private void Start()
     {
         base.Setup();
         SetupAgent();
+        behaviourTree.SetupTree();
     }
 
     private void Update()
     {
-        UpdateAgent();
+        //UpdateAgent();
+        behaviourTree.Evaluate(this);
     }
 
     private void SetupAgent()
@@ -28,7 +39,7 @@ public class EnemyController : ActorController
 
     private void UpdateAgent()
     {
-        // Update agent destination if the target moves one unit
+        /*// Update agent destination if the target moves one unit
         if (Vector3.Distance(agent.destination, currentTarget.position) > 1.0f)
         {
             agent.destination = currentTarget.position;
@@ -36,7 +47,7 @@ public class EnemyController : ActorController
 
         MovementVector = agent.velocity / CurrentMaxSpeed;
         LookVector = MovementVector;
-        agent.nextPosition = transform.position;
+        agent.nextPosition = transform.position;*/
     }
 
     //should be removed when enemy will have weapon

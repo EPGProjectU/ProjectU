@@ -4,7 +4,7 @@ using UnityEngine;
 using XNode;
 
 
-namespace BehaviourTree {
+
     public class Selector : BehaviourNode {
         public Selector() : base() { }
 
@@ -60,4 +60,3 @@ namespace BehaviourTree {
             return state;
         }
     }
-}

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using XNode;
 
-namespace BehaviourTree {
     public class Sequence : BehaviourNode {
         public Sequence() : base() { }
 
@@ -41,5 +40,5 @@ namespace BehaviourTree {
         }
 
     }
-}
+
 
