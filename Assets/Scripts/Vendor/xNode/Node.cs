@@ -279,8 +279,6 @@ namespace XNode {
 
         //public abstract NodeState Evaluate(EnemyController controller);
 
-        public virtual NodeState Evaluate(EnemyController controller) => NodeState.FAILURE;
-
         #region Attributes
         /// <summary> Mark a serializable field as an input port. You can access this through <see cref="GetInputPort(string)"/> </summary>
         [AttributeUsage(AttributeTargets.Field)]

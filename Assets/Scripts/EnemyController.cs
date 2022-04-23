@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemyController : ActorController
 {
 
@@ -12,8 +13,6 @@ public class EnemyController : ActorController
     public Transform target;
     public float sightRadius;
     public List<Transform> wayPointList;
-
-    
 
     private void Start()
     {
@@ -35,19 +34,6 @@ public class EnemyController : ActorController
         agent.updateRotation = false; //rotation to face towards target will be handled by animation system
         agent.updateUpAxis = false;
         agent.updatePosition = false;
-    }
-
-    private void UpdateAgent()
-    {
-        /*// Update agent destination if the target moves one unit
-        if (Vector3.Distance(agent.destination, currentTarget.position) > 1.0f)
-        {
-            agent.destination = currentTarget.position;
-        }
-
-        MovementVector = agent.velocity / CurrentMaxSpeed;
-        LookVector = MovementVector;
-        agent.nextPosition = transform.position;*/
     }
 
     //should be removed when enemy will have weapon

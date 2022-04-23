@@ -5,8 +5,6 @@ using UnityEngine;
 using XNode;
 
 
-
-
     [CreateAssetMenu(menuName = "ProjectU/AI/BehaviourTree", fileName = "BehaviourTree")]
     public class BehaviourTree : NodeGraph {
 
@@ -14,7 +12,7 @@ using XNode;
 
         public void SetupTree() {
 
-            foreach(BehaviourNode node in nodes) {
+            foreach (BehaviourNode node in nodes) {
                 if (node.IsStartingNode())
                     _root = node;
             }
