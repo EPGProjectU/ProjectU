@@ -113,6 +113,15 @@ public class PlayerController : ActorController
                 SetLookVectorFromCursor(Mouse.current.position.ReadValue());
         };
 
+        _performedInputBindings["Save"] = context => {
+            Debug.Log("Save");
+            SaveEventSystem.Instance.SaveDataXML();
+        };
+
+        _performedInputBindings["Load"] = context => {
+            Debug.Log("Load");
+            SaveEventSystem.Instance.LoadDataXML();
+        };
 
         foreach (var inputBinding in _performedInputBindings)
         {

@@ -27,6 +27,9 @@ public class PlayerHealthSystem : HealthSystem
             weapon.GetComponent<WeaponDamager>().damage.damage = 1;
         }
         weapon.GetComponent<WeaponDamager>().Owner = Ally.Player;
+
+        SaveEventSystem.Instance.OnSaveData += SaveGame;
+        SaveEventSystem.Instance.OnLoadData += LoadGame;
     }
 
     // Update is called once per frame
@@ -55,10 +58,30 @@ public class PlayerHealthSystem : HealthSystem
         Debug.Log("Player is Dead");
     }
 
+    void SaveGame(GameData data)
+    {
+        data.playerPosition = transform.position;
+        data.playerHealth = health;
+    }
+
+    void LoadGame(GameData data)
+    {
+        transform.position = data.playerPosition;
+        if (data.playerHealth > 0) health = data.playerHealth;
+        else GetComponent<PlayerController>().IsDead = true;
+
+    }
+
     IEnumerator InvincibleTimer()
     {
         yield return new WaitForSeconds(invincibleTime);
         isInvincible = false;
+    }
+
+    public void OnDestroy()
+    {
+        SaveEventSystem.Instance.OnLoadData -= LoadGame;
+        SaveEventSystem.Instance.OnSaveData -= SaveGame;
     }
 
 }

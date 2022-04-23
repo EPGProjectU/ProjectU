@@ -435,6 +435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  allies: 
 --- !u!4 &178723349
 Transform:
   m_ObjectHideFlags: 0
@@ -1670,9 +1671,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  allies: 
   weapon: {fileID: 0}
-  damage:
-    damage: 1
   invincibleTime: 0.5
 --- !u!1 &977844448
 GameObject:
@@ -8292,6 +8292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  allies: 
 --- !u!1 &1759989722 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4118654352885185399, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
@@ -8311,6 +8312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage:
     damage: 1
+  Owner: 0
 --- !u!1 &3110826296210869848
 GameObject:
   m_ObjectHideFlags: 0
