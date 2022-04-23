@@ -28461,7 +28461,15 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -3657212753302040800, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3657212753302040800, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
       propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3657212753302040800, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
+      propertyPath: m_UseFullKinematicContacts
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1601877739371584468, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
@@ -28487,7 +28495,7 @@ PrefabInstance:
     - target: {fileID: 2113265057265413657, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
       propertyPath: behaviourTree
       value: 
-      objectReference: {fileID: 11400000, guid: 35b427a086979cd458a2a07adb11b266, type: 2}
+      objectReference: {fileID: 11400000, guid: 39a9f3f5d775cba4e9f97ac55cce3453, type: 2}
     - target: {fileID: 2113265057265413657, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
       propertyPath: currentTarget
       value: 
@@ -28931,7 +28939,7 @@ MonoBehaviour:
   m_VoxelSize: 0.1
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: 0876aea75e9e6aa428930f12bb266268, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 88adcffc056b9a7458210c16d998bfbd, type: 2}
 --- !u!4 &1319585664
 Transform:
   m_ObjectHideFlags: 0
@@ -29017,6 +29025,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3657212753302040800, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3657212753302040800, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
+      propertyPath: m_UseFullKinematicContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1601877739371584468, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
@@ -29028,7 +29044,7 @@ PrefabInstance:
     - target: {fileID: 2113265057265413657, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
       propertyPath: behaviourTree
       value: 
-      objectReference: {fileID: 11400000, guid: 35b427a086979cd458a2a07adb11b266, type: 2}
+      objectReference: {fileID: 11400000, guid: 39a9f3f5d775cba4e9f97ac55cce3453, type: 2}
     - target: {fileID: 2113265057265413657, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
       propertyPath: wayPointList.Array.size
       value: 2
