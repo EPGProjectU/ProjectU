@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,8 +24,15 @@ public class EnemyController : ActorController
 
     private void Update()
     {
-        //UpdateAgent();
         behaviourTree.Evaluate(this);
+        UpdateAgent();
+    }
+
+    private void UpdateAgent() {
+
+        MovementVector = agent.velocity / CurrentMaxSpeed;
+        LookVector = MovementVector;
+        agent.nextPosition = transform.position;
     }
 
     private void SetupAgent()
