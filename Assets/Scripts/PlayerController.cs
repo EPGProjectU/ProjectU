@@ -115,12 +115,12 @@ public class PlayerController : ActorController
 
         _performedInputBindings["Save"] = context => {
             Debug.Log("Save");
-            SaveEventSystem.Instance.SaveDataXML();
+            SaveEventSystem.Instance.SaveData();
         };
 
         _performedInputBindings["Load"] = context => {
             Debug.Log("Load");
-            SaveEventSystem.Instance.LoadDataXML();
+            SaveEventSystem.Instance.LoadData();
         };
 
         foreach (var inputBinding in _performedInputBindings)
