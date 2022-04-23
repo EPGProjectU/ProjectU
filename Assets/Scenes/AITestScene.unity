@@ -29097,6 +29097,30 @@ PrefabInstance:
       propertyPath: wayPointList.Array.data[1]
       value: 
       objectReference: {fileID: 1142142767}
+    - target: {fileID: 6154064087236575425, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154064087236575425, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154064087236575425, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154064087236575425, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154064087236575425, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154064087236575425, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6366151426553528117, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
       propertyPath: m_RootOrder
       value: 6
