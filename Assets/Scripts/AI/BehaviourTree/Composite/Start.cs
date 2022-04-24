@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XNode;
 
+[CreateNodeMenu("BehaviourTree/Start")]
 public class Start : CompositeNode {
 
     public override NodeState Evaluate(AIController controller) {

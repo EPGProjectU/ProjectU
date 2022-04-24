@@ -4,7 +4,7 @@ using UnityEngine;
 using XNode;
 
 
-
+[CreateNodeMenu("BehaviourTree/Composite/Selector")]
     public class Selector : CompositeNode {
         public Selector() : base() { }
 

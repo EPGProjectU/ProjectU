@@ -12,14 +12,14 @@ using XNode;
         FAILURE
     }
 
-    public class BehaviourNode : Node{
-        protected NodeState state;
+public class BehaviourNode : Node{
+     protected NodeState state;
 
-        [Input]
-        public BehaviourNode parent;
+     [Input]
+     public BehaviourNode parent;
 
-        /* [Output(dynamicPortList = true)]
-         public BehaviourNode child;*/
+     /* [Output(dynamicPortList = true)]
+      public BehaviourNode child;*/
 
 
     //public virtual NodeState Evaluate() => NodeState.FAILURE;

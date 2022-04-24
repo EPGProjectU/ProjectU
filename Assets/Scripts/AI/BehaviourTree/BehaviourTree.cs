@@ -5,28 +5,32 @@ using UnityEngine;
 using XNode;
 
 
-    [CreateAssetMenu(menuName = "ProjectU/AI/BehaviourTree", fileName = "BehaviourTree")]
-    public class BehaviourTree : NodeGraph {
+[CreateAssetMenu(menuName = "ProjectU/AI/BehaviourTree", fileName = "BehaviourTree")]
+public class BehaviourTree : NodeGraph {
 
-        private BehaviourNode _root;
+    private BehaviourNode _root;
 
-        public void SetupTree() {
+    public void SetupTree() {
 
-            foreach (BehaviourNode node in nodes) {
-                if (node.IsStartingNode())
-                    _root = node;
-            }
-
-            if (_root == null)
-                throw new Exception("Behaviour Tree must contain Start node");
-
-            //tmp 
-            Debug.Log("Behaviour tree nodes count: " + nodes.Count);
+        foreach (BehaviourNode node in nodes) {
+            if (node.IsStartingNode())
+                _root = node;
         }
 
-        public void Evaluate(AIController controller) {
+        if (_root == null)
+            throw new Exception("Behaviour Tree must contain Start node");
+
+        //tmp 
+        Debug.Log("Behaviour tree nodes count: " + nodes.Count);
+    }
+
+    public void Evaluate(AIController controller) {
             if (_root != null)
                 _root.Evaluate(controller);
-        }
     }
+
+    //periodically tick every node activating evaluation and helping to enable time dependant behaviours 
+    private void Tick() { throw new NotImplementedException(); }
+
+}
 

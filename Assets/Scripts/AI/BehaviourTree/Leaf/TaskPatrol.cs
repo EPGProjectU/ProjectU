@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateNodeMenu("BehaviourTree/Leaf/TaskPatrol")]
 public class TaskPatrol : LeafNode
 {
     public List<Transform> waypointList;

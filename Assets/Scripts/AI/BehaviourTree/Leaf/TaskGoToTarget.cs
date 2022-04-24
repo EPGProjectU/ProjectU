@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateNodeMenu("BehaviourTree/Leaf/TaskGoToTarget")]
 public class TaskGoToTarget : LeafNode {
 
     public override NodeState Evaluate(AIController controller) {

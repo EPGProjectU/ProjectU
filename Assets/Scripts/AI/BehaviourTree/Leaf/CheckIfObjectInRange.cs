@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateNodeMenu("BehaviourTree/Leaf/CheckEnemyInFovRange")]
-public class CheckEnemyInFOVRange : LeafNode {
+[CreateNodeMenu("BehaviourTree/Leaf/CheckIfObjectInRange")]
 
-
+public class CheckIfObjectInRange : LeafNode
+{
     public float range;
+    public Transform targetObject;
 
     public override NodeState Evaluate(AIController controller) {
-      
+
         if (controller.target == null) {
-            if (detectEnemy(controller)) {
+            if (isInRange(controller, targetObject)) {
                 state = NodeState.SUCCESS;
                 return state;
             }
@@ -29,17 +30,16 @@ public class CheckEnemyInFOVRange : LeafNode {
 
     }
 
-    private bool detectEnemy(AIController controller) {
+    private bool isInRange(AIController controller, Transform target) {
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(controller.transform.position, range);
-        
+
         if (colliders.Length > 0) {
 
             foreach (Collider2D collider in colliders) {
 
-                if (collider.gameObject.tag.Equals("Player")) {
+                if (collider.gameObject.transform.Equals(target)) {
 
-                    controller.target = collider.gameObject.transform;
                     state = NodeState.SUCCESS;
                     return true;
                 }
@@ -51,6 +51,5 @@ public class CheckEnemyInFOVRange : LeafNode {
 
         return false;
     }
-
 
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateNodeMenu("BehaviourTree/Leaf/TaskAttack")]
 public class TaskAttack : LeafNode {
     public override NodeState Evaluate(AIController controller) {
         Attack(controller);
@@ -11,7 +12,7 @@ public class TaskAttack : LeafNode {
 
     private void Attack(AIController controller) {
         //if enemy target health is above 0 then attack
-        controller.AttackEnemy();
-        Debug.Log("Attacking");
+        controller.Attack();
+        Debug.Log(controller.agent.name + " is Attacking!");
     }
 }

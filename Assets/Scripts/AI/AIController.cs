@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class AIController : ActorController
-{
+public class AIController : ActorController {
 
     [HideInInspector] public UnityEngine.AI.NavMeshAgent agent;
     [HideInInspector] public int nextWayPoint;
@@ -15,15 +14,13 @@ public class AIController : ActorController
     public List<Transform> wayPointList;
 
 
-    private void Start()
-    {
+    private void Start() {
         base.Setup();
         SetupAgent();
         behaviourTree.SetupTree();
     }
 
-    private void Update()
-    {
+    private void Update() {
         behaviourTree.Evaluate(this);
         UpdateAgent();
     }
@@ -35,8 +32,7 @@ public class AIController : ActorController
         agent.nextPosition = transform.position;
     }
 
-    private void SetupAgent()
-    {
+    private void SetupAgent() {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.speed = motionData.baseSpeed;
         agent.updateRotation = false; //rotation to face towards target will be handled by animation system
@@ -45,15 +41,11 @@ public class AIController : ActorController
     }
 
     //should be removed when enemy will have weapon
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.GetComponent<HealthSystem>())
-        {
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.GetComponent<HealthSystem>()) {
             if (!collision.gameObject.GetComponent<HealthSystem>().allies.Contains(Ally.Enemy)) collision.gameObject.GetComponent<PlayerHealthSystem>().TakeDamage(new DamageInfo(1));
         }
     }
 
-    public void AttackEnemy() {
-        base.Attack(); //check that line someone 
-    }
+    public new void Attack() => base.Attack();
 }
