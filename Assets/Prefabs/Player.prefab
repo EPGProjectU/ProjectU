@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 749993721634851472}
   - component: {fileID: 8058215983871690817}
   - component: {fileID: 8979321992758440572}
+  - component: {fileID: 916104640}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -219,6 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   motionData: {fileID: 11400000, guid: b44358aa2663b8a479e376b8ee472de7, type: 2}
+  pickupRange: 0
 --- !u!114 &8058215983871690817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +267,22 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0012773871, y: -0.17416143}
   m_Size: {x: 0.5689857, y: 0.84437144}
   m_Direction: 0
+--- !u!114 &916104640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649322890496266106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6190bf6ea4a1caf4da6142c75d1b5c57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  allies: 
+  weapon: {fileID: 0}
+  invincibleTime: 0.5
 --- !u!1 &8126915403759360039
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +520,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 971ad14a1ad61704c9ddb90e4b0cd96b, type: 3}
+      propertyPath: m_TagString
+      value: PlayersWeapon
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 971ad14a1ad61704c9ddb90e4b0cd96b, type: 3}
 --- !u!1 &4118654352885185399 stripped
@@ -540,3 +562,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.24327308, y: 1.1613247}
   m_EdgeRadius: 0
+--- !u!114 &1759989727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4118654352885185399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d314fe87a0f6d428c32e4ab0723ed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage:
+    damage: 1
+  Owner: 0
