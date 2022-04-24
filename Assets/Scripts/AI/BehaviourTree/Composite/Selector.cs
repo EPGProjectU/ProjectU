@@ -31,7 +31,7 @@ using XNode;
      return state;
  }*/
 
-        public override NodeState Evaluate(EnemyController controller) {
+        public override NodeState Evaluate(AIController controller) {
 
             foreach (NodePort nodePort in Outputs) {
 

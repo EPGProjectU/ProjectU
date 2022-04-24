@@ -24,7 +24,7 @@ using XNode;
             Debug.Log("Behaviour tree nodes count: " + nodes.Count);
         }
 
-        public void Evaluate(EnemyController controller) {
+        public void Evaluate(AIController controller) {
             if (_root != null)
                 _root.Evaluate(controller);
         }

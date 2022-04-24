@@ -5,7 +5,7 @@ using XNode;
 
 public class Start : BehaviourNode {
 
-    public override NodeState Evaluate(EnemyController controller) {
+    public override NodeState Evaluate(AIController controller) {
 
         NodePort childPort = GetOutputPort("child");
         if (childPort.IsConnected) {

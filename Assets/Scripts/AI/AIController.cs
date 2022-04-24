@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class EnemyController : ActorController
+public class AIController : ActorController
 {
 
     [HideInInspector] public UnityEngine.AI.NavMeshAgent agent;

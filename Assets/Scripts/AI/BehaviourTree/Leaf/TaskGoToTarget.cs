@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TaskGoToTarget : BehaviourNode {
 
-    public override NodeState Evaluate(EnemyController controller) {
+    public override NodeState Evaluate(AIController controller) {
         Transform target = controller.target;
 
         

@@ -8,7 +8,7 @@ public class CheckEnemyInFOVRange : BehaviourNode {
 
     public float range;
 
-    public override NodeState Evaluate(EnemyController controller) {
+    public override NodeState Evaluate(AIController controller) {
       
         if (controller.target == null) {
             if (detectEnemy(controller)) {
@@ -29,7 +29,7 @@ public class CheckEnemyInFOVRange : BehaviourNode {
 
     }
 
-    private bool detectEnemy(EnemyController controller) {
+    private bool detectEnemy(AIController controller) {
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(controller.transform.position, range);
         

@@ -9,7 +9,7 @@ using XNode;
       
         //public Sequence(List<Node> children) : base(children) { }
 
-        public override NodeState Evaluate(EnemyController controller) {
+        public override NodeState Evaluate(AIController controller) {
             bool anyChildIsRunning = false;
 
             foreach (NodePort nodePort in Outputs) {

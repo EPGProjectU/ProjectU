@@ -9,13 +9,13 @@ public class TaskPatrol : BehaviourNode
 
     public TaskPatrol() { }
 
-    public override NodeState Evaluate(EnemyController controller) {
+    public override NodeState Evaluate(AIController controller) {
         Patrol(controller);
         state = NodeState.RUNNING;
         return state;
     }
     
-    private void Patrol(EnemyController controller) {
+    private void Patrol(AIController controller) {
         controller.agent.destination = controller.wayPointList[controller.nextWayPoint].position;
         controller.agent.isStopped = false;
 
