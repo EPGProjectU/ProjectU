@@ -5,7 +5,7 @@ using XNode;
 
 
 
-    public class Selector : BehaviourNode {
+    public class Selector : CompositeNode {
         public Selector() : base() { }
 
  

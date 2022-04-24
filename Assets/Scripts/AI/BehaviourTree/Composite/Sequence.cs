@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XNode;
 
-    public class Sequence : BehaviourNode {
+    public class Sequence : CompositeNode {
         public Sequence() : base() { }
 
       

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaskAttack : BehaviourNode {
+public class TaskAttack : LeafNode {
     public override NodeState Evaluate(AIController controller) {
         Attack(controller);
         state = NodeState.RUNNING;

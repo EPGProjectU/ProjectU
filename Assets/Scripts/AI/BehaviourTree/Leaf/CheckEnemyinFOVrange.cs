@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class CheckEnemyInFOVRange : BehaviourNode {
+public class CheckEnemyInFOVRange : LeafNode {
 
 
     public float range;

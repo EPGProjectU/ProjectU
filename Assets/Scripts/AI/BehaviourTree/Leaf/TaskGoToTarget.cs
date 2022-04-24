@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaskGoToTarget : BehaviourNode {
+public class TaskGoToTarget : LeafNode {
 
     public override NodeState Evaluate(AIController controller) {
         Transform target = controller.target;

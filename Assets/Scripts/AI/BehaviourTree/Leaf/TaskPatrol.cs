@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaskPatrol : BehaviourNode
+public class TaskPatrol : LeafNode
 {
     public List<Transform> waypointList;
     

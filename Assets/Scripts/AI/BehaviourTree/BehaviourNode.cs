@@ -20,23 +20,16 @@ using XNode;
 
         /* [Output(dynamicPortList = true)]
          public BehaviourNode child;*/
-        [Output]
-        public BehaviourNode child;
 
-        [Output]
-        public BehaviourNode child1;
-
-        [Output]
-        public BehaviourNode child2;
 
     //public virtual NodeState Evaluate() => NodeState.FAILURE;
     public virtual NodeState Evaluate(AIController controller) => NodeState.FAILURE;
 
     public virtual bool IsStartingNode() => false;
 
-        public override object GetValue(NodePort port) {
+       /* public override object GetValue(NodePort port) {
             return child;
-        }
+        }*/
     }
 
     

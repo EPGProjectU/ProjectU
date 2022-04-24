@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XNode;
 
-public class Start : BehaviourNode {
+public class Start : CompositeNode {
 
     public override NodeState Evaluate(AIController controller) {
 
