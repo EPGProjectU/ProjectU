@@ -11,7 +11,7 @@ public class TaskAttack : BehaviourNode {
 
     private void Attack(EnemyController controller) {
         //if enemy target health is above 0 then attack
-        //if controller.target
         controller.AttackEnemy();
+        Debug.Log("Attacking");
     }
 }
