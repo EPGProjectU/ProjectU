@@ -9,10 +9,8 @@ public class AIController : ActorController {
     [HideInInspector] public int nextWayPoint;
     public BehaviourTree behaviourTree;
 
-
     public Transform target;
     public List<Transform> wayPointList;
-
 
     private void Start() {
         base.Setup();

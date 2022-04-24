@@ -12,7 +12,7 @@ using XNode;
     }
 
 [CreateNodeMenu("")]
-public class BehaviourNode : Node{
+public abstract class BehaviourNode : Node{
      protected NodeState state;
 
      [Input]
@@ -23,7 +23,7 @@ public class BehaviourNode : Node{
 
 
     //public virtual NodeState Evaluate() => NodeState.FAILURE;
-    public virtual NodeState Evaluate(AIController controller) => NodeState.FAILURE;
+    public abstract NodeState Evaluate(AIController controller);
 
     public virtual bool IsStartingNode() => false;
 

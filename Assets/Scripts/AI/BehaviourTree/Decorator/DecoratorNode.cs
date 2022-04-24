@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [CreateNodeMenu("")]
-public class DecoratorNode : BehaviourNode
+public abstract class DecoratorNode : BehaviourNode
 {
     [Output]
     public BehaviourNode child;

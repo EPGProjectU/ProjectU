@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateNodeMenu("")]
-public class CompositeNode : BehaviourNode
+public abstract class CompositeNode : BehaviourNode
 {
     //preferably dynamic output ports if they can work please 
     [Output]

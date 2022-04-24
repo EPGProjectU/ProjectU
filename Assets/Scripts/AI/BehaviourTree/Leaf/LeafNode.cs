@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [CreateNodeMenu("")]
-public class LeafNode : BehaviourNode
+public abstract class LeafNode : BehaviourNode
 {
    //no output ports
 }
