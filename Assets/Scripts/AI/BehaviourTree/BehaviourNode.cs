@@ -5,13 +5,13 @@ using UnityEngine;
 using XNode;
 
 
-
     public enum NodeState {
         RUNNING,
         SUCCESS,
         FAILURE
     }
 
+[CreateNodeMenu("")]
 public class BehaviourNode : Node{
      protected NodeState state;
 

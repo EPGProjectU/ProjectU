@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Check Enemy In FOV Range
   m_EditorClassIdentifier: AI::CheckEnemyInFOVRange
   graph: {fileID: 11400000}
-  position: {x: 712, y: -120}
+  position: {x: 696, y: -120}
   ports:
     keys:
     - parent
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: Task Go To Target
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 712, y: 40}
+  position: {x: 696, y: 40}
   ports:
     keys:
     - parent

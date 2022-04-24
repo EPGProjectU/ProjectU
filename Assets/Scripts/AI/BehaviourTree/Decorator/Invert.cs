@@ -9,20 +9,22 @@ public class Invert : DecoratorNode
     public override NodeState Evaluate(AIController controller) {
 
         NodePort nodePort = GetOutputPort("child");
-        BehaviourNode node;
+        BehaviourNode childNode;
 
         if (nodePort.IsConnected) {
 
-            node = nodePort.Connection.node as BehaviourNode;
+            childNode = nodePort.Connection.node as BehaviourNode;
 
-            switch (node.Evaluate(controller)) {
-                case NodeState.FAILURE:
-                    state = NodeState.SUCCESS;
-                    return state;
-                case NodeState.SUCCESS:
-                    state = NodeState.FAILURE;
-                    return state;
+            var result = childNode.Evaluate(controller);
+
+            if (result == NodeState.SUCCESS) {
+                return NodeState.FAILURE;
             }
+            else if (result == NodeState.FAILURE) {
+                return NodeState.SUCCESS;
+            }
+            else
+                return result;
         }
         
         throw new System.Exception(this.name + " node not connected!");

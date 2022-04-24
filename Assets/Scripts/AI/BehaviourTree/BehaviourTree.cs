@@ -29,7 +29,10 @@ public class BehaviourTree : NodeGraph {
                 _root.Evaluate(controller);
     }
 
-    //periodically tick every node activating evaluation and helping to enable time dependant behaviours 
+    //periodically tick every node activating evaluation and helping to enable time dependant behaviours and be more intuitive
+    //composite nodes decide which node to tick
+    //decorators alter tick
+    //action (task,check) nodes alter actor or return condition result
     private void Tick() { throw new NotImplementedException(); }
 
 }
