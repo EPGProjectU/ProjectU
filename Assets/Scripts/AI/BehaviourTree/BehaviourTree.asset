@@ -1,5 +1,69 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5418284124699284088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4864a29d2c367bb4fa0a044d587ef1f9, type: 3}
+  m_Name: Task Attack
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 696, y: 40}
+  ports:
+    keys:
+    - parent
+    - child
+    - child1
+    - child2
+    values:
+    - _fieldName: parent
+      _node: {fileID: -5418284124699284088}
+      _typeQualifiedName: BehaviourNode, Main, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: child1
+        node: {fileID: -1688549078537098263}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: child
+      _node: {fileID: -5418284124699284088}
+      _typeQualifiedName: BehaviourNode, Main, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: child1
+      _node: {fileID: -5418284124699284088}
+      _typeQualifiedName: BehaviourNode, Main, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: child2
+      _node: {fileID: -5418284124699284088}
+      _typeQualifiedName: BehaviourNode, Main, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  parent: {fileID: 0}
+  child: {fileID: 0}
+  child1: {fileID: 0}
+  child2: {fileID: 0}
 --- !u!114 &-3310192062355055903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13,7 +77,7 @@ MonoBehaviour:
   m_Name: Task Patrol
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 200, y: 40}
+  position: {x: 296, y: 152}
   ports:
     keys:
     - parent
@@ -26,7 +90,7 @@ MonoBehaviour:
       _typeQualifiedName: BehaviourNode, Main, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: child1
+      - fieldName: child2
         node: {fileID: -2140308814765588926}
         reroutePoints: []
       _direction: 0
@@ -78,7 +142,7 @@ MonoBehaviour:
   m_Name: Sequence
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 216, y: -216}
+  position: {x: 376, y: -376}
   ports:
     keys:
     - parent
@@ -104,7 +168,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: parent
-        node: {fileID: 2793098773005055607}
+        node: {fileID: 170664441299851245}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -148,7 +212,7 @@ MonoBehaviour:
   m_Name: Task Go To Target
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 520, y: -120}
+  position: {x: 696, y: -248}
   ports:
     keys:
     - parent
@@ -250,7 +314,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: parent
-        node: {fileID: -3310192062355055903}
+        node: {fileID: -1688549078537098263}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -260,7 +324,10 @@ MonoBehaviour:
       _node: {fileID: -2140308814765588926}
       _typeQualifiedName: BehaviourNode, Main, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: parent
+        node: {fileID: -3310192062355055903}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -269,7 +336,7 @@ MonoBehaviour:
   child: {fileID: 0}
   child1: {fileID: 0}
   child2: {fileID: 0}
---- !u!114 &-1546252827809973095
+--- !u!114 &-1688549078537098263
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -278,11 +345,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Check Enemy In FOV Range
-  m_EditorClassIdentifier: Main::CheckEnemyInFOVRange
+  m_Script: {fileID: 11500000, guid: 357720fb1fb32a9469050065e9f34c11, type: 3}
+  m_Name: Sequence
+  m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 520, y: -264}
+  position: {x: 296, y: -56}
   ports:
     keys:
     - parent
@@ -291,37 +358,43 @@ MonoBehaviour:
     - child2
     values:
     - _fieldName: parent
-      _node: {fileID: -1546252827809973095}
+      _node: {fileID: -1688549078537098263}
       _typeQualifiedName: BehaviourNode, Main, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: child
-        node: {fileID: -3024494627521459745}
+      - fieldName: child1
+        node: {fileID: -2140308814765588926}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: child
-      _node: {fileID: -1546252827809973095}
+      _node: {fileID: -1688549078537098263}
       _typeQualifiedName: BehaviourNode, Main, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: parent
+        node: {fileID: 194986796670913678}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: child1
-      _node: {fileID: -1546252827809973095}
+      _node: {fileID: -1688549078537098263}
       _typeQualifiedName: BehaviourNode, Main, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: parent
+        node: {fileID: -5418284124699284088}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: child2
-      _node: {fileID: -1546252827809973095}
+      _node: {fileID: -1688549078537098263}
       _typeQualifiedName: BehaviourNode, Main, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections: []
@@ -351,8 +424,11 @@ MonoBehaviour:
   - {fileID: -3024494627521459745}
   - {fileID: -3310192062355055903}
   - {fileID: -2628537947803735459}
-  - {fileID: 2793098773005055607}
---- !u!114 &2793098773005055607
+  - {fileID: 170664441299851245}
+  - {fileID: -1688549078537098263}
+  - {fileID: 194986796670913678}
+  - {fileID: -5418284124699284088}
+--- !u!114 &170664441299851245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -365,7 +441,7 @@ MonoBehaviour:
   m_Name: Check Enemy In FOV Range
   m_EditorClassIdentifier: Main::CheckEnemyInFOVRange
   graph: {fileID: 11400000}
-  position: {x: 504, y: -264}
+  position: {x: 696, y: -408}
   ports:
     keys:
     - parent
@@ -374,7 +450,7 @@ MonoBehaviour:
     - child2
     values:
     - _fieldName: parent
-      _node: {fileID: 2793098773005055607}
+      _node: {fileID: 170664441299851245}
       _typeQualifiedName: BehaviourNode, Main, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
@@ -386,7 +462,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: child
-      _node: {fileID: 2793098773005055607}
+      _node: {fileID: 170664441299851245}
       _typeQualifiedName: BehaviourNode, Main, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections: []
@@ -395,7 +471,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: child1
-      _node: {fileID: 2793098773005055607}
+      _node: {fileID: 170664441299851245}
       _typeQualifiedName: BehaviourNode, Main, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections: []
@@ -404,7 +480,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: child2
-      _node: {fileID: 2793098773005055607}
+      _node: {fileID: 170664441299851245}
       _typeQualifiedName: BehaviourNode, Main, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections: []
@@ -416,6 +492,72 @@ MonoBehaviour:
   child: {fileID: 0}
   child1: {fileID: 0}
   child2: {fileID: 0}
+  range: 5
+--- !u!114 &194986796670913678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Check Enemy In FOV Range
+  m_EditorClassIdentifier: Main::CheckEnemyInFOVRange
+  graph: {fileID: 11400000}
+  position: {x: 696, y: -120}
+  ports:
+    keys:
+    - parent
+    - child
+    - child1
+    - child2
+    values:
+    - _fieldName: parent
+      _node: {fileID: 194986796670913678}
+      _typeQualifiedName: BehaviourNode, Main, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: child
+        node: {fileID: -1688549078537098263}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: child
+      _node: {fileID: 194986796670913678}
+      _typeQualifiedName: BehaviourNode, Main, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: child1
+      _node: {fileID: 194986796670913678}
+      _typeQualifiedName: BehaviourNode, Main, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: child2
+      _node: {fileID: 194986796670913678}
+      _typeQualifiedName: BehaviourNode, Main, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  parent: {fileID: 0}
+  child: {fileID: 0}
+  child1: {fileID: 0}
+  child2: {fileID: 0}
+  range: 1
 --- !u!114 &3981025490839414636
 MonoBehaviour:
   m_ObjectHideFlags: 0

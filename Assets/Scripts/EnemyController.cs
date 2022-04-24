@@ -12,8 +12,8 @@ public class EnemyController : ActorController
 
 
     public Transform target;
-    public float sightRadius;
     public List<Transform> wayPointList;
+
 
     private void Start()
     {
@@ -51,5 +51,9 @@ public class EnemyController : ActorController
         {
             if (!collision.gameObject.GetComponent<HealthSystem>().allies.Contains(Ally.Enemy)) collision.gameObject.GetComponent<PlayerHealthSystem>().TakeDamage(new DamageInfo(1));
         }
+    }
+
+    public void AttackEnemy() {
+        base.Attack(); //check that line someone 
     }
 }

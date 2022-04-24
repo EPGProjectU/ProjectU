@@ -4,8 +4,9 @@ using UnityEngine;
 
 
 public class CheckEnemyInFOVRange : BehaviourNode {
-   
-    public CheckEnemyInFOVRange() {}
+
+
+    public float range;
 
     public override NodeState Evaluate(EnemyController controller) {
       
@@ -20,7 +21,7 @@ public class CheckEnemyInFOVRange : BehaviourNode {
             }
         }
 
-        if (Vector2.Distance(controller.target.position, controller.transform.position) > controller.sightRadius)
+        if (Vector2.Distance(controller.target.position, controller.transform.position) > range)
             controller.target = null;
 
         state = NodeState.SUCCESS;
@@ -30,7 +31,7 @@ public class CheckEnemyInFOVRange : BehaviourNode {
 
     private bool detectEnemy(EnemyController controller) {
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(controller.transform.position, controller.sightRadius);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(controller.transform.position, range);
         
         if (colliders.Length > 0) {
 
