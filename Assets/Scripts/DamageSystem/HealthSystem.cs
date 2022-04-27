@@ -9,6 +9,8 @@ public enum Ally
 
 public abstract class HealthSystem : MonoBehaviour
 {
+    public SerializableDelegate<Action<HealthSystem>> deathCallback;
+
     /// <summary>
     /// Amount of health (in hearts) that actor currently haves
     /// </summary>
@@ -20,5 +22,9 @@ public abstract class HealthSystem : MonoBehaviour
     /// Calculate amount of damage that will be taken by gameobject
     /// </summary>
     public abstract void TakeDamage(DamageInfo damage);
-    protected abstract void OnDeath();
+
+    protected void OnDeath()
+    {
+        deathCallback.Invoke(this);
+    }
 }

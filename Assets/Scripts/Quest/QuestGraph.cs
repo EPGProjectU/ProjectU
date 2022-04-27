@@ -1,0 +1,1 @@
+public class QuestGraph : XNode.NodeGraph {}
