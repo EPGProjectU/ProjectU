@@ -49,8 +49,10 @@ public class PlayerHealthSystem : HealthSystem
             StartCoroutine(InvincibleTimer());
         }
     }
-    protected override void OnDeath()
+    protected new void OnDeath()
     {
+        base.OnDeath();
+        
         GetComponent<PlayerController>().IsDead = true;
         Debug.Log("Player is Dead");
     }

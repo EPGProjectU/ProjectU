@@ -1,51 +1,21 @@
-using UnityEditor;
-using UnityEditor.Callbacks;
-using UnityEngine;
-using XNode;
+using System;
+using System.Linq;
 using XNodeEditor;
 
-/// <summary>
-/// <see cref="ProgressionGraph"/> editor window
-/// </summary>
-public class ProgressionGraphEditor : NodeEditorWindow
+[CustomNodeGraphEditor(typeof(ProgressionGraph))]
+public class ProgressionGraphEditor : NodeGraphEditor
 {
-    [MenuItem("ProjectU/Progression/Show Graph")]
-    public static void ShowCurrentContextProgressionGraph()
+    private static readonly Type[] AllowedNodes =
     {
-        if (ProgressionManager.Data.graph == null)
-        {
-            var openSettings = EditorUtility.DisplayDialog("Progression Graph is not set!", "Set ProgressionGraph in progression settings", "Open Settings", "Dismiss");
+        typeof(BoolNode),
+        typeof(BranchNode),
+        typeof(LockNode),
+        typeof(TagNode),
+        typeof(TagHookNode)
+    };
 
-            if (!openSettings)
-                return;
-
-            ProgressionSettingsEditor.ShowWindow();
-        }
-
-        Open(ProgressionManager.Data.graph);
-    }
-
-    [OnOpenAsset(-1)]
-    public static bool HandleGraphOpen(int instanceID, int line)
+    public override string GetNodeMenuName(Type type)
     {
-        var graph = EditorUtility.InstanceIDToObject(instanceID) as ProgressionGraph;
-
-        if (!graph)
-            return false;
-
-        Open(graph);
-
-        return true;
-    }
-
-    public new static ProgressionGraphEditor Open(NodeGraph graph)
-    {
-        var window = NodeEditorWindow.Open(graph);
-
-        // Set custom icon for the tab
-        var icon = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Gizmos/ProgressionGraph Icon.png");
-        window.titleContent = new GUIContent("Progression Graph", icon);
-
-        return window as ProgressionGraphEditor;
+        return AllowedNodes.Any(nodeType => nodeType.IsAssignableFrom(type)) ? base.GetNodeMenuName(type) : null;
     }
 }
