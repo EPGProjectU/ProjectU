@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -3657212753302040800}
   - component: {fileID: 2113265057265413657}
   - component: {fileID: 1883101933}
-  - component: {fileID: 212970642619095394}
+  - component: {fileID: 3506407633592979285}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -82,11 +82,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1601877739371584468}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 570c92479cbfa1d46a96ad9f90774ad3, type: 3}
+  m_Script: {fileID: 11500000, guid: acae8b15a7bb7084c81d38c96abbdba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   motionData: {fileID: 11400000, guid: 55fad9c184b281046a50d92558e8e3d1, type: 2}
-  currentTarget: {fileID: 0}
+  agent: {fileID: 0}
+  nextWayPoint: 0
+  behaviourTree: {fileID: 11400000, guid: 39a9f3f5d775cba4e9f97ac55cce3453, type: 2}
+  target: {fileID: 0}
+  wayPointList: []
 --- !u!195 &1883101933
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -109,7 +113,7 @@ NavMeshAgent:
   m_BaseOffset: 0.49999997
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &212970642619095394
+--- !u!114 &3506407633592979285
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,12 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0400f299d4e2cb5479dd8c7c7c1aa9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathCallback:
-    guid:
-      m_Value0: 1959003634
-      m_Value1: 2138956432
-      m_Value2: 584154448
-      m_Value3: 1613708024
   health: 3
   allies: 
 --- !u!1 &4782796912525552083
