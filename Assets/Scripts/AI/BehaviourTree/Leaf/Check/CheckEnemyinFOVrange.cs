@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateNodeMenu("BehaviourTree/Leaf/CheckEnemyInFovRange")]
-public class CheckEnemyInFOVRange : LeafNode {
+public class CheckEnemyInFOVrange : LeafNode {
 
 
     public float range;

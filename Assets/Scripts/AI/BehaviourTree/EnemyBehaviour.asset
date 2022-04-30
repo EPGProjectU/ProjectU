@@ -96,6 +96,37 @@ MonoBehaviour:
   child1: {fileID: 0}
   child2: {fileID: 0}
   range: 5
+--- !u!114 &-3765782103878847890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Check Enemy In FOV Range
+  m_EditorClassIdentifier: AI::CheckEnemyInFOVRange
+  graph: {fileID: 11400000}
+  position: {x: 648, y: -424}
+  ports:
+    keys:
+    - parent
+    values:
+    - _fieldName: parent
+      _node: {fileID: -3765782103878847890}
+      _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: child
+        node: {fileID: -487080375865098334}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  parent: {fileID: 0}
+  range: 1
 --- !u!114 &-3310192062355055903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +195,7 @@ MonoBehaviour:
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: parent
-        node: {fileID: -9092155720188544457}
+        node: {fileID: 5813614763382917236}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -206,7 +237,7 @@ MonoBehaviour:
   m_Name: Task Go To Target
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 696, y: 40}
+  position: {x: 664, y: 40}
   ports:
     keys:
     - parent
@@ -360,7 +391,7 @@ MonoBehaviour:
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: parent
-        node: {fileID: -1289069128917522665}
+        node: {fileID: 4449077750759031756}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -389,6 +420,37 @@ MonoBehaviour:
   child: {fileID: 0}
   child1: {fileID: 0}
   child2: {fileID: 0}
+--- !u!114 &-380528199781495459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Check Enemy In FOV Range
+  m_EditorClassIdentifier: AI::CheckEnemyInFOVRange
+  graph: {fileID: 11400000}
+  position: {x: 696, y: -104}
+  ports:
+    keys:
+    - parent
+    values:
+    - _fieldName: parent
+      _node: {fileID: -380528199781495459}
+      _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: child
+        node: {fileID: -3024494627521459745}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  parent: {fileID: 0}
+  range: 4
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,8 +471,70 @@ MonoBehaviour:
   - {fileID: -2628537947803735459}
   - {fileID: -487080375865098334}
   - {fileID: 8512216476087459637}
-  - {fileID: -9092155720188544457}
-  - {fileID: -1289069128917522665}
+  - {fileID: 4449077750759031756}
+  - {fileID: 5813614763382917236}
+--- !u!114 &219700309375884636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Check Enemy In FOV Range
+  m_EditorClassIdentifier: AI::CheckEnemyInFOVRange
+  graph: {fileID: 11400000}
+  position: {x: 664, y: -440}
+  ports:
+    keys:
+    - parent
+    values:
+    - _fieldName: parent
+      _node: {fileID: 219700309375884636}
+      _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: child
+        node: {fileID: -487080375865098334}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  parent: {fileID: 0}
+  range: 0.1
+--- !u!114 &308030735562713603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Check Enemy In FOV Range
+  m_EditorClassIdentifier: AI::CheckEnemyInFOVRange
+  graph: {fileID: 11400000}
+  position: {x: 664, y: -88}
+  ports:
+    keys:
+    - parent
+    values:
+    - _fieldName: parent
+      _node: {fileID: 308030735562713603}
+      _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: child
+        node: {fileID: -3024494627521459745}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  parent: {fileID: 0}
+  range: 4
 --- !u!114 &442978611870804916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,6 +660,68 @@ MonoBehaviour:
   child: {fileID: 0}
   child1: {fileID: 0}
   child2: {fileID: 0}
+--- !u!114 &4449077750759031756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Check Enemy In FOV Range
+  m_EditorClassIdentifier: AI::CheckEnemyInFOVRange
+  graph: {fileID: 11400000}
+  position: {x: 664, y: -456}
+  ports:
+    keys:
+    - parent
+    values:
+    - _fieldName: parent
+      _node: {fileID: 4449077750759031756}
+      _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: child
+        node: {fileID: -487080375865098334}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  parent: {fileID: 0}
+  range: 1
+--- !u!114 &5813614763382917236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Check Enemy In FOV Range
+  m_EditorClassIdentifier: AI::CheckEnemyInFOVRange
+  graph: {fileID: 11400000}
+  position: {x: 664, y: -120}
+  ports:
+    keys:
+    - parent
+    values:
+    - _fieldName: parent
+      _node: {fileID: 5813614763382917236}
+      _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: child
+        node: {fileID: -3024494627521459745}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  parent: {fileID: 0}
+  range: 4
 --- !u!114 &8512216476087459637
 MonoBehaviour:
   m_ObjectHideFlags: 0
