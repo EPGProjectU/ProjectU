@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ProjectU.Core;
 using UnityEngine;
 
 [CreateNodeMenu("BehaviourTree/Leaf/CheckEnemyInFovRange")]
@@ -37,16 +38,13 @@ public class CheckEnemyInFOVRange : LeafNode {
 
             foreach (Collider2D collider in colliders) {
 
-                if (collider.gameObject.tag.Equals("Player")) {
+                if (collider._CompareTag("Player")) {
 
                     controller.target = collider.gameObject.transform;
                     state = NodeState.SUCCESS;
                     return true;
                 }
             }
-        }
-        else {
-            return false;
         }
 
         return false;

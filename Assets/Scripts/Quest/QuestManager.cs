@@ -48,7 +48,7 @@ public class QuestManager
         AssetDatabase.CreateAsset(Data, fullDataPath);
 
 #else
-        LoadData()
+        LoadData();
 #endif
     }
 
