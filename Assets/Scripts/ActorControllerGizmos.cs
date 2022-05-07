@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract partial class ActorController
+public partial class ActorController
 {
     private void OnDrawGizmos()
     {

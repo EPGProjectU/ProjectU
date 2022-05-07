@@ -1,49 +1,56 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 
-public class AIController : ActorController {
+[RequireComponent(typeof(ActorController))]
+public class AIController : MonoBehaviour
+{
+    [HideInInspector]
+    public NavMeshAgent agent;
 
-    [HideInInspector] public UnityEngine.AI.NavMeshAgent agent;
-    [HideInInspector] public int nextWayPoint;
+    [HideInInspector]
+    public int nextWayPoint;
+
     public BehaviourTree behaviourTree;
 
     public Transform target;
     public List<Transform> wayPointList;
 
-    private void Start() {
-        base.Setup();
+    private ActorController actor;
+
+    private void Awake()
+    {
+        actor = GetComponent<ActorController>();
+    }
+
+    private void Start()
+    {
         SetupAgent();
         behaviourTree.SetupTree();
     }
 
-    private void Update() {
+    private void Update()
+    {
         behaviourTree.Evaluate(this);
         UpdateAgent();
     }
 
-    private void UpdateAgent() {
-
-        MovementVector = agent.velocity / CurrentMaxSpeed;
-        LookVector = MovementVector;
-        agent.nextPosition = transform.position;
+    private void UpdateAgent()
+    {
+        actor.MovementVector = agent.velocity / actor.CurrentMaxSpeed;
+        actor.LookVector = actor.MovementVector;
+        agent.nextPosition = actor.transform.position;
     }
 
-    private void SetupAgent() {
-        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        agent.speed = motionData.baseSpeed;
+    private void SetupAgent()
+    {
+        agent = gameObject.AddComponent<NavMeshAgent>();
+        agent.speed = actor.motionData.baseSpeed;
         agent.updateRotation = false; //rotation to face towards target will be handled by animation system
         agent.updateUpAxis = false;
         agent.updatePosition = false;
     }
 
-    //should be removed when enemy will have weapon
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.GetComponent<HealthSystem>()) {
-            if (!collision.gameObject.GetComponent<HealthSystem>().allies.Contains(Ally.Enemy)) collision.gameObject.GetComponent<PlayerHealthSystem>().TakeDamage(new DamageInfo(1));
-        }
-    }
-
-    public new void Attack() => base.Attack();
+    public void Attack() => actor.Attack();
 }
