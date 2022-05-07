@@ -217,6 +217,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0400f299d4e2cb5479dd8c7c7c1aa9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathCallback:
+    guid:
+      m_Value0: 974444820
+      m_Value1: 669333471
+      m_Value2: 1746561689
+      m_Value3: 1715874303
   health: 2
   allies: 
 --- !u!1001 &222276061
@@ -226,13 +232,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2503987811572934059, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 0876aea75e9e6aa428930f12bb266268, type: 2}
     - target: {fileID: 3629327211739877787, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
       propertyPath: m_Name
       value: Base Scene Objects
       objectReference: {fileID: 0}
     - target: {fileID: 5424575065717832375, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5424575065717832375, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
       propertyPath: m_LocalPosition.x
@@ -451,6 +461,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0400f299d4e2cb5479dd8c7c7c1aa9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathCallback:
+    guid:
+      m_Value0: 252473746
+      m_Value1: 1536440989
+      m_Value2: 448518624
+      m_Value3: 1543407942
   health: 2
   allies: 
 --- !u!1 &406755906
@@ -51201,7 +51217,7 @@ PrefabInstance:
       objectReference: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
     - target: {fileID: 6366151426553528117, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6366151426553528117, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51344,6 +51360,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0400f299d4e2cb5479dd8c7c7c1aa9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathCallback:
+    guid:
+      m_Value0: 2033575508
+      m_Value1: 900166706
+      m_Value2: 1713322902
+      m_Value3: 1714715921
   health: 2
   allies: 
 --- !u!1 &1099941987 stripped
@@ -51363,6 +51385,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0400f299d4e2cb5479dd8c7c7c1aa9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathCallback:
+    guid:
+      m_Value0: 402702655
+      m_Value1: 663426924
+      m_Value2: 1079353691
+      m_Value3: 538219577
   health: 2
   allies: 
 --- !u!1001 &1169910025
@@ -51426,7 +51454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8181707218967104488, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
@@ -51447,6 +51475,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0400f299d4e2cb5479dd8c7c7c1aa9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathCallback:
+    guid:
+      m_Value0: 1335223702
+      m_Value1: 1015494878
+      m_Value2: 1683599154
+      m_Value3: 643778727
   health: 2
   allies: 
 --- !u!1001 &1291194745
@@ -51551,6 +51585,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0400f299d4e2cb5479dd8c7c7c1aa9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathCallback:
+    guid:
+      m_Value0: 1772800254
+      m_Value1: 1931727681
+      m_Value2: 1818725054
+      m_Value3: 1740081856
   health: 2
   allies: 
 --- !u!1 &1408223287
@@ -51766,73 +51806,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0400f299d4e2cb5479dd8c7c7c1aa9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathCallback:
+    guid:
+      m_Value0: 901161165
+      m_Value1: 1047605953
+      m_Value2: 259765430
+      m_Value3: 128711475
   health: 2
   allies: 
---- !u!1 &1444558013
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1444558015}
-  - component: {fileID: 1444558014}
-  m_Layer: 0
-  m_Name: NavMesh
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1444558014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1444558013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 148387606d0ccd84fa326ca211f274ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_OverrideByGrid: 0
-  m_UseMeshPrefab: {fileID: 0}
-  m_CompressBounds: 0
-  m_OverrideVector: {x: 1, y: 1, z: 1}
-  m_DefaultArea: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.1
-  m_BuildHeightMesh: 0
-  m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: 0876aea75e9e6aa428930f12bb266268, type: 2}
---- !u!4 &1444558015
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1444558013}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1001 &1711559450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52004,6 +51985,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0400f299d4e2cb5479dd8c7c7c1aa9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathCallback:
+    guid:
+      m_Value0: 979159216
+      m_Value1: 2020351847
+      m_Value2: 96785286
+      m_Value3: 193818415
   health: 2
   allies: 
 --- !u!1 &1941537531
@@ -52050,7 +52037,7 @@ Transform:
   - {fileID: 602268423}
   - {fileID: 406755907}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1978923084 stripped
 GameObject:
@@ -52069,6 +52056,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0400f299d4e2cb5479dd8c7c7c1aa9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathCallback:
+    guid:
+      m_Value0: 1835505562
+      m_Value1: 508926781
+      m_Value2: 462215123
+      m_Value3: 262688406
   health: 2
   allies: 
 --- !u!1001 &2000328658
@@ -52165,5 +52158,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0400f299d4e2cb5479dd8c7c7c1aa9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathCallback:
+    guid:
+      m_Value0: 266298989
+      m_Value1: 623753651
+      m_Value2: 1491318008
+      m_Value3: 209834291
   health: 2
   allies: 
