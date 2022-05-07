@@ -8,6 +8,14 @@ namespace ProjectU.Core
     public class TagList : MonoBehaviour, ISerializationCallbackReceiver
     {
         public HashSet<string> tagSet = new HashSet<string>();
+        
+        public static GameObject[] _FindGameObjectsWithTag(string tag)
+        {
+            return FindObjectsOfType<TagList>()
+                .Select(tl => tl.gameObject)
+                .Where(o => o._CompareTag(tag))
+                .ToArray();
+        }
 
         ////////////////////////// Serialization Bulshit /////////////////////////////////////
         [SerializeField]
@@ -26,7 +34,7 @@ namespace ProjectU.Core
 
             if (tagList == null)
                 tagList = gameObject.AddComponent<TagList>();
-            
+
             tagList.tagSet.Add(tag);
         }
 
@@ -36,7 +44,7 @@ namespace ProjectU.Core
 
             if (tagList == null)
                 return;
-            
+
             tagList.tagSet.Remove(tag);
         }
 
@@ -46,7 +54,7 @@ namespace ProjectU.Core
 
             if (tagList == null)
                 return false;
-            
+
             return tagList.tagSet.Contains(tag);
         }
 
@@ -60,10 +68,8 @@ namespace ProjectU.Core
             return tags.All(t => _CompareTag(gameObject, t));
         }
 
-        
         public static void _AddTag(this Component component, string tag) => _AddTag(component.gameObject, tag);
 
-        
         public static void _RemoveTag(this Component component, string tag) => _RemoveTag(component.gameObject, tag);
 
         public static bool _CompareTag(this Component component, string tag) => _CompareTag(component.gameObject, tag);

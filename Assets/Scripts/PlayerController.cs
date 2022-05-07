@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
         //testing
         _performedInputBindings["Interact"] = context =>
         {
-            ItemInfo itemInfo = ItemSearcher.findClosestItem();
+            ItemInfo itemInfo = ItemSearcher.findClosestItem(transform.position);
 
             if (itemInfo.distance != -1 && itemInfo.distance <= pickupRange)
             {
