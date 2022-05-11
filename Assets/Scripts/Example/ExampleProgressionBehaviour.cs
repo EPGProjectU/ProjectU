@@ -1,4 +1,5 @@
 using System;
+using ProjectU.Core;
 using UnityEngine;
 
 /// <summary>
@@ -84,7 +85,7 @@ public class ExampleProgressionBehaviour : MonoBehaviour
     /// <param name="other"></param>
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other._CompareTag("Player"))
             // Collect can be called multiple times without issues
             // Only when conditions are meet (tag is available) collection goes through
             tagHook.Collect();
