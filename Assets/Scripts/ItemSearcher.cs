@@ -1,19 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using ProjectU.Core;
 using UnityEngine;
 
 public class ItemSearcher : MonoBehaviour
 {
-
-
-    public static ItemInfo findClosestItem()
+    public static ItemInfo findClosestItem(Vector3 position)
     {
-        Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         GameObject closestObject = null;
-        float closestDistance = -1f ;
-        foreach(GameObject item in GameObject.FindGameObjectsWithTag("Item"))
+        var closestDistance = -1f ;
+        foreach(var item in TagList._FindGameObjectsWithTag("Item"))
         {
-            float dist = Vector3.Distance(item.transform.position, playerPosition);
+            float dist = Vector3.Distance(item.transform.position, position);
             if(closestDistance == -1f || closestDistance > dist)
             {
                 closestDistance = dist;

@@ -8,24 +8,19 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// ActorController dedicated to the player with implemented input handling
 /// </summary>
-public class PlayerController : ActorController
+[RequireComponent(typeof(ActorController))]
+public class PlayerController : MonoBehaviour
 {
     private PlayerInput _playerInput;
 
-    private bool _isDead;
-    //testing
     public float pickupRange;
 
-    public bool IsDead
-    {
-        get => _isDead;
-        set
-        {
-            _isDead = value;
+    private ActorController actor;
 
-            if (_isDead)
-                BreakInputBindings();
-        }
+    private void Awake()
+    {
+        actor = GetComponent<ActorController>();
+        _playerInput = FindObjectOfType<PlayerInput>();
     }
 
     /// <summary>
@@ -43,26 +38,20 @@ public class PlayerController : ActorController
     /// </summary>
     private readonly Dictionary<string, Action<InputAction.CallbackContext>> _canceledInputBindings = new Dictionary<string, Action<InputAction.CallbackContext>>();
 
-    // Start is called before the first frame update
-    void Start()
+
+    void OnEnable()
     {
-        // Calling setup of ActorController
-        Setup();
         InputSetup();
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         BreakInputBindings();
     }
 
     private void InputSetup()
     {
-        if (_isDead)
-            return;
-
         // Cache PlayerInput
-        _playerInput = GetComponent<PlayerInput>();
         BindInputs();
     }
 
@@ -73,30 +62,30 @@ public class PlayerController : ActorController
     {
         _performedInputBindings["Move"] = context =>
         {
-            MovementVector = context.ReadValue<Vector2>();
+            actor.MovementVector = context.ReadValue<Vector2>();
 
             if (_useMovementVectorForLook)
-                LookVector = MovementVector;
+                actor.LookVector = actor.MovementVector;
         };
 
         _canceledInputBindings["Move"] = context =>
         {
-            running = false;
-            MovementVector = Vector2.zero;
+            actor.running = false;
+            actor.MovementVector = Vector2.zero;
         };
 
         _performedInputBindings["Look"] = context =>
         {
             _useMovementVectorForLook = false;
-            LookVector = context.ReadValue<Vector2>();
+            actor.LookVector = context.ReadValue<Vector2>();
         };
 
         _canceledInputBindings["Look"] = context =>
         {
             _useMovementVectorForLook = true;
 
-            if (MovementVector.magnitude > 0f)
-                LookVector = MovementVector;
+            if (actor.MovementVector.magnitude > 0f)
+                actor.LookVector = actor.MovementVector;
         };
 
         _performedInputBindings["Cursor"] = context =>
@@ -107,20 +96,20 @@ public class PlayerController : ActorController
             SetLookVectorFromCursor(context.ReadValue<Vector2>());
         };
 
-        _performedInputBindings["Run"] = context => { running = !running; };
+        _performedInputBindings["Run"] = context => { actor.running = !actor.running; };
 
-        _performedInputBindings["Attack"] = context => { Attack(); };
+        _performedInputBindings["Attack"] = context => { actor.Attack(); };
+
         //testing
-        _performedInputBindings["Interact"] = context => 
+        _performedInputBindings["Interact"] = context =>
         {
-            ItemInfo itemInfo = ItemSearcher.findClosestItem();
-            if (itemInfo.distance != -1 && itemInfo.distance <= pickupRange) 
+            ItemInfo itemInfo = ItemSearcher.findClosestItem(transform.position);
+
+            if (itemInfo.distance != -1 && itemInfo.distance <= pickupRange)
             {
                 Pickup(itemInfo.item);
                 Destroy(itemInfo.item);
             }
-               
-
         };
 
         _performedInputBindings["ToggleCursor"] = context =>
@@ -128,7 +117,7 @@ public class PlayerController : ActorController
             _useMovementVectorForLook = !_useMovementVectorForLook;
 
             if (_useMovementVectorForLook)
-                LookVector = MovementVector;
+                actor.LookVector = actor.MovementVector;
             else
                 SetLookVectorFromCursor(Mouse.current.position.ReadValue());
         };
@@ -150,6 +139,9 @@ public class PlayerController : ActorController
     /// </summary>
     private void BreakInputBindings()
     {
+        if (_playerInput == null)
+            return;
+
         foreach (var inputBinding in _performedInputBindings)
         {
             _playerInput.actions[inputBinding.Key].performed -= inputBinding.Value;
@@ -170,7 +162,7 @@ public class PlayerController : ActorController
         Debug.Assert(Camera.main != null, "Main camera is missing tag \"MainCamera\" or does not exist");
         Vector2 playerScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
 
-        LookVector = (cursorPosition - playerScreenPosition).normalized;
+        actor.LookVector = (cursorPosition - playerScreenPosition).normalized;
     }
 
     private void Pickup(GameObject item)
@@ -178,17 +170,4 @@ public class PlayerController : ActorController
         this.GetComponent<Equipment>().items.Add(item.GetComponent<ItemDisplay>().item);
         this.GetComponent<Equipment>().ShowEquipment();
     }
-
-    /// <summary>
-    /// Rebinds inputs after HotReload
-    /// </summary>
-    [AfterHotReload]
-    private static void HotReloadRebinding()
-    {
-        var player = FindObjectOfType<PlayerController>();
-
-        player.InputSetup();
-    }
-
-
 }

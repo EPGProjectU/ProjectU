@@ -4,26 +4,32 @@ using UnityEngine;
 /// <summary>
 /// Abstract class responsible for controlling actions of an actor
 /// </summary>
-[RequireComponent(typeof(Rigidbody2D))]
-public abstract partial class ActorController : MonoBehaviour
+public partial class ActorController : MonoBehaviour
 {
     private Animator _actorAnimator;
 
-    protected bool running;
+    [HideInInspector]
+    public bool running;
 
     public ActorMotionData motionData;
 
-    protected float CurrentMaxSpeed => running ? motionData.runningSpeed : motionData.baseSpeed;
+    public float CurrentMaxSpeed => running ? motionData.runningSpeed : motionData.baseSpeed;
 
     /// <summary>
     /// Vector representing actor's movement
     /// </summary>
-    public Vector2 MovementVector { get; protected set; }
+    public Vector2 MovementVector { get; set; }
 
     /// <summary>
     /// Vector representing actor's rotation
     /// </summary>
-    public Vector2 LookVector { get; protected set; }
+    public Vector2 LookVector { get; set; }
+
+    /// <summary>
+    /// Cached reference to rigidBody to which all movement is applied
+    /// </summary>
+    private Rigidbody2D _rigidBody;
+
 
     /// <summary>
     /// Retrieves and sets rotation on game object with animator
@@ -43,15 +49,11 @@ public abstract partial class ActorController : MonoBehaviour
             _actorAnimator = gameObject.AddComponent<Animator>();
     }
 
-    /// <summary>
-    /// Cached reference to rigidBody to which all movement is applied
-    /// </summary>
-    private Rigidbody2D _rigidBody;
-
     // Animator properties
     private static readonly int SpeedAnimatorProperty = Animator.StringToHash("Speed");
     private static readonly int AttackAnimatorProperty = Animator.StringToHash("Attack");
 
+    private void Awake() => Setup();
 
     /// <summary>
     /// Caches references
@@ -59,7 +61,10 @@ public abstract partial class ActorController : MonoBehaviour
     public void Setup()
     {
         // Caching phase
-        _rigidBody = GetComponent<Rigidbody2D>();
+        _rigidBody = gameObject.AddComponent<Rigidbody2D>();
+        _rigidBody.bodyType = RigidbodyType2D.Dynamic;
+        _rigidBody.gravityScale = 0;
+        _rigidBody.freezeRotation = true;
 
         OnValidate();
     }
@@ -73,7 +78,6 @@ public abstract partial class ActorController : MonoBehaviour
             var deltaRotationSpeed = motionData.rotationSpeed * Time.fixedDeltaTime;
 
             CharacterRotation += Mathf.Clamp(rotationDelta, -deltaRotationSpeed, deltaRotationSpeed) * Mathf.Sqrt(LookVector.magnitude);
-
         }
 
         var playerMoveAngle = Vector2.SignedAngle(MovementVector, Vector2.down);
@@ -84,7 +88,7 @@ public abstract partial class ActorController : MonoBehaviour
         _rigidBody.velocity = MovementVector * CurrentMaxSpeed * motionData.EvaluateMotionForAngle(Mathf.DeltaAngle(playerMoveAngle, CharacterRotation));
     }
 
-    protected void Attack()
+    public void Attack()
     {
         _actorAnimator.SetBool(AttackAnimatorProperty, true);
     }

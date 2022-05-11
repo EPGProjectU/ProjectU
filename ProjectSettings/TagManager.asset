@@ -4,13 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-
   - Item
-
   - Damager
   - PlayersWeapon
   - Enemy
-
   layers:
   - Default
   - TransparentFX
@@ -20,6 +17,7 @@ TagManager:
   - UI
   - Pixel1
   - Pixel2
+  - 
   - 
   - 
   - 

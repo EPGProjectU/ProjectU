@@ -1,4 +1,4 @@
-using System;
+using ProjectU.Core;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -11,7 +11,7 @@ public class Waypoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Player"))
+        if (col._CompareTag("Player"))
             Destroy(gameObject);
     }
 

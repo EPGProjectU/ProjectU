@@ -53,7 +53,6 @@ public class PlayerHealthSystem : HealthSystem
     {
         base.OnDeath();
         
-        GetComponent<PlayerController>().IsDead = true;
         Debug.Log("Player is Dead");
     }
 
