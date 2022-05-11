@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using ProjectU.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// ActorController dedicated to the player with implemented input handling
@@ -109,6 +109,20 @@ public class PlayerController : MonoBehaviour
             {
                 Pickup(itemInfo.item);
                 Destroy(itemInfo.item);
+            }
+        };
+
+        _performedInputBindings["Equipment"] = context =>
+        {
+            if (!SceneManager.GetSceneByBuildIndex(1).isLoaded)
+            {
+                SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+                Time.timeScale = 0;
+            }
+            else
+            { 
+                SceneManager.UnloadSceneAsync(1);
+                Time.timeScale = 1;
             }
         };
 
