@@ -6,6 +6,5 @@ using UnityEngine;
 [Serializable]
 public class GameData 
 {
-    public int playerHealth;
-    public Vector3 playerPosition;
+    public PlayerData player;
 }

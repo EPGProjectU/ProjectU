@@ -60,14 +60,14 @@ public class PlayerHealthSystem : HealthSystem
 
     void SaveGame(GameData data)
     {
-        data.playerPosition = transform.position;
-        data.playerHealth = health;
+        data.player.position = transform.position;
+        data.player.health = health;
     }
 
     void LoadGame(GameData data)
     {
-        transform.position = data.playerPosition;
-        if (data.playerHealth > 0) health = data.playerHealth;
+        transform.position = data.player.position;
+        if (data.player.health > 0) health = data.player.health;
         else GetComponent<PlayerController>().IsDead = true;
 
     }
