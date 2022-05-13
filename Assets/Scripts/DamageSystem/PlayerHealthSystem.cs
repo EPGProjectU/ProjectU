@@ -6,9 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerController))]
 public class PlayerHealthSystem : HealthSystem
 {
-    private bool isInvincible;
+    
     public GameObject weapon;
-    public float invincibleTime = 0.5f;
+    
 
     void Awake()
     {
@@ -28,22 +28,16 @@ public class PlayerHealthSystem : HealthSystem
         }
         weapon.GetComponent<WeaponDamager>().Owner = Ally.Player;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
    
     /// <summary>
     /// Calculate amount of damage that will be taken by Player if he isn't invincilbe and when health drops below 1 uses OnDeath
     /// </summary>
-    public override void TakeDamage(DamageInfo damageinfo)
+    public override void TakeDamage(DamageInfo damage)
     {
         if (!isInvincible)
         {
             isInvincible = true;
-            health -= damageinfo.damage;
+            health -= damage.damage;
             Debug.Log("Health = " + health);
             if (health < 1) OnDeath();
             StartCoroutine(InvincibleTimer());
@@ -56,10 +50,6 @@ public class PlayerHealthSystem : HealthSystem
         Debug.Log("Player is Dead");
     }
 
-    IEnumerator InvincibleTimer()
-    {
-        yield return new WaitForSeconds(invincibleTime);
-        isInvincible = false;
-    }
+    
 
 }

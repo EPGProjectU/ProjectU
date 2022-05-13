@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public enum Ally
@@ -15,6 +16,9 @@ public abstract class HealthSystem : MonoBehaviour
     /// Amount of health (in hearts) that actor currently haves
     /// </summary>
     public int health;
+    public int maxHealth;
+    protected bool isInvincible;
+    public float invincibleTime;
 
     public List<Ally> allies = new List<Ally>(); 
 
@@ -26,5 +30,11 @@ public abstract class HealthSystem : MonoBehaviour
     protected void OnDeath()
     {
         deathCallback.Invoke(this);
+    }
+
+    protected IEnumerator InvincibleTimer()
+    {
+        yield return new WaitForSeconds(invincibleTime);
+        isInvincible = false;
     }
 }
