@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 5042119913514250897}
   - component: {fileID: 749993721634851472}
   - component: {fileID: 4783949260685935171}
+  - component: {fileID: 647860402}
   - component: {fileID: 8979321992758440572}
   m_Layer: 0
   m_Name: Player
@@ -226,6 +227,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   running: 0
   motionData: {fileID: 11400000, guid: b44358aa2663b8a479e376b8ee472de7, type: 2}
+--- !u!114 &647860402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649322890496266106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6190bf6ea4a1caf4da6142c75d1b5c57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathCallback:
+    guid:
+      m_Value0: 1689151441
+      m_Value1: 1793799822
+      m_Value2: 1492010046
+      m_Value3: 690065228
+  health: 3
+  maxHealth: 3
+  invincibleTime: 1
+  allies: 
+  weapon: {fileID: 0}
 --- !u!70 &8979321992758440572
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

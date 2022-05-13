@@ -100,7 +100,10 @@ MonoBehaviour:
       m_Value2: 1610990759
       m_Value3: 1681382040
   health: 3
+  maxHealth: 0
+  invincibleTime: 1
   allies: 
+  weapon: {fileID: 0}
 --- !u!70 &3927401475742962017
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
