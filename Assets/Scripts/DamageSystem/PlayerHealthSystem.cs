@@ -40,7 +40,7 @@ public class PlayerHealthSystem : HealthSystem
             health -= damage.damage;
             Debug.Log("Health = " + health);
             if (health < 1) OnDeath();
-            StartCoroutine(InvincibleTimer());
+            else StartCoroutine(InvincibleTimer());
         }
     }
     protected new void OnDeath()
@@ -50,6 +50,13 @@ public class PlayerHealthSystem : HealthSystem
         Debug.Log("Player is Dead");
     }
 
-    
+    //returns false if healing was unnecessary and potion shouldn't be discarded
+    public bool Heal(int healAmount)
+    {
+        if (healAmount + health < maxHealth) health += healAmount;
+        else if(health != maxHealth) health = maxHealth;
+        else return false;
+        return true;
+    }
 
 }
