@@ -38,7 +38,7 @@ MonoBehaviour:
     layerMask:
       serializedVersion: 2
       m_Bits: 64
-    event: 500
+    event: 450
     blitMaterial: {fileID: 2100000, guid: 270df3dc96e065244b467d915dc18fc6, type: 2}
     outlineColor: {r: 0, g: 0, b: 0, a: 1}
     pixelsPerUnit: 32

@@ -17,10 +17,16 @@ public class PlayerController : MonoBehaviour
 
     private ActorController actor;
 
+    GameObject camera;
+
+    GameObject player;
+
     private void Awake()
     {
         actor = GetComponent<ActorController>();
         _playerInput = FindObjectOfType<PlayerInput>();
+        camera = GameObject.FindGameObjectWithTag("MainCamera");
+        player = GameObject.Find("Character Transforms");
     }
 
     /// <summary>
@@ -60,6 +66,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void BindInputs()
     {
+        
+
         _performedInputBindings["Move"] = context =>
         {
             actor.MovementVector = context.ReadValue<Vector2>();
@@ -116,13 +124,17 @@ public class PlayerController : MonoBehaviour
         {
             if (!SceneManager.GetSceneByBuildIndex(1).isLoaded)
             {
-                SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+                
+                camera.SetActive(false);
+                SceneManager.LoadScene(1, LoadSceneMode.Additive);
                 Time.timeScale = 0;
             }
             else
-            { 
-                SceneManager.UnloadSceneAsync(1);
+            {
                 Time.timeScale = 1;
+                camera.SetActive(true);
+                SceneManager.UnloadSceneAsync(1);
+
             }
         };
 
