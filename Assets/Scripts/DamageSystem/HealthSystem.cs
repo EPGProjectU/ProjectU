@@ -20,6 +20,7 @@ public abstract class HealthSystem : MonoBehaviour
     protected bool isInvincible;
     public float invincibleTime;
 
+    public Ally myGroup;
     public List<Ally> allies = new List<Ally>(); 
 
     /// <summary>

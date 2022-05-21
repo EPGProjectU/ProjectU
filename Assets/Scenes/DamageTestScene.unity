@@ -443,6 +443,7 @@ MonoBehaviour:
   health: 1
   maxHealth: 0
   invincibleTime: 0
+  myGroup: 0
   allies: 
 --- !u!4 &178723349
 Transform:
@@ -8326,6 +8327,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 216629114340446708, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 216629114340446708, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
+      propertyPath: weapon2
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: 971ad14a1ad61704c9ddb90e4b0cd96b, type: 3}
     - target: {fileID: 7649322890496266106, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
       propertyPath: m_Name
       value: Player

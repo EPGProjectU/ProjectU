@@ -6,27 +6,15 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerController))]
 public class PlayerHealthSystem : HealthSystem
 {
-    
-    public GameObject weapon;
-    
-
     void Awake()
     {
-        weapon = GetComponentsInChildren<Transform>().FirstOrDefault(c => c.gameObject.name == "WeaponSlot")?.gameObject.transform.GetChild(0).gameObject;
+        GetComponentInChildren<WeaponSlot>().Owner = myGroup;
     }
-
     // Start is called before the first frame update
     void Start()
     {
-        allies.Add(Ally.Player);
+        allies.Add(myGroup);
         isInvincible = false;
-        weapon.GetComponent<Collider2D>().enabled = false;
-        if (weapon.GetComponent<WeaponDamager>() == null)
-        {
-            weapon.AddComponent<WeaponDamager>();
-            weapon.GetComponent<WeaponDamager>().damage.damage = 1;
-        }
-        weapon.GetComponent<WeaponDamager>().Owner = Ally.Player;
     }
    
     /// <summary>
