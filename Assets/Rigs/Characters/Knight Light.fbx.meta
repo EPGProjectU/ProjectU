@@ -18,7 +18,12 @@ ModelImporter:
   - first:
       74: -5199034168216811052
     second: Rig|Walk Animation
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mini_Chr
+    second: {fileID: 2100000, guid: 304962bbc827cdd47a28f53f3fb15214, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
