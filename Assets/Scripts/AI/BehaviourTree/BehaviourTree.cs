@@ -15,6 +15,10 @@ public class BehaviourTree : NodeGraph {
         foreach (BehaviourNode node in nodes) {
             if (node.IsStartingNode())
                 _root = node;
+            else if (node.IsSubtreeNode()) {
+                SubtreeNode subtree = node as SubtreeNode;
+                subtree.init();
+            }
         }
 
         if (_root == null)
@@ -24,9 +28,11 @@ public class BehaviourTree : NodeGraph {
         Debug.Log("Behaviour tree nodes count: " + nodes.Count);
     }
 
-    public void Evaluate(AIController controller) {
-            if (_root != null)
-                _root.Evaluate(controller);
+    public NodeState Evaluate(AIController controller) {
+        if (_root != null)
+            return _root.Evaluate(controller);
+        else
+            return NodeState.FAILURE;
     }
 
     //periodically tick every node activating evaluation and helping to enable time dependant behaviours and be more intuitive

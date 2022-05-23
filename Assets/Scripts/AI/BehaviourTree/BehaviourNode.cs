@@ -26,11 +26,12 @@ public abstract class BehaviourNode : Node{
     public abstract NodeState Evaluate(AIController controller);
 
     public virtual bool IsStartingNode() => false;
+    public virtual bool IsSubtreeNode() => false;
 
-       /* public override object GetValue(NodePort port) {
-            return child;
-        }*/
-    }
+    /* public override object GetValue(NodePort port) {
+         return child;
+     }*/
+}
 
     
 

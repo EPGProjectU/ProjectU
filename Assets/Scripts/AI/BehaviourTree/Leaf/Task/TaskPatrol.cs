@@ -5,7 +5,9 @@ using UnityEngine;
 [CreateNodeMenu("BehaviourTree/Leaf/TaskPatrol")]
 public class TaskPatrol : LeafNode
 {
-    public List<Transform> waypointList;
+    //public List<Transform> waypointList;
+
+    //
     
 
     public TaskPatrol() { }

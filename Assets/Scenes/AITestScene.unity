@@ -28283,6 +28283,10 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2113265057265413657, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
+      propertyPath: behaviourTree
+      value: 
+      objectReference: {fileID: 11400000, guid: d38f46cb604d9f041bc7c1fc030f97f1, type: 2}
+    - target: {fileID: 2113265057265413657, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
       propertyPath: wayPointList.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -28676,6 +28680,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2113265057265413657, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
+      propertyPath: behaviourTree
+      value: 
+      objectReference: {fileID: 11400000, guid: d38f46cb604d9f041bc7c1fc030f97f1, type: 2}
     - target: {fileID: 2113265057265413657, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
       propertyPath: wayPointList.Array.size
       value: 4
