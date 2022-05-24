@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class EnemyHealthSystem : HealthSystem
 {
-    public GameObject weapon;
     void Awake()
     {
         GetComponentInChildren<WeaponSlot>().Owner = myGroup;

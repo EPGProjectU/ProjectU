@@ -15,4 +15,9 @@ public class Armor : Item
             + "ArmorValue: " + ArmorValue + "\n"
             + "Durability: " + Durability;
     }
+    public override void Use(GameObject player)
+    {
+        player.GetComponent<PlayerHealthSystem>().defence = ArmorValue;
+        player.GetComponent<PlayerHealthSystem>().armorDurability = Durability;
+    }
 }

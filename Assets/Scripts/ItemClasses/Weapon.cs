@@ -16,4 +16,9 @@ public class Weapon : Item
             + "Damage: " + Damage + "\n"
             + "Range: " + Range;
     }
+
+    public override void Use(GameObject player)
+    {
+        player.GetComponentInChildren<WeaponSlot>().UpdateWeaponDamage(new DamageInfo(Damage));
+    }
 }

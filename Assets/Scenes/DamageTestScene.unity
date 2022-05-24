@@ -8327,6 +8327,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 647860402, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
+      propertyPath: defence
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 647860402, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
+      propertyPath: armorDurability
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 216629114340446708, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
       propertyPath: weapon
       value: 

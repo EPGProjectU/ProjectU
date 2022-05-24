@@ -13,4 +13,11 @@ public class Consumable : Item
         return base.ToString() + "\n"
             + "Value: " + Value;
     }
+
+    public override void Use(GameObject player)
+    {
+        bool wasUsed = player.GetComponent<PlayerHealthSystem>().Heal(Value);
+        if (wasUsed) Debug.Log("Healed");
+        else Debug.Log("Not Healed");
+    }
 }

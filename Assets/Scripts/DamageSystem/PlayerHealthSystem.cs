@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerController))]
 public class PlayerHealthSystem : HealthSystem
 {
+    public int defence;
+    public float armorDurability;
     void Awake()
     {
         GetComponentInChildren<WeaponSlot>().Owner = myGroup;
@@ -24,9 +26,19 @@ public class PlayerHealthSystem : HealthSystem
     {
         if (!isInvincible)
         {
+            int tmp = damage.damage;
             isInvincible = true;
-            health -= damage.damage;
-            Debug.Log("Health = " + health);
+            if (armorDurability > 0) 
+            { 
+                tmp -= defence;
+                if (tmp < 0) armorDurability += tmp;
+                else armorDurability -= defence;
+            }
+            if (tmp > 0)
+            {
+                health -= tmp;
+                Debug.Log("Health = " + health);
+            }
             if (health < 1) OnDeath();
             else StartCoroutine(InvincibleTimer());
         }
