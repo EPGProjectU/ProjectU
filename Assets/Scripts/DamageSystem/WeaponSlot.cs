@@ -48,6 +48,10 @@ public class WeaponSlot : MonoBehaviour
         }
         weapon.GetComponent<Collider2D>().enabled = false;
         weapon.GetComponent<WeaponDamager>().Owner = Owner;
-        Debug.Log(transform.position + " " + transform.rotation);//weapon.transform.position = new Vector3(1.23612f + 0.08829486f+ 0.006306827f, -2.21108f, 0);
+    }
+
+    public void UpdateWeaponDamage(DamageInfo damage)
+    {
+        weapon.GetComponent<WeaponDamager>().damage = damage;
     }
 }
