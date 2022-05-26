@@ -6,8 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerController))]
 public class PlayerHealthSystem : HealthSystem
 {
-    public int defence;
-    public float armorDurability;
     void Awake()
     {
         GetComponentInChildren<WeaponSlot>().Owner = myGroup;

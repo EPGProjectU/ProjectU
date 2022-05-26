@@ -17,7 +17,6 @@ public class Armor : Item
     }
     public override void Use(GameObject player)
     {
-        player.GetComponent<PlayerHealthSystem>().defence = ArmorValue;
-        player.GetComponent<PlayerHealthSystem>().armorDurability = Durability;
+        player.GetComponent<PlayerHealthSystem>().UpdateDefence(ArmorValue,Durability);
     }
 }

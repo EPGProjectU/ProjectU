@@ -19,6 +19,8 @@ public abstract class HealthSystem : MonoBehaviour
     public int maxHealth;
     protected bool isInvincible;
     public float invincibleTime;
+    public int defence;
+    public float armorDurability;
 
     public Ally myGroup;
     public List<Ally> allies = new List<Ally>(); 
@@ -31,6 +33,12 @@ public abstract class HealthSystem : MonoBehaviour
     protected void OnDeath()
     {
         deathCallback.Invoke(this);
+    }
+
+    public void UpdateDefence(int defence, float armorDurability)
+    {
+        this.defence = defence;
+        this.armorDurability = armorDurability;
     }
 
     protected IEnumerator InvincibleTimer()
