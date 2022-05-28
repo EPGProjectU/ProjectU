@@ -14,10 +14,9 @@ public class Consumable : Item
             + "Value: " + Value;
     }
 
-    public override void Use(GameObject player)
+    public override void Use(GameObject target)
     {
-        bool wasUsed = player.GetComponent<PlayerHealthSystem>().Heal(Value);
-        if (wasUsed) Debug.Log("Healed");
+        if (target.GetComponent<HealthSystem>().Heal(Value)) Debug.Log("Healed");
         else Debug.Log("Not Healed");
     }
 }

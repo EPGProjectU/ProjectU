@@ -5,7 +5,8 @@ using UnityEngine;
 public enum Ally
 {
     Player,
-    Enemy
+    Enemy,
+    NPC
 }
 
 public abstract class HealthSystem : MonoBehaviour
@@ -17,7 +18,9 @@ public abstract class HealthSystem : MonoBehaviour
     /// </summary>
     public int health;
     public int maxHealth;
-    protected bool isInvincible;
+    protected bool isInvincible = false;
+    protected bool isPoisoned = false;
+    protected bool isCorroding = false;
     public float invincibleTime;
     public int defence;
     public float armorDurability;
@@ -39,6 +42,44 @@ public abstract class HealthSystem : MonoBehaviour
     {
         this.defence = defence;
         this.armorDurability = armorDurability;
+    }
+
+    //returns false if healing was unnecessary and potion shouldn't be discarded
+    public bool Heal(int healAmount)
+    {
+        if (healAmount + health < maxHealth) health += healAmount;
+        else if (health != maxHealth) health = maxHealth;
+        else return false;
+        return true;
+    }
+
+    protected IEnumerator Poisoned(float time, int damage)
+    {
+        float duration = 0;
+        while (time > duration)
+        {
+            if (health - damage < 2) 
+            {
+                health = 1;
+                break;
+            }
+            health -= damage;
+            yield return new WaitForSeconds(1);
+            duration++;
+        }
+        isPoisoned = false;
+    }
+
+    protected IEnumerator Corroding(float time, int damage)
+    {
+        float duration = 0;
+        while (time > duration)
+        {
+            armorDurability -= damage;
+            yield return new WaitForSeconds(1);
+            duration++;
+        }
+        isCorroding = false;
     }
 
     protected IEnumerator InvincibleTimer()

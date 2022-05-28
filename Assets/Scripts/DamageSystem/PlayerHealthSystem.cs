@@ -14,7 +14,6 @@ public class PlayerHealthSystem : HealthSystem
     void Start()
     {
         allies.Add(myGroup);
-        isInvincible = false;
     }
    
     /// <summary>
@@ -24,21 +23,31 @@ public class PlayerHealthSystem : HealthSystem
     {
         if (!isInvincible)
         {
-            int tmp = damage.damage;
+            int dmg = damage.damage;
             isInvincible = true;
             if (armorDurability > 0) 
             { 
-                tmp -= defence;
-                if (tmp < 0) armorDurability += tmp;
+                dmg -= defence;
+                if (dmg < 0) armorDurability += dmg;
                 else armorDurability -= defence;
             }
-            if (tmp > 0)
+            if (dmg > 0)
             {
-                health -= tmp;
+                health -= dmg;
                 Debug.Log("Health = " + health);
             }
             if (health < 1) OnDeath();
             else StartCoroutine(InvincibleTimer());
+            if (damage.type == DamageType.Poison && !isPoisoned)
+            {
+                isPoisoned = true;
+                StartCoroutine(Poisoned(damage.effectDuration, damage.specialDamage));
+            }
+            else if (damage.type == DamageType.Corrosion && !isCorroding)
+            {
+                isCorroding = true;
+                StartCoroutine(Corroding(damage.effectDuration, damage.specialDamage));
+            }
         }
     }
     protected new void OnDeath()
@@ -47,14 +56,5 @@ public class PlayerHealthSystem : HealthSystem
         gameObject.GetComponent<PlayerController>().enabled = false;
         Debug.Log("Player is Dead");
     }
-
-    //returns false if healing was unnecessary and potion shouldn't be discarded
-    public bool Heal(int healAmount)
-    {
-        if (healAmount + health < maxHealth) health += healAmount;
-        else if(health != maxHealth) health = maxHealth;
-        else return false;
-        return true;
-    }
-
+        
 }

@@ -33,6 +33,7 @@ public class WeaponSlot : MonoBehaviour
         }
     }
 
+    //add pefab to actor
     public void EquipWeapon(GameObject weapon)
     {
         Debug.Log(transform.position+" "+transform.rotation);
@@ -53,5 +54,12 @@ public class WeaponSlot : MonoBehaviour
     public void UpdateWeaponDamage(DamageInfo damage)
     {
         weapon.GetComponent<WeaponDamager>().damage = damage;
+    }
+
+    public void AddEffectWeaponDamage(int specialDamage, float effectDuration ,DamageType type)
+    {
+        weapon.GetComponent<WeaponDamager>().damage.specialDamage = specialDamage;
+        weapon.GetComponent<WeaponDamager>().damage.effectDuration = effectDuration;
+        weapon.GetComponent<WeaponDamager>().damage.type = type;
     }
 }
