@@ -192,7 +192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7649322890496266106, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8181707218967104488, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
       propertyPath: m_RootOrder
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 587165659}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -398,6 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: ea27c041910e4654c8f9c94561a976bd, type: 2}
+  equipmentHandler: {fileID: 0}
 --- !u!1001 &1143310433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -638,6 +639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 193da14d7874e7b43902c2bc8e12519b, type: 2}
+  equipmentHandler: {fileID: 0}
 --- !u!1 &2060729902
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,7 +685,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060729902}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
@@ -735,6 +737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 2ef4a47b54b327f4b907b9d910001219, type: 2}
+  equipmentHandler: {fileID: 0}
 --- !u!1001 &8826705500897103807
 PrefabInstance:
   m_ObjectHideFlags: 0

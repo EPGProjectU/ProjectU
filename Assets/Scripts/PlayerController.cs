@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using ProjectU.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// ActorController dedicated to the player with implemented input handling
@@ -17,10 +17,16 @@ public class PlayerController : MonoBehaviour
 
     private ActorController actor;
 
+    GameObject camera;
+
+    GameObject player;
+
     private void Awake()
     {
         actor = GetComponent<ActorController>();
         _playerInput = FindObjectOfType<PlayerInput>();
+        camera = GameObject.FindGameObjectWithTag("MainCamera");
+        player = GameObject.Find("Character Transforms");
     }
 
     /// <summary>
@@ -60,6 +66,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void BindInputs()
     {
+        
+
         _performedInputBindings["Move"] = context =>
         {
             actor.MovementVector = context.ReadValue<Vector2>();
@@ -110,6 +118,24 @@ public class PlayerController : MonoBehaviour
                 Pickup(itemInfo.item);
                 itemInfo.item.GetComponent<ItemDisplay>().item.Use(gameObject);//using item
                 Destroy(itemInfo.item);
+            }
+        };
+
+        _performedInputBindings["Equipment"] = context =>
+        {
+            if (!SceneManager.GetSceneByBuildIndex(1).isLoaded)
+            {
+                
+                camera.SetActive(false);
+                SceneManager.LoadScene(1, LoadSceneMode.Additive);
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                camera.SetActive(true);
+                SceneManager.UnloadSceneAsync(1);
+
             }
         };
 
