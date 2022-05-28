@@ -15,7 +15,7 @@ public class CreateEquipmentUI : MonoBehaviour
     
     void Start()
     {
-        equipment = GameObject.FindGameObjectWithTag("Player").GetComponent<Equipment>();
+        equipment = ProjectU.Core.TagList._FindGameObjectsWithTag("Player")[0].GetComponent<Equipment>();
         Image image;
         foreach(Item item in equipment.items)
         {
