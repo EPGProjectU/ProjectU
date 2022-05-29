@@ -101,11 +101,12 @@ MonoBehaviour:
       m_Value2: 1610990759
       m_Value3: 1681382040
   health: 3
-  maxHealth: 0
+  maxHealth: 3
   invincibleTime: 1
+  defence: 0
+  armorDurability: 0
   myGroup: 1
   allies: 
-  weapon: {fileID: 0}
 --- !u!70 &3927401475742962017
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -338,6 +339,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage:
     damage: 1
+    specialDamage: 0
+    effectDuration: 0
+    type: 0
   Owner: 0
 --- !u!1001 &7351031504813265248
 PrefabInstance:

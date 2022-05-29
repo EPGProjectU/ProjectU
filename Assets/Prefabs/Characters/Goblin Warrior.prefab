@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1762970739261133736}
+  - component: {fileID: 3981128555534548558}
   m_Layer: 0
   m_Name: WeaponSlot
   m_TagString: Untagged
@@ -62,6 +63,20 @@ Transform:
   m_Father: {fileID: 6955373047780016894}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -0.675, y: -9.6, z: 68}
+--- !u!114 &3981128555534548558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3050080248827085079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f7080d21f87d54a90f0830eacc7825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Owner: 1
+  weapon: {fileID: 0}
 --- !u!1 &6401840096967692479
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,6 +178,11 @@ MonoBehaviour:
       m_Value2: 1610990759
       m_Value3: 1681382040
   health: 3
+  maxHealth: 3
+  invincibleTime: 1
+  defence: 0
+  armorDurability: 0
+  myGroup: 1
   allies: 
 --- !u!70 &8677321724125305354
 CapsuleCollider2D:
@@ -305,6 +325,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15480039, y: 1.2232783}
   m_EdgeRadius: 0
+--- !u!114 &3392556897374445311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3008351622853509778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d314fe87a0f6d428c32e4ab0723ed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage:
+    damage: 1
+    specialDamage: 0
+    effectDuration: 0
+    type: 0
+  Owner: 0
 --- !u!1001 &4755736422268980950
 PrefabInstance:
   m_ObjectHideFlags: 0

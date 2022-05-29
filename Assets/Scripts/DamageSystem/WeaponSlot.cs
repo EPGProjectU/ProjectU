@@ -9,9 +9,6 @@ public class WeaponSlot : MonoBehaviour
     private GameObject fist;
     void Awake()
     {
-        fist = new GameObject("Fist");
-        fist.AddComponent<CircleCollider2D>().isTrigger = true;
-        fist.GetComponent<CircleCollider2D>().radius = 0.5f;
         weapon = transform.GetChild(0).gameObject;
     }
     void Start()
@@ -29,6 +26,9 @@ public class WeaponSlot : MonoBehaviour
         }
         else
         {
+            fist = new GameObject("Fist");
+            fist.AddComponent<CircleCollider2D>().isTrigger = true;
+            fist.GetComponent<CircleCollider2D>().radius = 0.5f;
             EquipWeapon(fist);
         }
     }
@@ -36,7 +36,6 @@ public class WeaponSlot : MonoBehaviour
     //add pefab to actor
     public void EquipWeapon(GameObject weapon)
     {
-        Debug.Log(transform.position+" "+transform.rotation);
         Destroy(this.weapon);
         weapon.transform.position = transform.position;
         weapon.transform.rotation = transform.rotation;
