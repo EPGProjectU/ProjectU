@@ -31,24 +31,20 @@ public class EnemyHealthSystem : HealthSystem
             if (dmg > 0) health -= dmg;
             if (health < 1) OnDeath();
             else StartCoroutine(InvincibleTimer());
-            if (damage.type == DamageType.Poison && !isPoisoned)
-            {
-                isPoisoned = true;
-                StartCoroutine(Poisoned(damage.effectDuration, damage.specialDamage));
-            }
-            else if (damage.type == DamageType.Corrosion && !isCorroding)
-            {
-                isCorroding = true;
-                StartCoroutine(Corroding(damage.effectDuration, damage.specialDamage));
-            }
+            ApplySpecialEffect(damage);
         }
     }
 
-    protected new IEnumerator Corroding(float time, int damage)
+    protected override IEnumerator Corroding(float time, int damage)
     {
         float duration = 0;
         while (time > duration)
         {
+            if (defence - damage < 0)
+            {
+                defence = 0;
+                break;
+            }
             defence -= damage;
             yield return new WaitForSeconds(1);
             duration++;

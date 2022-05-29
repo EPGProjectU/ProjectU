@@ -33,6 +33,20 @@ public abstract class HealthSystem : MonoBehaviour
     /// </summary>
     public abstract void TakeDamage(DamageInfo damage);
 
+    protected void ApplySpecialEffect(DamageInfo damage)
+    {
+        if (damage.type == DamageType.Poison && !isPoisoned)
+        {
+            isPoisoned = true;
+            StartCoroutine(Poisoned(damage.effectDuration, damage.specialDamage));
+        }
+        else if (damage.type == DamageType.Corrosion && !isCorroding)
+        {
+            isCorroding = true;
+            StartCoroutine(Corroding(damage.effectDuration, damage.specialDamage));
+        }
+    }
+
     protected void OnDeath()
     {
         deathCallback.Invoke(this);
@@ -70,11 +84,16 @@ public abstract class HealthSystem : MonoBehaviour
         isPoisoned = false;
     }
 
-    protected IEnumerator Corroding(float time, int damage)
+    protected virtual IEnumerator Corroding(float time, int damage)
     {
         float duration = 0;
         while (time > duration)
-        {
+        {            
+            if (armorDurability - damage < 0)
+            {
+                armorDurability = 0;
+                break;
+            }
             armorDurability -= damage;
             yield return new WaitForSeconds(1);
             duration++;

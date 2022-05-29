@@ -30,6 +30,7 @@ public class PlayerHealthSystem : HealthSystem
                 dmg -= defence;
                 if (dmg < 0) armorDurability += dmg;
                 else armorDurability -= defence;
+                if (armorDurability < 0) armorDurability = 0;
             }
             if (dmg > 0)
             {
@@ -38,16 +39,7 @@ public class PlayerHealthSystem : HealthSystem
             }
             if (health < 1) OnDeath();
             else StartCoroutine(InvincibleTimer());
-            if (damage.type == DamageType.Poison && !isPoisoned)
-            {
-                isPoisoned = true;
-                StartCoroutine(Poisoned(damage.effectDuration, damage.specialDamage));
-            }
-            else if (damage.type == DamageType.Corrosion && !isCorroding)
-            {
-                isCorroding = true;
-                StartCoroutine(Corroding(damage.effectDuration, damage.specialDamage));
-            }
+            ApplySpecialEffect(damage);
         }
     }
     protected new void OnDeath()
