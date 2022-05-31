@@ -18,21 +18,20 @@ public class EnemyHealthSystem : HealthSystem
 
     public override void TakeDamage(DamageInfo damage)
     {
-        if (!isInvincible)
+        if (!isInvincible) base.TakeDamage(DefenceActsLikeHealth(damage));
+    }
+
+    protected DamageInfo DefenceActsLikeHealth(DamageInfo damage)
+    {
+        int dmg = damage.damage;
+        if (defence > 0)
         {
-            int dmg = damage.damage;
-            isInvincible = true;
-            if (defence > 0)
-            {
-                int tmp = dmg;
-                dmg -= defence;
-                defence -= tmp;
-            }
-            if (dmg > 0) health -= dmg;
-            if (health < 1) OnDeath();
-            else StartCoroutine(InvincibleTimer());
-            ApplySpecialEffect(damage);
+            int tmp = dmg;
+            dmg -= defence;
+            defence -= tmp;
         }
+        if (dmg < 0) dmg = 0;
+        return new DamageInfo(dmg, damage);
     }
 
     protected override IEnumerator Corroding(float time, int damage)
@@ -52,7 +51,7 @@ public class EnemyHealthSystem : HealthSystem
         isCorroding = false;
     }
 
-    protected new void OnDeath()
+    protected override void OnDeath()
     {
         base.OnDeath();
         Destroy(gameObject);

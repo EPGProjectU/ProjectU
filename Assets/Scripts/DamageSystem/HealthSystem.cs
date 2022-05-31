@@ -26,13 +26,21 @@ public abstract class HealthSystem : MonoBehaviour
     public float armorDurability;
 
     public Ally myGroup;
-    public List<Ally> allies = new List<Ally>(); 
+    public List<Ally> allies = new List<Ally>();
 
     /// <summary>
     /// Calculate amount of damage that will be taken by gameobject
     /// </summary>
-    public abstract void TakeDamage(DamageInfo damage);
-
+    public virtual void TakeDamage(DamageInfo damage)
+    {
+        if (!isInvincible)
+        {
+            StartCoroutine(InvincibleTimer());
+            health -= damage.damage;
+            if (health < 1) OnDeath();
+            ApplySpecialEffect(damage);
+        }
+    }
     protected void ApplySpecialEffect(DamageInfo damage)
     {
         if (damage.type == DamageType.Poison && !isPoisoned)
@@ -47,7 +55,7 @@ public abstract class HealthSystem : MonoBehaviour
         }
     }
 
-    protected void OnDeath()
+    protected virtual void OnDeath()
     {
         deathCallback.Invoke(this);
     }
@@ -103,6 +111,7 @@ public abstract class HealthSystem : MonoBehaviour
 
     protected IEnumerator InvincibleTimer()
     {
+        isInvincible = true;
         yield return new WaitForSeconds(invincibleTime);
         isInvincible = false;
     }

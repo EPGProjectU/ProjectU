@@ -32,4 +32,11 @@ public struct DamageInfo
         this.type = type;
     }
 
+    public DamageInfo(int damage,DamageInfo damageInfo)
+    {
+        this.damage = damage;
+        this.specialDamage = damageInfo.specialDamage;
+        this.effectDuration = damageInfo.effectDuration;
+        this.type = damageInfo.type;
+    }
 }

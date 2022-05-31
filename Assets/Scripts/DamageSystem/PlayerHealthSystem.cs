@@ -21,28 +21,24 @@ public class PlayerHealthSystem : HealthSystem
     /// </summary>
     public override void TakeDamage(DamageInfo damage)
     {
-        if (!isInvincible)
-        {
-            int dmg = damage.damage;
-            isInvincible = true;
-            if (armorDurability > 0) 
-            { 
-                dmg -= defence;
-                if (dmg < 0) armorDurability += dmg;
-                else armorDurability -= defence;
-                if (armorDurability < 0) armorDurability = 0;
-            }
-            if (dmg > 0)
-            {
-                health -= dmg;
-                Debug.Log("Health = " + health);
-            }
-            if (health < 1) OnDeath();
-            else StartCoroutine(InvincibleTimer());
-            ApplySpecialEffect(damage);
-        }
+        if (!isInvincible) base.TakeDamage(AbsorbDamage(damage));
     }
-    protected new void OnDeath()
+
+    protected DamageInfo AbsorbDamage(DamageInfo damage)
+    {
+        int dmg = damage.damage;
+        if (armorDurability > 0)
+        {
+            dmg -= defence;
+            if (dmg < 0) armorDurability += dmg;
+            else armorDurability -= defence;
+            if (armorDurability < 0) armorDurability = 0;
+        }
+        if (dmg < 0) dmg = 0;
+        return new DamageInfo(dmg, damage);
+    }
+
+    protected override void OnDeath()
     {
         base.OnDeath();
         gameObject.GetComponent<PlayerController>().enabled = false;
