@@ -9,7 +9,7 @@ public class AttackBehaviour : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(weapon == null) weapon = animator.GetComponentsInChildren<Transform>().FirstOrDefault(c => c.gameObject.name == "WeaponSlot")?.gameObject.transform.GetChild(0).gameObject;
+        weapon = animator.GetComponentInChildren<WeaponSlot>().weapon;
         weapon.GetComponent<Collider2D>().enabled = true;
     }
 

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3884653325065613933}
+  - component: {fileID: 216629114340446708}
   m_Layer: 0
   m_Name: WeaponSlot
   m_TagString: Untagged
@@ -31,6 +32,20 @@ Transform:
   m_Father: {fileID: 6711425277896913031}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -0.675, y: -9.079, z: 68.223}
+--- !u!114 &216629114340446708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3884653325065613934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f7080d21f87d54a90f0830eacc7825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Owner: 0
+  weapon: {fileID: 0}
 --- !u!1 &5459906567002190833
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +176,7 @@ GameObject:
   - component: {fileID: 5042119913514250897}
   - component: {fileID: 749993721634851472}
   - component: {fileID: 4783949260685935171}
+  - component: {fileID: 647860402}
   - component: {fileID: 8979321992758440572}
   - component: {fileID: 7182767721251947717}
   m_Layer: 0
@@ -227,6 +243,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   running: 0
   motionData: {fileID: 11400000, guid: b44358aa2663b8a479e376b8ee472de7, type: 2}
+--- !u!114 &647860402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649322890496266106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6190bf6ea4a1caf4da6142c75d1b5c57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathCallback:
+    guid:
+      m_Value0: 1689151441
+      m_Value1: 1793799822
+      m_Value2: 1492010046
+      m_Value3: 690065228
+  health: 3
+  maxHealth: 3
+  invincibleTime: 2
+  defence: 0
+  armorDurability: 0
+  myGroup: 0
+  allies: 
 --- !u!70 &8979321992758440572
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -548,4 +589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage:
     damage: 1
+    specialDamage: 0
+    effectDuration: 0
+    type: 0
   Owner: 0
