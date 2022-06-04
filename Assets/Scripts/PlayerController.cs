@@ -123,18 +123,35 @@ public class PlayerController : MonoBehaviour
 
         _performedInputBindings["Equipment"] = context =>
         {
-            if (!SceneManager.GetSceneByBuildIndex(1).isLoaded)
+            if (!SceneManager.GetSceneByBuildIndex((int)SceneEnum.EquipmentScen).isLoaded)
             {
                 
                 camera.SetActive(false);
-                SceneManager.LoadScene(1, LoadSceneMode.Additive);
+                SceneManager.LoadScene((int)SceneEnum.EquipmentScen, LoadSceneMode.Additive);
                 Time.timeScale = 0;
             }
             else
             {
                 Time.timeScale = 1;
                 camera.SetActive(true);
-                SceneManager.UnloadSceneAsync(1);
+                SceneManager.UnloadSceneAsync((int)SceneEnum.EquipmentScen);
+
+            }
+        };
+        _performedInputBindings["Pause"] = context =>
+        {
+            if (!SceneManager.GetSceneByBuildIndex((int)SceneEnum.PauseMenu).isLoaded)
+            {
+
+                camera.SetActive(false);
+                SceneManager.LoadScene((int)SceneEnum.PauseMenu, LoadSceneMode.Additive);
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                camera.SetActive(true);
+                SceneManager.UnloadSceneAsync((int)SceneEnum.PauseMenu);
 
             }
         };
