@@ -305,7 +305,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 271500301}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1776210500}
+        m_TargetAssemblyTypeName: SceneController, Main
+        m_MethodName: ChangeScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &271500301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,6 +639,7 @@ GameObject:
   - component: {fileID: 1776210499}
   - component: {fileID: 1776210498}
   - component: {fileID: 1776210497}
+  - component: {fileID: 1776210500}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -691,3 +704,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1776210500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776210496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b07d980ab19468446ad2aae6f2ba6391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
