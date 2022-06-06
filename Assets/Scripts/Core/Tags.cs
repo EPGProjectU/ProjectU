@@ -1,17 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace ProjectU.Core
 {
     [DisallowMultipleComponent]
-    public class TagList : MonoBehaviour, ISerializationCallbackReceiver
+    public class Tags : MonoBehaviour
     {
-        public HashSet<string> tagSet = new HashSet<string>();
+        public TagList tagCollection;
+    }
+
+    [Serializable]
+    public class TagList : ISerializationCallbackReceiver, IEnumerable<string>
+    {
+        public HashSet<string> set = new HashSet<string>();
         
         public static GameObject[] _FindGameObjectsWithTag(string tag)
         {
-            return FindObjectsOfType<TagList>()
+            return Object.FindObjectsOfType<Tags>()
                 .Select(tl => tl.gameObject)
                 .Where(o => o._CompareTag(tag))
                 .ToArray();
@@ -21,41 +30,63 @@ namespace ProjectU.Core
         [SerializeField]
         private List<string> tagSerializationList;
 
-        void ISerializationCallbackReceiver.OnBeforeSerialize() => tagSerializationList = tagSet.ToList();
+        void ISerializationCallbackReceiver.OnBeforeSerialize() => tagSerializationList = set.ToList();
 
-        void ISerializationCallbackReceiver.OnAfterDeserialize() => tagSet = new HashSet<string>(tagSerializationList);
+        void ISerializationCallbackReceiver.OnAfterDeserialize() => set = new HashSet<string>(tagSerializationList);
+
+        IEnumerator<string> IEnumerable<string>.GetEnumerator()
+        {
+            return set.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return set.GetEnumerator();
+        }
     }
 
     public static class GameObjectTagListExtension
     {
         public static void _AddTag(this GameObject gameObject, string tag)
         {
-            var tagList = gameObject.GetComponent<TagList>();
+            var tagComponent = gameObject.GetComponent<Tags>();
 
-            if (tagList == null)
-                tagList = gameObject.AddComponent<TagList>();
+            if (tagComponent == null)
+                tagComponent = gameObject.AddComponent<Tags>();
 
-            tagList.tagSet.Add(tag);
+            tagComponent.tagCollection.set.Add(tag);
+        }
+
+        public static void _AddTags(this GameObject gameObject, IEnumerable<string> tags)
+        {
+            foreach (var @tag in tags)
+                gameObject._AddTag(@tag);
         }
 
         public static void _RemoveTag(this GameObject gameObject, string tag)
         {
-            var tagList = gameObject.GetComponent<TagList>();
+            var tagComponent = gameObject.GetComponent<Tags>();
 
-            if (tagList == null)
+            if (tagComponent == null)
                 return;
 
-            tagList.tagSet.Remove(tag);
+            tagComponent.tagCollection.set.Remove(tag);
+        }
+
+        public static void _RemoveTags(this GameObject gameObject, IEnumerable<string> tags)
+        {
+            foreach (var @tag in tags)
+                gameObject._RemoveTag(@tag);
         }
 
         public static bool _CompareTag(this GameObject gameObject, string tag)
         {
-            var tagList = gameObject.GetComponent<TagList>();
+            var tagComponent = gameObject.GetComponent<Tags>();
 
-            if (tagList == null)
+            if (tagComponent == null)
                 return false;
 
-            return tagList.tagSet.Contains(tag);
+            return tagComponent.tagCollection.set.Contains(tag);
         }
 
         public static bool _CompareAnyTag(this GameObject gameObject, IEnumerable<string> tags)
