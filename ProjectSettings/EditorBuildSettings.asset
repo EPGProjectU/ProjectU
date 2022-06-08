@@ -29,4 +29,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 126958ac62baec347b2a8b78e67ef1a6
+  - enabled: 1
+    path: Assets/Scenes/CharacterSheet.unity
+    guid: f25bca3f5b951f8428327dc6a94e5eac
+  - enabled: 1
+    path: Assets/Scenes/QuestLedger.unity
+    guid: 218cc9eada5d7c247b92dd56249d50e6
+  - enabled: 1
+    path: Assets/Scenes/PlayerUI.unity
+    guid: fde5dfc07787b6b48902a6863bd5598d
   m_configObjects: {}

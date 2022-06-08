@@ -11,6 +11,9 @@ public enum SceneEnum
     PauseMenu,
     CreditsScene,
     LoadMenu,
-    MainMenu 
+    MainMenu,
+    CharacterSheet,
+    QuestLedger,
+    PlayerUI
 }
 
