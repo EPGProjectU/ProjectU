@@ -17,15 +17,18 @@ public class CreateEquipmentUI : MonoBehaviour
     {
         equipment = ProjectU.Core.TagList._FindGameObjectsWithTag("Player")[0].GetComponent<Equipment>();
         Image image;
-        foreach(Item item in equipment.items)
+        if(equipment.items != null)
         {
-            image = (Image)Instantiate(prefab, transform);
-            image.GetComponent<Image>().sprite = item.sprite;
-            ItemDisplay id = image.gameObject.AddComponent<ItemDisplay>();
-            id.item = item;
-            id.equipmentHandler =  equipmentHandler;
-            image.gameObject.GetComponent<Button>().onClick.AddListener( () => { ChangeText(text, item); });
+            foreach (Item item in equipment.items)
+            {
+                image = (Image)Instantiate(prefab, transform);
+                image.GetComponent<Image>().sprite = item.sprite;
+                ItemDisplay id = image.gameObject.AddComponent<ItemDisplay>();
+                id.item = item;
+                id.equipmentHandler = equipmentHandler;
+                image.gameObject.GetComponent<Button>().onClick.AddListener(() => { ChangeText(text, item); });
 
+            }
         }
     }
 
