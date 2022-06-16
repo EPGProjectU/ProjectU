@@ -58,6 +58,8 @@ GameObject:
   - component: {fileID: 3954568272971482409}
   - component: {fileID: -4648671929234432655}
   - component: {fileID: -6128121183770744126}
+  - component: {fileID: 7180673864516878997}
+  - component: {fileID: 2479717510652903071}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -124,6 +126,38 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   target: {fileID: 0}
   wayPointList: []
+--- !u!70 &7180673864516878997
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4844609838333718034}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.008040667, y: 0.7933575}
+  m_Size: {x: 0.6661763, y: 1.7183101}
+  m_Direction: 0
+--- !u!58 &2479717510652903071
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4844609838333718034}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1 &6763599594037589784
 GameObject:
   m_ObjectHideFlags: 0
