@@ -8,16 +8,16 @@ public class AIController : MonoBehaviour
 {
     [HideInInspector]
     public NavMeshAgent agent;
-
     [HideInInspector]
     public int nextWayPoint;
-
+    
     public BehaviourTree behaviourTree;
 
     public Transform target;
     public List<Transform> wayPointList;
 
     private ActorController actor;
+    private bool conversationInProgress;
 
     private void Awake()
     {
@@ -28,6 +28,7 @@ public class AIController : MonoBehaviour
     {
         SetupAgent();
         behaviourTree.SetupTree();
+        conversationInProgress = false;
     }
 
     private void Update()
@@ -53,4 +54,23 @@ public class AIController : MonoBehaviour
     }
 
     public void Attack() => actor.Attack();
+
+    public void StartConversation() 
+    {
+        conversationInProgress = true;
+
+        //do DialogueManager things
+    }
+
+    public void StopConversation() 
+    {
+        conversationInProgress = false;
+    }
+
+    public bool IsInConversation() {
+        if (conversationInProgress)
+            return true;
+        else
+            return false;
+    }
 }

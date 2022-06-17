@@ -139,6 +139,14 @@ public class PlayerController : MonoBehaviour
             }
         };
 
+        _performedInputBindings["Talk"] = context => {
+
+            //talk to nearest npc
+            //find nearest npc 
+            //nearestNPCinRange.StartConversation(optionalargs);
+
+        };
+
         _performedInputBindings["ToggleCursor"] = context =>
         {
             _useMovementVectorForLook = !_useMovementVectorForLook;
