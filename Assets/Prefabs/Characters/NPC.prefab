@@ -95,7 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f57ff3bfeb7489e8b29e52b38e77875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagSerializationList: []
+  tagSerializationList:
+  - NPC
 --- !u!114 &-4648671929234432655
 MonoBehaviour:
   m_ObjectHideFlags: 0

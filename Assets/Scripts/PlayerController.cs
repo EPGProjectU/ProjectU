@@ -141,19 +141,19 @@ public class PlayerController : MonoBehaviour
 
         _performedInputBindings["Talk"] = context => {
 
-            //raycast from the player hit npc
-            //NPChitbyraycast.StartConversation();
+            float talkRange = 3;
 
-            float talkRange = 10;
-
-            RaycastHit2D hit = Physics2D.Raycast(actor.MovementVector, actor.LookVector, talkRange);
+            Vector3 posRay = actor.transform.position + new Vector3(actor.LookVector.x, actor.LookVector.y);
+            RaycastHit2D hit = Physics2D.Raycast(posRay, actor.LookVector, talkRange);
 
             if(hit.collider != null) {
-                Debug.Log("You have hit: " + hit.collider.gameObject.name);
+                if (hit.collider.gameObject._CompareTag("NPC"))
+                {
+                    Debug.Log("Dialog start");
+                    //DialogueManager.StartConversation()....
+                }
             }
             
-            
-
 
         };
 
