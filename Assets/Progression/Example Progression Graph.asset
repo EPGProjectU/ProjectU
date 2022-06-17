@@ -90,7 +90,7 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 1
+    collected: 0
   tagName: MAIN/P0/EntryPoint1
 --- !u!114 &-7842843429907566467
 MonoBehaviour:
@@ -391,7 +391,7 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 1
+    collected: 0
   tagName: MAIN/P2/A
 --- !u!114 &-4710926220035158951
 MonoBehaviour:
@@ -1012,7 +1012,7 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 1
+    collected: 0
   tagName: MAIN/P1
 --- !u!114 &4615220013187734995
 MonoBehaviour:
