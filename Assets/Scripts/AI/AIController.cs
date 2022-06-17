@@ -60,11 +60,13 @@ public class AIController : MonoBehaviour
         conversationInProgress = true;
 
         //do DialogueManager things
+        //DialogueManager.StartConversation()
     }
 
     public void StopConversation() 
     {
         conversationInProgress = false;
+        //DialogueManager.StopConversation();
     }
 
     public bool IsInConversation() {

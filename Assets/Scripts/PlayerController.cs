@@ -141,9 +141,19 @@ public class PlayerController : MonoBehaviour
 
         _performedInputBindings["Talk"] = context => {
 
-            //talk to nearest npc
-            //find nearest npc 
-            //nearestNPCinRange.StartConversation(optionalargs);
+            //raycast from the player hit npc
+            //NPChitbyraycast.StartConversation();
+
+            float talkRange = 10;
+
+            RaycastHit2D hit = Physics2D.Raycast(actor.MovementVector, actor.LookVector, talkRange);
+
+            if(hit.collider != null) {
+                Debug.Log("You have hit: " + hit.collider.gameObject.name);
+            }
+            
+            
+
 
         };
 
