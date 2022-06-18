@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ArmorBar : MonoBehaviour
 {
-    private float max_Armor = 100.0f;
     public PlayerHealthSystem armor;
     private Image armorBar;
 
@@ -19,6 +18,6 @@ public class ArmorBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        armorBar.fillAmount = armor.armorDurability / max_Armor;
+        armorBar.fillAmount = armor.armorDurability / armor.maximumArmorDurability;
     }
 }
