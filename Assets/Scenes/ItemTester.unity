@@ -346,7 +346,8 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5598899171532045513, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
 --- !u!1 &1008766367 stripped
 GameObject:
@@ -587,7 +588,8 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5598899171532045513, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
 --- !u!1 &1255869007 stripped
 GameObject:
@@ -770,5 +772,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5598899171532045513, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
