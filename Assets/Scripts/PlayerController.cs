@@ -205,6 +205,7 @@ public class PlayerController : MonoBehaviour
                 if (hit.collider.gameObject._CompareTag("NPC"))
                 {
                     Debug.Log("Dialog start");
+                    hit.collider.gameObject.GetComponent<ActorController>().StartConversation();
                     //DialogueManager.StartConversation()....
                 }
             }

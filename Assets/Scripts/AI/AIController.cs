@@ -17,7 +17,6 @@ public class AIController : MonoBehaviour
     public List<Transform> wayPointList;
 
     private ActorController actor;
-    private bool conversationInProgress;
 
     private void Awake()
     {
@@ -28,7 +27,6 @@ public class AIController : MonoBehaviour
     {
         SetupAgent();
         behaviourTree.SetupTree();
-        conversationInProgress = false;
     }
 
     private void Update()
@@ -55,24 +53,6 @@ public class AIController : MonoBehaviour
 
     public void Attack() => actor.Attack();
 
-    public void StartConversation() 
-    {
-        conversationInProgress = true;
-
-        //do DialogueManager things
-        //DialogueManager.StartConversation()
-    }
-
-    public void StopConversation() 
-    {
-        conversationInProgress = false;
-        //DialogueManager.StopConversation();
-    }
-
-    public bool IsInConversation() {
-        if (conversationInProgress)
-            return true;
-        else
-            return false;
-    }
+    public bool IsInConversation() => actor.IsInConversation();
+ 
 }
