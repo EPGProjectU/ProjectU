@@ -1,4 +1,5 @@
 using UnityEngine;
+using DialogueEditor;
 
 
 /// <summary>
@@ -100,7 +101,8 @@ public partial class ActorController : MonoBehaviour
     public void StartConversation()
     {
         _isTalking = true;
-
+        Debug.Log("TEST");
+        ConversationManager.Instance.StartConversation(this.gameObject.GetComponent<NPCConversation>());
         //do DialogueManager things
         //DialogueManager.StartConversation()
     }
