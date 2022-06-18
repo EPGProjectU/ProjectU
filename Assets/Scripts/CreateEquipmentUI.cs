@@ -36,6 +36,7 @@ public class CreateEquipmentUI : MonoBehaviour
     {
         string output = item.ToString();
         text.text = output;
+        EquipmentHandler.selectedItem = item;
     }
 
     // Update is called once per frame

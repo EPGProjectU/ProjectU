@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
             if (itemInfo.distance != -1 && itemInfo.distance <= pickupRange)
             {
                 Pickup(itemInfo.item);
-                itemInfo.item.GetComponent<ItemDisplay>().item.Use(gameObject);//using item
+                //itemInfo.item.GetComponent<ItemDisplay>().item.Use(gameObject);//using item
                 Destroy(itemInfo.item);
             }
         };
