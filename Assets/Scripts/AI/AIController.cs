@@ -54,5 +54,9 @@ public class AIController : MonoBehaviour
     public void Attack() => actor.Attack();
 
     public bool IsInConversation() => actor.IsInConversation();
- 
+    public void StopConversation() => actor.StopConversation();
+    public void StartConversation() => actor.StartConversation();
+
+
+
 }
