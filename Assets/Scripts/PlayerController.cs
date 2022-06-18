@@ -194,6 +194,25 @@ public class PlayerController : MonoBehaviour
         };
 
 
+        _performedInputBindings["Talk"] = context => {
+
+            float talkRange = 3;
+
+            Vector3 posRay = actor.transform.position + new Vector3(actor.LookVector.x, actor.LookVector.y);
+            RaycastHit2D hit = Physics2D.Raycast(posRay, actor.LookVector, talkRange);
+
+            if(hit.collider != null) {
+                if (hit.collider.gameObject._CompareTag("NPC"))
+                {
+                    Debug.Log("Dialog start");
+                    hit.collider.gameObject.GetComponent<ActorController>().StartConversation();
+                    //DialogueManager.StartConversation()....
+                }
+            }
+            
+
+        };
+
         _performedInputBindings["ToggleCursor"] = context =>
         {
             _useMovementVectorForLook = !_useMovementVectorForLook;

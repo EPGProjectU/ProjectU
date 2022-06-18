@@ -15,6 +15,8 @@ public partial class ActorController : MonoBehaviour
 
     public float CurrentMaxSpeed => running ? motionData.runningSpeed : motionData.baseSpeed;
 
+    private bool _isTalking;
+
     /// <summary>
     /// Vector representing actor's movement
     /// </summary>
@@ -67,6 +69,8 @@ public partial class ActorController : MonoBehaviour
         _rigidBody.freezeRotation = true;
 
         OnValidate();
+
+        _isTalking = false;
     }
 
     private void FixedUpdate()
@@ -91,5 +95,27 @@ public partial class ActorController : MonoBehaviour
     public void Attack()
     {
         _actorAnimator.SetBool(AttackAnimatorProperty, true);
+    }
+
+    public void StartConversation()
+    {
+        _isTalking = true;
+
+        //do DialogueManager things
+        //DialogueManager.StartConversation()
+    }
+
+    public void StopConversation()
+    {
+        _isTalking = false;
+        //DialogueManager.StopConversation();
+    }
+
+    public bool IsInConversation()
+    {
+        if (_isTalking)
+            return true;
+        else
+            return false;
     }
 }
