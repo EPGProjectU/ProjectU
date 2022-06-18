@@ -44,4 +44,8 @@ public class CreateEquipmentUI : MonoBehaviour
     {
         
     }
+    void UpdateMenu()
+    {
+
+    }
 }
