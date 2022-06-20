@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8745315289170433345}
   - component: {fileID: -260298323778204529}
   - component: {fileID: -7748974089766914476}
+  - component: {fileID: 3876717094927602820}
   m_Layer: 0
   m_Name: Gate
   m_TagString: Untagged
@@ -109,3 +110,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3876717094927602820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5725991399162177800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 494f033aacafacb4c90761d63a54bbec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hook:
+    tagName: MAIN/P0/EntryPoint1
+    onUpdate:
+      guid:
+        m_Value0: 620310797
+        m_Value1: 1338908216
+        m_Value2: 1096385599
+        m_Value3: 130541835
