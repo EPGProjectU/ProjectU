@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using ProjectU;
 using UnityEngine;
 public enum Ally
 {
@@ -58,7 +59,23 @@ public abstract class HealthSystem : MonoBehaviour
 
     protected virtual void OnDeath()
     {
+        
+        var controller = gameObject.GetComponent<ActorController>();
+        
+        controller.LookVector = Vector2.zero;
+        controller.MovementVector = Vector2.zero;
+        var colliders = gameObject.GetComponents<Collider2D>();
+        
+        foreach (var collider in colliders)
+        {
+            collider.enabled = false;
+        }
+        
+        GetComponent<ActorController>().Dead = true;
+//        NotificationManger.Call("OnDeath", new NotificationManger.Payload(gameObject, this));
         deathCallback.Invoke(this);
+        
+        NotificationManger.CallOnDeath(gameObject);
     }
 
     public void UpdateDefence(int defence, float armorDurability)

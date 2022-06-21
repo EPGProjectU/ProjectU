@@ -54,6 +54,5 @@ public class EnemyHealthSystem : HealthSystem
     protected override void OnDeath()
     {
         base.OnDeath();
-        Destroy(gameObject);
     }
 }

@@ -43927,7 +43927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagHook:
-    tagName: MAIN/P0/EntryPoint1
+    tagName: SkeletonHunt
     onUpdate:
       guid:
         m_Value0: 2062635600

@@ -33,6 +33,18 @@ public partial class ActorController : MonoBehaviour
     /// </summary>
     private Rigidbody2D _rigidBody;
 
+    private bool _dead;
+
+    public bool Dead
+    {
+        get { return _dead; }
+        set
+        {
+            _actorAnimator.SetBool(DeadAnimatorProperty, value);
+            _dead = value;
+        }
+    }
+
 
     /// <summary>
     /// Retrieves and sets rotation on game object with animator
@@ -55,6 +67,7 @@ public partial class ActorController : MonoBehaviour
     // Animator properties
     private static readonly int SpeedAnimatorProperty = Animator.StringToHash("Speed");
     private static readonly int AttackAnimatorProperty = Animator.StringToHash("Attack");
+    private static readonly int DeadAnimatorProperty = Animator.StringToHash("Dead");
 
     private void Awake() => Setup();
 
@@ -76,6 +89,12 @@ public partial class ActorController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Dead)
+        {
+            LookVector = Vector2.zero;
+            MovementVector = Vector2.zero;
+        }
+
         if (LookVector.magnitude > 0.1)
         {
             var rotationDelta = Mathf.DeltaAngle(CharacterRotation, Vector2.SignedAngle(LookVector, Vector2.up));
@@ -95,6 +114,8 @@ public partial class ActorController : MonoBehaviour
 
     public void Attack()
     {
+        if (_dead)
+            return;
         _actorAnimator.SetBool(AttackAnimatorProperty, true);
     }
 

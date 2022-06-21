@@ -1,24 +1,45 @@
 ﻿using ProjectU.Core;
 using UnityEditor;
+using UnityEngine;
 
 namespace ProjectU
 {
-    [CustomEditor(typeof(TagList))]
-    public class TagListEditor : Editor
+    [CustomEditor(typeof(Tags))]
+    public class TagsEditor : Editor
     {
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
+            
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Tags.tagCollection)), true);
+            
+            serializedObject.ApplyModifiedProperties();
+        }
+    }
+
+    
+    [CustomPropertyDrawer(typeof(TagList))]
+    public class TagListPropertyDrawer : PropertyDrawer
+    {
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        {
+            EditorGUI.BeginProperty(position, label, property);
 
             EditorGUI.BeginChangeCheck();
             
-            var tags = (serializedObject.targetObject as TagList)?.tagSet;
+            // Draw field name label
+            position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
+            
+            var tags = (fieldInfo.GetValue(property.serializedObject.targetObject) as TagList)?.set;
+
+            position.height /= tags.Count + 1;
             
             string newTag;
             foreach (var tag in tags)
             {
-                newTag = EditorGUILayout.TagField(tag);
-
+                newTag = EditorGUI.TagField(position, tag);
+                position.y += position.height;
+                
                 if (newTag == tag)
                     continue;
 
@@ -29,16 +50,22 @@ namespace ProjectU
                 break;
             }
 
-            newTag = EditorGUILayout.TagField("");
+            newTag = EditorGUI.TagField(position, "");
 
             if (newTag != "" && newTag != "Untagged")
                 tags.Add(newTag);
             
-            // required for changes to be saved as non serializable property has been edited
             if (EditorGUI.EndChangeCheck())
-                EditorUtility.SetDirty(serializedObject.targetObject);
-                
-            serializedObject.ApplyModifiedProperties();
+                EditorUtility.SetDirty(property.serializedObject.targetObject);
+
+            EditorGUI.EndProperty();
+        }
+
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+        {
+            var tags = (fieldInfo.GetValue(property.serializedObject.targetObject) as TagList)?.set;
+
+            return EditorGUIUtility.singleLineHeight * (tags!.Count + 1);
         }
     }
 }

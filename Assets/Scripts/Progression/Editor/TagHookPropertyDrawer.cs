@@ -23,6 +23,8 @@ public class TagHookPropertyDrawer : PropertyDrawer
 
 
         var tagNameProperty = property.FindPropertyRelative("tagName");
+        
+        
 
         // Refresh ProgressionManager to make sure ProgressionTags are cached
         ProgressionManager.SoftRefresh();
