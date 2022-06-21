@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
 
     private ActorController actor;
 
-    GameObject camera;
 
     GameObject player;
 
@@ -25,7 +24,6 @@ public class PlayerController : MonoBehaviour
     {
         actor = GetComponent<ActorController>();
         _playerInput = FindObjectOfType<PlayerInput>();
-        camera = GameObject.FindGameObjectWithTag("MainCamera");
         player = GameObject.Find("Character Transforms");
     }
 
@@ -116,27 +114,103 @@ public class PlayerController : MonoBehaviour
             if (itemInfo.distance != -1 && itemInfo.distance <= pickupRange)
             {
                 Pickup(itemInfo.item);
-                itemInfo.item.GetComponent<ItemDisplay>().item.Use(gameObject);//using item
+                //itemInfo.item.GetComponent<ItemDisplay>().item.Use(gameObject);//using item
                 Destroy(itemInfo.item);
             }
         };
 
         _performedInputBindings["Equipment"] = context =>
         {
-            if (!SceneManager.GetSceneByBuildIndex(1).isLoaded)
+            if (!SceneManager.GetSceneByBuildIndex((int)SceneEnum.EquipmentScen).isLoaded)
             {
                 
-                camera.SetActive(false);
-                SceneManager.LoadScene(1, LoadSceneMode.Additive);
+                SceneManager.LoadScene((int)SceneEnum.EquipmentScen, LoadSceneMode.Additive);
                 Time.timeScale = 0;
             }
             else
             {
                 Time.timeScale = 1;
-                camera.SetActive(true);
-                SceneManager.UnloadSceneAsync(1);
+                SceneManager.UnloadSceneAsync((int)SceneEnum.EquipmentScen);
 
             }
+        };
+        _performedInputBindings["Pause"] = context =>
+        {
+            if (!SceneManager.GetSceneByBuildIndex((int)SceneEnum.PauseMenu).isLoaded)
+            {
+
+                SceneManager.LoadScene((int)SceneEnum.PauseMenu, LoadSceneMode.Additive);
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                SceneManager.UnloadSceneAsync((int)SceneEnum.PauseMenu);
+
+            }
+        };
+        _performedInputBindings["Character"] = context =>
+        {
+            if (!SceneManager.GetSceneByBuildIndex((int)SceneEnum.CharacterSheet).isLoaded)
+            {
+
+                SceneManager.LoadScene((int)SceneEnum.CharacterSheet, LoadSceneMode.Additive);
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                SceneManager.UnloadSceneAsync((int)SceneEnum.CharacterSheet);
+
+            }
+        };
+        _performedInputBindings["Quest"] = context =>
+        {
+            if (!SceneManager.GetSceneByBuildIndex((int)SceneEnum.QuestLedger).isLoaded)
+            {
+
+                SceneManager.LoadScene((int)SceneEnum.QuestLedger, LoadSceneMode.Additive);
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                SceneManager.UnloadSceneAsync((int)SceneEnum.QuestLedger);
+
+            }
+        };
+        _performedInputBindings["HUD"] = context =>
+        {
+            if (!SceneManager.GetSceneByBuildIndex((int)SceneEnum.PlayerUI).isLoaded)
+            {
+
+                SceneManager.LoadScene((int)SceneEnum.PlayerUI, LoadSceneMode.Additive);
+            }
+            else
+            {
+                SceneManager.UnloadSceneAsync((int)SceneEnum.PlayerUI);
+
+            }
+        };
+
+
+        _performedInputBindings["Talk"] = context => {
+
+            float talkRange = 3;
+
+            Vector3 posRay = actor.transform.position + new Vector3(actor.LookVector.x, actor.LookVector.y);
+            RaycastHit2D hit = Physics2D.Raycast(posRay, actor.LookVector, talkRange);
+
+            if(hit.collider != null) {
+                if (hit.collider.gameObject._CompareTag("NPC"))
+                {
+                    Debug.Log("Dialog start");
+                    hit.collider.gameObject.GetComponent<ActorController>().StartConversation();
+                    //DialogueManager.StartConversation()....
+                }
+            }
+            
+
         };
 
         _performedInputBindings["ToggleCursor"] = context =>
@@ -195,6 +269,5 @@ public class PlayerController : MonoBehaviour
     private void Pickup(GameObject item)
     {
         this.GetComponent<Equipment>().items.Add(item.GetComponent<ItemDisplay>().item);
-        this.GetComponent<Equipment>().ShowEquipment();
     }
 }

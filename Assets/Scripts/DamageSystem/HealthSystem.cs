@@ -17,14 +17,15 @@ public abstract class HealthSystem : MonoBehaviour
     /// <summary>
     /// Amount of health (in hearts) that actor currently haves
     /// </summary>
-    public int health;
-    public int maxHealth;
+    public float health;
+    public float maxHealth;
     protected bool isInvincible = false;
     protected bool isPoisoned = false;
     protected bool isCorroding = false;
     public float invincibleTime;
     public int defence;
     public float armorDurability;
+    public float maximumArmorDurability = 100.0f;
 
     public Ally myGroup;
     public List<Ally> allies = new List<Ally>();

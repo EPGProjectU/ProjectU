@@ -8,10 +8,9 @@ public class AIController : MonoBehaviour
 {
     [HideInInspector]
     public NavMeshAgent agent;
-
     [HideInInspector]
     public int nextWayPoint;
-
+    
     public BehaviourTree behaviourTree;
 
     public Transform target;
@@ -53,4 +52,11 @@ public class AIController : MonoBehaviour
     }
 
     public void Attack() => actor.Attack();
+
+    public bool IsInConversation() => actor.IsInConversation();
+    public void StopConversation() => actor.StopConversation();
+    public void StartConversation() => actor.StartConversation();
+
+
+
 }
