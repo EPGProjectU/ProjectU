@@ -438,7 +438,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: L2/P1
+  tagName: L2/P2
 --- !u!114 &-5289917600708251560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1455,7 +1455,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: L2/P0
+  tagName: L2/P1
 --- !u!114 &8010331218013806407
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -40,10 +40,10 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  output: 0
-  input: 0
+  output: 3
+  input: 3
   tagHook:
-    tagName: L2/P1
+    tagName: L2/P2
     onUpdate:
       guid:
         m_Value0: 1724792484
@@ -63,10 +63,10 @@ MonoBehaviour:
   m_Name: Defeat Troll
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: -2315024227918519077}
-  - {fileID: 3954150159305509589}
   - {fileID: 5761057364331798521}
+  - {fileID: -2315024227918519077}
   - {fileID: -352835027000374899}
+  - {fileID: 3954150159305509589}
   - {fileID: -8556987617928220828}
 --- !u!114 &-4443068179688516405
 MonoBehaviour:
@@ -651,7 +651,7 @@ MonoBehaviour:
   output: 0
   input: 3
   tagHook:
-    tagName: L2/P0
+    tagName: L2/P1
     onUpdate:
       guid:
         m_Value0: 996922036

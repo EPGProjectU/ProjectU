@@ -995,7 +995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hook:
-    tagName: L2/P0
+    tagName: L2/P1
     onUpdate:
       guid:
         m_Value0: 1062066914
@@ -1012,6 +1012,7 @@ GameObject:
   m_Component:
   - component: {fileID: 528010169}
   - component: {fileID: 528010168}
+  - component: {fileID: 528010170}
   m_Layer: 0
   m_Name: Scene Loader
   m_TagString: Untagged
@@ -1043,7 +1044,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 6}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &528010169
 Transform:
@@ -1053,12 +1054,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528010167}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.61, y: 0.42, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -27.76, y: 0.18, z: 0}
+  m_LocalScale: {x: 1, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &528010170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528010167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e41c568d55c2aa40896fb53ee59c5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextSceneName: SampleScene
 --- !u!1001 &533505011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84360,7 +84374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hook:
-    tagName: L2/P1
+    tagName: L2/P2
     onUpdate:
       guid:
         m_Value0: 2042327346
