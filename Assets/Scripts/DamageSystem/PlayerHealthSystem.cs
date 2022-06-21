@@ -41,7 +41,7 @@ public class PlayerHealthSystem : HealthSystem
     protected override void OnDeath()
     {
         base.OnDeath();
-        gameObject.GetComponent<PlayerController>().enabled = false;
+        
         Debug.Log("Player is Dead");
     }
         

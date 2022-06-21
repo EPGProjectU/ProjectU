@@ -47,6 +47,16 @@ namespace ProjectU.Core
 
     public static class GameObjectTagListExtension
     {
+        public static string[] _GetTags(this GameObject gameObject)
+        {
+            var tagComponent = gameObject.GetComponent<Tags>();
+
+            if (tagComponent == null)
+                return Array.Empty<string>();
+
+            return tagComponent.tagCollection.ToArray();
+        }
+        
         public static void _AddTag(this GameObject gameObject, string tag)
         {
             var tagComponent = gameObject.GetComponent<Tags>();
@@ -98,6 +108,8 @@ namespace ProjectU.Core
         {
             return tags.All(t => _CompareTag(gameObject, t));
         }
+
+        public static string[] _GetTags(this Component component) => _GetTags(component.gameObject);
 
         public static void _AddTag(this Component component, string tag) => _AddTag(component.gameObject, tag);
 

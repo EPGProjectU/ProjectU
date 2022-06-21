@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee7d2d34f3c38c409834d1437c7e6f1, type: 3}
   m_Name: QuestManagerData
   m_EditorClassIdentifier: 
-  database: {fileID: 11400000, guid: 427969f28a710cd45b4b3f8f48c55655, type: 2}
+  database: {fileID: 11400000, guid: e50c4f376e314d8cbba728bd72140e84, type: 2}

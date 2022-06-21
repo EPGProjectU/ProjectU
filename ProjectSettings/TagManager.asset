@@ -8,6 +8,9 @@ TagManager:
   - Damager
   - PlayersWeapon
   - Enemy
+  - Goblin
+  - Skeleton
+  - Troll
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,6 @@ TagManager:
   - UI
   - Pixel1
   - Pixel2
-  - 
   - 
   - 
   - 
