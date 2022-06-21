@@ -123,11 +123,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6401840096967692479}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f57ff3bfeb7489e8b29e52b38e77875, type: 3}
+  m_Script: {fileID: 11500000, guid: edb4001aa9fce3c48897b22a505b5b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagSerializationList:
-  - Enemy
+  tagCollection:
+    tagSerializationList:
+    - Enemy
+    - Goblin
 --- !u!114 &6034603221380048242
 MonoBehaviour:
   m_ObjectHideFlags: 0

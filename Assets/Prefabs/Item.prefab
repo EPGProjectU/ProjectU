@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f57ff3bfeb7489e8b29e52b38e77875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagSerializationList:
-  - Item
+  tagCollection:
+    tagSerializationList: []
 --- !u!212 &7974813338223203648
 SpriteRenderer:
   m_ObjectHideFlags: 0
