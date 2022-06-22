@@ -1,6 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4443068179688516405
+--- !u!114 &-5815189421681050936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb169bbc40c480d94532de49f92eeda, type: 3}
+  m_Name: Quest Entry Point
+  m_EditorClassIdentifier: 
+  graph: {fileID: 1857949678203981192}
+  position: {x: -232, y: -120}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -5815189421681050936}
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: -5072826846181363602}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -5815189421681050936}
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 9037750252599665430}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+--- !u!114 &-5072826846181363602
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12,15 +55,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb0c33572234f94baa84bae326a6391, type: 3}
   m_Name: Tag Hook
   m_EditorClassIdentifier: 
-  graph: {fileID: 0}
-  position: {x: 792, y: -152}
+  graph: {fileID: 1857949678203981192}
+  position: {x: -475, y: -126.5}
   ports:
     keys:
     - output
     - input
     values:
     - _fieldName: output
-      _node: {fileID: -4443068179688516405}
+      _node: {fileID: -5072826846181363602}
+      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -5815189421681050936}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: input
+      _node: {fileID: -5072826846181363602}
+      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  output: 0
+  input: 3
+  tagHook:
+    tagName: KillGoblins
+    onUpdate:
+      guid:
+        m_Value0: 1356349484
+        m_Value1: 633447845
+        m_Value2: 639136297
+        m_Value3: 204497984
+--- !u!114 &-4200933803338279790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb0c33572234f94baa84bae326a6391, type: 3}
+  m_Name: Tag Hook
+  m_EditorClassIdentifier: 
+  graph: {fileID: 1857949678203981192}
+  position: {x: 552, y: -120}
+  ports:
+    keys:
+    - output
+    - input
+    values:
+    - _fieldName: output
+      _node: {fileID: -4200933803338279790}
       _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections: []
@@ -29,27 +122,27 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: input
-      _node: {fileID: -4443068179688516405}
+      _node: {fileID: -4200933803338279790}
       _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: output
-        node: {fileID: 0}
+        node: {fileID: 5162960757693320457}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   output: 0
-  input: 3
+  input: 0
   tagHook:
-    tagName: MAIN/P1
+    tagName: KillGoblinsDone
     onUpdate:
       guid:
-        m_Value0: 845620882
-        m_Value1: 1799367168
-        m_Value2: 1442988638
-        m_Value3: 1757377719
+        m_Value0: 295728494
+        m_Value1: 1455469988
+        m_Value2: 1766242135
+        m_Value3: 1997659824
 --- !u!114 &-3320732208987776234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,7 +161,8 @@ MonoBehaviour:
   - {fileID: -1657316367532383424}
   - {fileID: 7019142906602096175}
   - {fileID: 2616642097829776041}
---- !u!114 &-2107178357081535443
+  - {fileID: 0}
+--- !u!114 &-2099636342810713658
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,44 +171,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cb0c33572234f94baa84bae326a6391, type: 3}
-  m_Name: Tag Hook
+  m_Script: {fileID: 11500000, guid: b704f7306157462c99b4e62ec6e084d6, type: 3}
+  m_Name: Defeat Objective
   m_EditorClassIdentifier: 
-  graph: {fileID: 0}
-  position: {x: -280, y: -152}
+  graph: {fileID: 4821779306305783823}
+  position: {x: -616, y: 376}
   ports:
     keys:
-    - output
     - input
+    - output
     values:
-    - _fieldName: output
-      _node: {fileID: -2107178357081535443}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
     - _fieldName: input
-      _node: {fileID: -2107178357081535443}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
+      _node: {fileID: -2099636342810713658}
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: output
+        node: {fileID: 2601352276357418786}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  output: 0
-  input: 3
-  tagHook:
-    tagName: MAIN/P0/EntryPoint1
-    onUpdate:
-      guid:
-        m_Value0: 1686079536
-        m_Value1: 2028463753
-        m_Value2: 1845924298
-        m_Value3: 742139419
+    - _fieldName: output
+      _node: {fileID: -2099636342810713658}
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 5315117359843424240}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  tagList:
+    tagSerializationList:
+    - Troll
+  numberOfEnemies: 1
 --- !u!114 &-2048624506812793677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +246,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: -4443068179688516405}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -219,6 +313,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quests:
   - {fileID: -3320732208987776234}
+  - {fileID: 4821779306305783823}
+  - {fileID: 1857949678203981192}
 --- !u!114 &1241116532789729020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,6 +353,67 @@ MonoBehaviour:
       connections:
       - fieldName: input
         node: {fileID: -1657316367532383424}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+--- !u!114 &1857949678203981192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004989d5bcc99ea4a802eb3340653127, type: 3}
+  m_Name: Kill Goblins in Fountain Hall
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -5072826846181363602}
+  - {fileID: -5815189421681050936}
+  - {fileID: 9037750252599665430}
+  - {fileID: 5162960757693320457}
+  - {fileID: -4200933803338279790}
+--- !u!114 &2601352276357418786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb169bbc40c480d94532de49f92eeda, type: 3}
+  m_Name: Quest Entry Point
+  m_EditorClassIdentifier: 
+  graph: {fileID: 4821779306305783823}
+  position: {x: -904, y: 392}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 2601352276357418786}
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: 7882780835381693491}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 2601352276357418786}
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -2099636342810713658}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -406,6 +563,110 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   numberOfEnemies: 3
+--- !u!114 &4821779306305783823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004989d5bcc99ea4a802eb3340653127, type: 3}
+  m_Name: Defeat brother of the Guardian
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 2601352276357418786}
+  - {fileID: 7882780835381693491}
+  - {fileID: -2099636342810713658}
+  - {fileID: 5315117359843424240}
+  - {fileID: 8401490497843031390}
+--- !u!114 &5162960757693320457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde6e22ddcaa400ca6793d8758c33b70, type: 3}
+  m_Name: Quest Exit Point
+  m_EditorClassIdentifier: 
+  graph: {fileID: 1857949678203981192}
+  position: {x: 312, y: -104}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 5162960757693320457}
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: 9037750252599665430}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 5162960757693320457}
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -4200933803338279790}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+--- !u!114 &5315117359843424240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde6e22ddcaa400ca6793d8758c33b70, type: 3}
+  m_Name: Quest Exit Point
+  m_EditorClassIdentifier: 
+  graph: {fileID: 4821779306305783823}
+  position: {x: -328, y: 440}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 5315117359843424240}
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: -2099636342810713658}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 5315117359843424240}
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 8401490497843031390}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
 --- !u!114 &5791061305095797461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,7 +692,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: output
-        node: {fileID: -2107178357081535443}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -492,3 +753,150 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+--- !u!114 &7882780835381693491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb0c33572234f94baa84bae326a6391, type: 3}
+  m_Name: Tag Hook
+  m_EditorClassIdentifier: 
+  graph: {fileID: 4821779306305783823}
+  position: {x: -1144, y: 392}
+  ports:
+    keys:
+    - output
+    - input
+    values:
+    - _fieldName: output
+      _node: {fileID: 7882780835381693491}
+      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 2601352276357418786}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: input
+      _node: {fileID: 7882780835381693491}
+      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  output: 0
+  input: 3
+  tagHook:
+    tagName: KillBrother
+    onUpdate:
+      guid:
+        m_Value0: 742874831
+        m_Value1: 560722616
+        m_Value2: 1338107712
+        m_Value3: 261233208
+--- !u!114 &8401490497843031390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb0c33572234f94baa84bae326a6391, type: 3}
+  m_Name: Tag Hook
+  m_EditorClassIdentifier: 
+  graph: {fileID: 4821779306305783823}
+  position: {x: -72, y: 424}
+  ports:
+    keys:
+    - output
+    - input
+    values:
+    - _fieldName: output
+      _node: {fileID: 8401490497843031390}
+      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: input
+      _node: {fileID: 8401490497843031390}
+      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: 5315117359843424240}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  output: 0
+  input: 3
+  tagHook:
+    tagName: KillBrotherDone
+    onUpdate:
+      guid:
+        m_Value0: 2017826237
+        m_Value1: 1321414658
+        m_Value2: 518828209
+        m_Value3: 66219617
+--- !u!114 &9037750252599665430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b704f7306157462c99b4e62ec6e084d6, type: 3}
+  m_Name: Defeat Objective
+  m_EditorClassIdentifier: 
+  graph: {fileID: 1857949678203981192}
+  position: {x: 56, y: -152}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 9037750252599665430}
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: -5815189421681050936}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 9037750252599665430}
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 5162960757693320457}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  tagList:
+    tagSerializationList:
+    - Goblin
+  numberOfEnemies: 6
