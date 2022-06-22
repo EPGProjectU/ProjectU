@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TestConsumable2
   m_EditorClassIdentifier: 
   Name: StrongPotion
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: d0f976a998750e849992d4072c6dfd94, type: 3}
   Value: 25

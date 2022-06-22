@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Plating
   m_EditorClassIdentifier: 
   Name: AdditionalPlating
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 6be7054473f84e0429d3e8b1b6cbf878, type: 3}
   ArmorValue: 3
   Durability: 20
