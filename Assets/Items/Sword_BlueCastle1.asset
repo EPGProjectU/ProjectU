@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Sword_BlueCastle1
   m_EditorClassIdentifier: 
   Name: Trollkin Slasher
-  sprite: {fileID: 0}
+  sprite: {fileID: -2028688851913010192, guid: bae663ab575f53e49891792aca1cc9eb, type: 3}
   Damage: 5
   Range: 10

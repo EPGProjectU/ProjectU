@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Potion_BlueCastle1
   m_EditorClassIdentifier: 
   Name: Mysterious Concotion
-  sprite: {fileID: 0}
+  sprite: {fileID: -4642269681886433466, guid: 18ab213d2a97b364d9c3b275ce30bad1, type: 3}
   Value: 100
