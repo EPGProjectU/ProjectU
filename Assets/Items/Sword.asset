@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c0260240d56df34085f3996c8994a93, type: 3}
-  m_Name: TestWeapon
+  m_Name: Sword
   m_EditorClassIdentifier: 
-  Name: Spear
-  sprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
-  Damage: 1
-  Range: 6.5
+  Name: StrongSword
+  sprite: {fileID: 0}
+  Damage: 2
+  Range: 5
