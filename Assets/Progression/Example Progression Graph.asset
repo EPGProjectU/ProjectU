@@ -957,7 +957,7 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 0
+    collected: 1
   tagName: KillBrotherDone
 --- !u!114 &-345582894187042058
 MonoBehaviour:
@@ -1003,7 +1003,7 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 0
+    collected: 1
   tagName: KillBrother
 --- !u!114 &11400000
 MonoBehaviour:
