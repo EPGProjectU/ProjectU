@@ -14,6 +14,8 @@ public class PlayerHealthSystem : HealthSystem
     void Start()
     {
         allies.Add(myGroup);
+        SaveEventSystem.Instance.OnSaveData += Save;
+        SaveEventSystem.Instance.OnLoadData += Load;
     }
    
     /// <summary>
@@ -41,8 +43,27 @@ public class PlayerHealthSystem : HealthSystem
     protected override void OnDeath()
     {
         base.OnDeath();
-        
         Debug.Log("Player is Dead");
+        SaveEventSystem.Instance.OnSaveData -= Save;
+        SaveEventSystem.Instance.OnSaveData -= Load;
     }
-        
+
+    private void Save(GameData data)
+    {
+        data.player.health = health;
+        data.player.maxHealth = maxHealth;
+        data.player.armorDurability = armorDurability;
+        data.player.maximumArmorDurability = maximumArmorDurability;
+        data.player.position = gameObject.transform.position;
+    }
+
+    private void Load(GameData data)
+    {
+        health = data.player.health;
+        maxHealth = data.player.maxHealth;
+        armorDurability = data.player.armorDurability;
+        maximumArmorDurability = data.player.maximumArmorDurability;
+        gameObject.transform.position = data.player.position;
+    }
+
 }

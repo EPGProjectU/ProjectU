@@ -1,9 +1,14 @@
 <?xml version="1.0"?>
 <GameData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <playerHealth>3</playerHealth>
-  <playerPosition>
-    <x>0</x>
-    <y>0</y>
-    <z>-1</z>
-  </playerPosition>
+  <player>
+    <health>3</health>
+    <maxHealth>3</maxHealth>
+    <armorDurability>2</armorDurability>
+    <maximumArmorDurability>100</maximumArmorDurability>
+    <position>
+      <x>0</x>
+      <y>0</y>
+      <z>-1</z>
+    </position>
+  </player>
 </GameData>
