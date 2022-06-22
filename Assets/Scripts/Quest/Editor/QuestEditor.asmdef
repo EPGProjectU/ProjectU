@@ -1,0 +1,22 @@
+﻿{
+    "name": "QuestEditor",
+    "rootNamespace": "",
+    "references": [
+        "Quest",
+        "XNode",
+        "XNodeEditor",
+        "Graph",
+        "Progression"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

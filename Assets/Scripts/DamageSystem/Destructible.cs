@@ -10,8 +10,9 @@ public class Destructible : HealthSystem
         if (health < 1) OnDeath();
     }
 
-    protected override void OnDeath()
+    protected new void OnDeath()
     {
+        base.OnDeath();
         Destroy(gameObject);
     }
 }

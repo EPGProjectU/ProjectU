@@ -5,7 +5,7 @@ using System.Linq;
 /// <summary>
 /// Intermediate class for accessing progression functionality
 /// </summary>
-public partial class ProgressionManager
+public static partial class ProgressionManager
 {
     /// <param name="tagName">Name identifying <see cref="ProgressionTag"/></param>
     /// <returns><see cref="ProgressionTag"/> with given name in the current <see cref="ProgressionGraph"/></returns>

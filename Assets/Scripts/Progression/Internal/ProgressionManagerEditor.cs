@@ -8,7 +8,7 @@ using UnityEngine;
 using XNode;
 
 // Editor only functionality of the ProgressionManager
-public partial class ProgressionManager
+public static partial class ProgressionManager
 {
     [DidReloadScripts]
     private static void OnScriptReload() => LoadData();
@@ -38,6 +38,11 @@ public partial class ProgressionManager
     [InitializeOnEnterPlayMode]
     private static void Reset()
     {
+        foreach (var hook in HookCallList.SelectMany(kv => kv.Value))
+        {
+            hook.Tag = null;
+        }
+        
         HookRegistry.Clear();
 
         HookCallList.Clear();
@@ -54,16 +59,15 @@ public partial class ProgressionManager
     private static void CreateDataFile()
     {
         var fullDataPath = $"Assets/Resources/{ResourceDataPath}.asset";
-
-        if (AssetDatabase.LoadAssetAtPath<ProgressionManagerData>(fullDataPath))
+        Data = AssetDatabase.LoadAssetAtPath<ProgressionManagerData>(fullDataPath);
+        
+        if (Data)
             return;
 
         Debug.Log("ProgressionManagerData does not exist. Creating a new instance.");
         Directory.CreateDirectory(Path.GetDirectoryName(fullDataPath)!);
-        var data = ScriptableObject.CreateInstance<ProgressionManagerData>();
-        AssetDatabase.CreateAsset(data, fullDataPath);
-
-        LoadData();
+        Data = ScriptableObject.CreateInstance<ProgressionManagerData>();
+        AssetDatabase.CreateAsset(Data, fullDataPath);
     }
 
     /// <summary>
