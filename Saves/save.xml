@@ -3,12 +3,19 @@
   <player>
     <health>3</health>
     <maxHealth>3</maxHealth>
-    <armorDurability>2</armorDurability>
+    <armorDurability>0</armorDurability>
     <maximumArmorDurability>100</maximumArmorDurability>
+    <weapon>
+      <damage>1</damage>
+      <specialDamage>0</specialDamage>
+      <effectDuration>0</effectDuration>
+      <type>Normal</type>
+    </weapon>
     <position>
       <x>0</x>
       <y>0</y>
       <z>-1</z>
     </position>
+    <items />
   </player>
 </GameData>
