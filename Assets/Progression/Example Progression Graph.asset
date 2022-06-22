@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: Tag
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -527, y: 918.5}
+  position: {x: -184, y: 424}
   ports:
     keys:
     - input
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: Tag
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -232, y: 920}
+  position: {x: 120, y: 424}
   ports:
     keys:
     - input
@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Name: Tag
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -232, y: 664}
+  position: {x: -296, y: 712}
   ports:
     keys:
     - input
@@ -1517,7 +1517,7 @@ MonoBehaviour:
   m_Name: Tag
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -485, y: 661.5}
+  position: {x: -552, y: 696}
   ports:
     keys:
     - input
