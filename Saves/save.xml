@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
 <GameData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <loadedScenes>
+    <string>ItemTester</string>
+    <string>SaveSystemScene</string>
+  </loadedScenes>
   <player>
     <health>3</health>
     <maxHealth>3</maxHealth>

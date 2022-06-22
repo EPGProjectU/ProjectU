@@ -6,5 +6,6 @@ using UnityEngine;
 [Serializable]
 public class GameData 
 {
+    public List<string> loadedScenes = new List<string>();
     public PlayerData player;
 }

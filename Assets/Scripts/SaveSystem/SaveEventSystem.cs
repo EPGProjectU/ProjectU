@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveEventSystem : MonoBehaviour
 {
@@ -27,6 +28,13 @@ public class SaveEventSystem : MonoBehaviour
     {
         OnSaveData?.Invoke(data);
 
+        int countLoaded = SceneManager.sceneCount;
+
+        for (int i = 0; i < countLoaded; i++)
+        {
+            data.loadedScenes.Add(SceneManager.GetSceneAt(i).name);
+        }
+
         XmlSerializer serializer = new XmlSerializer(typeof(GameData));
         FileStream stream = new FileStream(Application.dataPath + "/../Saves/save.xml", FileMode.Create);
         serializer.Serialize(stream, data);
@@ -45,6 +53,18 @@ public class SaveEventSystem : MonoBehaviour
         }
 
         stream.Close();
+
+        int countLoaded = SceneManager.sceneCount;
+
+        for (int i = 0; i < countLoaded; i++)
+        {
+            if(SceneManager.GetSceneAt(i).name!="SaveSystemScene")SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(i).name);
+        }
+
+        foreach(string sceneName in data.loadedScenes)
+        {
+            if (sceneName != "SaveSystemScene")SceneManager.LoadScene(sceneName,LoadSceneMode.Additive);
+        }
 
         OnLoadData?.Invoke(data);
     }
