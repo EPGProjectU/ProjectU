@@ -10,6 +10,14 @@ public class SaveEventSystem : MonoBehaviour
 {
     public static SaveEventSystem Instance;
 
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+    static void RuntimeInit()
+    {
+        var go = new GameObject { name = "SaveEventSystem" };
+        Instance =  go.AddComponent<SaveEventSystem>();
+        DontDestroyOnLoad(go);
+    }
+
     private void Awake()
     {
         if (Instance == null)
@@ -56,18 +64,23 @@ public class SaveEventSystem : MonoBehaviour
 
         stream.Close();
 
-        int countLoaded = SceneManager.sceneCount;
+        string tmpName = (string)data.loadedScenes.ToArray().GetValue(0);
 
-        for (int i = 0; i < countLoaded; i++)
-        {
-            if(SceneManager.GetSceneAt(i).name!="SaveSystemScene")SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(i).name);
-        }
+        SceneManager.LoadScene(tmpName);
 
-        foreach(string sceneName in data.loadedScenes)
+        data.loadedScenes.Remove(tmpName);
+
+        foreach (string sceneName in data.loadedScenes)
         {
             if (sceneName != "SaveSystemScene")SceneManager.LoadScene(sceneName,LoadSceneMode.Additive);
         }
 
+        StartCoroutine(OnSceneLoaded());
+    }
+
+    private IEnumerator OnSceneLoaded()
+    {
+        yield return new WaitForSeconds(0.1f);
         OnLoadData?.Invoke(data);
     }
 }

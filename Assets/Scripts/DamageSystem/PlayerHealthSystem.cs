@@ -45,7 +45,13 @@ public class PlayerHealthSystem : HealthSystem
         base.OnDeath();
         Debug.Log("Player is Dead");
         SaveEventSystem.Instance.OnSaveData -= Save;
-        SaveEventSystem.Instance.OnSaveData -= Load;
+        SaveEventSystem.Instance.OnLoadData -= Load;
+    }
+
+    void OnDestroy()
+    {
+        SaveEventSystem.Instance.OnSaveData -= Save;
+        SaveEventSystem.Instance.OnLoadData -= Load;
     }
 
     private void Save(GameData data)

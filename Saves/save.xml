@@ -2,7 +2,6 @@
 <GameData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <loadedScenes>
     <string>ItemTester</string>
-    <string>SaveSystemScene</string>
   </loadedScenes>
   <player>
     <health>3</health>
@@ -16,8 +15,8 @@
       <type>Normal</type>
     </weapon>
     <position>
-      <x>0</x>
-      <y>0</y>
+      <x>2.12000179</x>
+      <y>-0.07051395</y>
       <z>-1</z>
     </position>
     <items />
