@@ -30,6 +30,8 @@ public class SaveEventSystem : MonoBehaviour
 
         int countLoaded = SceneManager.sceneCount;
 
+        data.loadedScenes = new List<string>();
+
         for (int i = 0; i < countLoaded; i++)
         {
             data.loadedScenes.Add(SceneManager.GetSceneAt(i).name);
