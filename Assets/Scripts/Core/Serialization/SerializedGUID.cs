@@ -6,7 +6,7 @@ using Random = System.Random;
 /// Custom serializable GUID
 /// </summary>
 [Serializable]
-public struct SerializableGUID : IComparable, IComparable<SerializableGUID>, IEquatable<SerializableGUID>
+public struct SerializedGUID : IComparable, IComparable<SerializedGUID>, IEquatable<SerializedGUID>
 {
     [SerializeField]
     private int m_Value0;
@@ -20,17 +20,17 @@ public struct SerializableGUID : IComparable, IComparable<SerializableGUID>, IEq
     [SerializeField]
     private int m_Value3;
 
-    public static bool operator ==(SerializableGUID x, SerializableGUID y)
+    public static bool operator ==(SerializedGUID x, SerializedGUID y)
     {
         return x.m_Value0 == y.m_Value0 && x.m_Value1 == y.m_Value1 && x.m_Value2 == y.m_Value2 && x.m_Value3 == y.m_Value3;
     }
 
-    public static bool operator !=(SerializableGUID x, SerializableGUID y)
+    public static bool operator !=(SerializedGUID x, SerializedGUID y)
     {
         return !(x == y);
     }
 
-    public static bool operator <(SerializableGUID x, SerializableGUID y)
+    public static bool operator <(SerializedGUID x, SerializedGUID y)
     {
         if (x.m_Value0 != y.m_Value0)
             return x.m_Value0 < y.m_Value0;
@@ -41,17 +41,17 @@ public struct SerializableGUID : IComparable, IComparable<SerializableGUID>, IEq
         return x.m_Value2 != y.m_Value2 ? x.m_Value2 < y.m_Value2 : x.m_Value3 < y.m_Value3;
     }
 
-    public static bool operator >(SerializableGUID x, SerializableGUID y)
+    public static bool operator >(SerializedGUID x, SerializedGUID y)
     {
         return !(x < y) && !(x == y);
     }
 
     public override bool Equals(object obj)
     {
-        return obj is SerializableGUID guid && Equals(guid);
+        return obj is SerializedGUID guid && Equals(guid);
     }
 
-    public bool Equals(SerializableGUID obj)
+    public bool Equals(SerializedGUID obj)
     {
         return this == obj;
     }
@@ -63,10 +63,10 @@ public struct SerializableGUID : IComparable, IComparable<SerializableGUID>, IEq
 
     public int CompareTo(object obj)
     {
-        return obj == null ? 1 : CompareTo((SerializableGUID)obj);
+        return obj == null ? 1 : CompareTo((SerializedGUID)obj);
     }
 
-    public int CompareTo(SerializableGUID rhs)
+    public int CompareTo(SerializedGUID rhs)
     {
         if (this < rhs)
             return -1;
@@ -79,7 +79,7 @@ public struct SerializableGUID : IComparable, IComparable<SerializableGUID>, IEq
         return m_Value0 == 0U && m_Value1 == 0U && m_Value2 == 0U && m_Value3 == 0U;
     }
 
-    private SerializableGUID(int a, int b, int c, int d)
+    private SerializedGUID(int a, int b, int c, int d)
     {
         m_Value0 = a;
         m_Value1 = b;
@@ -87,11 +87,11 @@ public struct SerializableGUID : IComparable, IComparable<SerializableGUID>, IEq
         m_Value3 = d;
     }
 
-    public static SerializableGUID Generate()
+    public static SerializedGUID Generate()
     {
         var random = new Random(Guid.NewGuid().GetHashCode());
 
-        return new SerializableGUID(random.Next(), random.Next(), random.Next(), random.Next());
+        return new SerializedGUID(random.Next(), random.Next(), random.Next(), random.Next());
     }
 
     public override string ToString()
