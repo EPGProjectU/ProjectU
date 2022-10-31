@@ -6,7 +6,7 @@ using XNode;
 
 
 [CreateAssetMenu(menuName = "ProjectU/AI/BehaviourTree", fileName = "BehaviourTree")]
-public class BehaviourTree : NodeGraph {
+public class BehaviourTree : Graph {
 
     private BehaviourNode _root;
 
