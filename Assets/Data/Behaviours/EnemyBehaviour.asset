@@ -96,6 +96,41 @@ MonoBehaviour:
   child1: {fileID: 0}
   child2: {fileID: 0}
   range: 5
+--- !u!114 &-8037451711373490691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d297d21ce153e0c46a9211f879d5ed7e, type: 3}
+  m_Name: Parameter
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -8, y: 248}
+  ports:
+    keys:
+    - data
+    values:
+    - _fieldName: data
+      _node: {fileID: -8037451711373490691}
+      _typeQualifiedName: PatrolDefinition, AI, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: patrolDefinition
+        node: {fileID: -3310192062355055903}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  name: Patrol
+  serializableType:
+    bundle:
+      unityObjects: []
+      data: 0001000000ffffffff010000000000000004010000001f53797374656d2e556e69747953657269616c697a6174696f6e486f6c64657203000000044461746109556e697479547970650c417373656d626c794e616d6501000108060200000010506174726f6c446566696e6974696f6e0400000006030000003941492c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c0b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!114 &-4333065016133341559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +208,8 @@ MonoBehaviour:
   ports:
     keys:
     - parent
+    - patrolDefinition
+    - nextWaypoint
     values:
     - _fieldName: parent
       _node: {fileID: -3310192062355055903}
@@ -185,8 +222,33 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: patrolDefinition
+      _node: {fileID: -3310192062355055903}
+      _typeQualifiedName: PatrolDefinition, AI, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: data
+        node: {fileID: -8037451711373490691}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextWaypoint
+      _node: {fileID: -3310192062355055903}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: data
+        node: {fileID: -1373606932539716511}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   parent: {fileID: 0}
-  waypointList: []
+  patrolDefinition: {fileID: 0}
+  nextWaypoint: 0
 --- !u!114 &-3043282277221947533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +448,41 @@ MonoBehaviour:
   child: {fileID: 0}
   child1: {fileID: 0}
   child2: {fileID: 0}
+--- !u!114 &-1373606932539716511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d297d21ce153e0c46a9211f879d5ed7e, type: 3}
+  m_Name: Parameter
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -8, y: 344}
+  ports:
+    keys:
+    - data
+    values:
+    - _fieldName: data
+      _node: {fileID: -1373606932539716511}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: nextWaypoint
+        node: {fileID: -3310192062355055903}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  name: Next Waypoint
+  serializableType:
+    bundle:
+      unityObjects: []
+      data: 0001000000ffffffff010000000000000004010000001f53797374656d2e556e69747953657269616c697a6174696f6e486f6c64657203000000044461746109556e697479547970650c417373656d626c794e616d650100010806020000000c53797374656d2e496e7433320400000006030000004b6d73636f726c69622c2056657273696f6e3d342e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d623737613563353631393334653038390b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!114 &-487080375865098334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,6 +571,8 @@ MonoBehaviour:
   - {fileID: -3043282277221947533}
   - {fileID: -8672020540635508278}
   - {fileID: -4333065016133341559}
+  - {fileID: -8037451711373490691}
+  - {fileID: -1373606932539716511}
 --- !u!114 &442978611870804916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -612,7 +711,7 @@ MonoBehaviour:
   m_Name: Task Attack
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 680, y: -296}
+  position: {x: 680, y: -280}
   ports:
     keys:
     - parent
