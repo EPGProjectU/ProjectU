@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using XNode;
 
 [CreateNodeMenu("BehaviourTree/Entry", 1)]
@@ -15,10 +12,6 @@ public class EntryNode : CompositeNode {
         }
 
         return NodeState.FAILURE;
-    }
-
-    public override bool IsStartingNode() {
-        return true;
     }
 }
 
