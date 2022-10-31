@@ -11,7 +11,7 @@ namespace ProjectU.Core.Serialization
     public class SerializedType : ISerializationCallbackReceiver
     {
         [SerializeField]
-        private SerializationBundle bundle;
+        private SerializationBundle bundle = new SerializationBundle();
 
         public Type Type;
 
