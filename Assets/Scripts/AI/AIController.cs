@@ -8,13 +8,10 @@ public class AIController : MonoBehaviour
 {
     [HideInInspector]
     public NavMeshAgent agent;
-    [HideInInspector]
-    public int nextWayPoint;
     
     public PGraph<BehaviourTree> behaviourTree;
 
     public Transform target;
-    public List<Transform> wayPointList;
 
     private ActorController actor;
 
