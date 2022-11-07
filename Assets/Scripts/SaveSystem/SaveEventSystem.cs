@@ -65,6 +65,8 @@ public class SaveEventSystem : MonoBehaviour
         stream.Close();
 
         string tmpName = (string)data.loadedScenes.ToArray().GetValue(0);
+        
+        SceneManager.sceneLoaded += OnSceneLoadedCorutine;
 
         SceneManager.LoadScene(tmpName);
 
@@ -75,6 +77,11 @@ public class SaveEventSystem : MonoBehaviour
             if (sceneName != "SaveSystemScene")SceneManager.LoadScene(sceneName,LoadSceneMode.Additive);
         }
 
+        
+    }
+
+    private void OnSceneLoadedCorutine(Scene scene, LoadSceneMode mode)
+    {
         StartCoroutine(OnSceneLoaded());
     }
 
@@ -82,5 +89,6 @@ public class SaveEventSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         OnLoadData?.Invoke(data);
+        SceneManager.sceneLoaded -= OnSceneLoadedCorutine;
     }
 }
