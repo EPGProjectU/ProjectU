@@ -8,13 +8,10 @@ public class AIController : MonoBehaviour
 {
     [HideInInspector]
     public NavMeshAgent agent;
-    [HideInInspector]
-    public int nextWayPoint;
     
-    public BehaviourTree behaviourTree;
+    public PGraph<BehaviourTree> behaviourTree;
 
     public Transform target;
-    public List<Transform> wayPointList;
 
     private ActorController actor;
 
@@ -26,12 +23,12 @@ public class AIController : MonoBehaviour
     private void Start()
     {
         SetupAgent();
-        behaviourTree.SetupTree();
+        behaviourTree.Graph.SetupTree();
     }
 
     private void Update()
     {
-        behaviourTree.Evaluate(this);
+        behaviourTree.Graph.Evaluate(this);
         UpdateAgent();
     }
 

@@ -12,7 +12,7 @@ public enum Ally
 
 public abstract class HealthSystem : MonoBehaviour
 {
-    public SerializableDelegate<Action<HealthSystem>> deathCallback;
+    public SerializedDelegate<Action<HealthSystem>> deathCallback;
 
     /// <summary>
     /// Amount of health (in hearts) that actor currently haves
