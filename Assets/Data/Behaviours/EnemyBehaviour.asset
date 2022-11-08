@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Check Enemy In FOV Range
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 696, y: -56}
+  position: {x: 696, y: -88}
   ports:
     keys:
     - parent
@@ -22,7 +22,7 @@ MonoBehaviour:
       _node: {fileID: -8672020540635508278}
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: child
+      - fieldName: children 0
         node: {fileID: -3024494627521459745}
         reroutePoints: []
       _direction: 0
@@ -144,41 +144,21 @@ MonoBehaviour:
   m_Name: Entry
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -376, y: -104}
+  position: {x: -392, y: -136}
   ports:
     keys:
-    - child
-    - child1
-    - child2
+    - children 0
     - parent
+    - child
     values:
-    - _fieldName: child
-      _node: {fileID: -4333065016133341559}
-      _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: parent
-        node: {fileID: -2140308814765588926}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: child1
+    - _fieldName: children 0
       _node: {fileID: -4333065016133341559}
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: child2
-      _node: {fileID: -4333065016133341559}
-      _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
+      _dynamic: 1
     - _fieldName: parent
       _node: {fileID: -4333065016133341559}
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -187,10 +167,16 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: child
+      _node: {fileID: -4333065016133341559}
+      _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   parent: {fileID: 0}
   child: {fileID: 0}
-  child1: {fileID: 0}
-  child2: {fileID: 0}
 --- !u!114 &-3310192062355055903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +190,7 @@ MonoBehaviour:
   m_Name: Task Patrol
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 360, y: 200}
+  position: {x: 312, y: 184}
   ports:
     keys:
     - parent
@@ -215,7 +201,7 @@ MonoBehaviour:
       _node: {fileID: -3310192062355055903}
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: child2
+      - fieldName: children 2
         node: {fileID: -2140308814765588926}
         reroutePoints: []
       _direction: 0
@@ -248,7 +234,7 @@ MonoBehaviour:
       _dynamic: 0
   parent: {fileID: 0}
   patrolDefinition: {fileID: 0}
-  nextWaypoint: 0
+  nextWaypoint: 1
 --- !u!114 &-3043282277221947533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +257,7 @@ MonoBehaviour:
       _node: {fileID: -3043282277221947533}
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: child
+      - fieldName: children 0
         node: {fileID: -487080375865098334}
         reroutePoints: []
       _direction: 0
@@ -293,26 +279,26 @@ MonoBehaviour:
   m_Name: Sequence
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 328, y: -72}
+  position: {x: 296, y: -88}
   ports:
     keys:
     - parent
-    - child
-    - child1
-    - child2
+    - children 0
+    - children
+    - children 1
     values:
     - _fieldName: parent
       _node: {fileID: -3024494627521459745}
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: child1
+      - fieldName: children 1
         node: {fileID: -2140308814765588926}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: child
+    - _fieldName: children 0
       _node: {fileID: -3024494627521459745}
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
@@ -322,8 +308,17 @@ MonoBehaviour:
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: children
+      _node: {fileID: -3024494627521459745}
+      _typeQualifiedName: BehaviourNode[], AI, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: child1
+    - _fieldName: children 1
       _node: {fileID: -3024494627521459745}
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
@@ -333,19 +328,11 @@ MonoBehaviour:
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: child2
-      _node: {fileID: -3024494627521459745}
-      _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
+      _dynamic: 1
   parent: {fileID: 0}
-  child: {fileID: 0}
-  child1: {fileID: 0}
-  child2: {fileID: 0}
+  children:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &-2628537947803735459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,7 +346,7 @@ MonoBehaviour:
   m_Name: Task Go To Target
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 696, y: 40}
+  position: {x: 680, y: 40}
   ports:
     keys:
     - parent
@@ -368,7 +355,7 @@ MonoBehaviour:
       _node: {fileID: -2628537947803735459}
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: child1
+      - fieldName: children 1
         node: {fileID: -3024494627521459745}
         reroutePoints: []
       _direction: 0
@@ -389,29 +376,27 @@ MonoBehaviour:
   m_Name: Selector
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -56, y: -104}
+  position: {x: -72, y: -152}
   ports:
     keys:
     - parent
-    - child
-    - child1
-    - child2
+    - children 0
+    - children
+    - children 1
+    - children 2
     values:
     - _fieldName: parent
       _node: {fileID: -2140308814765588926}
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: child
-        node: {fileID: 0}
-        reroutePoints: []
-      - fieldName: child
-        node: {fileID: -4333065016133341559}
+        node: {fileID: 2170162563970398320}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: child
+    - _fieldName: children 0
       _node: {fileID: -2140308814765588926}
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
@@ -421,8 +406,17 @@ MonoBehaviour:
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: children
+      _node: {fileID: -2140308814765588926}
+      _typeQualifiedName: BehaviourNode[], AI, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: child1
+    - _fieldName: children 1
       _node: {fileID: -2140308814765588926}
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
@@ -432,8 +426,8 @@ MonoBehaviour:
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: child2
+      _dynamic: 1
+    - _fieldName: children 2
       _node: {fileID: -2140308814765588926}
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
@@ -443,11 +437,12 @@ MonoBehaviour:
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
-      _dynamic: 0
+      _dynamic: 1
   parent: {fileID: 0}
-  child: {fileID: 0}
-  child1: {fileID: 0}
-  child2: {fileID: 0}
+  children:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &-1373606932539716511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,22 +495,22 @@ MonoBehaviour:
   ports:
     keys:
     - parent
-    - child
-    - child1
-    - child2
+    - children 0
+    - children
+    - children 1
     values:
     - _fieldName: parent
       _node: {fileID: -487080375865098334}
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: child
+      - fieldName: children 0
         node: {fileID: -2140308814765588926}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: child
+    - _fieldName: children 0
       _node: {fileID: -487080375865098334}
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
@@ -525,8 +520,17 @@ MonoBehaviour:
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: children
+      _node: {fileID: -487080375865098334}
+      _typeQualifiedName: BehaviourNode[], AI, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: child1
+    - _fieldName: children 1
       _node: {fileID: -487080375865098334}
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
@@ -536,19 +540,11 @@ MonoBehaviour:
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: child2
-      _node: {fileID: -487080375865098334}
-      _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
+      _dynamic: 1
   parent: {fileID: 0}
-  child: {fileID: 0}
-  child1: {fileID: 0}
-  child2: {fileID: 0}
+  children:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,9 +566,9 @@ MonoBehaviour:
   - {fileID: 8512216476087459637}
   - {fileID: -3043282277221947533}
   - {fileID: -8672020540635508278}
-  - {fileID: -4333065016133341559}
   - {fileID: -8037451711373490691}
   - {fileID: -1373606932539716511}
+  - {fileID: 2170162563970398320}
 --- !u!114 &442978611870804916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,6 +634,46 @@ MonoBehaviour:
   child1: {fileID: 0}
   child2: {fileID: 0}
   range: 2
+--- !u!114 &2170162563970398320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff4aaef7cb12e047b0edd7b4ace0283, type: 3}
+  m_Name: Entry
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -439, y: -168.5}
+  ports:
+    keys:
+    - child
+    - parent
+    values:
+    - _fieldName: child
+      _node: {fileID: 2170162563970398320}
+      _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: parent
+        node: {fileID: -2140308814765588926}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: parent
+      _node: {fileID: 2170162563970398320}
+      _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  parent: {fileID: 0}
+  child: {fileID: 0}
 --- !u!114 &3981025490839414636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,7 +756,7 @@ MonoBehaviour:
       _node: {fileID: 8512216476087459637}
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: child1
+      - fieldName: children 1
         node: {fileID: -487080375865098334}
         reroutePoints: []
       _direction: 0
