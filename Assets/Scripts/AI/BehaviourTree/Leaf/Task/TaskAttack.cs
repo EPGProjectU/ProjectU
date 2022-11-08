@@ -11,8 +11,7 @@ public class TaskAttack : LeafNode {
     }
 
     private void Attack(AIController controller) {
-        //if enemy target health is above 0 then attack
         controller.Attack();
-        Debug.Log(controller.agent.name + " is Attacking!");
+            
     }
 }

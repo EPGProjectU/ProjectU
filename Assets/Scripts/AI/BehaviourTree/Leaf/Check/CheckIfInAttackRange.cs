@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using ProjectU.Core;
 using UnityEngine;
 
-[CreateNodeMenu("BehaviourTree/Leaf/CheckEnemyInSight")]
-public class CheckEnemyInFOVRange : LeafNode {
-
-
+[CreateNodeMenu("BehaviourTree/Leaf/CheckEnemyInAttackRange")]
+public class CheckIfInAttackRange : LeafNode {
     public override NodeState Evaluate(AIController controller) {
 
         if (controller.target == null) {
-            if (detectEnemy(controller)) {
+            if (checkAttackRange(controller)) {
                 state = NodeState.SUCCESS;
                 return state;
             }
@@ -20,8 +18,7 @@ public class CheckEnemyInFOVRange : LeafNode {
             }
         }
 
-
-        if (Vector2.Distance(controller.target.position, controller.transform.position) > controller.getSightRange())
+        if (Vector2.Distance(controller.target.position, controller.transform.position) > controller.getAttackRange())
             controller.target = null;
 
         state = NodeState.SUCCESS;
@@ -29,10 +26,10 @@ public class CheckEnemyInFOVRange : LeafNode {
 
     }
 
-    private bool detectEnemy(AIController controller) {
+    private bool checkAttackRange(AIController controller) {
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(controller.transform.position, controller.getSightRange());
-        
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(controller.transform.position, controller.getAttackRange());
+
         if (colliders.Length > 0) {
 
             foreach (Collider2D collider in colliders) {
@@ -48,6 +45,5 @@ public class CheckEnemyInFOVRange : LeafNode {
 
         return false;
     }
-
 
 }
