@@ -6,7 +6,7 @@ using UnityEngine;
 public class TaskAttackObject : LeafNode {
 
     [Input]
-    AIObject aiObject;
+    public AIObject aiObject;
 
     public override NodeState Evaluate(AIController controller) {
         AttackObject(controller);

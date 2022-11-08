@@ -11,8 +11,6 @@ public class AIController : MonoBehaviour
     
     public PGraph<BehaviourTree> behaviourTree;
 
-    public Transform target;
-
     private ActorController actor;
 
     private void Awake()
@@ -54,13 +52,7 @@ public class AIController : MonoBehaviour
             Debug.DrawLine(transform.position, target.transform.position, Color.yellow, 10.0f, false);
         }
     }
-    public void Attack() {
-        if (this.target != null) {
-            actor.Attack();
-            Debug.DrawLine(transform.position, this.target.transform.position, Color.yellow, 10.0f, false);
-        }
-    }
-
+    
     public bool IsInConversation() => actor.IsInConversation();
     public void StopConversation() => actor.StopConversation();
     public void StartConversation() => actor.StartConversation();

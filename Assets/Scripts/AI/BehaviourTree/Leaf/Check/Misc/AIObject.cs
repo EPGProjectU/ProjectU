@@ -9,15 +9,5 @@ using UnityEngine;
 [ParameterType(FriendlyName = "AIObject")]
 public class AIObject : MonoBehaviour
 {
-    Transform transform;
     
-    void Start()
-    {
-        transform = this.transform.parent.gameObject.transform;
-    }
-
-    void Update()
-    {
-        
-    }
 }

@@ -33306,11 +33306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b795cf6f69145c845bb7b5ced57ae4b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &209569623 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7521341303033311265, guid: 1495f1c6b39f0364492d6f3d8558f43c, type: 3}
-  m_PrefabInstance: {fileID: 1916283023}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &289722041 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7649322890496266106, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
@@ -66733,7 +66728,7 @@ PrefabInstance:
     - target: {fileID: 3603819762891202796, guid: a71a9c5880f8e8d4c897fc2868f781b6, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 209569623}
+      objectReference: {fileID: 101018929}
     - target: {fileID: 3603819762891202796, guid: a71a9c5880f8e8d4c897fc2868f781b6, type: 3}
       propertyPath: behaviourTree
       value: 
@@ -68188,11 +68183,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3603819762891202796, guid: a71a9c5880f8e8d4c897fc2868f781b6, type: 3}
       propertyPath: behaviourTree.parameters.bundle.data.Array.data[714]
-      value: 2
+      value: 122
       objectReference: {fileID: 0}
     - target: {fileID: 3603819762891202796, guid: a71a9c5880f8e8d4c897fc2868f781b6, type: 3}
       propertyPath: behaviourTree.parameters.bundle.data.Array.data[715]
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3603819762891202796, guid: a71a9c5880f8e8d4c897fc2868f781b6, type: 3}
       propertyPath: behaviourTree.parameters.bundle.data.Array.data[718]
@@ -71312,7 +71307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3603819762891202796, guid: a71a9c5880f8e8d4c897fc2868f781b6, type: 3}
       propertyPath: behaviourTree.parameters.bundle.data.Array.data[1527]
-      value: 128
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 3603819762891202796, guid: a71a9c5880f8e8d4c897fc2868f781b6, type: 3}
       propertyPath: behaviourTree.parameters.bundle.data.Array.data[1528]
@@ -71817,7 +71812,7 @@ PrefabInstance:
     - target: {fileID: 3603819762891202796, guid: a71a9c5880f8e8d4c897fc2868f781b6, type: 3}
       propertyPath: behaviourTree.parameters.bundle.unityObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 209569620}
+      objectReference: {fileID: 289722049}
     - target: {fileID: 3603819762891202796, guid: a71a9c5880f8e8d4c897fc2868f781b6, type: 3}
       propertyPath: behaviourTree.parameters.bundle.unityObjects.Array.data[2]
       value: 
@@ -71829,6 +71824,14 @@ PrefabInstance:
     - target: {fileID: 4137549071172506913, guid: a71a9c5880f8e8d4c897fc2868f781b6, type: 3}
       propertyPath: m_Name
       value: Troll
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174589455956808925, guid: a71a9c5880f8e8d4c897fc2868f781b6, type: 3}
+      propertyPath: sightRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174589455956808925, guid: a71a9c5880f8e8d4c897fc2868f781b6, type: 3}
+      propertyPath: weaponRange
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8577555578223915456, guid: a71a9c5880f8e8d4c897fc2868f781b6, type: 3}
       propertyPath: m_RootOrder

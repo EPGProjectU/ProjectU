@@ -5,7 +5,6 @@ using UnityEngine;
 using XNode;
 
 
-[CreateNodeMenu("BehaviourTree/Leaf/CheckTest")]
 public class CheckTest : LeafNode {
 
    
@@ -13,8 +12,8 @@ public class CheckTest : LeafNode {
 
     public override NodeState Evaluate(AIController controller) {
 
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(controller.transform.position, range);
+        throw new NotImplementedException();
+       /* Collider2D[] colliders = Physics2D.OverlapCircleAll(controller.transform.position, range);
 
         if (colliders.Length > 0) {
 
@@ -28,7 +27,7 @@ public class CheckTest : LeafNode {
             }
         }
 
-        return NodeState.FAILURE;
+        return NodeState.FAILURE;*/
 
     }
 

@@ -55,7 +55,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   parent: {fileID: 0}
-  range: 4
+  range: 5
   targetObject: {fileID: 0}
 --- !u!114 &-1849943482493850993
 MonoBehaviour:
@@ -86,7 +86,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  name: ObjectToAttack
+  name: targetObject
   serializableType:
     bundle:
       unityObjects: []

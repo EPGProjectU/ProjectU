@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using ProjectU.Core;
@@ -7,46 +8,33 @@ using UnityEngine;
 public class CheckEnemyInFOVRange : LeafNode {
 
 
-    public override NodeState Evaluate(AIController controller) {
+    public override NodeState Evaluate(AIController controller) {         
 
-        if (controller.target == null) {
-            if (detectEnemy(controller)) {
-                state = NodeState.SUCCESS;
-                return state;
-            }
-            else {
-                state = NodeState.FAILURE;
-                return state;
-            }
+        if (detectEnemy(controller)) {
+            state = NodeState.SUCCESS;
+            return state;
         }
-
-
-        if (Vector2.Distance(controller.target.position, controller.transform.position) > controller.getSightRange())
-            controller.target = null;
-
-        state = NodeState.SUCCESS;
-        return state;
-
+        else {
+            state = NodeState.FAILURE;
+            return state;
+        }
     }
 
     private bool detectEnemy(AIController controller) {
-
         Collider2D[] colliders = Physics2D.OverlapCircleAll(controller.transform.position, controller.getSightRange());
-        
-        if (colliders.Length > 0) {
 
-            foreach (Collider2D collider in colliders) {
+         if (colliders.Length > 0) {
 
-                if (collider._CompareTag("Player")) {
+             foreach (Collider2D collider in colliders) {
 
-                    controller.target = collider.gameObject.transform;
-                    state = NodeState.SUCCESS;
-                    return true;
-                }
-            }
-        }
+                 if (collider._CompareTag("Player")) {
+                     state = NodeState.SUCCESS;
+                     return true;
+                 }
+             }
+         }
 
-        return false;
+         return false;
     }
 
 
