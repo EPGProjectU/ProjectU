@@ -1,5 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4833133930372917622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71b682647b55e944bfc3cdde2251feb, type: 3}
+  m_Name: Task Attack Object
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 248, y: -24}
+  ports:
+    keys:
+    - aiObject
+    - parent
+    values:
+    - _fieldName: aiObject
+      _node: {fileID: -4833133930372917622}
+      _typeQualifiedName: AIObject, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: data
+        node: {fileID: -1849943482493850993}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: parent
+      _node: {fileID: -4833133930372917622}
+      _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: children 1
+        node: {fileID: -1677930960626408655}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  parent: {fileID: 0}
+  aiObject: {fileID: 0}
 --- !u!114 &-3004414600741903963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,7 +113,7 @@ MonoBehaviour:
   m_Name: Parameter
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -8, y: -344}
+  position: {x: -40, y: -344}
   ports:
     keys:
     - data
@@ -81,6 +124,9 @@ MonoBehaviour:
       connections:
       - fieldName: targetObject
         node: {fileID: -3004414600741903963}
+        reroutePoints: []
+      - fieldName: aiObject
+        node: {fileID: -4833133930372917622}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -146,7 +192,10 @@ MonoBehaviour:
     - _fieldName: children 1
       _node: {fileID: -1677930960626408655}
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: parent
+        node: {fileID: -4833133930372917622}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -173,6 +222,7 @@ MonoBehaviour:
   - {fileID: -1677930960626408655}
   - {fileID: -1849943482493850993}
   - {fileID: 7797957177999856712}
+  - {fileID: -4833133930372917622}
 --- !u!114 &7797957177999856712
 MonoBehaviour:
   m_ObjectHideFlags: 0

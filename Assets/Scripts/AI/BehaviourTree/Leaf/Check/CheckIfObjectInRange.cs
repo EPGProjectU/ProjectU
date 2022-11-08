@@ -15,7 +15,7 @@ public class CheckIfObjectInRange : LeafNode
 
     public override NodeState Evaluate(AIController controller) {
 
-        if (isInRange(controller, targetObject)) {
+        if (isInRange(controller)) {
             state = NodeState.SUCCESS;
             return state;
         }
@@ -25,12 +25,12 @@ public class CheckIfObjectInRange : LeafNode
         }
     }
 
-    private bool isInRange(AIController controller, AIObject target) {
+    private bool isInRange(AIController controller) {
         range = GetInputValue<float>(nameof(range));
         targetObject = GetInputValue<AIObject>(nameof(targetObject));
 
 
-        if (Vector3.Distance(controller.transform.position, target.transform.position) > range)
+        if (Vector3.Distance(controller.transform.position, targetObject.transform.position) > range)
             return false;
         else
             return true;

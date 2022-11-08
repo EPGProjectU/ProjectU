@@ -7,7 +7,7 @@ using UnityEngine;
 public class CheckIfInAttackRange : LeafNode {
 
     [Input]
-    AIObject attackTarget;
+    public AIObject attackTarget;
 
     public override NodeState Evaluate(AIController controller) {
 
@@ -20,9 +20,6 @@ public class CheckIfInAttackRange : LeafNode {
              return state;
          }
       
-        state = NodeState.SUCCESS;
-        return state;
-
     }
 
     private bool checkAttackRange(AIController controller) {

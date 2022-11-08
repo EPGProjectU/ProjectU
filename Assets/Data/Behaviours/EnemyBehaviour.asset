@@ -673,7 +673,10 @@ MonoBehaviour:
     - _fieldName: attackTarget
       _node: {fileID: 1949934249810868108}
       _typeQualifiedName: AIObject, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: data
+        node: {fileID: 6243444153283842705}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -690,6 +693,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   parent: {fileID: 0}
+  attackTarget: {fileID: 0}
 --- !u!114 &2170162563970398320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -846,7 +850,7 @@ MonoBehaviour:
   m_Name: Parameter
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 408, y: -184}
+  position: {x: 328, y: -488}
   ports:
     keys:
     - data
@@ -857,6 +861,9 @@ MonoBehaviour:
       connections:
       - fieldName: aiObject
         node: {fileID: -4170573398801541436}
+        reroutePoints: []
+      - fieldName: attackTarget
+        node: {fileID: 1949934249810868108}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
