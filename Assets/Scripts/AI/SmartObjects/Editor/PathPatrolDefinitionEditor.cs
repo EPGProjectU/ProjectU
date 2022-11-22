@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(PathPatrolDefinition))]
-public class PathPatrolDefinitionEditior : Editor
+public class PathPatrolDefinitionEditor : Editor
 {
     private void OnSceneGUI()
     {
