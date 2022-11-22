@@ -44,7 +44,7 @@ public class SaveEventSystem : MonoBehaviour
         {
             data.loadedScenes.Add(SceneManager.GetSceneAt(i).name);
         }
-
+        
         XmlSerializer serializer = new XmlSerializer(typeof(GameData));
         FileStream stream = new FileStream(Application.dataPath + "/../Saves/save.xml", FileMode.Create);
         serializer.Serialize(stream, data);

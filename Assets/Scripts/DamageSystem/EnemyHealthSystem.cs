@@ -14,6 +14,8 @@ public class EnemyHealthSystem : HealthSystem
     void Start()
     {
         allies.Add(myGroup);
+        SaveEventSystem.Instance.OnSaveData += Save;
+        SaveEventSystem.Instance.OnLoadData += Load;
     }
 
     public override void TakeDamage(DamageInfo damage)
@@ -54,5 +56,54 @@ public class EnemyHealthSystem : HealthSystem
     protected override void OnDeath()
     {
         base.OnDeath();
+    }
+
+    void OnDestroy()
+    {
+        SaveEventSystem.Instance.OnSaveData -= Save;
+        SaveEventSystem.Instance.OnLoadData -= Load;
+    }
+
+    private void Save(GameData data)
+    {
+        EnemyData ed = null;
+
+        foreach (EnemyData tmp in data.enemies)
+        {
+            if (tmp.name == gameObject.name) ed = tmp;
+        }
+
+        if (ed != null) data.enemies.Remove(ed); 
+        else ed = new EnemyData();
+
+        ed.name = gameObject.name;
+        ed.health = health;
+        ed.maxHealth = maxHealth;
+        ed.armorDurability = armorDurability;
+        ed.maximumArmorDurability = maximumArmorDurability;
+        ed.position = gameObject.transform.position;
+        ed.weapon = GetComponentInChildren<WeaponSlot>().weapon.GetComponent<WeaponDamager>().damage;
+        data.enemies.Add(ed);
+    }
+
+    private void Load(GameData data)
+    {
+        EnemyData ed = null;
+        
+        foreach(EnemyData tmp in data.enemies)
+        {
+            if (tmp.name == gameObject.name) ed = tmp;
+        }
+        if (ed != null)
+        {
+            health = ed.health;
+            maxHealth = ed.maxHealth;
+            armorDurability = ed.armorDurability;
+            maximumArmorDurability = ed.maximumArmorDurability;
+            gameObject.transform.position = ed.position;
+            GetComponentInChildren<WeaponSlot>().weapon.GetComponent<WeaponDamager>().damage = ed.weapon;
+
+            if (health < 1) OnDeath();
+        }
     }
 }

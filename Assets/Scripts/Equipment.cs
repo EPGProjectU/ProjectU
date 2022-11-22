@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -28,18 +29,22 @@ public class Equipment : MonoBehaviour
 
     private void Save(GameData data)
     {
+        List<String> tmpSave = new List<String>();
         foreach (Item item in items)
         {
-            data.player.items.Add(AssetDatabase.GetAssetPath(item.GetInstanceID()));
+            tmpSave.Add(AssetDatabase.GetAssetPath(item.GetInstanceID()));
         }
+        data.player.items = tmpSave;
     }
 
     private void Load(GameData data)
     {
+        List<Item> tmp = new List<Item>();
         foreach (string itemPath in data.player.items)
         {
-            items.Add((Item)AssetDatabase.LoadAssetAtPath(itemPath, typeof(Item)));
+            tmp.Add((Item)AssetDatabase.LoadAssetAtPath(itemPath, typeof(Item)));
         }
+        items = tmp;
     }
 
     private void OnDestroy()
