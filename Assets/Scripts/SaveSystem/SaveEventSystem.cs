@@ -34,6 +34,11 @@ public class SaveEventSystem : MonoBehaviour
 
     public void SaveData()
     {
+        SaveData("save");
+    }
+
+    public void SaveData(string name)
+    {
         OnSaveData?.Invoke(data);
 
         int countLoaded = SceneManager.sceneCount;
@@ -54,15 +59,20 @@ public class SaveEventSystem : MonoBehaviour
         data.itemsNamesOnScene = tmp;
         
         XmlSerializer serializer = new XmlSerializer(typeof(GameData));
-        FileStream stream = new FileStream(Application.dataPath + "/../Saves/save.xml", FileMode.Create);
+        FileStream stream = new FileStream(Application.dataPath + "/../Saves/"+name+".xml", FileMode.Create);
         serializer.Serialize(stream, data);
         stream.Close();
     }
 
     public void LoadData()
     {
+        LoadData("save");
+    }
+
+    public void LoadData(string name)
+    {
         XmlSerializer serializer = new XmlSerializer(typeof(GameData));
-        FileStream stream = new FileStream(Application.dataPath + "/../Saves/save.xml", FileMode.Open);
+        FileStream stream = new FileStream(Application.dataPath + "/../Saves/"+name+".xml", FileMode.Open);
 
         GameData tmp = serializer.Deserialize(stream) as GameData;
         if (tmp != null)
