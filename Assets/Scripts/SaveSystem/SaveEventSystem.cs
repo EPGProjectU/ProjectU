@@ -44,6 +44,14 @@ public class SaveEventSystem : MonoBehaviour
         {
             data.loadedScenes.Add(SceneManager.GetSceneAt(i).name);
         }
+
+        var obs = FindObjectsOfType<GameObject>();
+        List<string> tmp = new List<string>();
+        foreach(GameObject go in obs)
+        {
+            if(go.GetComponent<ItemDisplay>())tmp.Add(go.name);
+        }
+        data.itemsNamesOnScene = tmp;
         
         XmlSerializer serializer = new XmlSerializer(typeof(GameData));
         FileStream stream = new FileStream(Application.dataPath + "/../Saves/save.xml", FileMode.Create);
@@ -76,8 +84,6 @@ public class SaveEventSystem : MonoBehaviour
         {
             if (sceneName != "SaveSystemScene")SceneManager.LoadScene(sceneName,LoadSceneMode.Additive);
         }
-
-        
     }
 
     private void OnSceneLoadedCorutine(Scene scene, LoadSceneMode mode)
@@ -90,5 +96,17 @@ public class SaveEventSystem : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         OnLoadData?.Invoke(data);
         SceneManager.sceneLoaded -= OnSceneLoadedCorutine;
+
+        var obs = FindObjectsOfType<GameObject>();
+        List<string> tmpItems = new List<string>();
+        foreach (GameObject go in obs)
+        {
+            if (go.GetComponent<ItemDisplay>() && !data.itemsNamesOnScene.Contains(go.name)) tmpItems.Add(go.name);
+        }
+
+        foreach (string itemName in tmpItems)
+        {
+            Destroy(GameObject.Find(itemName));
+        }
     }
 }
