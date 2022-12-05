@@ -66,16 +66,7 @@ public class EnemyHealthSystem : HealthSystem
 
     private void Save(GameData data)
     {
-        EnemyData ed = null;
-
-        foreach (EnemyData tmp in data.enemies)
-        {
-            if (tmp.name == gameObject.name) ed = tmp;
-        }
-
-        if (ed != null) data.enemies.Remove(ed); 
-        else ed = new EnemyData();
-
+        EnemyData ed = new EnemyData();
         ed.name = gameObject.name;
         ed.health = health;
         ed.maxHealth = maxHealth;

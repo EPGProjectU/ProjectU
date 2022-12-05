@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <GameData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <loadedScenes>
-    <string>ItemTester</string>
+    <string>DamageTestScene</string>
   </loadedScenes>
+  <itemsNamesOnScene />
   <player>
     <health>3</health>
     <maxHealth>3</maxHealth>
@@ -15,10 +16,30 @@
       <type>Normal</type>
     </weapon>
     <position>
-      <x>2.12000179</x>
-      <y>-0.07051395</y>
+      <x>9.849857</x>
+      <y>0.599087954</y>
       <z>-1</z>
     </position>
     <items />
   </player>
+  <enemies>
+    <EnemyData>
+      <health>0</health>
+      <maxHealth>3</maxHealth>
+      <armorDurability>0</armorDurability>
+      <maximumArmorDurability>100</maximumArmorDurability>
+      <weapon>
+        <damage>1</damage>
+        <specialDamage>0</specialDamage>
+        <effectDuration>0</effectDuration>
+        <type>Normal</type>
+      </weapon>
+      <position>
+        <x>7.93349075</x>
+        <y>0.359597981</y>
+        <z>0</z>
+      </position>
+      <name>Enemy</name>
+    </EnemyData>
+  </enemies>
 </GameData>

@@ -39,6 +39,8 @@ public class SaveEventSystem : MonoBehaviour
 
     public void SaveData(string name)
     {
+        data.enemies = new List<EnemyData>();
+
         OnSaveData?.Invoke(data);
 
         int countLoaded = SceneManager.sceneCount;
@@ -50,18 +52,23 @@ public class SaveEventSystem : MonoBehaviour
             data.loadedScenes.Add(SceneManager.GetSceneAt(i).name);
         }
 
-        var obs = FindObjectsOfType<GameObject>();
-        List<string> tmp = new List<string>();
-        foreach(GameObject go in obs)
-        {
-            if(go.GetComponent<ItemDisplay>())tmp.Add(go.name);
-        }
-        data.itemsNamesOnScene = tmp;
-        
+        SaveItemsOnScene();
+
         XmlSerializer serializer = new XmlSerializer(typeof(GameData));
         FileStream stream = new FileStream(Application.dataPath + "/../Saves/"+name+".xml", FileMode.Create);
         serializer.Serialize(stream, data);
         stream.Close();
+    }
+
+    private void SaveItemsOnScene()
+    {
+        var obs = FindObjectsOfType<GameObject>();
+        List<string> tmp = new List<string>();
+        foreach (GameObject go in obs)
+        {
+            if (go.GetComponent<ItemDisplay>()) tmp.Add(go.name);
+        }
+        data.itemsNamesOnScene = tmp;
     }
 
     public void LoadData()
@@ -107,6 +114,11 @@ public class SaveEventSystem : MonoBehaviour
         OnLoadData?.Invoke(data);
         SceneManager.sceneLoaded -= OnSceneLoadedCorutine;
 
+        LoadItemsOnScene();
+    }
+
+    private void LoadItemsOnScene()
+    {
         var obs = FindObjectsOfType<GameObject>();
         List<string> tmpItems = new List<string>();
         foreach (GameObject go in obs)
