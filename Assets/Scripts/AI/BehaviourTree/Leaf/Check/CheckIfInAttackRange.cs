@@ -30,8 +30,6 @@ public class CheckIfInAttackRange : LeafNode {
             return false;
         else
             return true;
-
-   
     }
 
 }
