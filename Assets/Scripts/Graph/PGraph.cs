@@ -82,6 +82,12 @@ public class PGraph<TGraph> : ISerializationCallbackReceiver where TGraph : Grap
     /// </summary>
     public void ValidateParameters()
     {
+        if (graph == null)
+        {
+            parameters.Clear();
+            return;
+        }
+        
         var parameterNodes = graph.nodes.OfType<ParameterNode>().ToArray();
 
         // Filter out parameters not present in the graph

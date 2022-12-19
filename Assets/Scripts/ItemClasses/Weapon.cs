@@ -19,6 +19,6 @@ public class Weapon : Item
 
     public override void Use(GameObject target)
     {
-        target.GetComponentInChildren<WeaponSlot>().UpdateWeaponDamage(new DamageInfo(Damage));
+        target.GetComponentInChildren<WeaponSlot>().UpdateWeaponDamage(new DamageInfo{damage = Damage});
     }
 }
