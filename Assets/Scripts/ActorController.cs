@@ -47,6 +47,8 @@ public partial class ActorController : MonoBehaviour
         set
         {
             _actorAnimator.SetBool(DeadAnimatorProperty, value);
+            // On death move actor back to not obstruct alive actors
+            transform.position += new Vector3(0, 0, 0.5f);
             _dead = value;
         }
     }
