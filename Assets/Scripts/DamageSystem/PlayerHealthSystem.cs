@@ -37,7 +37,7 @@ public class PlayerHealthSystem : HealthSystem
             if (armorDurability < 0) armorDurability = 0;
         }
         if (dmg < 0) dmg = 0;
-        return new DamageInfo(dmg, damage);
+        return new DamageInfo(damage){ damage = dmg};
     }
 
     protected override void OnDeath()
