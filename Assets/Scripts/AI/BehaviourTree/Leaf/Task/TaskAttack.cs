@@ -3,17 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateNodeMenu("BehaviourTree/Leaf/TaskAttackEnemy")]
 public class TaskAttack : LeafNode {
     public override NodeState Evaluate(AIController controller) {
-        throw new NotImplementedException();
-        /*Attack(controller);
+        Attack(controller);
         state = NodeState.RUNNING;
-        return state;*/
+        return state;
     }
 
     private void Attack(AIController controller) {
-        throw new NotImplementedException();
-        //controller.Attack();
+        //orientation towards current target 
+        //and distance check
 
+        controller.Attack();
     }
 }

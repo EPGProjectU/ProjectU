@@ -8,6 +8,7 @@ public class TaskGoToTarget : LeafNode {
     [Input]
     public AIObject aiObject;
 
+
     public override NodeState Evaluate(AIController controller) {
         Transform target = GetInputValue<AIObject>(nameof(aiObject)).transform;
 

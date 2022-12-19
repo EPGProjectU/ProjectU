@@ -100,6 +100,36 @@ MonoBehaviour:
     bundle:
       unityObjects: []
       data: 0001000000ffffffff010000000000000004010000001f53797374656d2e556e69747953657269616c697a6174696f6e486f6c64657203000000044461746109556e697479547970650c417373656d626c794e616d6501000108060200000010506174726f6c446566696e6974696f6e0400000006030000003941492c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c0b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+--- !u!114 &-6580327616396020824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4864a29d2c367bb4fa0a044d587ef1f9, type: 3}
+  m_Name: Task Attack
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 680, y: -296}
+  ports:
+    keys:
+    - parent
+    values:
+    - _fieldName: parent
+      _node: {fileID: -6580327616396020824}
+      _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: children 1
+        node: {fileID: -487080375865098334}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  parent: {fileID: 0}
 --- !u!114 &-4333065016133341559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,49 +176,6 @@ MonoBehaviour:
       _dynamic: 0
   parent: {fileID: 0}
   child: {fileID: 0}
---- !u!114 &-4170573398801541436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e71b682647b55e944bfc3cdde2251feb, type: 3}
-  m_Name: Task Attack Object
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 680, y: -296}
-  ports:
-    keys:
-    - aiObject
-    - parent
-    values:
-    - _fieldName: aiObject
-      _node: {fileID: -4170573398801541436}
-      _typeQualifiedName: AIObject, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: data
-        node: {fileID: 6243444153283842705}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: parent
-      _node: {fileID: -4170573398801541436}
-      _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: children 1
-        node: {fileID: -487080375865098334}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  parent: {fileID: 0}
-  aiObject: {fileID: 0}
 --- !u!114 &-3310192062355055903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,7 +291,7 @@ MonoBehaviour:
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: parent
-        node: {fileID: 4645654211274716156}
+        node: {fileID: 3636646241090894830}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -314,40 +301,6 @@ MonoBehaviour:
   children:
   - {fileID: 0}
   - {fileID: 0}
---- !u!114 &-2258687984319266871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d297d21ce153e0c46a9211f879d5ed7e, type: 3}
-  m_Name: Parameter
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 424, y: 88}
-  ports:
-    keys:
-    - data
-    values:
-    - _fieldName: data
-      _node: {fileID: -2258687984319266871}
-      _typeQualifiedName: AIObject, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: aiObject
-        node: {fileID: 4645654211274716156}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  name: TargetToChase
-  serializableType:
-    bundle:
-      unityObjects: []
-      data: 0001000000ffffffff010000000000000004010000001f53797374656d2e556e69747953657269616c697a6174696f6e486f6c64657203000000044461746109556e697479547970650c417373656d626c794e616d650100010806020000000841494f626a6563740400000006030000003941492c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c0b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!114 &-2140308814765588926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,7 +503,7 @@ MonoBehaviour:
       _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: parent
-        node: {fileID: -4170573398801541436}
+        node: {fileID: -6580327616396020824}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -580,12 +533,10 @@ MonoBehaviour:
   - {fileID: -8037451711373490691}
   - {fileID: -1373606932539716511}
   - {fileID: 2170162563970398320}
-  - {fileID: 4645654211274716156}
-  - {fileID: -2258687984319266871}
   - {fileID: -636277875817715356}
   - {fileID: 1949934249810868108}
-  - {fileID: -4170573398801541436}
-  - {fileID: 6243444153283842705}
+  - {fileID: -6580327616396020824}
+  - {fileID: 3636646241090894830}
 --- !u!114 &442978611870804916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,10 +624,7 @@ MonoBehaviour:
     - _fieldName: attackTarget
       _node: {fileID: 1949934249810868108}
       _typeQualifiedName: AIObject, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: data
-        node: {fileID: 6243444153283842705}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -734,6 +682,36 @@ MonoBehaviour:
       _dynamic: 0
   parent: {fileID: 0}
   child: {fileID: 0}
+--- !u!114 &3636646241090894830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e586ddbc6a5ecd04eaef4f85ad71ece7, type: 3}
+  m_Name: Task Pursue Target
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 680, y: 40}
+  ports:
+    keys:
+    - parent
+    values:
+    - _fieldName: parent
+      _node: {fileID: 3636646241090894830}
+      _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: children 1
+        node: {fileID: -3024494627521459745}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  parent: {fileID: 0}
 --- !u!114 &3981025490839414636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,83 +772,3 @@ MonoBehaviour:
   child: {fileID: 0}
   child1: {fileID: 0}
   child2: {fileID: 0}
---- !u!114 &4645654211274716156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 078c46e015d0ab44db2b209592fb4a8f, type: 3}
-  m_Name: Task Go To Target
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 680, y: 24}
-  ports:
-    keys:
-    - aiObject
-    - parent
-    values:
-    - _fieldName: aiObject
-      _node: {fileID: 4645654211274716156}
-      _typeQualifiedName: AIObject, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: data
-        node: {fileID: -2258687984319266871}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: parent
-      _node: {fileID: 4645654211274716156}
-      _typeQualifiedName: BehaviourNode, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: children 1
-        node: {fileID: -3024494627521459745}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  parent: {fileID: 0}
-  aiObject: {fileID: 0}
---- !u!114 &6243444153283842705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d297d21ce153e0c46a9211f879d5ed7e, type: 3}
-  m_Name: Parameter
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 328, y: -488}
-  ports:
-    keys:
-    - data
-    values:
-    - _fieldName: data
-      _node: {fileID: 6243444153283842705}
-      _typeQualifiedName: AIObject, AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: aiObject
-        node: {fileID: -4170573398801541436}
-        reroutePoints: []
-      - fieldName: attackTarget
-        node: {fileID: 1949934249810868108}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  name: TargettoAttack
-  serializableType:
-    bundle:
-      unityObjects: []
-      data: 0001000000ffffffff010000000000000004010000001f53797374656d2e556e69747953657269616c697a6174696f6e486f6c64657203000000044461746109556e697479547970650c417373656d626c794e616d650100010806020000000841494f626a6563740400000006030000003941492c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c0b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000

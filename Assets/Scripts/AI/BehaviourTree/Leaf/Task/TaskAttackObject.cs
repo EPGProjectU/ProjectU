@@ -15,7 +15,8 @@ public class TaskAttackObject : LeafNode {
     }
 
     private void AttackObject(AIController controller) {
-        aiObject = GetInputValue<AIObject>(nameof(aiObject));
-        controller.Attack(aiObject);
+        //aiObject = GetInputValue<AIObject>(nameof(aiObject));
+        //controller.Attack(aiObject);
+        controller.Attack();
     }
 }

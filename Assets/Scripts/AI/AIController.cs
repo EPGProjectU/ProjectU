@@ -13,6 +13,11 @@ public class AIController : MonoBehaviour
 
     private ActorController actor;
 
+    public FactionData factionData;
+
+    [HideInInspector]
+    public Transform currentTarget;
+
     private void Awake()
     {
         actor = GetComponent<ActorController>();
@@ -46,13 +51,15 @@ public class AIController : MonoBehaviour
         agent.updatePosition = false;
     }
 
-    public void Attack(AIObject target) {
+    /*public void Attack(AIObject target) {
         if (target != null) {
             actor.Attack();
             Debug.DrawLine(transform.position, target.transform.position, Color.yellow, 10.0f, false);
         }
-    }
-    
+    }*/
+
+    public void Attack() => actor.Attack();
+
     public bool IsInConversation() => actor.IsInConversation();
     public void StopConversation() => actor.StopConversation();
     public void StartConversation() => actor.StartConversation();
