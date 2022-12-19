@@ -31,7 +31,7 @@ public class EnemyHealthSystem : HealthSystem
             defence -= tmp;
         }
         if (dmg < 0) dmg = 0;
-        return new DamageInfo(dmg, damage);
+        return new DamageInfo(damage) { damage = dmg };
     }
 
     protected override IEnumerator Corroding(float time, int damage)
