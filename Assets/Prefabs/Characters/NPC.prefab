@@ -95,7 +95,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   running: 0
-  motionData: {fileID: 0}
+  motionData: {fileID: 11400000, guid: c8f87936619f2e241a2cfb4cb179a558, type: 2}
+  StaggerRecovery: 1
 --- !u!114 &-6128121183770744126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,4 +391,11 @@ MonoBehaviour:
     specialDamage: 0
     effectDuration: 0
     type: 0
+    knockBack:
+      force: 5
+      distance: 1
+      recoveryTime: 0.5
+      direction: {x: 0, y: 0}
+    source: {fileID: 0}
+    target: {fileID: 0}
   Owner: 1
