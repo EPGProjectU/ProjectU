@@ -53,6 +53,7 @@ public class SaveEventSystem : MonoBehaviour
         }
 
         SaveItemsOnScene();
+        SaveProgression();
 
         XmlSerializer serializer = new XmlSerializer(typeof(GameData));
         FileStream stream = new FileStream(Application.dataPath + "/../Saves/"+name+".xml", FileMode.Create);
@@ -69,6 +70,19 @@ public class SaveEventSystem : MonoBehaviour
             if (go.GetComponent<ItemDisplay>()) tmp.Add(go.name);
         }
         data.itemsNamesOnScene = tmp;
+    }
+
+    private void SaveProgression()
+    {
+        var allTags = ProgressionManager.GetAllTags();
+        data.activeTags = new List<string>();
+        data.collectTags = new List<string>();
+
+        foreach (ProgressionTag tag in allTags)
+        {
+            if (tag.IsActive()) data.activeTags.Add(tag.Name);
+            if (tag.IsCollected()) data.collectTags.Add(tag.Name);
+        }
     }
 
     public void LoadData()
@@ -115,6 +129,7 @@ public class SaveEventSystem : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoadedCorutine;
 
         LoadItemsOnScene();
+        LoadProgression();
     }
 
     private void LoadItemsOnScene()
@@ -129,6 +144,19 @@ public class SaveEventSystem : MonoBehaviour
         foreach (string itemName in tmpItems)
         {
             Destroy(GameObject.Find(itemName));
+        }
+    }
+
+    private void LoadProgression()
+    {
+        foreach (string name in data.activeTags)
+        {
+            ProgressionManager.SetActiveTag(name, true);
+        }
+
+        foreach (string name in data.collectTags)
+        {
+            ProgressionManager.CollectTag(name, true);
         }
     }
 }

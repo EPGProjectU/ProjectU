@@ -10,6 +10,6 @@ public class CharacterData
     public float maxHealth;
     public float armorDurability;
     public float maximumArmorDurability;
-    public DamageInfo weapon;
+    public DamageData weapon;
     public Vector3 position;
 }

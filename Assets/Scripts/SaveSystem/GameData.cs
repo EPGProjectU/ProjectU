@@ -8,6 +8,8 @@ public class GameData
 {
     public List<string> loadedScenes = new List<string>();
     public List<string> itemsNamesOnScene = new List<string>();
+    public List<string> collectTags = new List<string>();
+    public List<string> activeTags = new List<string>();
     public PlayerData player = new PlayerData();
     public List<EnemyData> enemies = new List<EnemyData>();
 }

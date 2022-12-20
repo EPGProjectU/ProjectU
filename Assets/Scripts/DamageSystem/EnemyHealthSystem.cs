@@ -73,7 +73,7 @@ public class EnemyHealthSystem : HealthSystem
         ed.armorDurability = armorDurability;
         ed.maximumArmorDurability = maximumArmorDurability;
         ed.position = gameObject.transform.position;
-        ed.weapon = GetComponentInChildren<WeaponSlot>().weapon.GetComponent<WeaponDamager>().damage;
+        ed.weapon = new DamageData(GetComponentInChildren<WeaponSlot>().weapon.GetComponent<WeaponDamager>().damage);
         data.enemies.Add(ed);
     }
 
@@ -92,7 +92,7 @@ public class EnemyHealthSystem : HealthSystem
             armorDurability = ed.armorDurability;
             maximumArmorDurability = ed.maximumArmorDurability;
             gameObject.transform.position = ed.position;
-            GetComponentInChildren<WeaponSlot>().weapon.GetComponent<WeaponDamager>().damage = ed.weapon;
+            GetComponentInChildren<WeaponSlot>().weapon.GetComponent<WeaponDamager>().damage = new DamageInfo(ed.weapon);
 
             if (health < 1) OnDeath();
         }

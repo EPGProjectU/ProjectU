@@ -59,7 +59,7 @@ public class PlayerHealthSystem : HealthSystem
         data.player.armorDurability = armorDurability;
         data.player.maximumArmorDurability = maximumArmorDurability;
         data.player.position = gameObject.transform.position;
-        data.player.weapon = GetComponentInChildren<WeaponSlot>().weapon.GetComponent<WeaponDamager>().damage;
+        data.player.weapon = new DamageData(GetComponentInChildren<WeaponSlot>().weapon.GetComponent<WeaponDamager>().damage);
     }
 
     private void Load(GameData data)
@@ -69,7 +69,7 @@ public class PlayerHealthSystem : HealthSystem
         armorDurability = data.player.armorDurability;
         maximumArmorDurability = data.player.maximumArmorDurability;
         gameObject.transform.position = data.player.position;
-        GetComponentInChildren<WeaponSlot>().weapon.GetComponent<WeaponDamager>().damage = data.player.weapon;
+        GetComponentInChildren<WeaponSlot>().weapon.GetComponent<WeaponDamager>().damage = new DamageInfo(data.player.weapon);
     }
 
 }
