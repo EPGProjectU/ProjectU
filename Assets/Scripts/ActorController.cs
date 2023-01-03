@@ -24,6 +24,10 @@ public partial class ActorController : MonoBehaviour
 
     private bool _isTalking;
 
+    public float sightRange;
+    //ideally should depend on weapon item 
+    public float weaponRange;
+
     /// <summary>
     /// Vector representing actor's movement
     /// </summary>
@@ -106,6 +110,7 @@ public partial class ActorController : MonoBehaviour
         OnValidate();
 
         _isTalking = false;
+
     }
 
     private void FixedUpdate()
