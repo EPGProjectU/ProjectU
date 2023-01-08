@@ -31,6 +31,17 @@ public class DamageInfo
         target = info.target;
     }
 
+    public DamageInfo(DamageData data)
+    {
+        damage = data.damage;
+        specialDamage = data.specialDamage;
+        effectDuration = data.effectDuration;
+        type = data.type;
+        knockBack.force = data.force;
+        knockBack.distance = data.distance;
+        knockBack.recoveryTime = data.recoveryTime;
+    }
+
     public override int GetHashCode()
     {
         return 0;

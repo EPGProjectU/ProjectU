@@ -140,7 +140,7 @@ public partial class ActorController : MonoBehaviour
     {
         if (_dead || IsInKnockBack)
             return;
-
+        OnValidate();
         _actorAnimator.SetBool(AttackAnimatorProperty, true);
         OnAttack?.Invoke();
     }

@@ -223,6 +223,15 @@ public class PlayerController : MonoBehaviour
                 SetLookVectorFromCursor(Mouse.current.position.ReadValue());
         };
 
+        _performedInputBindings["QuickSave"] = context => {
+            Debug.Log("Save");
+            SaveEventSystem.Instance.SaveData();
+        };
+
+        _performedInputBindings["QuickLoad"] = context => {
+            Debug.Log("Load");
+            SaveEventSystem.Instance.LoadData();
+        };
 
         foreach (var inputBinding in _performedInputBindings)
         {
