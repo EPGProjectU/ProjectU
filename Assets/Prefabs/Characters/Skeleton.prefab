@@ -89,6 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   running: 0
   motionData: {fileID: 11400000, guid: 55fad9c184b281046a50d92558e8e3d1, type: 2}
+  StaggerRecovery: 1
 --- !u!114 &3506407633592979285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +114,7 @@ MonoBehaviour:
   defence: 0
   armorDurability: 0
   maximumArmorDurability: 100
+  damageNumberFontSize: 24
   myGroup: 1
   allies: 
 --- !u!70 &3927401475742962017
@@ -350,6 +352,13 @@ MonoBehaviour:
     specialDamage: 0
     effectDuration: 0
     type: 0
+    knockBack:
+      force: 5
+      distance: 1
+      recoveryTime: 0.5
+      direction: {x: 0, y: 0}
+    source: {fileID: 0}
+    target: {fileID: 0}
   Owner: 0
 --- !u!1001 &7351031504813265248
 PrefabInstance:

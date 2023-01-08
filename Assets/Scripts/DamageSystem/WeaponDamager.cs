@@ -10,7 +10,12 @@ public class WeaponDamager : Damager
     {
         if (collision.gameObject.GetComponent<HealthSystem>())
         {
-            if (!collision.gameObject.GetComponent<HealthSystem>().allies.Contains(Owner)) collision.gameObject.GetComponent<HealthSystem>().TakeDamage(damage);
+            if (!collision.gameObject.GetComponent<HealthSystem>().allies.Contains(Owner))
+            {
+                damage.source = GetComponentInParent<ActorController>().gameObject;
+                collision.gameObject.GetComponent<HealthSystem>().TakeDamage(damage);
+                TextParticleManager.Create(damage.damage.ToString(), collision.ClosestPoint(transform.position));
+            }
         }
     }
 }
