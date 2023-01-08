@@ -269,5 +269,6 @@ public class PlayerController : MonoBehaviour
     private void Pickup(GameObject item)
     {
         this.GetComponent<Equipment>().items.Add(item.GetComponent<ItemDisplay>().item);
+
     }
 }

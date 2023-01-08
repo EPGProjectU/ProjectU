@@ -268,6 +268,7 @@ MonoBehaviour:
   invincibleTime: 2
   defence: 0
   armorDurability: 0
+  maximumArmorDurability: 100
   myGroup: 0
   allies: 
 --- !u!70 &8979321992758440572
@@ -316,6 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items: []
   text: {fileID: 0}
+  inventory: {fileID: 11400000, guid: d25f02efcb3c72947bc347006a7af750, type: 2}
 --- !u!1 &8126915403759360039
 GameObject:
   m_ObjectHideFlags: 0
