@@ -263,7 +263,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   running: 0
   motionData: {fileID: 11400000, guid: b44358aa2663b8a479e376b8ee472de7, type: 2}
-  StaggerRecovery: 1
 --- !u!114 &647860402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,6 +336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items: []
   text: {fileID: 0}
+  inventory: {fileID: 11400000, guid: 3cbaeebd8acf45142abc41b51cad0a84, type: 2}
 --- !u!1 &8126915403759360039
 GameObject:
   m_ObjectHideFlags: 0
