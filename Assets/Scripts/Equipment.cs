@@ -10,7 +10,7 @@ public class Equipment : MonoBehaviour
     public Inventory inventory;
 
     //Method creates a string for all items in current Equipment for current instance of class
-    void Start()
+    private void Start()
     {
         this.items = inventory.items;
     }
