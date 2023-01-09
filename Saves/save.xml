@@ -5,30 +5,9 @@
   </loadedScenes>
   <itemsNamesOnScene>
     <string>Item (2)</string>
-    <string>Item (1)</string>
-    <string>Item</string>
   </itemsNamesOnScene>
-  <collectTags>
-    <string>MAIN/P0/EntryPoint1</string>
-    <string>MAIN/P0/EntryPoint2</string>
-    <string>MAIN/P1</string>
-    <string>MAIN/P2/A</string>
-    <string>MAIN/P2/B</string>
-  </collectTags>
-  <activeTags>
-    <string>EX/LOCK/1</string>
-    <string>EX/LOCK/2</string>
-    <string>EX/UNLOCK/1</string>
-    <string>EX/UNLOCK/2</string>
-    <string>MAIN/P0/EntryPoint1</string>
-    <string>MAIN/P0/EntryPoint2</string>
-    <string>MAIN/P1</string>
-    <string>MAIN/P2/A</string>
-    <string>MAIN/P2/B</string>
-    <string>SQ/1</string>
-    <string>SQ/2</string>
-    <string>SkeletonHunt</string>
-  </activeTags>
+  <collectTags />
+  <activeTags />
   <player>
     <health>3</health>
     <maxHealth>3</maxHealth>
@@ -44,11 +23,14 @@
       <recoveryTime>0.5</recoveryTime>
     </weapon>
     <position>
-      <x>1.32000172</x>
-      <y>0</y>
+      <x>5.317301</x>
+      <y>3.217423</y>
       <z>-1</z>
     </position>
-    <items />
+    <items>
+      <string>Assets/Items/TestConsumable.asset</string>
+      <string>Assets/Items/TestArmor.asset</string>
+    </items>
   </player>
   <enemies />
 </GameData>
