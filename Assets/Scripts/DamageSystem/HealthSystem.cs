@@ -7,7 +7,10 @@ public enum Ally
 {
     Player,
     Enemy,
-    NPC
+    NPC,
+    Troll,
+    Goblin,
+    Skeleton
 }
 
 public abstract class HealthSystem : MonoBehaviour
