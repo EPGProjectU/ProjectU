@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using ProjectU.Core;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class EquipmentSystem : MonoBehaviour
 {
@@ -25,5 +27,13 @@ public class EquipmentSystem : MonoBehaviour
     public void setEqupiment(List<Item> items)
     {
         EquipmentSystem.Instance.Items = items;
+    }
+
+    [Awake]
+    private static void Init()
+    {
+        var gameObject = new GameObject("Equipment System");
+        DontDestroyOnLoad(gameObject);
+        gameObject.AddComponent<EquipmentSystem>();
     }
 }
