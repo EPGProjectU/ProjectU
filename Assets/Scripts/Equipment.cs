@@ -32,7 +32,7 @@ public class Equipment : MonoBehaviour
         List<String> tmpSave = new List<String>();
         foreach (Item item in items)
         {
-            tmpSave.Add(AssetDatabase.GetAssetPath(item.GetInstanceID()));
+            tmpSave.Add(item.name);
         }
         data.player.items = tmpSave;
     }
@@ -42,7 +42,7 @@ public class Equipment : MonoBehaviour
         List<Item> tmp = new List<Item>();
         foreach (string itemPath in data.player.items)
         {
-            tmp.Add((Item)AssetDatabase.LoadAssetAtPath(itemPath, typeof(Item)));
+            tmp.Add((Item)Resources.Load("Items/" + itemPath));
         }
         items = tmp;
     }
