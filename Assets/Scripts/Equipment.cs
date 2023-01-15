@@ -14,6 +14,7 @@ public class Equipment : MonoBehaviour
     {
         SaveEventSystem.Instance.OnSaveData += Save;
         SaveEventSystem.Instance.OnLoadData += Load;
+        items = EquipmentSystem.Instance.Items;
     }
 
     //Method creates a string for all items in current Equipment for current instance of class
@@ -49,6 +50,7 @@ public class Equipment : MonoBehaviour
 
     private void OnDestroy()
     {
+        EquipmentSystem.Instance.setEqupiment(items);
         SaveEventSystem.Instance.OnSaveData -= Save;
         SaveEventSystem.Instance.OnLoadData -= Load;
     }
