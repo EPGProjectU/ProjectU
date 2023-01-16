@@ -20,6 +20,6 @@ public class OpenGate : MonoBehaviour
     }
     public void CollectTag()
     {
-        hook.Collect();
+        ProgressionManager.CollectTag(hook.TagName, true);
     }
 }

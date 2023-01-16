@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Name: Tag
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -296, y: 712}
+  position: {x: 120, y: 568}
   ports:
     keys:
     - input
@@ -1517,7 +1517,7 @@ MonoBehaviour:
   m_Name: Tag
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -552, y: 696}
+  position: {x: -200, y: 568}
   ports:
     keys:
     - input

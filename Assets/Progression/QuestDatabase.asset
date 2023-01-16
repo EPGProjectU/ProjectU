@@ -1,5 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9018715879369826915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde6e22ddcaa400ca6793d8758c33b70, type: 3}
+  m_Name: Quest Exit Point
+  m_EditorClassIdentifier: 
+  graph: {fileID: 8875326939596668111}
+  position: {x: 248, y: -184}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -9018715879369826915}
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: -4070771526400205754}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -9018715879369826915}
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -5748599836647221407}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
 --- !u!114 &-8556987617928220828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,7 +55,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb0c33572234f94baa84bae326a6391, type: 3}
   m_Name: Tag Hook
   m_EditorClassIdentifier: 
-  graph: {fileID: -6762769986522141465}
+  graph: {fileID: 0}
   position: {x: 680, y: -88}
   ports:
     keys:
@@ -41,7 +84,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 3
-  input: 3
+  input: 0
   tagHook:
     tagName: L2/P2
     onUpdate:
@@ -93,32 +136,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
---- !u!114 &-6762769986522141465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 004989d5bcc99ea4a802eb3340653127, type: 3}
-  m_Name: Defeat Troll
-  m_EditorClassIdentifier: 
-  nodes:
-  - {fileID: 5761057364331798521}
-  - {fileID: -2315024227918519077}
-  - {fileID: -352835027000374899}
-  - {fileID: 3954150159305509589}
-  - {fileID: -8556987617928220828}
-  - {fileID: -1657316367532383424}
-  - {fileID: 0}
-  - {fileID: 1241116532789729020}
-  - {fileID: 7019142906602096175}
-  - {fileID: 2616642097829776041}
-  - {fileID: 3850159454749562737}
-  - {fileID: -4443068179688516405}
-  - {fileID: -2107178357081535443}
 --- !u!114 &-6741902924958658653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +229,56 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+--- !u!114 &-5748599836647221407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb0c33572234f94baa84bae326a6391, type: 3}
+  m_Name: Tag Hook
+  m_EditorClassIdentifier: 
+  graph: {fileID: 8875326939596668111}
+  position: {x: 536, y: -184}
+  ports:
+    keys:
+    - output
+    - input
+    values:
+    - _fieldName: output
+      _node: {fileID: -5748599836647221407}
+      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: input
+      _node: {fileID: -5748599836647221407}
+      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: -9018715879369826915}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  output: 0
+  input: 0
+  tagHook:
+    tagName: L2/P2
+    onUpdate:
+      guid:
+        m_Value0: 527302583
+        m_Value1: 1753170792
+        m_Value2: 1249833478
+        m_Value3: 1803371563
 --- !u!114 &-5072826846181363602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,7 +360,7 @@ MonoBehaviour:
   m_Name: Tag Hook
   m_EditorClassIdentifier: 
   graph: {fileID: 0}
-  position: {x: 792, y: -152}
+  position: {x: 856, y: -232}
   ports:
     keys:
     - output
@@ -380,6 +447,53 @@ MonoBehaviour:
         m_Value1: 1455469988
         m_Value2: 1766242135
         m_Value3: 1997659824
+--- !u!114 &-4070771526400205754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b704f7306157462c99b4e62ec6e084d6, type: 3}
+  m_Name: Defeat Objective
+  m_EditorClassIdentifier: 
+  graph: {fileID: 8875326939596668111}
+  position: {x: -56, y: -184}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -4070771526400205754}
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: 5908947638650940971}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -4070771526400205754}
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -9018715879369826915}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  tagList:
+    tagSerializationList:
+    - Troll
+  numberOfEnemies: 1
 --- !u!114 &-3320732208987776234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,7 +663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b704f7306157462c99b4e62ec6e084d6, type: 3}
   m_Name: Defeat Objective
   m_EditorClassIdentifier: 
-  graph: {fileID: -6762769986522141465}
+  graph: {fileID: 0}
   position: {x: 120, y: -104}
   ports:
     keys:
@@ -560,10 +674,7 @@ MonoBehaviour:
       _node: {fileID: -352835027000374899}
       _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: output
-        node: {fileID: -2315024227918519077}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -598,7 +709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quests:
   - {fileID: -3320732208987776234}
-  - {fileID: -6762769986522141465}
+  - {fileID: 8875326939596668111}
   - {fileID: -4643570099956789769}
 --- !u!114 &1241116532789729020
 MonoBehaviour:
@@ -698,7 +809,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: -2099636342810713658}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -717,7 +828,7 @@ MonoBehaviour:
   m_Name: Tag Hook
   m_EditorClassIdentifier: 
   graph: {fileID: -3320732208987776234}
-  position: {x: -296, y: -136}
+  position: {x: -120, y: -216}
   ports:
     keys:
     - output
@@ -816,7 +927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde6e22ddcaa400ca6793d8758c33b70, type: 3}
   m_Name: Quest Exit Point
   m_EditorClassIdentifier: 
-  graph: {fileID: -6762769986522141465}
+  graph: {fileID: 0}
   position: {x: 392, y: -88}
   ports:
     keys:
@@ -891,6 +1002,56 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   numberOfEnemies: 3
+--- !u!114 &4640623831712125309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb0c33572234f94baa84bae326a6391, type: 3}
+  m_Name: Tag Hook
+  m_EditorClassIdentifier: 
+  graph: {fileID: 8875326939596668111}
+  position: {x: -696, y: -200}
+  ports:
+    keys:
+    - output
+    - input
+    values:
+    - _fieldName: output
+      _node: {fileID: 4640623831712125309}
+      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 5908947638650940971}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: input
+      _node: {fileID: 4640623831712125309}
+      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  output: 0
+  input: 3
+  tagHook:
+    tagName: L2/P1
+    onUpdate:
+      guid:
+        m_Value0: 849931250
+        m_Value1: 1369848937
+        m_Value2: 2091459551
+        m_Value3: 751711322
 --- !u!114 &4821779306305783823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -906,10 +1067,8 @@ MonoBehaviour:
   nodes:
   - {fileID: 2601352276357418786}
   - {fileID: 7882780835381693491}
-  - {fileID: -2099636342810713658}
   - {fileID: 5315117359843424240}
   - {fileID: 8401490497843031390}
-  - {fileID: 0}
   - {fileID: 9037750252599665430}
   - {fileID: -1657316367532383424}
   - {fileID: -5815189421681050936}
@@ -920,6 +1079,22 @@ MonoBehaviour:
   - {fileID: -5072826846181363602}
   - {fileID: 2616642097829776041}
   - {fileID: 3850159454749562737}
+  - {fileID: -4070771526400205754}
+  - {fileID: -496152791286802230}
+  - {fileID: -352835027000374899}
+  - {fileID: 5908947638650940971}
+  - {fileID: 6464049272968804563}
+  - {fileID: -9018715879369826915}
+  - {fileID: -8296883469196419563}
+  - {fileID: 3954150159305509589}
+  - {fileID: -6741902924958658653}
+  - {fileID: -8556987617928220828}
+  - {fileID: -5748599836647221407}
+  - {fileID: 5761057364331798521}
+  - {fileID: 6351080589369716449}
+  - {fileID: -4443068179688516405}
+  - {fileID: 4640623831712125309}
+  - {fileID: 0}
 --- !u!114 &5162960757693320457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -988,7 +1163,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: output
-        node: {fileID: -2099636342810713658}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1018,8 +1193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb0c33572234f94baa84bae326a6391, type: 3}
   m_Name: Tag Hook
   m_EditorClassIdentifier: 
-  graph: {fileID: -6762769986522141465}
-  position: {x: -440, y: -104}
+  graph: {fileID: 0}
+  position: {x: -344, y: -24}
   ports:
     keys:
     - output
@@ -1029,10 +1204,7 @@ MonoBehaviour:
       _node: {fileID: 5761057364331798521}
       _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: input
-        node: {fileID: -2315024227918519077}
-        reroutePoints: []
+      connections: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1047,7 +1219,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 0
-  input: 3
+  input: 1
   tagHook:
     tagName: L2/P1
     onUpdate:
@@ -1099,6 +1271,49 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+--- !u!114 &5908947638650940971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb169bbc40c480d94532de49f92eeda, type: 3}
+  m_Name: Quest Entry Point
+  m_EditorClassIdentifier: 
+  graph: {fileID: 8875326939596668111}
+  position: {x: -376, y: -184}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 5908947638650940971}
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: 4640623831712125309}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 5908947638650940971}
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -4070771526400205754}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
 --- !u!114 &6351080589369716449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1140,7 +1355,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 0
-  input: 3
+  input: 1
   tagHook:
     tagName: HelpDrunkard
     onUpdate:
@@ -1335,6 +1550,24 @@ MonoBehaviour:
         m_Value1: 1321414658
         m_Value2: 518828209
         m_Value3: 66219617
+--- !u!114 &8875326939596668111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004989d5bcc99ea4a802eb3340653127, type: 3}
+  m_Name: DefeatTroll
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 5908947638650940971}
+  - {fileID: -4070771526400205754}
+  - {fileID: -9018715879369826915}
+  - {fileID: -5748599836647221407}
+  - {fileID: 4640623831712125309}
 --- !u!114 &9037750252599665430
 MonoBehaviour:
   m_ObjectHideFlags: 0
