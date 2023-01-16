@@ -6,50 +6,35 @@ using UnityEngine;
 
 public class CheckIfObjectInRange : LeafNode
 {
+
+    [Input]
     public float range;
-    public Transform targetObject;
+
+    [Input]
+    public AIObject targetObject;
 
     public override NodeState Evaluate(AIController controller) {
 
-        if (controller.target == null) {
-            if (isInRange(controller, targetObject)) {
-                state = NodeState.SUCCESS;
-                return state;
-            }
-            else {
-                state = NodeState.FAILURE;
-                return state;
-            }
-        }
-
-        if (Vector2.Distance(controller.target.position, controller.transform.position) > range)
-            controller.target = null;
-
-        state = NodeState.SUCCESS;
-        return state;
-
-    }
-
-    private bool isInRange(AIController controller, Transform target) {
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(controller.transform.position, range);
-
-        if (colliders.Length > 0) {
-
-            foreach (Collider2D collider in colliders) {
-
-                if (collider.gameObject.transform.Equals(target)) {
-
-                    state = NodeState.SUCCESS;
-                    return true;
-                }
-            }
+        if (isInRange(controller)) {
+            state = NodeState.SUCCESS;
+            return state;
         }
         else {
-            return false;
+            state = NodeState.FAILURE;
+            return state;
         }
+    }
 
-        return false;
+    private bool isInRange(AIController controller) {
+        range = GetInputValue<float>(nameof(range));
+        targetObject = GetInputValue<AIObject>(nameof(targetObject));
+
+
+        if (Vector3.Distance(controller.transform.position, targetObject.transform.position) > range)
+            return false;
+        else
+            return true;
+
     }
 
 }

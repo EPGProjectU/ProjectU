@@ -14,6 +14,8 @@ public class PlayerHealthSystem : HealthSystem
     void Start()
     {
         allies.Add(myGroup);
+        SaveEventSystem.Instance.OnSaveData += Save;
+        SaveEventSystem.Instance.OnLoadData += Load;
     }
    
     /// <summary>
@@ -35,14 +37,39 @@ public class PlayerHealthSystem : HealthSystem
             if (armorDurability < 0) armorDurability = 0;
         }
         if (dmg < 0) dmg = 0;
-        return new DamageInfo(dmg, damage);
+        return new DamageInfo(damage){ damage = dmg};
     }
 
     protected override void OnDeath()
     {
         base.OnDeath();
-        
         Debug.Log("Player is Dead");
     }
-        
+
+    void OnDestroy()
+    {
+        SaveEventSystem.Instance.OnSaveData -= Save;
+        SaveEventSystem.Instance.OnLoadData -= Load;
+    }
+
+    private void Save(GameData data)
+    {
+        data.player.health = health;
+        data.player.maxHealth = maxHealth;
+        data.player.armorDurability = armorDurability;
+        data.player.maximumArmorDurability = maximumArmorDurability;
+        data.player.position = gameObject.transform.position;
+        data.player.weapon = new DamageData(GetComponentInChildren<WeaponSlot>().weapon.GetComponent<WeaponDamager>().damage);
+    }
+
+    private void Load(GameData data)
+    {
+        health = data.player.health;
+        maxHealth = data.player.maxHealth;
+        armorDurability = data.player.armorDurability;
+        maximumArmorDurability = data.player.maximumArmorDurability;
+        gameObject.transform.position = data.player.position;
+        GetComponentInChildren<WeaponSlot>().weapon.GetComponent<WeaponDamager>().damage = new DamageInfo(data.player.weapon);
+    }
+
 }

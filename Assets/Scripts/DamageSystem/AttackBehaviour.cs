@@ -5,35 +5,44 @@ using UnityEngine;
 
 public class AttackBehaviour : StateMachineBehaviour
 {
-    GameObject weapon;
+    /// <summary>
+    /// Percent of animation's startup time with inactive collider
+    /// </summary>
+    public float startupPercent;
+
+    /// <summary>
+    /// Percent of animation's end time with inactive collider
+    /// </summary>
+    public float recoveryPercent;
+
+    private WeaponSlot _weaponSlot;
+    private Coroutine _attackCoroutine;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        weapon = animator.GetComponentInChildren<WeaponSlot>().weapon;
-        weapon.GetComponent<Collider2D>().enabled = true;
+        _weaponSlot = animator.GetComponentInChildren<WeaponSlot>();
+
+        var startupSeconds = startupPercent * stateInfo.length;
+        var lengthSeconds = stateInfo.length * (1 - startupPercent - recoveryPercent);
+
+        _attackCoroutine = _weaponSlot.StartCoroutine(Attack(startupSeconds, lengthSeconds));
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        weapon.GetComponent<Collider2D>().enabled = false;
+        _weaponSlot.StopCoroutine(_attackCoroutine);
+        _weaponSlot.weapon.GetComponent<Collider2D>().enabled = false;
     }
 
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
+    protected virtual IEnumerator Attack(float delaySeconds, float lengthSeconds)
+    {
+        var collider = _weaponSlot.weapon.GetComponent<Collider2D>();
+        yield return new WaitForSeconds(delaySeconds);
 
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
+        collider.enabled = true;
+        yield return new WaitForSeconds(lengthSeconds);
+
+        collider.enabled = false;
+    }
 }

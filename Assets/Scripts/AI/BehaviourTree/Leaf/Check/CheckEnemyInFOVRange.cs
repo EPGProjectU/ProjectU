@@ -1,17 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using ProjectU.Core;
 using UnityEngine;
 
-[CreateNodeMenu("BehaviourTree/Leaf/CheckEnemyInFovRange")]
+[CreateNodeMenu("BehaviourTree/Leaf/CheckEnemyInSight")]
 public class CheckEnemyInFOVRange : LeafNode {
 
 
-    public float range;
-
     public override NodeState Evaluate(AIController controller) {
-      
-        if (controller.target == null) {
+        if (controller.currentTarget == null) {
             if (detectEnemy(controller)) {
                 state = NodeState.SUCCESS;
                 return state;
@@ -22,32 +20,32 @@ public class CheckEnemyInFOVRange : LeafNode {
             }
         }
 
-        if (Vector2.Distance(controller.target.position, controller.transform.position) > range)
-            controller.target = null;
+        if (Vector2.Distance(controller.currentTarget.position, controller.transform.position) > controller.getSightRange())
+            controller.currentTarget = null;
 
         state = NodeState.SUCCESS;
         return state;
-
     }
 
     private bool detectEnemy(AIController controller) {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(controller.transform.position, controller.getSightRange());
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(controller.transform.position, range);
-        
-        if (colliders.Length > 0) {
+         if (colliders.Length > 0) {
 
-            foreach (Collider2D collider in colliders) {
+             foreach (Collider2D collider in colliders) {
+                //string colliderTag = collider.tag; //dbg
 
-                if (collider._CompareTag("Player")) {
-
-                    controller.target = collider.gameObject.transform;
-                    state = NodeState.SUCCESS;
-                    return true;
+                foreach (string tag in controller.factionData.enemyTags) {
+                    if (collider._CompareTag(tag)) {
+                        controller.currentTarget = collider.gameObject.transform;
+                        state = NodeState.SUCCESS;
+                        return true;
+                    }
                 }
-            }
-        }
+             }
+         }
 
-        return false;
+         return false;
     }
 
 
