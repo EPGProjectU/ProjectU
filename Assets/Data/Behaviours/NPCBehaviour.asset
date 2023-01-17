@@ -320,7 +320,7 @@ MonoBehaviour:
       _dynamic: 0
   parent: {fileID: 0}
   patrolDefinition: {fileID: 0}
-  nextWaypoint: 0
+  nextWaypoint: 1
 --- !u!114 &7901191649427620181
 MonoBehaviour:
   m_ObjectHideFlags: 0
