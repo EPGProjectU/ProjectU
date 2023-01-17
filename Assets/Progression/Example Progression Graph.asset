@@ -89,8 +89,8 @@ MonoBehaviour:
   input: 0
   output: 0
   flags:
-    active: 1
-    collected: 1
+    active: 0
+    collected: 0
   tagName: MAIN/P0/EntryPoint1
 --- !u!114 &-7842843429907566467
 MonoBehaviour:
@@ -287,8 +287,8 @@ MonoBehaviour:
   input: 0
   output: 0
   flags:
-    active: 1
-    collected: 1
+    active: 0
+    collected: 0
   tagName: EX/LOCK_OUT
 --- !u!114 &-7119557406699550226
 MonoBehaviour:
@@ -485,7 +485,7 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 1
+    collected: 0
   tagName: SkeletonHunt
 --- !u!114 &-4710926220035158951
 MonoBehaviour:
@@ -577,7 +577,7 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 1
+    collected: 0
   tagName: KillGoblins
 --- !u!114 &-4031510013751740988
 MonoBehaviour:
@@ -623,7 +623,7 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 1
+    collected: 0
   tagName: SQ/BR2/B
 --- !u!114 &-3275965754634845792
 MonoBehaviour:
@@ -714,8 +714,8 @@ MonoBehaviour:
   input: 0
   output: 0
   flags:
-    active: 1
-    collected: 1
+    active: 0
+    collected: 0
   tagName: EX/LOCK/1
 --- !u!114 &-2744214207193380707
 MonoBehaviour:
@@ -808,7 +808,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: WinningCredits
+  tagName: ExitUnlock
 --- !u!114 &-1987163435566084664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -908,7 +908,7 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 1
+    collected: 0
   tagName: SQ/BR2/C
 --- !u!114 &-1503761762710552280
 MonoBehaviour:
@@ -1003,7 +1003,7 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 1
+    collected: 0
   tagName: KillBrother
 --- !u!114 &11400000
 MonoBehaviour:
@@ -1294,8 +1294,8 @@ MonoBehaviour:
   input: 0
   output: 0
   flags:
-    active: 1
-    collected: 1
+    active: 0
+    collected: 0
   tagName: EX/LOCK/2
 --- !u!114 &4514963192819249816
 MonoBehaviour:
@@ -1395,8 +1395,8 @@ MonoBehaviour:
   input: 0
   output: 0
   flags:
-    active: 1
-    collected: 1
+    active: 0
+    collected: 0
   tagName: EX/UNLOCK/1
 --- !u!114 &6379366467241791755
 MonoBehaviour:
@@ -1695,8 +1695,8 @@ MonoBehaviour:
   input: 0
   output: 0
   flags:
-    active: 1
-    collected: 1
+    active: 0
+    collected: 0
   tagName: EX/UNLOCK/2
 --- !u!114 &8212303023784682889
 MonoBehaviour:
