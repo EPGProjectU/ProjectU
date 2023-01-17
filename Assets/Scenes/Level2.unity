@@ -16192,11 +16192,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 647860402, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
       propertyPath: health
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 647860402, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
       propertyPath: maxHealth
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7649322890496266106, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
       propertyPath: m_Name
