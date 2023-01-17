@@ -7,6 +7,6 @@ public class Key : MonoBehaviour
     public OpenGate gate;
     private void OnDestroy()
     {
-        gate.CollectTag();
+        if(gate!=null)gate.CollectTag();
     }
 }
