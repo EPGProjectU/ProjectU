@@ -13,7 +13,7 @@ using XNode;
 public class ProgressionGraph : NodeGraph
 {
     [SerializeField]
-    private SerializableGUID guid = SerializableGUID.Generate();
+    private SerializedGUID guid = SerializedGUID.Generate();
 
     public void SaveCurrentState([NotNull] string directoryPath)
     {

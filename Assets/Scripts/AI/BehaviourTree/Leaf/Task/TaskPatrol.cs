@@ -1,28 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 [CreateNodeMenu("BehaviourTree/Leaf/TaskPatrol")]
 public class TaskPatrol : LeafNode
 {
-    public List<Transform> waypointList;
-    
+    [Input]
+    public PatrolDefinition patrolDefinition;
 
-    public TaskPatrol() { }
+    [Input]
+    public int nextWaypoint;
 
-    public override NodeState Evaluate(AIController controller) {
+    public override NodeState Evaluate(AIController controller)
+    {
         Patrol(controller);
         state = NodeState.RUNNING;
         return state;
     }
-    
-    private void Patrol(AIController controller) {
-        controller.agent.destination = controller.wayPointList[controller.nextWayPoint].position;
-        controller.agent.isStopped = false;
 
+    private void Patrol(AIController controller)
+    {
+        patrolDefinition = GetInputValue<PatrolDefinition>(nameof(patrolDefinition));
 
-        if (controller.agent.remainingDistance <= controller.agent.stoppingDistance && !controller.agent.pathPending) {
-            controller.nextWayPoint = (controller.nextWayPoint + 1) % controller.wayPointList.Count;
+        nextWaypoint = GetInputValue<int>(nameof(nextWaypoint));
+
+        if (patrolDefinition is PathPatrolDefinition pathPatrol)
+        {
+            nextWaypoint %= pathPatrol.path.Count;
+            controller.agent.destination = pathPatrol.path[nextWaypoint];
+            controller.agent.isStopped = false;
+
+            if (controller.agent.remainingDistance <= controller.agent.stoppingDistance && !controller.agent.pathPending)
+            {
+                nextWaypoint++;
+                var node = GetPort(nameof(nextWaypoint)).Connection.node;
+
+                if (node is ParameterNode parameterNode)
+                    parameterNode.SetValue(nextWaypoint);
+            }
         }
     }
 }
