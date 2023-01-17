@@ -163,7 +163,7 @@ namespace XNodeEditor {
         {
             GetCachedAttrib(outputPort.node.GetType(), outputPort.fieldName, out Node.OutputAttribute outputAttribute);
 
-            if (outputAttribute.dependencies == null)
+            if (outputAttribute?.dependencies == null)
                 return new List<NodePort>();
 
             return outputAttribute.dependencies.Select(dependency => outputPort.node.GetInputPort(dependency)).ToList();

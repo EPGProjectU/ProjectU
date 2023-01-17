@@ -6,59 +6,70 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerController))]
 public class PlayerHealthSystem : HealthSystem
 {
-    private bool isInvincible;
-    public GameObject weapon;
-    public float invincibleTime = 0.5f;
-
     void Awake()
     {
-        weapon = GetComponentsInChildren<Transform>().FirstOrDefault(c => c.gameObject.name == "WeaponSlot")?.gameObject.transform.GetChild(0).gameObject;
+        GetComponentInChildren<WeaponSlot>().Owner = myGroup;
     }
-
     // Start is called before the first frame update
     void Start()
     {
-        allies.Add(Ally.Player);
-        isInvincible = false;
-        weapon.GetComponent<Collider2D>().enabled = false;
-        if (weapon.GetComponent<WeaponDamager>() == null)
-        {
-            weapon.AddComponent<WeaponDamager>();
-            weapon.GetComponent<WeaponDamager>().damage.damage = 1;
-        }
-        weapon.GetComponent<WeaponDamager>().Owner = Ally.Player;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        allies.Add(myGroup);
+        SaveEventSystem.Instance.OnSaveData += Save;
+        SaveEventSystem.Instance.OnLoadData += Load;
     }
    
     /// <summary>
     /// Calculate amount of damage that will be taken by Player if he isn't invincilbe and when health drops below 1 uses OnDeath
     /// </summary>
-    public override void TakeDamage(DamageInfo damageinfo)
+    public override void TakeDamage(DamageInfo damage)
     {
-        if (!isInvincible)
-        {
-            isInvincible = true;
-            health -= damageinfo.damage;
-            Debug.Log("Health = " + health);
-            if (health < 1) OnDeath();
-            StartCoroutine(InvincibleTimer());
-        }
+        if (!isInvincible) base.TakeDamage(AbsorbDamage(damage));
     }
+
+    protected DamageInfo AbsorbDamage(DamageInfo damage)
+    {
+        int dmg = damage.damage;
+        if (armorDurability > 0)
+        {
+            dmg -= defence;
+            if (dmg < 0) armorDurability += dmg;
+            else armorDurability -= defence;
+            if (armorDurability < 0) armorDurability = 0;
+        }
+        if (dmg < 0) dmg = 0;
+        return new DamageInfo(damage){ damage = dmg};
+    }
+
     protected override void OnDeath()
     {
-        GetComponent<PlayerController>().IsDead = true;
+        base.OnDeath();
         Debug.Log("Player is Dead");
     }
 
-    IEnumerator InvincibleTimer()
+    void OnDestroy()
     {
-        yield return new WaitForSeconds(invincibleTime);
-        isInvincible = false;
+        SaveEventSystem.Instance.OnSaveData -= Save;
+        SaveEventSystem.Instance.OnLoadData -= Load;
+    }
+
+    private void Save(GameData data)
+    {
+        data.player.health = health;
+        data.player.maxHealth = maxHealth;
+        data.player.armorDurability = armorDurability;
+        data.player.maximumArmorDurability = maximumArmorDurability;
+        data.player.position = gameObject.transform.position;
+        data.player.weapon = new DamageData(GetComponentInChildren<WeaponSlot>().weapon.GetComponent<WeaponDamager>().damage);
+    }
+
+    private void Load(GameData data)
+    {
+        health = data.player.health;
+        maxHealth = data.player.maxHealth;
+        armorDurability = data.player.armorDurability;
+        maximumArmorDurability = data.player.maximumArmorDurability;
+        gameObject.transform.position = data.player.position;
+        GetComponentInChildren<WeaponSlot>().weapon.GetComponent<WeaponDamager>().damage = new DamageInfo(data.player.weapon);
     }
 
 }

@@ -4,13 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
-
   - Item
-
   - Damager
   - PlayersWeapon
   - Enemy
-
+  - Goblin
+  - Skeleton
+  - Troll
+  - NPC
   layers:
   - Default
   - TransparentFX

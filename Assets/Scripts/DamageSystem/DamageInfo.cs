@@ -1,15 +1,67 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
+
 [Serializable]
-public struct DamageInfo
+public class DamageInfo
 {
     public int damage;
+    public int specialDamage;
+    public float effectDuration;
+    public DamageType type = DamageType.Normal;
 
-    public DamageInfo(int damage)
+    public KnockBack knockBack = new KnockBack();
+
+    [HideInInspector]
+    public GameObject source;
+
+    [HideInInspector]
+    public GameObject target;
+
+    public DamageInfo() {}
+
+    public DamageInfo(DamageInfo info)
     {
-        this.damage = damage;
+        damage = info.damage;
+        specialDamage = info.specialDamage;
+        effectDuration = info.effectDuration;
+        type = info.type;
+        knockBack = info.knockBack;
+        source = info.source;
+        target = info.target;
     }
 
+    public DamageInfo(DamageData data)
+    {
+        damage = data.damage;
+        specialDamage = data.specialDamage;
+        effectDuration = data.effectDuration;
+        type = data.type;
+        knockBack.force = data.force;
+        knockBack.distance = data.distance;
+        knockBack.recoveryTime = data.recoveryTime;
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
+    }
+}
+
+public enum DamageType
+{
+    Normal,
+    Poison,
+    Corrosion
+}
+
+[Serializable]
+public class KnockBack
+{
+    public float force = 5;
+    public float distance = 1;
+    public float recoveryTime = 0.5f;
+
+    [HideInInspector]
+    public Vector2 direction;
 }

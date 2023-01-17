@@ -36,7 +36,6 @@ namespace ProjectU.Core
         private static void Init()
         {
             _isInPlaymode = true;
-            CacheAttributeReferences();
             CreateInstance();
         }
 
@@ -64,6 +63,7 @@ namespace ProjectU.Core
         /// <remarks>Static constructor guarantees that callbacks are bound even after a hot reload</remarks>
         static CallbackAttributeController()
         {
+            CacheAttributes();
             // Will invoke methods with OnSceneLoaded attribute when receiving event from SceneManager
             SceneManager.sceneLoaded += (scene, mode) => InvokeMethodsWithAttribute(typeof(OnSceneLoaded));
 
@@ -127,11 +127,10 @@ namespace ProjectU.Core
         /// Gets delegates of methods that have custom attributes and caches them into dictionary
         /// </summary>
         /// TODO Check if there is a need for monitoring loading of assemblies that were not available during method execution
-
 #if UNITY_EDITOR
         [UnityEditor.Callbacks.DidReloadScripts]
 #endif
-        private static void CacheAttributeReferences()
+        private static void CacheAttributes()
         {
             // Get current assembly
             var thisAssembly = typeof(CallbackAttributeController).Assembly;
@@ -144,29 +143,28 @@ namespace ProjectU.Core
             // Add current assembly to collection
             assemblies = assemblies.Append(thisAssembly);
 
-            // Get all types in the founded assemblies
-            var types = from assembly in assemblies
+            // Get all types in the found assemblies
+            var types = (from assembly in assemblies
                 from type in assembly.GetTypes()
-                select type;
+                select type).ToArray();
 
-            // Get all static methods from the founded types
+            // Cache all types deriving from CallbackAttribute
+            var callbackAttributeTypes = (from t in types
+                where t.BaseType == typeof(CallbackAttribute)
+                select t).ToArray();
+
+
+            // Get all static methods from the found types
             var staticMethods = (from type in types
                 from method in type.GetMethods(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public)
                 select method).ToArray();
 
-            // Load static methods with given attributes into the dictionary
-            CacheMethodsWithAttribute(staticMethods, typeof(Awake));
-            CacheMethodsWithAttribute(staticMethods, typeof(Start));
-            CacheMethodsWithAttribute(staticMethods, typeof(OnUpdate));
-            CacheMethodsWithAttribute(staticMethods, typeof(OnSceneLoaded));
-            CacheMethodsWithAttribute(staticMethods, typeof(OnEnteredEditMode));
-            CacheMethodsWithAttribute(staticMethods, typeof(OnExitingEditMode));
-            CacheMethodsWithAttribute(staticMethods, typeof(OnEnteredPlayMode));
-            CacheMethodsWithAttribute(staticMethods, typeof(OnExitingPlayMode));
-            CacheMethodsWithAttribute(staticMethods, typeof(BeforeAssemblyReload));
-            CacheMethodsWithAttribute(staticMethods, typeof(AfterAssemblyReload));
-            CacheMethodsWithAttribute(staticMethods, typeof(BeforeHotReload));
-            CacheMethodsWithAttribute(staticMethods, typeof(AfterHotReload));
+
+            // Load static methods with callback attributes into the dictionary
+            foreach (var type in callbackAttributeTypes)
+            {
+                CacheMethodsWithAttribute(staticMethods, type);
+            }
         }
 
         /// <summary>
@@ -181,7 +179,7 @@ namespace ProjectU.Core
                 where methodInfo.GetCustomAttributes(attributeType, false).Length > 0
                 select methodInfo).ToArray();
 
-            // Convert filtered method infos into combined delegate
+            // Convert filtered method info into combined delegate
             AttributeMethods[attributeType] = filteredMethodInfos.Any() ? filteredMethodInfos.Select(methodInfo => Delegate.CreateDelegate(typeof(Action), methodInfo)).Aggregate(Delegate.Combine) : null;
         }
 

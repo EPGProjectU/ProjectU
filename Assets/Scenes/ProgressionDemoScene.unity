@@ -156,11 +156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagHook:
     tagName: MAIN/P2/A
-    guid:
-      m_Value0: 722233511
-      m_Value1: 263842491
-      m_Value2: 507152318
-      m_Value3: 1059538820
     onUpdate:
       guid:
         m_Value0: 1369308646
@@ -291,11 +286,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagHook:
     tagName: MAIN/P1
-    guid:
-      m_Value0: 1255160589
-      m_Value1: 1206282375
-      m_Value2: 642877365
-      m_Value3: 665884238
     onUpdate:
       guid:
         m_Value0: 790534248
@@ -452,11 +442,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagHook:
     tagName: SQ/BR2/B
-    guid:
-      m_Value0: 2141122813
-      m_Value1: 1636713223
-      m_Value2: 1932835840
-      m_Value3: 1893459903
     onUpdate:
       guid:
         m_Value0: 1644206433
@@ -587,11 +572,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagHook:
     tagName: EX/UNLOCK/2
-    guid:
-      m_Value0: 833446363
-      m_Value1: 376709819
-      m_Value2: 2027142145
-      m_Value3: 867963513
     onUpdate:
       guid:
         m_Value0: 325227924
@@ -696,11 +676,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagHook:
     tagName: MAIN/P0/EntryPoint1
-    guid:
-      m_Value0: 825081266
-      m_Value1: 605376952
-      m_Value2: 395640847
-      m_Value3: 879252616
     onUpdate:
       guid:
         m_Value0: 209755929
@@ -857,11 +832,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagHook:
     tagName: EX/LOCK_OUT
-    guid:
-      m_Value0: 1751289482
-      m_Value1: 234859126
-      m_Value2: 2090456440
-      m_Value3: 1965509814
     onUpdate:
       guid:
         m_Value0: 36073546
@@ -992,6 +962,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8181707218967104488, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
 --- !u!1 &811068625
@@ -1027,11 +1001,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagHook:
     tagName: MAIN/P1
-    guid:
-      m_Value0: 1767867481
-      m_Value1: 1434725305
-      m_Value2: 197526471
-      m_Value3: 1158209383
     onUpdate:
       guid:
         m_Value0: 1879850752
@@ -1129,6 +1098,63 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &851842466
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3629327211739877787, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
+      propertyPath: m_Name
+      value: Base Scene Objects
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424575065717832375, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424575065717832375, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424575065717832375, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424575065717832375, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424575065717832375, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424575065717832375, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424575065717832375, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424575065717832375, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424575065717832375, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424575065717832375, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424575065717832375, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
 --- !u!1 &858562445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,11 +1214,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagHook:
     tagName: EX/UNLOCK/1
-    guid:
-      m_Value0: 375290883
-      m_Value1: 1169520625
-      m_Value2: 617666941
-      m_Value3: 1674488364
     onUpdate:
       guid:
         m_Value0: 176068262
@@ -17591,11 +17612,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagHook:
     tagName: EX/LOCK/1
-    guid:
-      m_Value0: 1243429419
-      m_Value1: 807455201
-      m_Value2: 1823967470
-      m_Value3: 1468145448
     onUpdate:
       guid:
         m_Value0: 19160951
@@ -17770,11 +17786,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagHook:
     tagName: SQ/BR2/D
-    guid:
-      m_Value0: 1185272785
-      m_Value1: 533873743
-      m_Value2: 1891030572
-      m_Value3: 1157617139
     onUpdate:
       guid:
         m_Value0: 589512666
@@ -17846,124 +17857,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1563452425
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1563452428}
-  - component: {fileID: 1563452427}
-  - component: {fileID: 1563452426}
-  - component: {fileID: 1563452429}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &1563452426
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1563452425}
-  m_Enabled: 1
---- !u!20 &1563452427
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1563452425}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &1563452428
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1563452425}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1563452429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1563452425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowDebugText: 0
-  m_ShowCameraFrustum: 1
-  m_IgnoreTimeScale: 0
-  m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
-  m_BlendUpdateMethod: 1
-  m_DefaultBlend:
-    m_Style: 1
-    m_Time: 2
-    m_CustomCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
-  m_CameraCutEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_CameraActivatedEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1596358640
 GameObject:
   m_ObjectHideFlags: 0
@@ -18023,11 +17916,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagHook:
     tagName: SQ/BR2/A
-    guid:
-      m_Value0: 1676280195
-      m_Value1: 403032810
-      m_Value2: 435337091
-      m_Value3: 523802074
     onUpdate:
       guid:
         m_Value0: 1727076837
@@ -18158,11 +18046,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagHook:
     tagName: SQ/BR2/C
-    guid:
-      m_Value0: 2066218936
-      m_Value1: 1863312878
-      m_Value2: 918184155
-      m_Value3: 1102133308
     onUpdate:
       guid:
         m_Value0: 939184394
@@ -18293,11 +18176,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagHook:
     tagName: EX/LOCK/2
-    guid:
-      m_Value0: 341898172
-      m_Value1: 1979479083
-      m_Value2: 1868361014
-      m_Value3: 216782607
     onUpdate:
       guid:
         m_Value0: 273907023
