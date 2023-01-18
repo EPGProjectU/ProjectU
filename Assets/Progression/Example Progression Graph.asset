@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9148244404931067776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
+  m_Name: Tag
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -600, y: 280}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -9148244404931067776}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: output
+        node: {fileID: 6573587843733598841}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -9148244404931067776}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: 0
+  output: 0
+  flags:
+    active: 0
+    collected: 0
+  tagName: TrollBossFight
 --- !u!114 &-8904673417729661516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1242,6 +1288,7 @@ MonoBehaviour:
   - {fileID: -6841232599877334366}
   - {fileID: -1461677696024729244}
   - {fileID: 1740950257648927566}
+  - {fileID: -9148244404931067776}
   guid:
     m_Value0: 876361389
     m_Value1: 275229261
@@ -1719,7 +1766,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: input
-        node: {fileID: 4021356756080806640}
+        node: {fileID: -9148244404931067776}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
