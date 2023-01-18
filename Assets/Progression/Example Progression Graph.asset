@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Name: Tag
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -168, y: 984}
+  position: {x: -184, y: 1128}
   ports:
     keys:
     - input
@@ -363,7 +363,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: output
-        node: {fileID: -1661420370221374395}
+        node: {fileID: 1740950257648927566}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -531,7 +531,7 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 0
+    collected: 1
   tagName: SkeletonHunt
 --- !u!114 &-4710926220035158951
 MonoBehaviour:
@@ -991,10 +991,7 @@ MonoBehaviour:
       _node: {fileID: -1661420370221374395}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: input
-        node: {fileID: -6841232599877334366}
-        reroutePoints: []
+      connections: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1054,6 +1051,52 @@ MonoBehaviour:
     active: 0
     collected: 0
   tagName: KillBrotherDone
+--- !u!114 &-1461677696024729244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
+  m_Name: Tag
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -632, y: 1128}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -1461677696024729244}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -1461677696024729244}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: input
+        node: {fileID: 1740950257648927566}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: 0
+  output: 0
+  flags:
+    active: 0
+    collected: 0
+  tagName: HuntBosslvl1
 --- !u!114 &-414364868568957184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1098,7 +1141,7 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 0
+    collected: 1
   tagName: HuntGoblinlvl1
 --- !u!114 &-345582894187042058
 MonoBehaviour:
@@ -1197,6 +1240,8 @@ MonoBehaviour:
   - {fileID: -414364868568957184}
   - {fileID: -1661420370221374395}
   - {fileID: -6841232599877334366}
+  - {fileID: -1461677696024729244}
+  - {fileID: 1740950257648927566}
   guid:
     m_Value0: 876361389
     m_Value1: 275229261
@@ -1300,6 +1345,55 @@ MonoBehaviour:
     active: 0
     collected: 0
   tagName: SQ/2
+--- !u!114 &1740950257648927566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
+  m_Name: Tag
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -408, y: 1128}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 1740950257648927566}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: output
+        node: {fileID: -1461677696024729244}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 1740950257648927566}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: input
+        node: {fileID: -6841232599877334366}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: 0
+  output: 0
+  flags:
+    active: 0
+    collected: 0
+  tagName: HuntBosslvl1Done
 --- !u!114 &2996666164581562401
 MonoBehaviour:
   m_ObjectHideFlags: 0
