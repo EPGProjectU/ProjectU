@@ -7828,6 +7828,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 7415035830927498936, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
+      propertyPath: damage.damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7649322890496266106, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
       propertyPath: m_Name
       value: Player
@@ -7838,11 +7842,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8181707218967104488, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.42
+      value: -1.14
       objectReference: {fileID: 0}
     - target: {fileID: 8181707218967104488, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.77
+      value: 14.5
       objectReference: {fileID: 0}
     - target: {fileID: 8181707218967104488, guid: 8ae57268ce5e2ca40b333c84c3bf62b4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9816,7 +9820,7 @@ PrefabInstance:
     - target: {fileID: 5598899171532045513, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: ddff843d0589c224c8fad3538e24e680, type: 2}
+      objectReference: {fileID: 11400000, guid: 2ef4a47b54b327f4b907b9d910001219, type: 2}
     - target: {fileID: 7974813338223203648, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -11911,6 +11915,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3876717094927602820, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
+      propertyPath: hook.tagName
+      value: BossFight
+      objectReference: {fileID: 0}
     - target: {fileID: 5725991399162177800, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
       propertyPath: m_Name
       value: Gate
@@ -17230,6 +17238,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 85, y: 32, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 3
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 86, y: 32, z: 0}
     second:
       serializedVersion: 2
@@ -18114,14 +18132,14 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 47
     m_Data: {fileID: 11400000, guid: 1e4e9f70216db0c478c0d2b5f4b4658b, type: 2}
-  - m_RefCount: 517
+  - m_RefCount: 518
     m_Data: {fileID: 11400000, guid: 766b5c688c4b3974fb337dfea765eb20, type: 2}
   - m_RefCount: 41
     m_Data: {fileID: 11400000, guid: 2c32450c4bf34764db15f8b71b5a31c8, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 47
     m_Data: {fileID: 6357306300826201625, guid: 1e015d440cf2a9a4a81901d43a8a0b45, type: 3}
-  - m_RefCount: 517
+  - m_RefCount: 518
     m_Data: {fileID: 1826347215927812034, guid: 1e015d440cf2a9a4a81901d43a8a0b45, type: 3}
   - m_RefCount: 41
     m_Data: {fileID: 6136512401812008981, guid: 1e015d440cf2a9a4a81901d43a8a0b45, type: 3}
@@ -18180,7 +18198,7 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
-  - m_RefCount: 134
+  - m_RefCount: 135
     m_Data:
       e00: 0
       e01: 1
@@ -18235,7 +18253,7 @@ Tilemap:
       e32: 1.36e-43
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 605
+  - m_RefCount: 606
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -23017,7 +23035,7 @@ PrefabInstance:
     - target: {fileID: 5598899171532045513, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: 8e3ca84228b398f4aba5afccbdf1094f, type: 2}
+      objectReference: {fileID: 11400000, guid: bb23ba1335fab4247a495755dd0abc46, type: 2}
     - target: {fileID: 7974813338223203648, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -57465,7 +57483,7 @@ PrefabInstance:
     - target: {fileID: 5598899171532045513, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: bd462f64cd95cca4b954ae3c3e99ac7d, type: 2}
+      objectReference: {fileID: 11400000, guid: ff4757f229d65ad40b4783df13d62b78, type: 2}
     - target: {fileID: 7974813338223203648, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -61314,11 +61332,11 @@ PrefabInstance:
       objectReference: {fileID: 23800000, guid: afe42c35a60fe8640a4bc01469491e40, type: 2}
     - target: {fileID: 3110826295246916919, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.42
+      value: -1.14
       objectReference: {fileID: 0}
     - target: {fileID: 3110826295246916919, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.77
+      value: 14.5
       objectReference: {fileID: 0}
     - target: {fileID: 3629327211739877787, guid: 642af87df56426b4b84bc7d44db99c97, type: 3}
       propertyPath: m_Name
@@ -61842,7 +61860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 73165115431639013, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
       propertyPath: damage.specialDamage
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 73165115431639013, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
       propertyPath: damage.effectDuration
@@ -63769,7 +63787,7 @@ PrefabInstance:
     - target: {fileID: 5598899171532045513, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: ddff843d0589c224c8fad3538e24e680, type: 2}
+      objectReference: {fileID: 11400000, guid: 2ef4a47b54b327f4b907b9d910001219, type: 2}
     - target: {fileID: 7974813338223203648, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
       propertyPath: m_Sprite
       value: 
