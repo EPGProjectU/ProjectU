@@ -2,6 +2,7 @@
     "name": "AIEditor",
     "rootNamespace": "",
     "references": [
+        "GUID:eac83802986f0524a92a917f297dc025",
         "GUID:b8e24fd1eb19b4226afebb2810e3c19b",
         "GUID:002c1bbed08fa44d282ef34fd5edb138"
     ],

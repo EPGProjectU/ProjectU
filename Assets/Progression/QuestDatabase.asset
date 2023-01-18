@@ -68,8 +68,8 @@ MonoBehaviour:
   - {fileID: -1657316367532383424}
   - {fileID: 7019142906602096175}
   - {fileID: 2616642097829776041}
-  - {fileID: -4443068179688516405}
   - {fileID: 0}
+  - {fileID: -4443068179688516405}
 --- !u!114 &-2048624506812793677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,7 +260,7 @@ MonoBehaviour:
   output: 0
   input: 3
   tagHook:
-    tagName: MAIN/P1
+    tagName: SkeletonHuntDone
     onUpdate:
       guid:
         m_Value0: 1334805956
@@ -310,7 +310,7 @@ MonoBehaviour:
   output: 0
   input: 3
   tagHook:
-    tagName: MAIN/P0/EntryPoint1
+    tagName: SkeletonHunt
     onUpdate:
       guid:
         m_Value0: 1698608529

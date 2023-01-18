@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using DialogueEditor;
 
@@ -7,6 +9,10 @@ using DialogueEditor;
 /// </summary>
 public partial class ActorController : MonoBehaviour
 {
+    // Action hooks 
+    public Action OnHit;
+    public Action OnAttack;
+    
     private Animator _actorAnimator;
 
     [HideInInspector]
@@ -17,6 +23,10 @@ public partial class ActorController : MonoBehaviour
     public float CurrentMaxSpeed => running ? motionData.runningSpeed : motionData.baseSpeed;
 
     private bool _isTalking;
+
+    public float sightRange;
+    //ideally should depend on weapon item 
+    public float weaponRange;
 
     /// <summary>
     /// Vector representing actor's movement
@@ -41,7 +51,21 @@ public partial class ActorController : MonoBehaviour
         set
         {
             _actorAnimator.SetBool(DeadAnimatorProperty, value);
+            // On death move actor back to not obstruct alive actors
+            transform.position += new Vector3(0, 0, 0.5f);
             _dead = value;
+        }
+    }
+
+    private bool _isInKnockBack;
+
+    private bool IsInKnockBack
+    {
+        get => _isInKnockBack;
+        set
+        {
+            _actorAnimator.SetBool(KnockBackAnimatorProperty, value);
+            _isInKnockBack = value;
         }
     }
 
@@ -68,6 +92,7 @@ public partial class ActorController : MonoBehaviour
     private static readonly int SpeedAnimatorProperty = Animator.StringToHash("Speed");
     private static readonly int AttackAnimatorProperty = Animator.StringToHash("Attack");
     private static readonly int DeadAnimatorProperty = Animator.StringToHash("Dead");
+    private static readonly int KnockBackAnimatorProperty = Animator.StringToHash("InKnockBack");
 
     private void Awake() => Setup();
 
@@ -85,6 +110,7 @@ public partial class ActorController : MonoBehaviour
         OnValidate();
 
         _isTalking = false;
+
     }
 
     private void FixedUpdate()
@@ -94,6 +120,9 @@ public partial class ActorController : MonoBehaviour
             LookVector = Vector2.zero;
             MovementVector = Vector2.zero;
         }
+
+        if (IsInKnockBack)
+            return;
 
         if (LookVector.magnitude > 0.1)
         {
@@ -109,14 +138,22 @@ public partial class ActorController : MonoBehaviour
         _actorAnimator.SetFloat(SpeedAnimatorProperty, _rigidBody.velocity.magnitude);
 
         // Rigid body velocity does not use delta time
-        _rigidBody.velocity = MovementVector * CurrentMaxSpeed * motionData.EvaluateMotionForAngle(Mathf.DeltaAngle(playerMoveAngle, CharacterRotation));
+        _rigidBody.velocity = MovementVector * (CurrentMaxSpeed * motionData.EvaluateMotionForAngle(Mathf.DeltaAngle(playerMoveAngle, CharacterRotation)));
     }
 
     public void Attack()
     {
-        if (_dead)
+        if (_dead || IsInKnockBack)
             return;
+        OnValidate();
         _actorAnimator.SetBool(AttackAnimatorProperty, true);
+        OnAttack?.Invoke();
+    }
+
+    public void HandleDamage(DamageInfo damageInfo)
+    {
+        StartCoroutine(ApplyKnockBack(damageInfo.knockBack));
+        OnHit?.Invoke();
     }
 
     public void StartConversation()
@@ -140,5 +177,19 @@ public partial class ActorController : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    private IEnumerator ApplyKnockBack(KnockBack knockBack)
+    {
+        IsInKnockBack = true;
+        _rigidBody.velocity = knockBack.direction * knockBack.force;
+
+        yield return new WaitForSeconds(knockBack.distance / _rigidBody.velocity.magnitude);
+
+        _rigidBody.velocity = Vector2.zero;
+
+        yield return new WaitForSeconds(knockBack.recoveryTime);
+
+        IsInKnockBack = false;
     }
 }

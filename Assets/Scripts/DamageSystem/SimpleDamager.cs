@@ -11,6 +11,7 @@ public class SimpleDamager : Damager
     {
         if (collision.gameObject.GetComponent<HealthSystem>())
         {
+            damage.source = gameObject;
             collision.gameObject.GetComponent<HealthSystem>().TakeDamage(damage);
         }
     }

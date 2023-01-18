@@ -7,12 +7,15 @@ public enum Ally
 {
     Player,
     Enemy,
-    NPC
+    NPC,
+    Troll,
+    Goblin,
+    Skeleton
 }
 
 public abstract class HealthSystem : MonoBehaviour
 {
-    public SerializableDelegate<Action<HealthSystem>> deathCallback;
+    public SerializedDelegate<Action<HealthSystem>> deathCallback;
 
     /// <summary>
     /// Amount of health (in hearts) that actor currently haves
@@ -27,20 +30,41 @@ public abstract class HealthSystem : MonoBehaviour
     public float armorDurability;
     public float maximumArmorDurability = 100.0f;
 
+    public int damageNumberFontSize = 24;
+
     public Ally myGroup;
     public List<Ally> allies = new List<Ally>();
+
 
     /// <summary>
     /// Calculate amount of damage that will be taken by gameobject
     /// </summary>
     public virtual void TakeDamage(DamageInfo damage)
     {
-        if (!isInvincible)
+        if (isInvincible)
+            return;
+        
+
+        TextParticleManager.Create(damage.damage.ToString(), transform.position, Color.red, damageNumberFontSize);
+            
+        StartCoroutine(InvincibleTimer());
+        health -= damage.damage;
+        
+        if (health < 1)
         {
-            StartCoroutine(InvincibleTimer());
-            health -= damage.damage;
-            if (health < 1) OnDeath();
-            ApplySpecialEffect(damage);
+            OnDeath();
+            return;
+        }
+        
+        ApplySpecialEffect(damage);
+        
+        var controller = gameObject.GetComponent<ActorController>();
+        
+        if (controller != null)
+        {
+            var velocity = (Vector2)transform.position - (Vector2)damage.source.transform.position;
+            damage.knockBack.direction = velocity.normalized;
+            controller.HandleDamage(damage);
         }
     }
     protected void ApplySpecialEffect(DamageInfo damage)
