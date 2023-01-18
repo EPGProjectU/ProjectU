@@ -76,7 +76,7 @@ public class QuestManagerEditorWindow : EditorWindow
 
         var quest = questList.list[index] as QuestGraph;
 
-        Assert.IsNotNull(quest);
+        //Assert.IsNotNull(quest);
 
         EditorGUI.LabelField(new Rect(rect.x, rect.y, 100, EditorGUIUtility.singleLineHeight), "Name");
 

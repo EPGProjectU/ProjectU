@@ -401,7 +401,7 @@ MonoBehaviour:
     values:
     - _fieldName: data
       _node: {fileID: -1373606932539716511}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+      _typeQualifiedName: System.Object, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: nextWaypoint

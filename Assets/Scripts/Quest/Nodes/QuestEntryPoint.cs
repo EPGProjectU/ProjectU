@@ -13,10 +13,13 @@ public class QuestEntryPoint : Node, NotifyNodeInterface
 
     public bool Notify(object payload)
     {
+        if (!graph)
+            return false;
         Debug.Log($"Quest {graph.name} started.");
 
         NotifyNodeHelper.SendNotify(GetOutputPort(nameof(output)), null);
 
+        
         return true;
     }
 }
