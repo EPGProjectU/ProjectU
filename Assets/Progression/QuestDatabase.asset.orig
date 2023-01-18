@@ -41,7 +41,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 0
-  input: 0
+  input: 3
   tagHook:
     tagName: MAIN/P1
     onUpdate:
@@ -68,8 +68,13 @@ MonoBehaviour:
   - {fileID: -1657316367532383424}
   - {fileID: 7019142906602096175}
   - {fileID: 2616642097829776041}
+<<<<<<< HEAD
   - {fileID: -4443068179688516405}
   - {fileID: 0}
+=======
+  - {fileID: 0}
+  - {fileID: -4443068179688516405}
+>>>>>>> development
 --- !u!114 &-2048624506812793677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,26 +165,6 @@ MonoBehaviour:
     tagSerializationList:
     - Skeleton
   numberOfEnemies: 2
---- !u!114 &-1238830638801107767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 004989d5bcc99ea4a802eb3340653127, type: 3}
-  m_Name: Quest
-  m_EditorClassIdentifier: 
-  nodes:
-  - {fileID: -1657316367532383424}
-  - {fileID: 1241116532789729020}
-  - {fileID: 7019142906602096175}
-  - {fileID: -4443068179688516405}
-  - {fileID: 2616642097829776041}
-  - {fileID: 3850159454749562737}
-  - {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +192,7 @@ MonoBehaviour:
   m_Name: Quest Entry Point
   m_EditorClassIdentifier: 
   graph: {fileID: -3320732208987776234}
-  position: {x: -1032, y: -200}
+  position: {x: -1064, y: -136}
   ports:
     keys:
     - input
@@ -250,7 +235,7 @@ MonoBehaviour:
   m_Name: Tag Hook
   m_EditorClassIdentifier: 
   graph: {fileID: -3320732208987776234}
-  position: {x: -232, y: -104}
+  position: {x: -296, y: -136}
   ports:
     keys:
     - output
@@ -278,9 +263,9 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 0
-  input: 1
+  input: 3
   tagHook:
-    tagName: SkeletonHuntDone
+    tagName: MAIN/P1
     onUpdate:
       guid:
         m_Value0: 1334805956
@@ -330,7 +315,7 @@ MonoBehaviour:
   output: 0
   input: 3
   tagHook:
-    tagName: SkeletonHunt
+    tagName: MAIN/P0/EntryPoint1
     onUpdate:
       guid:
         m_Value0: 1698608529
@@ -424,19 +409,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
---- !u!114 &7012184438424143135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 004989d5bcc99ea4a802eb3340653127, type: 3}
-  m_Name: Quest
-  m_EditorClassIdentifier: 
-  nodes: []
 --- !u!114 &7019142906602096175
 MonoBehaviour:
   m_ObjectHideFlags: 0
