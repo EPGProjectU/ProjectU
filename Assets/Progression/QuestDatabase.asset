@@ -226,8 +226,8 @@ MonoBehaviour:
       _dynamic: 0
   tagList:
     tagSerializationList:
-    - Skeleton
-  numberOfEnemies: 5
+    - Goblin
+  numberOfEnemies: 1
 --- !u!114 &-2315024227918519077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,7 +449,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 0
-  input: 3
+  input: 1
   tagHook:
     tagName: KillEnemiesLVL1
     onUpdate:
@@ -851,7 +851,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 004989d5bcc99ea4a802eb3340653127, type: 3}
-  m_Name: SlaySkeletons
+  m_Name: HuntGoblinWizard
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: -1167010733031923323}
