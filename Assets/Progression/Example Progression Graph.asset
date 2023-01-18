@@ -531,7 +531,7 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 1
+    collected: 0
   tagName: SkeletonHunt
 --- !u!114 &-4710926220035158951
 MonoBehaviour:
@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_Name: Tag
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -616, y: 968}
+  position: {x: -632, y: 968}
   ports:
     keys:
     - input
@@ -1141,7 +1141,7 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 1
+    collected: 0
   tagName: HuntGoblinlvl1
 --- !u!114 &-345582894187042058
 MonoBehaviour:
