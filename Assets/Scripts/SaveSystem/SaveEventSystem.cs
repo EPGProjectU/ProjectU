@@ -16,7 +16,6 @@ public class SaveEventSystem : MonoBehaviour
         var go = new GameObject { name = "SaveEventSystem" };
         Instance =  go.AddComponent<SaveEventSystem>();
         DontDestroyOnLoad(go);
-        if (!Directory.Exists(Application.dataPath + "/../Saves")) Directory.CreateDirectory(Application.dataPath + "/../Saves");
     }
 
     private void Awake()
@@ -40,6 +39,7 @@ public class SaveEventSystem : MonoBehaviour
 
     public void SaveData(string name)
     {
+        if (!Directory.Exists(Application.dataPath + "/../Saves")) Directory.CreateDirectory(Application.dataPath + "/../Saves");
         data.enemies = new List<EnemyData>();
 
         OnSaveData?.Invoke(data);
