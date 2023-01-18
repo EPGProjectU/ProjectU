@@ -51167,6 +51167,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3576425057773746109, guid: 0abead4b2d1c9674fa21e500752054de, type: 3}
   m_PrefabInstance: {fileID: 290578076}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1517945872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517945863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb4001aa9fce3c48897b22a505b5b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagCollection:
+    tagSerializationList:
+    - NPC
 --- !u!1 &1526696130
 GameObject:
   m_ObjectHideFlags: 0
@@ -51506,7 +51521,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745603878}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 

@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e162bde9cf702a44b3bc30584ba00a0, type: 3}
-  m_Name: TestConsumable
+  m_Script: {fileID: 11500000, guid: 9c0260240d56df34085f3996c8994a93, type: 3}
+  m_Name: Level3Weapon
   m_EditorClassIdentifier: 
-  Name: Potion
-  sprite: {fileID: 21300000, guid: d0f976a998750e849992d4072c6dfd94, type: 3}
-  Value: 15
+  Name: Sword
+  sprite: {fileID: 21300000, guid: 7b3f2364d08b83942b621ddfe7230430, type: 3}
+  Damage: 3
+  Range: 6.5
