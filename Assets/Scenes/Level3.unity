@@ -11917,7 +11917,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3876717094927602820, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
       propertyPath: hook.tagName
-      value: BossFight
+      value: TrollBossFight
       objectReference: {fileID: 0}
     - target: {fileID: 5725991399162177800, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
       propertyPath: m_Name
@@ -22849,7 +22849,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3876717094927602820, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
       propertyPath: hook.tagName
-      value: BossFight
+      value: TrollBossFight
       objectReference: {fileID: 0}
     - target: {fileID: 5725991399162177800, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
       propertyPath: m_Name
@@ -61658,7 +61658,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3876717094927602820, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
       propertyPath: hook.tagName
-      value: BossFight
+      value: TrollBossFight
       objectReference: {fileID: 0}
     - target: {fileID: 5725991399162177800, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
       propertyPath: m_Name
