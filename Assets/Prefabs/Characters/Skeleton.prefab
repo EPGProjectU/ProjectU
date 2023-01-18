@@ -90,8 +90,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   running: 0
   motionData: {fileID: 11400000, guid: 55fad9c184b281046a50d92558e8e3d1, type: 2}
-  sightRange: 0
-  weaponRange: 0
+  sightRange: 4
+  weaponRange: 1
 --- !u!114 &3506407633592979285
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OpenGate : MonoBehaviour
 {
+    
     public TagHook hook;
     void Update()
     {
