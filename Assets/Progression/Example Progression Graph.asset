@@ -1618,7 +1618,7 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 0
+    collected: 1
   tagName: L2/P1
 --- !u!114 &954080784783757294
 MonoBehaviour:
