@@ -31,7 +31,7 @@ public class PlayerHealthSystem : HealthSystem
         {
             dmg -= defence;
             if (dmg < 0) armorDurability += dmg;
-            else armorDurability -= dmg;
+            else armorDurability -= defence;
             if (armorDurability < 0) armorDurability = 0;
         }
         if (dmg < 0) dmg = 0;
