@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9148244404931067776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
+  m_Name: Tag
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -600, y: 280}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -9148244404931067776}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: output
+        node: {fileID: 6573587843733598841}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -9148244404931067776}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: 0
+  output: 0
+  flags:
+    active: 0
+    collected: 0
+  tagName: TrollBossFight
 --- !u!114 &-8904673417729661516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,6 +92,52 @@ MonoBehaviour:
     active: 0
     collected: 0
   tagName: SQ/BR2/D
+--- !u!114 &-8104884288561205433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
+  m_Name: Tag
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 152, y: 392}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -8104884288561205433}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: output
+        node: {fileID: 787422662802945257}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -8104884288561205433}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: 0
+  output: 0
+  flags:
+    active: 0
+    collected: 0
+  tagName: L2/P2
 --- !u!114 &-8045693421809948763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,7 +151,7 @@ MonoBehaviour:
   m_Name: Tag
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -680, y: -88}
+  position: {x: -696, y: -216}
   ports:
     keys:
     - input
@@ -625,6 +717,52 @@ MonoBehaviour:
     active: 0
     collected: 0
   tagName: MAIN/P2/A
+--- !u!114 &-5886358088872595019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
+  m_Name: Tag
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 152, y: 520}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -5886358088872595019}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: output
+        node: {fileID: 6073793298452851087}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -5886358088872595019}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: 0
+  output: 0
+  flags:
+    active: 0
+    collected: 0
+  tagName: HelpDrunkardDone
 --- !u!114 &-5408770162514567391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,7 +822,7 @@ MonoBehaviour:
   m_Name: Tag
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -696, y: 376}
+  position: {x: -1032, y: 280}
   ports:
     keys:
     - input
@@ -1426,15 +1564,62 @@ MonoBehaviour:
   - {fileID: -6841232599877334366}
   - {fileID: -1461677696024729244}
   - {fileID: 1740950257648927566}
-  - {fileID: 8890098614296826914}
-  - {fileID: 5938578909701378296}
-  - {fileID: -7179221540436816181}
-  - {fileID: 1710524764059952072}
+  - {fileID: -9148244404931067776}
+  - {fileID: 787422662802945257}
+  - {fileID: -8104884288561205433}
+  - {fileID: 6073793298452851087}
+  - {fileID: -5886358088872595019}
   guid:
     m_Value0: 876361389
     m_Value1: 275229261
     m_Value2: 686699651
     m_Value3: 220719980
+--- !u!114 &787422662802945257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
+  m_Name: Tag
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -120, y: 392}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 787422662802945257}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 787422662802945257}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: input
+        node: {fileID: -8104884288561205433}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: 0
+  output: 0
+  flags:
+    active: 0
+    collected: 0
+  tagName: L2/P1
 --- !u!114 &954080784783757294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1794,10 +1979,10 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: output
-        node: {fileID: 7523112777599465284}
+        node: {fileID: -8045693421809948763}
         reroutePoints: []
       - fieldName: output
-        node: {fileID: -8045693421809948763}
+        node: {fileID: 7523112777599465284}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1916,6 +2101,52 @@ MonoBehaviour:
     active: 0
     collected: 0
   tagName: L2/P2
+--- !u!114 &6073793298452851087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
+  m_Name: Tag
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -120, y: 520}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 6073793298452851087}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 6073793298452851087}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: input
+        node: {fileID: -5886358088872595019}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: 0
+  output: 0
+  flags:
+    active: 0
+    collected: 0
+  tagName: HelpDrunkard
 --- !u!114 &6379366467241791755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1975,7 +2206,7 @@ MonoBehaviour:
   m_Name: Tag
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -456, y: 376}
+  position: {x: -808, y: 280}
   ports:
     keys:
     - input
@@ -1997,7 +2228,10 @@ MonoBehaviour:
       _node: {fileID: 6573587843733598841}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: input
+        node: {fileID: -9148244404931067776}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -2137,7 +2371,7 @@ MonoBehaviour:
   m_Name: Tag
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -680, y: 24}
+  position: {x: -744, y: -56}
   ports:
     keys:
     - input

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TestWeapon
   m_EditorClassIdentifier: 
   Name: Spear
-  sprite: {fileID: 21300000, guid: e2c0b1e216f938143a9fb6c2763f4afc, type: 3}
-  Damage: 3
+  sprite: {fileID: 21300000, guid: 45ad7cab2c049954d99f25983089885a, type: 3}
+  Damage: 2
   Range: 6.5
