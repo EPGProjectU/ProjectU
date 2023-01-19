@@ -290,54 +290,6 @@ MonoBehaviour:
     active: 0
     collected: 0
   tagName: EX/LOCK_OUT
---- !u!114 &-7119557406699550226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ca37cee747ed8f4eb99753c7897ec3b, type: 3}
-  m_Name: And
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -168, y: 680}
-  ports:
-    keys:
-    - input
-    - output
-    values:
-    - _fieldName: input
-      _node: {fileID: -7119557406699550226}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: output
-        node: {fileID: -1503761762710552280}
-        reroutePoints: []
-      - fieldName: output
-        node: {fileID: 3679505568378731837}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: output
-      _node: {fileID: -7119557406699550226}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: input
-        node: {fileID: -2182101236809549513}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  input: 0
-  output: 0
 --- !u!114 &-6782670761626670594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -578,7 +530,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: KillGoblins
+  tagName: KillGoblinsLVL5
 --- !u!114 &-4031510013751740988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,52 +715,6 @@ MonoBehaviour:
     active: 0
     collected: 0
   tagName: MAIN/P4/BR1/C
---- !u!114 &-2182101236809549513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
-  m_Name: Tag
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 24, y: 680}
-  ports:
-    keys:
-    - input
-    - output
-    values:
-    - _fieldName: input
-      _node: {fileID: -2182101236809549513}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: output
-        node: {fileID: -7119557406699550226}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: output
-      _node: {fileID: -2182101236809549513}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  input: 0
-  output: 0
-  flags:
-    active: 0
-    collected: 0
-  tagName: ExitUnlock
 --- !u!114 &-1987163435566084664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -945,10 +851,7 @@ MonoBehaviour:
       _node: {fileID: -1503761762710552280}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: input
-        node: {fileID: -7119557406699550226}
-        reroutePoints: []
+      connections: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -958,7 +861,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: KillBrotherDone
+  tagName: KillBrotherDoneLVL5
 --- !u!114 &-345582894187042058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,7 +907,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: KillBrother
+  tagName: KillBrotherLVL5
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1049,8 +952,6 @@ MonoBehaviour:
   - {fileID: 6573587843733598841}
   - {fileID: -345582894187042058}
   - {fileID: -1503761762710552280}
-  - {fileID: -2182101236809549513}
-  - {fileID: -7119557406699550226}
   - {fileID: -4437065818113317776}
   - {fileID: 3679505568378731837}
   guid:
@@ -1237,10 +1138,7 @@ MonoBehaviour:
       _node: {fileID: 3679505568378731837}
       _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: input
-        node: {fileID: -7119557406699550226}
-        reroutePoints: []
+      connections: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1250,7 +1148,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: KillGoblinsDone
+  tagName: KillGoblinsDoneLVL5
 --- !u!114 &4147835467978345106
 MonoBehaviour:
   m_ObjectHideFlags: 0
