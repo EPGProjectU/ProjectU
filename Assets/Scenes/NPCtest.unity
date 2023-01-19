@@ -28371,6 +28371,10 @@ PrefabInstance:
       propertyPath: wayPointList.Array.data[4]
       value: 
       objectReference: {fileID: 2136741353}
+    - target: {fileID: -6128121183770744126, guid: 0abead4b2d1c9674fa21e500752054de, type: 3}
+      propertyPath: behaviourTree.parameters.bundle.data.Array.data[714]
+      value: 107
+      objectReference: {fileID: 0}
     - target: {fileID: -4648671929234432655, guid: 0abead4b2d1c9674fa21e500752054de, type: 3}
       propertyPath: motionData
       value: 
@@ -51143,11 +51147,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654a18f808c56b9469294338d87b3774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1517945870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517945863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb4001aa9fce3c48897b22a505b5b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagCollection:
+    tagSerializationList:
+    - NPC
 --- !u!4 &1517945871 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3576425057773746109, guid: 0abead4b2d1c9674fa21e500752054de, type: 3}
   m_PrefabInstance: {fileID: 290578076}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1517945872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517945863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb4001aa9fce3c48897b22a505b5b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagCollection:
+    tagSerializationList:
+    - NPC
 --- !u!1 &1526696130
 GameObject:
   m_ObjectHideFlags: 0
@@ -51487,7 +51521,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745603878}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 

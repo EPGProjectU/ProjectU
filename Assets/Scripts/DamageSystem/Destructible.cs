@@ -12,6 +12,7 @@ public class Destructible : HealthSystem
 
     protected new void OnDeath()
     {
+        //base.OnDeath();
         Destroy(gameObject);
     }
 }

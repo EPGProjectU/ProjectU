@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class OpenGate : MonoBehaviour
 {
+    
     public TagHook hook;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (hook.Tag.IsCollected())
@@ -20,6 +15,6 @@ public class OpenGate : MonoBehaviour
     }
     public void CollectTag()
     {
-        hook.Collect();
+        ProgressionManager.CollectTag(hook.TagName, true);
     }
 }
