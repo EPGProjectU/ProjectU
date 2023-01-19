@@ -39,6 +39,7 @@ public class SaveEventSystem : MonoBehaviour
 
     public void SaveData(string name)
     {
+        if (!Directory.Exists(Application.dataPath + "/../Saves")) Directory.CreateDirectory(Application.dataPath + "/../Saves");
         data.enemies = new List<EnemyData>();
 
         OnSaveData?.Invoke(data);
