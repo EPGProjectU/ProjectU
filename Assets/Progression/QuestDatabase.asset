@@ -41,7 +41,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 3
-  input: 0
+  input: 3
   tagHook:
     tagName: HuntBosslvl1Done
     onUpdate:
@@ -407,7 +407,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 0
-  input: 1
+  input: 3
   tagHook:
     tagName: HuntBosslvl1
     onUpdate:
@@ -565,7 +565,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 0
-  input: 0
+  input: 3
   tagHook:
     tagName: KillBrotherDone
     onUpdate:
@@ -880,7 +880,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 0
-  input: 1
+  input: 3
   tagHook:
     tagName: HuntGoblinlvl1
     onUpdate:
@@ -930,9 +930,9 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 0
-  input: 0
+  input: 3
   tagHook:
-    tagName: 
+    tagName: KillGoblinsDone
     onUpdate:
       guid:
         m_Value0: 489608397
@@ -1090,7 +1090,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 0
-  input: 1
+  input: 3
   tagHook:
     tagName: SkeletonHuntDone
     onUpdate:
@@ -1183,7 +1183,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 0
-  input: 0
+  input: 3
   tagHook:
     tagName: HuntGoblinlvl1Done
     onUpdate:
@@ -1298,9 +1298,9 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 0
-  input: 0
+  input: 3
   tagHook:
-    tagName: 
+    tagName: KillGoblins
     onUpdate:
       guid:
         m_Value0: 444600988
@@ -1499,7 +1499,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 0
-  input: 0
+  input: 3
   tagHook:
     tagName: L2/P2
     onUpdate:
@@ -1565,6 +1565,26 @@ MonoBehaviour:
   - {fileID: -465895855429288536}
   - {fileID: 1754119484752775410}
   - {fileID: 0}
+  - {fileID: -4023845706391105305}
+  - {fileID: -8358168599191448414}
+  - {fileID: 3558597507027323587}
+  - {fileID: 2334911323196571725}
+  - {fileID: -1603935268607246508}
+  - {fileID: -3325979196907053362}
+  - {fileID: 6986144856191308398}
+  - {fileID: 6579739555118601031}
+  - {fileID: 3782680332949312007}
+  - {fileID: -6369081079849125359}
+  - {fileID: -323297340538221742}
+  - {fileID: -6450152881895897669}
+  - {fileID: 4323179323939631853}
+  - {fileID: -5548194940502884258}
+  - {fileID: -428482434839828646}
+  - {fileID: 4959183202463536575}
+  - {fileID: 5639247527290886341}
+  - {fileID: -892529458860288983}
+  - {fileID: 2581636515801989005}
+  - {fileID: -3741514671665216740}
 --- !u!114 &4447173615938055309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1693,7 +1713,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 0
-  input: 1
+  input: 3
   tagHook:
     tagName: HelpDrunkardDone
     onUpdate:
@@ -1743,7 +1763,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 0
-  input: 1
+  input: 3
   tagHook:
     tagName: L2/P1
     onUpdate:
