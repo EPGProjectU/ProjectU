@@ -41,7 +41,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 3
-  input: 3
+  input: 1
   tagHook:
     tagName: HuntBosslvl1Done
     onUpdate:
@@ -1499,7 +1499,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 0
-  input: 3
+  input: 1
   tagHook:
     tagName: L2/P2
     onUpdate:
