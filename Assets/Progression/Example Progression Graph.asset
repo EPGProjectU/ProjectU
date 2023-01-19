@@ -808,7 +808,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: WinningCredits
+  tagName: ExitUnlock
 --- !u!114 &-1987163435566084664
 MonoBehaviour:
   m_ObjectHideFlags: 0

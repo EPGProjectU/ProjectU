@@ -42,7 +42,7 @@ public partial class TagHook
     /// <remarks>
     /// Method must be in format void(<see cref="TagEvent"/>) to be able to subscribe
     /// </remarks>
-    public SerializableDelegate<TagDelegate> onUpdate;
+    public SerializedDelegate<TagDelegate> onUpdate;
 
     /// <summary>
     /// Set collected <see cref="ProgressionTag.State"/> on the <see cref="ProgressionTag"/>
