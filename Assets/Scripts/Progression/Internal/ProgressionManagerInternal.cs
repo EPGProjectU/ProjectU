@@ -54,14 +54,14 @@ public static partial class ProgressionManager
     /// </summary>
     private static void LoadData()
     {
-        Data = Resources.Load<ProgressionManagerData>(ResourceDataPath);
+     ///   Data = Resources.Load<ProgressionManagerData>(ResourceDataPath);
     }
 
     /// <summary>
     /// Initializes <see cref="ProgressionManager"/>
     /// </summary>
     [Awake]
-    [OnSceneLoaded]
+    ///[OnSceneLoaded]
     [UsedImplicitly]
     private static void Init()
     {
@@ -74,7 +74,7 @@ public static partial class ProgressionManager
             return;
         }
 
-        Data.graph.LoadState(Application.persistentDataPath + GraphSavesDirectoryPath);
+        ///Data.graph.LoadState(Application.persistentDataPath + GraphSavesDirectoryPath);
 
         InitTagReferences();
 
