@@ -1042,8 +1042,8 @@ MonoBehaviour:
   m_Name: QuestDatabase
   m_EditorClassIdentifier: 
   quests:
-  - {fileID: -3320732208987776234}
   - {fileID: 4425999351737719358}
+  - {fileID: -3320732208987776234}
   - {fileID: 4341496594143808855}
   - {fileID: -6179703043526469747}
   - {fileID: -1257655709299491302}
@@ -1090,7 +1090,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   output: 0
-  input: 3
+  input: 1
   tagHook:
     tagName: SkeletonHuntDone
     onUpdate:
@@ -1564,7 +1564,6 @@ MonoBehaviour:
   - {fileID: -6152340792601019972}
   - {fileID: -465895855429288536}
   - {fileID: 1754119484752775410}
-  - {fileID: 0}
   - {fileID: -4023845706391105305}
   - {fileID: -8358168599191448414}
   - {fileID: 3558597507027323587}
@@ -1585,6 +1584,7 @@ MonoBehaviour:
   - {fileID: -892529458860288983}
   - {fileID: 2581636515801989005}
   - {fileID: -3741514671665216740}
+  - {fileID: 0}
 --- !u!114 &4447173615938055309
 MonoBehaviour:
   m_ObjectHideFlags: 0
