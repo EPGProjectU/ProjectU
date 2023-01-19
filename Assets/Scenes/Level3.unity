@@ -61265,9 +61265,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1686923461}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2a25458a088be4bafa27148cebb7d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e41c568d55c2aa40896fb53ee59c5e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSceneName: Level5
 --- !u!1 &1737137032 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6401840096967692479, guid: b95f382611f7e7243bdfd0bafdddee86, type: 3}
