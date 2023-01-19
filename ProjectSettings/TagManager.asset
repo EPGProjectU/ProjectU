@@ -12,6 +12,7 @@ TagManager:
   - Skeleton
   - Troll
   - NPC
+  - GoblinRebel
   layers:
   - Default
   - TransparentFX
