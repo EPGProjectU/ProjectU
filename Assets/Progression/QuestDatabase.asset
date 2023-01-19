@@ -316,7 +316,7 @@ MonoBehaviour:
   output: 0
   input: 3
   tagHook:
-    tagName: SkeletonHunt
+    tagName: HelpDrunkard
     onUpdate:
       guid:
         m_Value0: 937711366
