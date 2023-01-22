@@ -10,11 +10,9 @@ public class Weapon : Item
     public int Damage;
     public float Range;
 
-    public override string ToString()
-    {
-        return base.ToString() + "\n"
-            + "Damage: " + Damage + "\n"
-            + "Range: " + Range;
+    public override string getStats() {
+        return "Weapon damage: " + Damage + "\n"
+           + "Weapon range: " + Range;
     }
 
     public override void Use(GameObject target)

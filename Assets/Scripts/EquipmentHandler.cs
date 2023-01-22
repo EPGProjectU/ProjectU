@@ -9,7 +9,7 @@ public class EquipmentHandler : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public Text text;
+    //public Text itemNameTextField;
     public static Item selectedItem;
     public Equipment equipment;
     public GameObject player;
@@ -26,13 +26,6 @@ public class EquipmentHandler : MonoBehaviour
         
     }
 
-    public void ChangeText(Item item)
-    {
-        string output = item.ToString();
-        text.text = output;
-        selectedItem = item;
-        
-    }
     public void Use()
     {
         selectedItem.Use(player);
