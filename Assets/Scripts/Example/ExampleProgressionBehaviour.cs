@@ -12,14 +12,15 @@ public class ExampleProgressionBehaviour : MonoBehaviour
     private TagHook tagHook;
 
     // or set in code
-    private TagHook tagHook2 = TagHook.Create("MAIN/P1");
+    private TagHook tagHook2;
 
     /// <summary>
     /// Adding callbacks to <see cref="TagHook"/>.<see cref="TagHook.onUpdate"/> is advised to be done in Awake
     /// </summary>
-    /// <remarks>There should not be bigger issue with adding callbacks during <see cref="Start"/>, but some change events of <see cref="ProgressionTag"/> could be missed</remarks>
+    /// <remarks>There should not be bigger issue with adding callbacks during <see cref="Start"/>, but some change events of <see cref="TagNode"/> could be missed</remarks>
     private void Awake()
     {
+        tagHook2 = TagHook.Create("MAIN/P1");
         // Callbacks are added like a normal delegates
         tagHook.onUpdate += ChangeColorOnTagUpdate;
 
@@ -32,7 +33,7 @@ public class ExampleProgressionBehaviour : MonoBehaviour
     private void Start()
     {
         // Checking if tagHook is linked in case it was not setup
-        if (tagHook.IsLinked())
+        if (tagHook.Tag != null)
         {
             DebugU.PushSettings(Color.magenta, -1f);
             // Name could be also be accessed through tagHook.TagName, in which case it is accessible even without being linked to a tag
@@ -40,7 +41,11 @@ public class ExampleProgressionBehaviour : MonoBehaviour
             DebugU.PopSettings();
 
             // Using DummyTagEvent to offload portion of initialization to callback created for getting updates from tagHook
-            ChangeColorOnTagUpdate(tagHook.GetDummyTagEvent());
+            ChangeColorOnTagUpdate(new TagEvent{newState = tagHook.Tag.State});
+        }
+        else
+        {
+            Debug.Log("Null Tag");
         }
     }
 
@@ -56,16 +61,16 @@ public class ExampleProgressionBehaviour : MonoBehaviour
     /// <summary>
     /// Example of <see cref="TagHook"/>.<see cref="TagHook.onUpdate"/> callback function
     /// </summary>
-    /// <param name="tagEvent">Event with old and current state of the ><see cref="ProgressionTag"/></param>
+    /// <param name="tagEvent">Event with old and current state of the ><see cref="TagNode"/></param>
     /// <remarks>All callbacks for <see cref="TagHook"/>.<see cref="TagHook.onUpdate"/> need to be void functions with single <see cref="TagHook.TagEvent"/> parameter</remarks>
-    private void ChangeColorOnTagUpdate(TagHook.TagEvent tagEvent)
+    private void ChangeColorOnTagUpdate(TagEvent tagEvent)
     {
         GetComponent<SpriteRenderer>().color = tagEvent.newState switch
         {
-            ProgressionTag.TagState.Unavailable => Color.gray,
-            ProgressionTag.TagState.Available => new Color(0.27f, 0.39f, 0.28f),
-            ProgressionTag.TagState.Collected => new Color(0.13f, 0.2f, 0.14f),
-            ProgressionTag.TagState.Active => new Color(0.13f, 0.22f, 0.33f),
+            TagNode.TagState.Unavailable => Color.gray,
+            TagNode.TagState.Available => new Color(0.27f, 0.39f, 0.28f),
+            TagNode.TagState.Collected => new Color(0.13f, 0.2f, 0.14f),
+            TagNode.TagState.Active => new Color(0.13f, 0.22f, 0.33f),
             _ => throw new ArgumentOutOfRangeException()
         };
     }
@@ -73,8 +78,8 @@ public class ExampleProgressionBehaviour : MonoBehaviour
     /// <summary>
     /// Second example of <see cref="TagHook"/>.<see cref="TagHook.onUpdate"/> callback function
     /// </summary>
-    /// <param name="tagEvent">Event with old and current state of the <see cref="ProgressionTag"/></param>
-    private void LogP1(TagHook.TagEvent tagEvent)
+    /// <param name="tagEvent">Event with old and current state of the <see cref="TagNode"/></param>
+    private void LogP1(TagEvent tagEvent)
     {
         Debug.Log($"P1: {tagEvent.oldState} -> {tagEvent.newState}");
     }

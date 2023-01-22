@@ -21,6 +21,8 @@ public class QuestManagerEditorWindow : EditorWindow
     {
         if (QuestManager.Data.database != null)
             questList = CreateQuestList(QuestManager.Data.database);
+
+        autoRepaintOnSceneChange = true;
     }
 
     private ReorderableList CreateQuestList([NotNull] QuestDatabase database)

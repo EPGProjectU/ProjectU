@@ -4,12 +4,10 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using XNode;
 
-/// <summary>
-/// Implements <see cref="ProgressionTag"/> as a node for use in <see cref="ProgressionGraph"/>
-/// </summary>
+
 [Serializable]
 [CreateNodeMenu("Progression/Tag", 0)]
-public class TagNode : Node, ProgressionTag
+public class TagNode : Node
 {
     [Input]
     public bool input;
@@ -26,30 +24,29 @@ public class TagNode : Node, ProgressionTag
 
     public Flags flags;
 
-    [FormerlySerializedAs("_name")]
-    [SerializeField]
-    private string tagName;
-
-    public string Name
+    /// <summary>
+    /// Possible states of <see cref="TagNode"/>
+    /// </summary>
+    public enum TagState
     {
-        get => tagName;
-        set
-        {
-#if UNITY_EDITOR
-            ProgressionManager.SendTagNameChangeNotifications(tagName, value, graph);
-#endif
-            tagName = value;
-        }
+        Unavailable,
+        Available,
+        Active,
+        Collected
     }
+
+    [field: FormerlySerializedAs("tagName")]
+    [field: SerializeField]
+    public string Name { get; set; }
 
     /// <summary>
     /// State is determined base on flags <see cref="active"/> and <see cref="collected"/>, if neither is set <see cref="input"/> is checked
     /// </summary>
-    public ProgressionTag.TagState State =>
-        IsCollected() ? ProgressionTag.TagState.Collected :
-        IsActive() ? ProgressionTag.TagState.Active :
-        IsAvailable() ? ProgressionTag.TagState.Available :
-        ProgressionTag.TagState.Unavailable;
+    public TagState State =>
+        IsCollected() ? TagState.Collected :
+        IsActive() ? TagState.Active :
+        IsAvailable() ? TagState.Available :
+        TagState.Unavailable;
 
     public override object GetValue(NodePort port)
     {
@@ -77,5 +74,14 @@ public class TagNode : Node, ProgressionTag
     public bool IsCollected()
     {
         return flags.collected;
+    }
+
+
+    public static Action<TagNode> QuestCreationCallback;
+
+    [ContextMenu("Create Quest", false, 0)]
+    public void CreateQuest()
+    {
+        QuestCreationCallback?.Invoke(this);
     }
 }

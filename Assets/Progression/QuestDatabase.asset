@@ -21,8 +21,8 @@ MonoBehaviour:
     values:
     - _fieldName: output
       _node: {fileID: -8556987617928220828}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -30,8 +30,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: -8556987617928220828}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections:
       - fieldName: output
         node: {fileID: 3954150159305509589}
@@ -43,13 +43,28 @@ MonoBehaviour:
   output: 3
   input: 1
   tagHook:
-    tagName: HuntBosslvl1Done
+    <Tag>k__BackingField: {fileID: 0}
     onUpdate:
-      guid:
-        m_Value0: 1724792484
-        m_Value1: 2044926117
-        m_Value2: 1764840912
-        m_Value3: 508866860
+      delegate:
+        guid:
+          m_Value0: 286132641
+          m_Value1: 888852579
+          m_Value2: 1926601315
+          m_Value3: 300833275
+    onCollect:
+      delegate:
+        guid:
+          m_Value0: 1531693366
+          m_Value1: 1556628532
+          m_Value2: 1936289192
+          m_Value3: 853742936
+    onActivate:
+      delegate:
+        guid:
+          m_Value0: 948531064
+          m_Value1: 563189408
+          m_Value2: 288320638
+          m_Value3: 1085732629
 --- !u!114 &-8358168599191448414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +90,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: output
-        node: {fileID: -1603935268607246508}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -125,7 +140,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dde6e22ddcaa400ca6793d8758c33b70, type: 3}
-  m_Name: Quest Exit Point
+  m_Name: Exit Point
   m_EditorClassIdentifier: 
   graph: {fileID: 5979023262562124183}
   position: {x: 204, y: -90.5}
@@ -168,7 +183,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dde6e22ddcaa400ca6793d8758c33b70, type: 3}
-  m_Name: Quest Exit Point
+  m_Name: Exit Point
   m_EditorClassIdentifier: 
   graph: {fileID: -6179703043526469747}
   position: {x: 696, y: 456}
@@ -215,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: 5639247527290886341}
-  - {fileID: -1603935268607246508}
+  - {fileID: 0}
   - {fileID: -8358168599191448414}
   - {fileID: -6369081079849125359}
   - {fileID: 4323179323939631853}
@@ -240,11 +255,11 @@ MonoBehaviour:
     values:
     - _fieldName: output
       _node: {fileID: -6152340792601019972}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: 6834369576976237869}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -252,8 +267,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: -6152340792601019972}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
@@ -262,13 +277,28 @@ MonoBehaviour:
   output: 0
   input: 3
   tagHook:
-    tagName: SkeletonHunt
+    <Tag>k__BackingField: {fileID: 0}
     onUpdate:
-      guid:
-        m_Value0: 1561873940
-        m_Value1: 1817443821
-        m_Value2: 1767609812
-        m_Value3: 708440921
+      delegate:
+        guid:
+          m_Value0: 1695320853
+          m_Value1: 182798395
+          m_Value2: 950698941
+          m_Value3: 1391325141
+    onCollect:
+      delegate:
+        guid:
+          m_Value0: 1136998626
+          m_Value1: 1226866910
+          m_Value2: 1087348080
+          m_Value3: 1850135576
+    onActivate:
+      delegate:
+        guid:
+          m_Value0: 581841878
+          m_Value1: 36160536
+          m_Value2: 1303890618
+          m_Value3: 686537309
 --- !u!114 &-5681990671919758972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +324,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: output
-        node: {fileID: -4835430894890896889}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -337,11 +367,11 @@ MonoBehaviour:
     values:
     - _fieldName: output
       _node: {fileID: -5548194940502884258}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: 6986144856191308398}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -349,8 +379,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: -5548194940502884258}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
@@ -359,13 +389,28 @@ MonoBehaviour:
   output: 0
   input: 3
   tagHook:
-    tagName: HelpDrunkard
+    <Tag>k__BackingField: {fileID: 0}
     onUpdate:
-      guid:
-        m_Value0: 937711366
-        m_Value1: 1176724387
-        m_Value2: 22671987
-        m_Value3: 206147403
+      delegate:
+        guid:
+          m_Value0: 1414865139
+          m_Value1: 595628513
+          m_Value2: 227138936
+          m_Value3: 1686396793
+    onCollect:
+      delegate:
+        guid:
+          m_Value0: 740811152
+          m_Value1: 1546578309
+          m_Value2: 1407381515
+          m_Value3: 1774203908
+    onActivate:
+      delegate:
+        guid:
+          m_Value0: 1381190688
+          m_Value1: 1810081961
+          m_Value2: 931918316
+          m_Value3: 1596776822
 --- !u!114 &-5329941761773897737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,11 +432,11 @@ MonoBehaviour:
     values:
     - _fieldName: output
       _node: {fileID: -5329941761773897737}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: 5952016736423768458}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -399,8 +444,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: -5329941761773897737}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
@@ -409,13 +454,28 @@ MonoBehaviour:
   output: 0
   input: 3
   tagHook:
-    tagName: HuntBosslvl1
+    <Tag>k__BackingField: {fileID: 0}
     onUpdate:
-      guid:
-        m_Value0: 1784704583
-        m_Value1: 127537073
-        m_Value2: 335490088
-        m_Value3: 1342777896
+      delegate:
+        guid:
+          m_Value0: 1523586559
+          m_Value1: 1530173179
+          m_Value2: 1112211302
+          m_Value3: 1438013874
+    onCollect:
+      delegate:
+        guid:
+          m_Value0: 1186951997
+          m_Value1: 981050669
+          m_Value2: 1719856344
+          m_Value3: 1108145120
+    onActivate:
+      delegate:
+        guid:
+          m_Value0: 1991834138
+          m_Value1: 1258614367
+          m_Value2: 786008193
+          m_Value3: 897985409
 --- !u!114 &-5213652000099945777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,7 +562,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: output
-        node: {fileID: -3325979196907053362}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -545,8 +605,8 @@ MonoBehaviour:
     values:
     - _fieldName: output
       _node: {fileID: -3741514671665216740}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -554,8 +614,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: -3741514671665216740}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections:
       - fieldName: output
         node: {fileID: -323297340538221742}
@@ -567,13 +627,28 @@ MonoBehaviour:
   output: 0
   input: 3
   tagHook:
-    tagName: KillBrotherDone
+    <Tag>k__BackingField: {fileID: 0}
     onUpdate:
-      guid:
-        m_Value0: 1602289424
-        m_Value1: 414516
-        m_Value2: 406511778
-        m_Value3: 1652820860
+      delegate:
+        guid:
+          m_Value0: 505421653
+          m_Value1: 366847351
+          m_Value2: 2014414726
+          m_Value3: 1001709893
+    onCollect:
+      delegate:
+        guid:
+          m_Value0: 405832648
+          m_Value1: 124321555
+          m_Value2: 1573476942
+          m_Value3: 392683216
+    onActivate:
+      delegate:
+        guid:
+          m_Value0: 179227410
+          m_Value1: 2131037200
+          m_Value2: 85602467
+          m_Value3: 247927470
 --- !u!114 &-3325979196907053362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,7 +713,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: -6152340792601019972}
-  - {fileID: 6834369576976237869}
+  - {fileID: 0}
   - {fileID: 976778455829219594}
   - {fileID: 258573275202481039}
   - {fileID: 6430302975524174039}
@@ -652,7 +727,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dde6e22ddcaa400ca6793d8758c33b70, type: 3}
-  m_Name: Quest Exit Point
+  m_Name: Exit Point
   m_EditorClassIdentifier: 
   graph: {fileID: 4341496594143808855}
   position: {x: 200, y: -216}
@@ -786,7 +861,7 @@ MonoBehaviour:
   nodes:
   - {fileID: 2334911323196571725}
   - {fileID: 3782680332949312007}
-  - {fileID: 6986144856191308398}
+  - {fileID: 0}
   - {fileID: -5548194940502884258}
   - {fileID: 4959183202463536575}
 --- !u!114 &-892529458860288983
@@ -810,11 +885,11 @@ MonoBehaviour:
     values:
     - _fieldName: output
       _node: {fileID: -892529458860288983}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: 6579739555118601031}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -822,8 +897,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: -892529458860288983}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
@@ -832,13 +907,28 @@ MonoBehaviour:
   output: 0
   input: 3
   tagHook:
-    tagName: KillBrother
+    <Tag>k__BackingField: {fileID: 0}
     onUpdate:
-      guid:
-        m_Value0: 242671086
-        m_Value1: 1053238709
-        m_Value2: 1243765219
-        m_Value3: 925151254
+      delegate:
+        guid:
+          m_Value0: 1903083471
+          m_Value1: 1586962497
+          m_Value2: 1476134226
+          m_Value3: 1958092275
+    onCollect:
+      delegate:
+        guid:
+          m_Value0: 1718153543
+          m_Value1: 984716606
+          m_Value2: 1507567726
+          m_Value3: 2129169085
+    onActivate:
+      delegate:
+        guid:
+          m_Value0: 1011202223
+          m_Value1: 1380117955
+          m_Value2: 1775415795
+          m_Value3: 1111083192
 --- !u!114 &-465895855429288536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -860,11 +950,11 @@ MonoBehaviour:
     values:
     - _fieldName: output
       _node: {fileID: -465895855429288536}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: -4835430894890896889}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -872,8 +962,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: -465895855429288536}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
@@ -882,13 +972,28 @@ MonoBehaviour:
   output: 0
   input: 3
   tagHook:
-    tagName: HuntGoblinlvl1
+    <Tag>k__BackingField: {fileID: 0}
     onUpdate:
-      guid:
-        m_Value0: 1357368396
-        m_Value1: 11780691
-        m_Value2: 1553855650
-        m_Value3: 1101200429
+      delegate:
+        guid:
+          m_Value0: 1650462509
+          m_Value1: 123593660
+          m_Value2: 1368277868
+          m_Value3: 1828157977
+    onCollect:
+      delegate:
+        guid:
+          m_Value0: 1986218225
+          m_Value1: 1195427853
+          m_Value2: 489841222
+          m_Value3: 852444980
+    onActivate:
+      delegate:
+        guid:
+          m_Value0: 374165583
+          m_Value1: 1858408076
+          m_Value2: 1893595595
+          m_Value3: 2016640434
 --- !u!114 &-428482434839828646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -910,8 +1015,8 @@ MonoBehaviour:
     values:
     - _fieldName: output
       _node: {fileID: -428482434839828646}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -919,8 +1024,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: -428482434839828646}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections:
       - fieldName: output
         node: {fileID: -6450152881895897669}
@@ -932,13 +1037,28 @@ MonoBehaviour:
   output: 0
   input: 3
   tagHook:
-    tagName: KillGoblinsDone
+    <Tag>k__BackingField: {fileID: 0}
     onUpdate:
-      guid:
-        m_Value0: 489608397
-        m_Value1: 1134312174
-        m_Value2: 1441430244
-        m_Value3: 2103253202
+      delegate:
+        guid:
+          m_Value0: 1131953701
+          m_Value1: 105945517
+          m_Value2: 1276744006
+          m_Value3: 387836484
+    onCollect:
+      delegate:
+        guid:
+          m_Value0: 1626374450
+          m_Value1: 256832887
+          m_Value2: 1196483293
+          m_Value3: 1830805904
+    onActivate:
+      delegate:
+        guid:
+          m_Value0: 1409851898
+          m_Value1: 1130802208
+          m_Value2: 1465431536
+          m_Value3: 1902107958
 --- !u!114 &-352835027000374899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -964,7 +1084,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: output
-        node: {fileID: 5952016736423768458}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -996,7 +1116,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dde6e22ddcaa400ca6793d8758c33b70, type: 3}
-  m_Name: Quest Exit Point
+  m_Name: Exit Point
   m_EditorClassIdentifier: 
   graph: {fileID: 3778948890960376196}
   position: {x: 88, y: -104}
@@ -1070,8 +1190,8 @@ MonoBehaviour:
     values:
     - _fieldName: output
       _node: {fileID: 258573275202481039}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -1079,8 +1199,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: 258573275202481039}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections:
       - fieldName: output
         node: {fileID: 976778455829219594}
@@ -1092,13 +1212,28 @@ MonoBehaviour:
   output: 0
   input: 1
   tagHook:
-    tagName: SkeletonHuntDone
+    <Tag>k__BackingField: {fileID: 0}
     onUpdate:
-      guid:
-        m_Value0: 1324195022
-        m_Value1: 1991873036
-        m_Value2: 55527895
-        m_Value3: 617569628
+      delegate:
+        guid:
+          m_Value0: 152959786
+          m_Value1: 242618511
+          m_Value2: 987129492
+          m_Value3: 692006080
+    onCollect:
+      delegate:
+        guid:
+          m_Value0: 612692471
+          m_Value1: 833021940
+          m_Value2: 1375672572
+          m_Value3: 1768386610
+    onActivate:
+      delegate:
+        guid:
+          m_Value0: 1343494558
+          m_Value1: 1440974207
+          m_Value2: 321732566
+          m_Value3: 158079768
 --- !u!114 &976778455829219594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1109,7 +1244,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dde6e22ddcaa400ca6793d8758c33b70, type: 3}
-  m_Name: Quest Exit Point
+  m_Name: Exit Point
   m_EditorClassIdentifier: 
   graph: {fileID: -3320732208987776234}
   position: {x: 840, y: 56}
@@ -1163,8 +1298,8 @@ MonoBehaviour:
     values:
     - _fieldName: output
       _node: {fileID: 1754119484752775410}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -1172,8 +1307,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: 1754119484752775410}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections:
       - fieldName: output
         node: {fileID: -2213747080524861145}
@@ -1185,13 +1320,28 @@ MonoBehaviour:
   output: 0
   input: 3
   tagHook:
-    tagName: HuntGoblinlvl1Done
+    <Tag>k__BackingField: {fileID: 0}
     onUpdate:
-      guid:
-        m_Value0: 2015553943
-        m_Value1: 1907136179
-        m_Value2: 176827729
-        m_Value3: 669640434
+      delegate:
+        guid:
+          m_Value0: 1241282030
+          m_Value1: 378683821
+          m_Value2: 914624480
+          m_Value3: 726835143
+    onCollect:
+      delegate:
+        guid:
+          m_Value0: 69434060
+          m_Value1: 1471244706
+          m_Value2: 138621163
+          m_Value3: 1980422087
+    onActivate:
+      delegate:
+        guid:
+          m_Value0: 2009582323
+          m_Value1: 297936273
+          m_Value2: 1786842132
+          m_Value3: 1614548775
 --- !u!114 &1857949678203981192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1235,7 +1385,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: output
-        node: {fileID: 6986144856191308398}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1278,11 +1428,11 @@ MonoBehaviour:
     values:
     - _fieldName: output
       _node: {fileID: 2581636515801989005}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: -3325979196907053362}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1290,8 +1440,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: 2581636515801989005}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
@@ -1300,13 +1450,28 @@ MonoBehaviour:
   output: 0
   input: 3
   tagHook:
-    tagName: KillGoblins
+    <Tag>k__BackingField: {fileID: 0}
     onUpdate:
-      guid:
-        m_Value0: 444600988
-        m_Value1: 1614360555
-        m_Value2: 742438014
-        m_Value3: 465120422
+      delegate:
+        guid:
+          m_Value0: 1969729932
+          m_Value1: 1355694520
+          m_Value2: 1177075689
+          m_Value3: 302072041
+    onCollect:
+      delegate:
+        guid:
+          m_Value0: 1158609417
+          m_Value1: 1527273935
+          m_Value2: 942655921
+          m_Value3: 1003065730
+    onActivate:
+      delegate:
+        guid:
+          m_Value0: 285282805
+          m_Value1: 1979539496
+          m_Value2: 2140923255
+          m_Value3: 621518437
 --- !u!114 &3558597507027323587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1332,7 +1497,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: output
-        node: {fileID: 6579739555118601031}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1369,7 +1534,7 @@ MonoBehaviour:
   nodes:
   - {fileID: -892529458860288983}
   - {fileID: -3741514671665216740}
-  - {fileID: 6579739555118601031}
+  - {fileID: 0}
   - {fileID: -323297340538221742}
   - {fileID: 3558597507027323587}
 --- !u!114 &3782680332949312007
@@ -1382,7 +1547,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dde6e22ddcaa400ca6793d8758c33b70, type: 3}
-  m_Name: Quest Exit Point
+  m_Name: Exit Point
   m_EditorClassIdentifier: 
   graph: {fileID: -1257655709299491302}
   position: {x: 360, y: 488}
@@ -1425,7 +1590,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dde6e22ddcaa400ca6793d8758c33b70, type: 3}
-  m_Name: Quest Exit Point
+  m_Name: Exit Point
   m_EditorClassIdentifier: 
   graph: {fileID: -6762769986522141465}
   position: {x: 392, y: -88}
@@ -1479,8 +1644,8 @@ MonoBehaviour:
     values:
     - _fieldName: output
       _node: {fileID: 4323179323939631853}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -1488,8 +1653,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: 4323179323939631853}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections:
       - fieldName: output
         node: {fileID: -6369081079849125359}
@@ -1501,13 +1666,28 @@ MonoBehaviour:
   output: 0
   input: 1
   tagHook:
-    tagName: L2/P2
+    <Tag>k__BackingField: {fileID: 0}
     onUpdate:
-      guid:
-        m_Value0: 1478526000
-        m_Value1: 1680264970
-        m_Value2: 355737387
-        m_Value3: 591219617
+      delegate:
+        guid:
+          m_Value0: 1605258509
+          m_Value1: 806236172
+          m_Value2: 126853093
+          m_Value3: 966753313
+    onCollect:
+      delegate:
+        guid:
+          m_Value0: 862877234
+          m_Value1: 317104611
+          m_Value2: 921234853
+          m_Value3: 623079000
+    onActivate:
+      delegate:
+        guid:
+          m_Value0: 432199522
+          m_Value1: 1430902077
+          m_Value2: 1643938754
+          m_Value3: 153728698
 --- !u!114 &4341496594143808855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1532,7 +1712,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: -5681990671919758972}
-  - {fileID: -4835430894890896889}
+  - {fileID: 0}
   - {fileID: -2213747080524861145}
   - {fileID: -465895855429288536}
   - {fileID: 1754119484752775410}
@@ -1552,12 +1732,9 @@ MonoBehaviour:
   - {fileID: -352835027000374899}
   - {fileID: 3954150159305509589}
   - {fileID: -8556987617928220828}
-  - {fileID: 5952016736423768458}
   - {fileID: -5329941761773897737}
   - {fileID: 6430302975524174039}
   - {fileID: -5681990671919758972}
-  - {fileID: 6834369576976237869}
-  - {fileID: -4835430894890896889}
   - {fileID: 976778455829219594}
   - {fileID: -2213747080524861145}
   - {fileID: 258573275202481039}
@@ -1568,10 +1745,6 @@ MonoBehaviour:
   - {fileID: -8358168599191448414}
   - {fileID: 3558597507027323587}
   - {fileID: 2334911323196571725}
-  - {fileID: -1603935268607246508}
-  - {fileID: -3325979196907053362}
-  - {fileID: 6986144856191308398}
-  - {fileID: 6579739555118601031}
   - {fileID: 3782680332949312007}
   - {fileID: -6369081079849125359}
   - {fileID: -323297340538221742}
@@ -1585,6 +1758,13 @@ MonoBehaviour:
   - {fileID: 2581636515801989005}
   - {fileID: -3741514671665216740}
   - {fileID: 0}
+  - {fileID: -4835430894890896889}
+  - {fileID: -3325979196907053362}
+  - {fileID: 6986144856191308398}
+  - {fileID: 5952016736423768458}
+  - {fileID: -1603935268607246508}
+  - {fileID: 6579739555118601031}
+  - {fileID: 6834369576976237869}
 --- !u!114 &4447173615938055309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1693,8 +1873,8 @@ MonoBehaviour:
     values:
     - _fieldName: output
       _node: {fileID: 4959183202463536575}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -1702,8 +1882,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: 4959183202463536575}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections:
       - fieldName: output
         node: {fileID: 3782680332949312007}
@@ -1715,13 +1895,28 @@ MonoBehaviour:
   output: 0
   input: 3
   tagHook:
-    tagName: HelpDrunkardDone
+    <Tag>k__BackingField: {fileID: 0}
     onUpdate:
-      guid:
-        m_Value0: 1072627663
-        m_Value1: 460786942
-        m_Value2: 266088368
-        m_Value3: 876679717
+      delegate:
+        guid:
+          m_Value0: 1047448896
+          m_Value1: 1849582311
+          m_Value2: 1488684500
+          m_Value3: 1669198588
+    onCollect:
+      delegate:
+        guid:
+          m_Value0: 238223534
+          m_Value1: 1927282068
+          m_Value2: 141393315
+          m_Value3: 1251853877
+    onActivate:
+      delegate:
+        guid:
+          m_Value0: 1369810710
+          m_Value1: 1389838622
+          m_Value2: 266792832
+          m_Value3: 1118840916
 --- !u!114 &5639247527290886341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1743,11 +1938,11 @@ MonoBehaviour:
     values:
     - _fieldName: output
       _node: {fileID: 5639247527290886341}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: -1603935268607246508}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -1755,8 +1950,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: 5639247527290886341}
-      _typeQualifiedName: ProgressionTag+TagState, Progression, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
@@ -1765,13 +1960,28 @@ MonoBehaviour:
   output: 0
   input: 3
   tagHook:
-    tagName: L2/P1
+    <Tag>k__BackingField: {fileID: 0}
     onUpdate:
-      guid:
-        m_Value0: 2039872250
-        m_Value1: 1542265573
-        m_Value2: 1079011055
-        m_Value3: 1248271623
+      delegate:
+        guid:
+          m_Value0: 1336403022
+          m_Value1: 544792797
+          m_Value2: 2123069653
+          m_Value3: 29862357
+    onCollect:
+      delegate:
+        guid:
+          m_Value0: 514714368
+          m_Value1: 1223706342
+          m_Value2: 29882628
+          m_Value3: 1042491365
+    onActivate:
+      delegate:
+        guid:
+          m_Value0: 1444253253
+          m_Value1: 302506055
+          m_Value2: 252732228
+          m_Value3: 548287217
 --- !u!114 &5791061305095797461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1873,7 +2083,7 @@ MonoBehaviour:
   nodes:
   - {fileID: 2581636515801989005}
   - {fileID: -428482434839828646}
-  - {fileID: -3325979196907053362}
+  - {fileID: 0}
   - {fileID: -6450152881895897669}
   - {fileID: -4023845706391105305}
 --- !u!114 &6430302975524174039
@@ -1901,7 +2111,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: output
-        node: {fileID: 6834369576976237869}
+        node: {fileID: 0}
         reroutePoints: []
       _direction: 0
       _connectionType: 0

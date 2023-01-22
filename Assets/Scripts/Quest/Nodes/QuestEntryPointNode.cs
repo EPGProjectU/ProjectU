@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using XNode;
 
-public class QuestEntryPoint : Node, NotifyNodeInterface
+[CreateNodeMenu("Quest/Flow/Entry Point")]
+public class QuestEntryPointNode : Node, NotifyNodeInterface
 {
     [Input]
     public NotifyNodeInterface.EmptyPort input;
@@ -10,6 +11,8 @@ public class QuestEntryPoint : Node, NotifyNodeInterface
     public NotifyNodeInterface.EmptyPort output;
     
     public override object GetValue(NodePort port) => null;
+
+    protected override void Init() => name = "Entry Point";
 
     public bool Notify(object payload)
     {

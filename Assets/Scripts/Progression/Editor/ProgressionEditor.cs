@@ -1,4 +1,3 @@
-using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -19,16 +18,6 @@ public class ProgressionSettingsEditor : EditorWindow
         GUILayout.Label("Main Graph", EditorStyles.boldLabel);
         var newGraph = EditorGUILayout.ObjectField(ProgressionManager.Data.graph, typeof(ProgressionGraph), false) as ProgressionGraph;
 
-        var deleteProgression = GUILayout.Button("Delete Saved Progression");
-
-        if (deleteProgression)
-        {
-            var di = new DirectoryInfo(Application.persistentDataPath + ProgressionManager.GraphSavesDirectoryPath);
-
-            foreach (var file in di.GetFiles())
-                file.Delete();
-        }
-
         if (!EditorGUI.EndChangeCheck())
             return;
 
@@ -36,6 +25,6 @@ public class ProgressionSettingsEditor : EditorWindow
         EditorUtility.SetDirty(ProgressionManager.Data);
 
         ProgressionManager.Data.graph = newGraph;
-        ProgressionManager.HardRefresh();
+        ProgressionManager.Reload();
     }
 }

@@ -1,15 +1,14 @@
+using System;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 using XNode;
-using XNodeEditor;
 
 /// <summary>
 /// <see cref="ProgressionGraph"/> editor window
 /// </summary>
-public class ProgressionGraphEditorWindow : NodeEditorWindow
+public class ProgressionGraphEditorWindow : GraphEditorWindow
 {
-    
     [MenuItem("ProjectU/Progression/Show Graph")]
     public static void ShowCurrentContextProgressionGraph()
     {
@@ -31,22 +30,26 @@ public class ProgressionGraphEditorWindow : NodeEditorWindow
     {
         var graph = EditorUtility.InstanceIDToObject(instanceID) as ProgressionGraph;
 
-        if (!graph)
-            return false;
-
-        Open(graph);
-
-        return true;
+        return Open(graph) != null;
     }
 
     public new static ProgressionGraphEditorWindow Open(NodeGraph graph)
     {
-        var window = NodeEditorWindow.Open(graph);
+        var window = GraphEditorWindow.Open<ProgressionGraphEditorWindow>(graph);
+        
+        if (!window)
+            return null;
 
         // Set custom icon for the tab
         var icon = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Gizmos/ProgressionGraph Icon.png");
         window.titleContent = new GUIContent("Progression Graph", icon);
 
-        return window as ProgressionGraphEditorWindow;
+        return window;
+    }
+
+    protected override void OnGUI()
+    {
+        ProgressionManager.ClearCache();
+        base.OnGUI();
     }
 }
