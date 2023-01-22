@@ -9,10 +9,11 @@ public class EquipmentHandler : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    //public Text itemNameTextField;
     public static Item selectedItem;
     public Equipment equipment;
     public GameObject player;
+
+    public Text itemUseSuccessMessage;
     
     void Start()
     {
@@ -33,5 +34,6 @@ public class EquipmentHandler : MonoBehaviour
         equipment.items.Remove(selectedItem);
         SceneManager.UnloadSceneAsync((int)SceneEnum.EquipmentScen);
         SceneManager.LoadScene((int)SceneEnum.EquipmentScen, LoadSceneMode.Additive);
+
     }
 }

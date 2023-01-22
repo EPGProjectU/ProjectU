@@ -14,7 +14,8 @@ public class CreateEquipmentUI : MonoBehaviour
     public Text itemUseTypeButtonTextField;
     public Text itemStatsTextField;
     public Image itemStatsIcon;
-    //public Text itemUseSuccessMessage;
+    
+    public Text itemUseSuccessMessage;
 
     public Image ArmorIcon;
     public Image WeaponIcon;
@@ -44,6 +45,7 @@ public class CreateEquipmentUI : MonoBehaviour
                 });
             }
         }
+        itemUseSuccessMessage.enabled = false;
     }
 
     private void ChangeUIBasedOnItem(
@@ -51,7 +53,7 @@ public class CreateEquipmentUI : MonoBehaviour
         Text buttonText, 
         Text descriptionText, 
         Text statsText, 
-        Image typeIcon, 
+        Image typeIcon,
         Item item)
     {
         itemName.text = item.Name;
@@ -62,18 +64,22 @@ public class CreateEquipmentUI : MonoBehaviour
             case "Armor":
                 buttonText.text = "Wear armor";
                 typeIcon = ArmorIcon;
+                itemUseSuccessMessage.text = "You have put on a fine armor!";
                 break;
             case "Weapon":
                 buttonText.text = "Equip weapon";
                 typeIcon = WeaponIcon;
+                itemUseSuccessMessage.text = "You have grabbed a fine weapon!";
                 break;
             case "Consumable":
                 buttonText.text = "Drink";
                 typeIcon = ConsumableIcon;
+                itemUseSuccessMessage.text = "You have drank a fine concoction!";
                 break;
             case "Miscellaineous":
                 buttonText.text = "Use";
                 typeIcon = ConsumableIcon;
+                itemUseSuccessMessage.text = "You have used an item!";
                 break;
         }
         EquipmentHandler.selectedItem = item;
@@ -83,15 +89,9 @@ public class CreateEquipmentUI : MonoBehaviour
         //Just a gray square rendered "under" item would be nice, alpha channels ?
     }
 
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void ShowEquipMessage() {
+        //show equip message for x seconds/permanently that is updated from last clicked item and just shown when Button to use item is clicked
+        itemUseSuccessMessage.enabled = true;
     }
-    void UpdateMenu()
-    {
 
-    }
 }

@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 103.16685, y: -137.55043}
-  m_SizeDelta: {x: 191.9863, y: 275.1009}
+  m_AnchoredPosition: {x: 99.79397, y: -141.29807}
+  m_SizeDelta: {x: 185.2405, y: 267.6057}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1665263
 MonoBehaviour:
@@ -235,6 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipment: {fileID: 0}
   player: {fileID: 0}
+  itemUseSuccessMessage: {fileID: 0}
 --- !u!114 &34156579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,8 +322,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 436659010}
-  - {fileID: 847138732}
   - {fileID: 1331838628}
+  - {fileID: 847138732}
   - {fileID: 1747165539}
   - {fileID: 1549228378}
   m_Father: {fileID: 1368505185}
@@ -1322,8 +1323,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1649854116}
   m_HandleRect: {fileID: 1649854115}
   m_Direction: 2
-  m_Value: -0.3846154
-  m_Size: 0.999999
+  m_Value: -0.07692308
+  m_Size: 0.9999468
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2308,7 +2309,7 @@ RectTransform:
   - {fileID: 1027415346}
   - {fileID: 466017121}
   m_Father: {fileID: 138664825}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2897,6 +2898,7 @@ MonoBehaviour:
   itemUseTypeButtonTextField: {fileID: 0}
   itemStatsTextField: {fileID: 0}
   itemStatsIcon: {fileID: 0}
+  itemUseSuccessMessage: {fileID: 0}
   ArmorIcon: {fileID: 0}
   WeaponIcon: {fileID: 0}
   ConsumableIcon: {fileID: 0}
@@ -2989,7 +2991,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
+    m_LineSpacing: 2
   m_Text: 
 --- !u!222 &1071836635
 CanvasRenderer:
@@ -3015,8 +3017,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 103.61522, y: -96.176285}
-  m_SizeDelta: {x: 191.0896, y: 192.3525}
+  m_AnchoredPosition: {x: 99.118, y: -99.549164}
+  m_SizeDelta: {x: 182.0952, y: 185.6067}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1112339661
 GameObject:
@@ -3100,7 +3102,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1791946288}
   m_HandleRect: {fileID: 1791946287}
   m_Direction: 2
-  m_Value: 1.1538461
+  m_Value: 1.6153846
   m_Size: 0.999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3303,6 +3305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1121446794}
+  - component: {fileID: 1121446796}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -3327,9 +3330,17 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00010681152}
+  m_AnchoredPosition: {x: 0, y: 0.00012158299}
   m_SizeDelta: {x: 0, y: 97.38}
   m_Pivot: {x: 0, y: 1}
+--- !u!222 &1121446796
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121446793}
+  m_CullTransparentMesh: 1
 --- !u!1 &1134463242
 GameObject:
   m_ObjectHideFlags: 0
@@ -3477,6 +3488,7 @@ MonoBehaviour:
   itemUseTypeButtonTextField: {fileID: 1672561626}
   itemStatsTextField: {fileID: 1071836634}
   itemStatsIcon: {fileID: 0}
+  itemUseSuccessMessage: {fileID: 1549228376}
   ArmorIcon: {fileID: 0}
   WeaponIcon: {fileID: 0}
   ConsumableIcon: {fileID: 0}
@@ -3929,7 +3941,7 @@ RectTransform:
   - {fileID: 1134463243}
   - {fileID: 1112339662}
   m_Father: {fileID: 138664825}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4209,7 +4221,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.000030517578}
   m_SizeDelta: {x: 0, y: 97.38}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1424826568
@@ -4589,7 +4601,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 289.6328, y: 62.928}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1574324659
 GameObject:
@@ -5542,6 +5554,18 @@ MonoBehaviour:
       - m_Target: {fileID: 34156578}
         m_TargetAssemblyTypeName: EquipmentHandler, Main
         m_MethodName: Use
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1145366918}
+        m_TargetAssemblyTypeName: CreateEquipmentUI, Main
+        m_MethodName: ShowEquipMessage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
