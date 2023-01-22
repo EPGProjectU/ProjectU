@@ -235,11 +235,13 @@ public class PlayerController : MonoBehaviour
 
         foreach (var inputBinding in _performedInputBindings)
         {
+            _playerInput.actions[inputBinding.Key].performed -= inputBinding.Value;
             _playerInput.actions[inputBinding.Key].performed += inputBinding.Value;
         }
 
         foreach (var inputBinding in _canceledInputBindings)
         {
+            _playerInput.actions[inputBinding.Key].canceled -= inputBinding.Value;
             _playerInput.actions[inputBinding.Key].canceled += inputBinding.Value;
         }
     }
