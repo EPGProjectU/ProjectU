@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
@@ -18,7 +17,7 @@ namespace ProjectU.Core.Serialization
         private List<Object> unityObjects = new List<Object>();
 
         [SerializeField]
-        private byte[] data = Array.Empty<byte>();
+        private Base64Container data;
 
         private static BinaryFormatter _formatter = new BinaryFormatter();
 
@@ -75,6 +74,13 @@ namespace ProjectU.Core.Serialization
         private void Serialize_Impl(object obj)
         {
             unityObjects.Clear();
+
+            if (obj == null)
+            {
+                data = null;
+                return;
+            }
+
             using var stream = new MemoryStream();
 
             _bundleThreadContext[Thread.CurrentThread] = this;
@@ -89,7 +95,7 @@ namespace ProjectU.Core.Serialization
         {
             HasBrokenReferences = false;
 
-            if (data == null || data.Length == 0)
+            if (data == null)
                 return null;
 
             using var stream = new MemoryStream(data);
@@ -124,7 +130,7 @@ namespace ProjectU.Core.Serialization
 
         private void Clear_Impl()
         {
-            data = Array.Empty<byte>();
+            data = null;
             unityObjects.Clear();
             HasBrokenReferences = false;
         }
