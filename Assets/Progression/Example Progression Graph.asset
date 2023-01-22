@@ -44,8 +44,8 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 1
-  tagName: TrollBossFight
+    collected: 0
+  <Name>k__BackingField: TrollBossFight
 --- !u!114 &-8904673417729661516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +91,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: SQ/BR2/D
+  <Name>k__BackingField: SQ/BR2/D
 --- !u!114 &-8104884288561205433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +137,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: L2/P2
+  <Name>k__BackingField: L2/P2
 --- !u!114 &-8045693421809948763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,53 +183,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: MAIN/P0/EntryPoint1
---- !u!114 &-7983765287607318459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
-  m_Name: Tag
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -184, y: 424}
-  ports:
-    keys:
-    - input
-    - output
-    values:
-    - _fieldName: input
-      _node: {fileID: -7983765287607318459}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: output
-      _node: {fileID: -7983765287607318459}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: input
-        node: {fileID: -7345723036484923646}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  input: 0
-  output: 0
-  flags:
-    active: 0
-    collected: 0
-  tagName: HelpDrunkard
+  <Name>k__BackingField: MAIN/P0/EntryPoint1
 --- !u!114 &-7842843429907566467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,7 +287,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: MAIN/P3/OR
+  <Name>k__BackingField: MAIN/P3/OR
 --- !u!114 &-7647528920774060610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,52 +336,6 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
---- !u!114 &-7345723036484923646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
-  m_Name: Tag
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 120, y: 424}
-  ports:
-    keys:
-    - input
-    - output
-    values:
-    - _fieldName: input
-      _node: {fileID: -7345723036484923646}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: output
-        node: {fileID: -7983765287607318459}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: output
-      _node: {fileID: -7345723036484923646}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  input: 0
-  output: 0
-  flags:
-    active: 0
-    collected: 0
-  tagName: HelpDrunkardDone
 --- !u!114 &-7191329714867885498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,53 +381,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: EX/LOCK_OUT
---- !u!114 &-7179221540436816181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
-  m_Name: Tag
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -136, y: 376}
-  ports:
-    keys:
-    - input
-    - output
-    values:
-    - _fieldName: input
-      _node: {fileID: -7179221540436816181}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: output
-      _node: {fileID: -7179221540436816181}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: input
-        node: {fileID: 1710524764059952072}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  input: 0
-  output: 0
-  flags:
-    active: 0
-    collected: 0
-  tagName: HelpDrunkard
+  <Name>k__BackingField: EX/LOCK_OUT
 --- !u!114 &-7119557406699550226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -613,7 +475,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: ExitUnlockLVL1
+  <Name>k__BackingField: ExitUnlockLVL1
 --- !u!114 &-6782670761626670594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,7 +578,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: MAIN/P2/A
+  <Name>k__BackingField: MAIN/P2/A
 --- !u!114 &-5886358088872595019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -762,53 +624,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: HelpDrunkardDone
---- !u!114 &-5408770162514567391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
-  m_Name: Tag
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 120, y: 568}
-  ports:
-    keys:
-    - input
-    - output
-    values:
-    - _fieldName: input
-      _node: {fileID: -5408770162514567391}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: output
-        node: {fileID: 7574690496088386496}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: output
-      _node: {fileID: -5408770162514567391}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  input: 0
-  output: 0
-  flags:
-    active: 0
-    collected: 0
-  tagName: L2/P2
+  <Name>k__BackingField: HelpDrunkardDone
 --- !u!114 &-5289917600708251560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -853,8 +669,8 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 1
-  tagName: SkeletonHunt
+    collected: 0
+  <Name>k__BackingField: SkeletonHunt
 --- !u!114 &-4710926220035158951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,7 +716,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: SQ/1
+  <Name>k__BackingField: SQ/1
 --- !u!114 &-4437065818113317776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -945,8 +761,8 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 1
-  tagName: KillGoblins
+    collected: 0
+  <Name>k__BackingField: KillGoblins
 --- !u!114 &-4031510013751740988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -992,7 +808,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: SQ/BR2/B
+  <Name>k__BackingField: SQ/BR2/B
 --- !u!114 &-3275965754634845792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1038,7 +854,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: MAIN/P4/BR1/B
+  <Name>k__BackingField: MAIN/P4/BR1/B
 --- !u!114 &-3230342944337600944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1084,7 +900,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: EX/LOCK/1
+  <Name>k__BackingField: EX/LOCK/1
 --- !u!114 &-2744214207193380707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1130,7 +946,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: MAIN/P4/BR1/C
+  <Name>k__BackingField: MAIN/P4/BR1/C
 --- !u!114 &-2182101236809549513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1176,7 +992,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: ExitUnlockLVL5
+  <Name>k__BackingField: ExitUnlockLVL5
 --- !u!114 &-1987163435566084664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1277,7 +1093,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: SQ/BR2/C
+  <Name>k__BackingField: SQ/BR2/C
 --- !u!114 &-1661420370221374395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1323,7 +1139,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: HuntGoblinlvl1Done
+  <Name>k__BackingField: HuntGoblinlvl1Done
 --- !u!114 &-1503761762710552280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1371,8 +1187,8 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 1
-  tagName: done
+    collected: 0
+  <Name>k__BackingField: done
 --- !u!114 &-1461677696024729244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1418,7 +1234,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: HuntBosslvl1
+  <Name>k__BackingField: HuntBosslvl1
 --- !u!114 &-414364868568957184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1464,7 +1280,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: HuntGoblinlvl1
+  <Name>k__BackingField: HuntGoblinlvl1
 --- !u!114 &-345582894187042058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1478,7 +1294,7 @@ MonoBehaviour:
   m_Name: Tag
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -696, y: 584}
+  position: {x: -712, y: 600}
   ports:
     keys:
     - input
@@ -1509,8 +1325,8 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 1
-  tagName: KillBrother
+    collected: 0
+  <Name>k__BackingField: KillBrother
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1619,7 +1435,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: L2/P1
+  <Name>k__BackingField: L2/P1
 --- !u!114 &954080784783757294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1671,7 +1487,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: MAIN/P2/B
+  <Name>k__BackingField: MAIN/P2/B
 --- !u!114 &1568424514948958628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1717,53 +1533,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: SQ/2
---- !u!114 &1710524764059952072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
-  m_Name: Tag
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 120, y: 376}
-  ports:
-    keys:
-    - input
-    - output
-    values:
-    - _fieldName: input
-      _node: {fileID: 1710524764059952072}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: output
-        node: {fileID: -7179221540436816181}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: output
-      _node: {fileID: 1710524764059952072}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  input: 0
-  output: 0
-  flags:
-    active: 0
-    collected: 0
-  tagName: HelpDrunkardDone
+  <Name>k__BackingField: SQ/2
 --- !u!114 &1740950257648927566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1812,7 +1582,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: HuntBosslvl1Done
+  <Name>k__BackingField: HuntBosslvl1Done
 --- !u!114 &2996666164581562401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1858,7 +1628,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: SQ/BR2/A
+  <Name>k__BackingField: SQ/BR2/A
 --- !u!114 &3679505568378731837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1906,8 +1676,8 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 1
-  tagName: KillGoblinsDone
+    collected: 0
+  <Name>k__BackingField: KillGoblinsDone
 --- !u!114 &4147835467978345106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1953,7 +1723,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: EX/LOCK/2
+  <Name>k__BackingField: EX/LOCK/2
 --- !u!114 &4514963192819249816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2008,7 +1778,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: MAIN/P1
+  <Name>k__BackingField: MAIN/P1
 --- !u!114 &4615220013187734995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2054,53 +1824,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: EX/UNLOCK/1
---- !u!114 &5938578909701378296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
-  m_Name: Tag
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 120, y: 504}
-  ports:
-    keys:
-    - input
-    - output
-    values:
-    - _fieldName: input
-      _node: {fileID: 5938578909701378296}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: output
-        node: {fileID: 8890098614296826914}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: output
-      _node: {fileID: 5938578909701378296}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  input: 0
-  output: 0
-  flags:
-    active: 0
-    collected: 0
-  tagName: L2/P2
+  <Name>k__BackingField: EX/UNLOCK/1
 --- !u!114 &6073793298452851087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2146,7 +1870,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: HelpDrunkard
+  <Name>k__BackingField: HelpDrunkard
 --- !u!114 &6379366467241791755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2192,7 +1916,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: MAIN/P4/BR1/A
+  <Name>k__BackingField: MAIN/P4/BR1/A
 --- !u!114 &6573587843733598841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2240,8 +1964,8 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 1
-  tagName: SkeletonHuntDone
+    collected: 0
+  <Name>k__BackingField: SkeletonHuntDone
 --- !u!114 &7494430596948892267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2290,7 +2014,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: MAIN/P3/AND
+  <Name>k__BackingField: MAIN/P3/AND
 --- !u!114 &7503016075601230079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2402,54 +2126,8 @@ MonoBehaviour:
   output: 0
   flags:
     active: 0
-    collected: 1
-  tagName: MAIN/P0/EntryPoint2
---- !u!114 &7574690496088386496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
-  m_Name: Tag
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -200, y: 568}
-  ports:
-    keys:
-    - input
-    - output
-    values:
-    - _fieldName: input
-      _node: {fileID: 7574690496088386496}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: output
-      _node: {fileID: 7574690496088386496}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: input
-        node: {fileID: -5408770162514567391}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  input: 0
-  output: 0
-  flags:
-    active: 0
     collected: 0
-  tagName: L2/P1
+  <Name>k__BackingField: MAIN/P0/EntryPoint2
 --- !u!114 &8010331218013806407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2495,7 +2173,7 @@ MonoBehaviour:
   flags:
     active: 0
     collected: 0
-  tagName: EX/UNLOCK/2
+  <Name>k__BackingField: EX/UNLOCK/2
 --- !u!114 &8212303023784682889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2547,49 +2225,3 @@ MonoBehaviour:
       _dynamic: 0
   input: 0
   output: 0
---- !u!114 &8890098614296826914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
-  m_Name: Tag
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -136, y: 504}
-  ports:
-    keys:
-    - input
-    - output
-    values:
-    - _fieldName: input
-      _node: {fileID: 8890098614296826914}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: output
-      _node: {fileID: 8890098614296826914}
-      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: input
-        node: {fileID: 5938578909701378296}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  input: 0
-  output: 0
-  flags:
-    active: 0
-    collected: 0
-  tagName: L2/P1
