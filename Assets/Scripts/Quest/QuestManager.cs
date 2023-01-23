@@ -9,15 +9,35 @@ public class QuestManager
 
     private static readonly string ResourceDataPath = "Quest/QuestManagerData";
 
-    public static void CreateQuest()
+    public static QuestGraph CreateQuest()
     {
-        Assert.IsNotNull(Data, "Quest database is not set");
-
         var quest = ScriptableObject.CreateInstance<QuestGraph>();
         quest.name = "Quest";
 
+        AddQuestToDatabase(quest);
+
+        return quest;
+    }
+
+    public static QuestGraph CreateQuest(QuestGraph template)
+    {
+        var quest = template.Copy() as QuestGraph;
+
+        AddQuestToDatabase(quest);
+
+        return quest;
+    }
+
+    private static void AddQuestToDatabase(QuestGraph quest)
+    {
+        Assert.IsNotNull(Data, "Quest database is not set");
 #if UNITY_EDITOR
         AssetDatabase.AddObjectToAsset(quest, Data.database);
+
+
+        // Add nodes to the asset for quest graph to be able to reference them
+        foreach (var node in quest.nodes)
+            AssetDatabase.AddObjectToAsset(node, Data.database);
 #endif
         Data.database.quests.Add(quest);
     }
@@ -26,7 +46,14 @@ public class QuestManager
     {
 #if UNITY_EDITOR
         AssetDatabase.RemoveObjectFromAsset(quest);
+
+        foreach (var node in quest.nodes)
+        {
+            if (node != null)
+                AssetDatabase.RemoveObjectFromAsset(node);
+        }
 #endif
+        Data.database.quests.Remove(quest);
     }
 
     /// <summary>

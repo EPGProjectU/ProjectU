@@ -1,19 +1,19 @@
 ﻿using XNode;
-    
+
 /// <summary>
-/// Allows to access specific <see cref="ProgressionTag"/> from anywhere in graph
+/// Allows to access specific <see cref="TagNode"/> from anywhere in graph
 /// </summary>
 [CreateNodeMenu("Progression/TagHook", 4)]
 public class TagHookNode : Node, NotifyNodeInterface
 {
     [Output]
-    public ProgressionTag.TagState output;
-    
+    public TagNode.TagState output;
+
     [Input]
-    public ProgressionTag.TagState input;
+    public TagNode.TagState input;
 
     public TagHook tagHook = new TagHook();
-    
+
     protected override void Init()
     {
         LinkHook();
@@ -22,26 +22,24 @@ public class TagHookNode : Node, NotifyNodeInterface
         UnityEditor.EditorApplication.playModeStateChanged += x => LinkHook();
 #endif
     }
-    
+
     private void LinkHook()
     {
-        ProgressionManager.RegisterTagHook(tagHook);
+        tagHook.onUpdate -= OnTagUpdate;
         tagHook.onUpdate += OnTagUpdate;
     }
-    
+
     public override object GetValue(NodePort port)
     {
-        if (port.fieldName == nameof(output))
-            return tagHook.Tag?.IsCollected();
-
-        return false;
+        return tagHook.Tag?.State;
     }
 
-    private void OnTagUpdate(TagHook.TagEvent e)
+    private void OnTagUpdate(TagEvent e)
     {
-        input = e.newState;
+        if (!GetOutputPort(nameof(output)).IsConnected)
+            return;
 
-        if (e.newState == ProgressionTag.TagState.Collected)
+        if (e.newState == input)
             NotifyNodeHelper.SendNotify(GetOutputPort(nameof(output)), e);
     }
 

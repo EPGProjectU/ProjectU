@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(ActorController))]
 public class PlayerController : MonoBehaviour
 {
-    private PlayerInput _playerInput;
+    private InputActionAsset _inputActions;
 
     public float pickupRange;
 
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         actor = GetComponent<ActorController>();
-        _playerInput = FindObjectOfType<PlayerInput>();
+        _inputActions = FindObjectOfType<PlayerInput>().actions;
         player = GameObject.Find("Character Transforms");
     }
 
@@ -64,8 +64,6 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void BindInputs()
     {
-        
-
         _performedInputBindings["Move"] = context =>
         {
             actor.MovementVector = context.ReadValue<Vector2>();
@@ -102,7 +100,9 @@ public class PlayerController : MonoBehaviour
             SetLookVectorFromCursor(context.ReadValue<Vector2>());
         };
 
-        _performedInputBindings["Run"] = context => { actor.running = !actor.running; };
+        _performedInputBindings["Run"] = context => { actor.running = true; };
+
+        _canceledInputBindings["Run"] = context => { actor.running = false; };
 
         _performedInputBindings["Attack"] = context => { actor.Attack(); };
 
@@ -123,7 +123,6 @@ public class PlayerController : MonoBehaviour
         {
             if (!SceneManager.GetSceneByBuildIndex((int)SceneEnum.EquipmentScen).isLoaded)
             {
-                
                 SceneManager.LoadScene((int)SceneEnum.EquipmentScen, LoadSceneMode.Additive);
                 Time.timeScale = 0;
             }
@@ -131,14 +130,13 @@ public class PlayerController : MonoBehaviour
             {
                 Time.timeScale = 1;
                 SceneManager.UnloadSceneAsync((int)SceneEnum.EquipmentScen);
-
             }
         };
+
         _performedInputBindings["Pause"] = context =>
         {
             if (!SceneManager.GetSceneByBuildIndex((int)SceneEnum.PauseMenu).isLoaded)
             {
-
                 SceneManager.LoadScene((int)SceneEnum.PauseMenu, LoadSceneMode.Additive);
                 Time.timeScale = 0;
             }
@@ -146,14 +144,13 @@ public class PlayerController : MonoBehaviour
             {
                 Time.timeScale = 1;
                 SceneManager.UnloadSceneAsync((int)SceneEnum.PauseMenu);
-
             }
         };
+
         _performedInputBindings["Character"] = context =>
         {
             if (!SceneManager.GetSceneByBuildIndex((int)SceneEnum.CharacterSheet).isLoaded)
             {
-
                 SceneManager.LoadScene((int)SceneEnum.CharacterSheet, LoadSceneMode.Additive);
                 Time.timeScale = 0;
             }
@@ -161,14 +158,13 @@ public class PlayerController : MonoBehaviour
             {
                 Time.timeScale = 1;
                 SceneManager.UnloadSceneAsync((int)SceneEnum.CharacterSheet);
-
             }
         };
+
         _performedInputBindings["Quest"] = context =>
         {
             if (!SceneManager.GetSceneByBuildIndex((int)SceneEnum.QuestLedger).isLoaded)
             {
-
                 SceneManager.LoadScene((int)SceneEnum.QuestLedger, LoadSceneMode.Additive);
                 Time.timeScale = 0;
             }
@@ -176,32 +172,31 @@ public class PlayerController : MonoBehaviour
             {
                 Time.timeScale = 1;
                 SceneManager.UnloadSceneAsync((int)SceneEnum.QuestLedger);
-
             }
         };
+
         _performedInputBindings["HUD"] = context =>
         {
             if (!SceneManager.GetSceneByBuildIndex((int)SceneEnum.PlayerUI).isLoaded)
             {
-
                 SceneManager.LoadScene((int)SceneEnum.PlayerUI, LoadSceneMode.Additive);
             }
             else
             {
                 SceneManager.UnloadSceneAsync((int)SceneEnum.PlayerUI);
-
             }
         };
 
 
-        _performedInputBindings["Talk"] = context => {
-
+        _performedInputBindings["Talk"] = context =>
+        {
             float talkRange = 3;
 
             Vector3 posRay = actor.transform.position + new Vector3(actor.LookVector.x, actor.LookVector.y);
             RaycastHit2D hit = Physics2D.Raycast(posRay, actor.LookVector, talkRange);
 
-            if(hit.collider != null) {
+            if (hit.collider != null)
+            {
                 if (hit.collider.gameObject._CompareTag("NPC"))
                 {
                     Debug.Log("Dialog start");
@@ -209,8 +204,6 @@ public class PlayerController : MonoBehaviour
                     //DialogueManager.StartConversation()....
                 }
             }
-            
-
         };
 
         _performedInputBindings["ToggleCursor"] = context =>
@@ -223,24 +216,26 @@ public class PlayerController : MonoBehaviour
                 SetLookVectorFromCursor(Mouse.current.position.ReadValue());
         };
 
-        _performedInputBindings["QuickSave"] = context => {
+        _performedInputBindings["QuickSave"] = context =>
+        {
             Debug.Log("Save");
             SaveEventSystem.Instance.SaveData();
         };
 
-        _performedInputBindings["QuickLoad"] = context => {
+        _performedInputBindings["QuickLoad"] = context =>
+        {
             Debug.Log("Load");
             SaveEventSystem.Instance.LoadData();
         };
 
         foreach (var inputBinding in _performedInputBindings)
         {
-            _playerInput.actions[inputBinding.Key].performed += inputBinding.Value;
+            _inputActions[inputBinding.Key].performed += inputBinding.Value;
         }
 
         foreach (var inputBinding in _canceledInputBindings)
         {
-            _playerInput.actions[inputBinding.Key].canceled += inputBinding.Value;
+            _inputActions[inputBinding.Key].canceled += inputBinding.Value;
         }
     }
 
@@ -249,17 +244,14 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void BreakInputBindings()
     {
-        if (_playerInput == null)
-            return;
-
         foreach (var inputBinding in _performedInputBindings)
         {
-            _playerInput.actions[inputBinding.Key].performed -= inputBinding.Value;
+            _inputActions[inputBinding.Key].performed -= inputBinding.Value;
         }
 
         foreach (var inputBinding in _canceledInputBindings)
         {
-            _playerInput.actions[inputBinding.Key].canceled -= inputBinding.Value;
+            _inputActions[inputBinding.Key].canceled -= inputBinding.Value;
         }
     }
 

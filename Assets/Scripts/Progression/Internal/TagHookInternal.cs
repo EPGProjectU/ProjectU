@@ -3,17 +3,21 @@ using UnityEngine;
 
 // Internal functionality of TagHook
 [Serializable]
-public partial class TagHook : ISerializationCallbackReceiver
+public partial class TagHook
 {
-    [SerializeField]
-    internal string tagName;
-
     /// <summary>
     /// Delegate used in <see cref="TagHook.onUpdate"/>
     /// </summary>
-    public delegate void TagDelegate(TagEvent e);
+    public delegate void UpdateDelegateWithEvent(TagEvent e);
 
-    internal TagHook() {}
+    public delegate void UpdateDelegate();
+
+    internal TagHook()
+    {
+        onUpdate = new HookUpdateDelegate<UpdateDelegateWithEvent>(this);
+        onCollect = new HookUpdateDelegate<UpdateDelegate>(this);
+        onActivate = new HookUpdateDelegate<UpdateDelegate>(this);
+    }
 
     /// <summary>
     /// Implementation of <see cref="Create"/>
@@ -24,9 +28,14 @@ public partial class TagHook : ISerializationCallbackReceiver
     {
         var hook = new TagHook();
 
-        ProgressionManager.RegisterTagHook(hook);
+        hook.Tag = ProgressionManager.GetTag(tagName);
+        //ProgressionManager.OnInitialization += () =>
+        //{
+        //    hook.Tag = ProgressionManager.GetTag(tagName);
+        //    hook.Bind();
+        //};
 
-        hook.SetTagName_Impl(tagName);
+        hook.Bind();
 
         return hook;
     }
@@ -36,44 +45,10 @@ public partial class TagHook : ISerializationCallbackReceiver
     /// </summary>
     private void Release_Impl()
     {
-        ProgressionManager.UnRegisterTagHook(this);
-        onUpdate = null;
-    }
-
-    /// <summary>
-    /// Implementation of <see cref="set_TagName"/>
-    /// </summary>
-    /// <param name="value">New <see cref="TagName"/></param>
-    private void SetTagName_Impl(string value)
-    {
-        if (tagName == value)
-            return;
-
-        tagName = value;
-
-        // ReLinks hook under the new name
-        ProgressionManager.ReLinkTagHook(this);
-    }
-
-    /// <summary>
-    /// Implementation of <see cref="GetDummyTagEvent"/>
-    /// </summary>
-    /// <returns></returns>
-    private TagEvent GetDummyTagEvent_Impl()
-    {
-        var tagEvent = new TagEvent
-        {
-            hook = this,
-            progressionTag = Tag
-        };
-
-        if (Tag == null)
-            return tagEvent;
-
-        tagEvent.oldState = Tag.State;
-        tagEvent.newState = Tag.State;
-
-        return tagEvent;
+        Unbind();
+        onUpdate.Reset();
+        onCollect.Reset();
+        onActivate.Reset();
     }
 
     /// <summary>
@@ -82,13 +57,81 @@ public partial class TagHook : ISerializationCallbackReceiver
     /// <param name="e"><see cref="TagEvent"/></param>
     internal void FireOnUpdate(TagEvent e)
     {
-        onUpdate?.Invoke(e);
+        onUpdate.Invoke(e);
+        
+        switch (e.newState)
+        {
+            case TagNode.TagState.Active:
+                onActivate.Invoke();
+                break;
+            case TagNode.TagState.Collected:
+                onCollect.Invoke();
+                break;
+        }
     }
 
-    void ISerializationCallbackReceiver.OnBeforeSerialize() {}
-
-    void ISerializationCallbackReceiver.OnAfterDeserialize()
+    internal void Bind()
     {
-        ProgressionManager.RegisterTagHook(this);
+        if (Tag == null)
+            return;
+
+        ProgressionManager.BindUpdate(Tag, FireOnUpdate);
+    }
+
+    internal void Unbind()
+    {
+        if (Tag == null)
+            return;
+
+        ProgressionManager.UnbindUpdate(Tag, FireOnUpdate);
+    }
+
+    [Serializable]
+    public class HookUpdateDelegate<TDelegate> : ISerializationCallbackReceiver
+        where TDelegate : MulticastDelegate
+    {
+        [SerializeField]
+        private SerializedDelegate<TDelegate> @delegate;
+
+        [NonSerialized]
+        private TagHook _hook;
+
+        internal HookUpdateDelegate(TagHook tagHook)
+        {
+            _hook = tagHook;
+        }
+
+        internal void Invoke(params object?[]? e)
+        {
+            @delegate?.Invoke(e);
+        }
+
+        internal void Reset()
+        {
+            @delegate = null;
+        }
+
+        public static HookUpdateDelegate<TDelegate> operator +(HookUpdateDelegate<TDelegate> lhs, TDelegate rhs)
+        {
+            lhs.@delegate += rhs;
+            lhs._hook.Bind();
+
+            return lhs;
+        }
+
+        public static HookUpdateDelegate<TDelegate> operator -(HookUpdateDelegate<TDelegate> lhs, TDelegate rhs)
+        {
+            lhs.@delegate -= rhs;
+
+            return lhs;
+        }
+
+        void ISerializationCallbackReceiver.OnBeforeSerialize() {}
+
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
+        {
+            if (@delegate != null)
+                _hook.Bind();
+        }
     }
 }
