@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public bool NPCdetected;
     [HideInInspector]
     public bool ItemDetected;
-    private float detectRange = 3;
+    private float detectRange = 1;
 
     private ActorController actor;
 
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Update() {
-        //if (Time.frameCount % 10 == 0)
+        if (Time.frameCount % 10 == 0)
             ScanForNearbyInteractables();
     }
 
