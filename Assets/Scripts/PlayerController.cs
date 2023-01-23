@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInput _playerInput;
 
     public float pickupRange;
+    public float talkRange = 10;
 
     private ActorController actor;
 
@@ -195,22 +196,17 @@ public class PlayerController : MonoBehaviour
 
 
         _performedInputBindings["Talk"] = context => {
+            //Vector3 posRay = actor.transform.position + new Vector3(actor.LookVector.x, actor.LookVector.y);
+            Collider2D[] hits = Physics2D.OverlapCircleAll(actor.transform.position, talkRange);
 
-            float talkRange = 3;
-
-            Vector3 posRay = actor.transform.position + new Vector3(actor.LookVector.x, actor.LookVector.y);
-            RaycastHit2D hit = Physics2D.Raycast(posRay, actor.LookVector, talkRange);
-
-            if(hit.collider != null) {
-                if (hit.collider.gameObject._CompareTag("NPC"))
-                {
-                    Debug.Log("Dialog start");
-                    hit.collider.gameObject.GetComponent<ActorController>().StartConversation();
-                    //DialogueManager.StartConversation()....
+            if (hits.Length > 0) {
+                foreach (Collider2D hit in hits) {
+                    if (hit.gameObject._CompareTag("NPC")) {
+                        hit.gameObject.GetComponent<ActorController>().StartConversation();
+                        break;
+                    }
                 }
             }
-            
-
         };
 
         _performedInputBindings["ToggleCursor"] = context =>

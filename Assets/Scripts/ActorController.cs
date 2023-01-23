@@ -159,7 +159,7 @@ public partial class ActorController : MonoBehaviour
     public void StartConversation()
     {
         _isTalking = true;
-        Debug.Log("TEST");
+        Debug.Log("Conversation started");
         ConversationManager.Instance.StartConversation(this.gameObject.GetComponent<NPCConversation>());
         //do DialogueManager things
         //DialogueManager.StartConversation()
