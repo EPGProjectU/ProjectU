@@ -15,15 +15,16 @@ public class CreateEquipmentUI : MonoBehaviour
     public Text itemStatsTextField;
     public Image itemStatsIcon;
     
-    public Text itemUseSuccessMessage;
+    //public Text itemUseSuccessMessage;
 
-    public Image ArmorIcon;
-    public Image WeaponIcon;
-    public Image ConsumableIcon;
-    public Image MiscIcon;
+    public Sprite ArmorIcon;
+    public Sprite WeaponIcon;
+    public Sprite ConsumableIcon;
+    public Sprite MiscIcon;
 
     void Start()
     {
+        itemStatsIcon.enabled = false;
         equipment = ProjectU.Core.TagList._FindGameObjectsWithTag("Player")[0].GetComponent<Equipment>();
         Image image;
         if(equipment.items != null)
@@ -42,10 +43,11 @@ public class CreateEquipmentUI : MonoBehaviour
                         itemStatsTextField, 
                         itemStatsIcon, item);
                     HighlightClickedItem();
+                    itemStatsIcon.enabled = true;
                 });
             }
         }
-        itemUseSuccessMessage.enabled = false;
+
     }
 
     private void ChangeUIBasedOnItem(
@@ -63,35 +65,36 @@ public class CreateEquipmentUI : MonoBehaviour
         switch (item.GetType().ToString()) {
             case "Armor":
                 buttonText.text = "Wear armor";
-                typeIcon = ArmorIcon;
-                itemUseSuccessMessage.text = "You have put on a fine armor!";
+                typeIcon.sprite = ArmorIcon;
+                //itemUseSuccessMessage.text = "You have put on a fine armor!";
                 break;
             case "Weapon":
                 buttonText.text = "Equip weapon";
-                typeIcon = WeaponIcon;
-                itemUseSuccessMessage.text = "You have grabbed a fine weapon!";
+                typeIcon.sprite = WeaponIcon;
+                //itemUseSuccessMessage.text = "You have grabbed a fine weapon!";
                 break;
             case "Consumable":
                 buttonText.text = "Drink";
-                typeIcon = ConsumableIcon;
-                itemUseSuccessMessage.text = "You have drank a fine concoction!";
+                typeIcon.sprite = ConsumableIcon;
+                //itemUseSuccessMessage.text = "You have drank a fine concoction!";
                 break;
             case "Miscellaineous":
                 buttonText.text = "Use";
-                typeIcon = ConsumableIcon;
-                itemUseSuccessMessage.text = "You have used an item!";
+                typeIcon.sprite = MiscIcon;
+                //itemUseSuccessMessage.text = "You have used an item!";
                 break;
         }
-        EquipmentHandler.selectedItem = item;
+        //EquipmentHandler.selectedItem = item;
     }
 
     private void HighlightClickedItem() {
         //Just a gray square rendered "under" item would be nice, alpha channels ?
     }
 
-    public void ShowEquipMessage() {
+
+   /* public void ShowEquipMessage() {
         //show equip message for x seconds/permanently that is updated from last clicked item and just shown when Button to use item is clicked
         itemUseSuccessMessage.enabled = true;
-    }
+    }*/
 
 }
