@@ -22,7 +22,7 @@ public class QuestManager
     public static QuestGraph CreateQuest(QuestGraph template)
     {
         var quest = template.Copy() as QuestGraph;
-        
+
         AddQuestToDatabase(quest);
 
         return quest;
@@ -33,8 +33,8 @@ public class QuestManager
         Assert.IsNotNull(Data, "Quest database is not set");
 #if UNITY_EDITOR
         AssetDatabase.AddObjectToAsset(quest, Data.database);
-        
-        
+
+
         // Add nodes to the asset for quest graph to be able to reference them
         foreach (var node in quest.nodes)
             AssetDatabase.AddObjectToAsset(node, Data.database);
@@ -46,10 +46,14 @@ public class QuestManager
     {
 #if UNITY_EDITOR
         AssetDatabase.RemoveObjectFromAsset(quest);
-        
+
         foreach (var node in quest.nodes)
-            AssetDatabase.RemoveObjectFromAsset(node);
+        {
+            if (node != null)
+                AssetDatabase.RemoveObjectFromAsset(node);
+        }
 #endif
+        Data.database.quests.Remove(quest);
     }
 
     /// <summary>

@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System.Linq;
+using JetBrains.Annotations;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class QuestManagerEditorWindow : EditorWindow
 {
     private ReorderableList questList;
     private bool questFoldout = true;
+    private Vector2 scrollPos;
 
     private const string QuestsHeader = "Quests";
 
@@ -47,13 +49,19 @@ public class QuestManagerEditorWindow : EditorWindow
 
         var questDatabase = EditorGUILayout.ObjectField(QuestManager.Data.database, typeof(QuestDatabase), false) as QuestDatabase;
 
+        scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
+
         if (questDatabase)
         {
+            questDatabase.quests = questDatabase.quests.Where(quest => quest != null).ToList();
+
             if (questFoldout)
                 questList?.DoLayoutList();
             else
                 questFoldout = EditorGUILayout.Foldout(questFoldout, QuestsHeader);
         }
+        
+        EditorGUILayout.EndScrollView();
 
         if (!EditorGUI.EndChangeCheck())
             return;
@@ -104,12 +112,10 @@ public class QuestManagerEditorWindow : EditorWindow
 
     void AddItemToQuestList(ReorderableList list)
     {
-        QuestManager.CreateQuest();
+        list.list.Add(QuestManager.CreateQuest());
 
         EditorUtility.SetDirty(QuestManager.Data.database);
         AssetDatabase.SaveAssets();
-
-        Repaint();
     }
 
 
@@ -119,13 +125,12 @@ public class QuestManagerEditorWindow : EditorWindow
                 "Quest will be permanently deleted?", "Delete", "Cancel"))
         {
             var quest = list.list[list.index] as QuestGraph;
+            list.list.Remove(quest);
+            
             QuestManager.RemoveQuest(quest);
-            ReorderableList.defaultBehaviours.DoRemoveButton(list);
 
             EditorUtility.SetDirty(QuestManager.Data.database);
             AssetDatabase.SaveAssets();
         }
-
-        Repaint();
     }
 }
