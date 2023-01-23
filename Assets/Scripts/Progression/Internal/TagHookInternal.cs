@@ -58,8 +58,16 @@ public partial class TagHook
     internal void FireOnUpdate(TagEvent e)
     {
         onUpdate.Invoke(e);
-        onCollect.Invoke();
-        onActivate.Invoke();
+        
+        switch (e.newState)
+        {
+            case TagNode.TagState.Active:
+                onActivate.Invoke();
+                break;
+            case TagNode.TagState.Collected:
+                onCollect.Invoke();
+                break;
+        }
     }
 
     internal void Bind()
