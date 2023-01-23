@@ -16,6 +16,12 @@ public class PlayerController : MonoBehaviour
     public float pickupRange;
     public float talkRange = 10;
 
+    [HideInInspector]
+    public bool NPCdetected;
+    [HideInInspector]
+    public bool ItemDetected;
+    private float detectRange = 3;
+
     private ActorController actor;
 
 
@@ -26,6 +32,11 @@ public class PlayerController : MonoBehaviour
         actor = GetComponent<ActorController>();
         _playerInput = FindObjectOfType<PlayerInput>();
         player = GameObject.Find("Character Transforms");
+    }
+
+    private void Update() {
+        //if (Time.frameCount % 10 == 0)
+            ScanForNearbyInteractables();
     }
 
     /// <summary>
@@ -59,6 +70,7 @@ public class PlayerController : MonoBehaviour
         // Cache PlayerInput
         BindInputs();
     }
+
 
     /// <summary>
     /// Binds actions to Player Inputs using binding names
@@ -274,5 +286,24 @@ public class PlayerController : MonoBehaviour
     private void Pickup(GameObject item)
     {
         this.GetComponent<Equipment>().items.Add(item.GetComponent<ItemDisplay>().item);
+    }
+
+    private void ScanForNearbyInteractables() {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(actor.transform.position, detectRange);
+
+        if (hits.Length > 0) {
+            foreach (Collider2D hit in hits) {
+                if (hit.gameObject._CompareTag("NPC"))
+                    NPCdetected = true;
+
+                else if (hit.gameObject._CompareTag("Item"))
+                    ItemDetected = true;
+
+                else {
+                    ItemDetected = false;
+                    NPCdetected = false;
+                }
+            }
+        }
     }
 }
