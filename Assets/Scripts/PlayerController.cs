@@ -102,7 +102,15 @@ public class PlayerController : MonoBehaviour
             SetLookVectorFromCursor(context.ReadValue<Vector2>());
         };
 
-        _performedInputBindings["Run"] = context => { actor.running = !actor.running; };
+        _performedInputBindings["Run"] = context =>
+        {
+            actor.running = true;
+        };
+
+        _canceledInputBindings["Run"] = context =>
+        {
+            actor.running = false;
+        };
 
         _performedInputBindings["Attack"] = context => { actor.Attack(); };
 
