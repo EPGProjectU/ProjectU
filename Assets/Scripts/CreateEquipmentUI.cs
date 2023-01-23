@@ -25,6 +25,7 @@ public class CreateEquipmentUI : MonoBehaviour
     void Start()
     {
         itemStatsIcon.enabled = false;
+
         equipment = ProjectU.Core.TagList._FindGameObjectsWithTag("Player")[0].GetComponent<Equipment>();
         Image image;
         if(equipment.items != null)
@@ -43,7 +44,6 @@ public class CreateEquipmentUI : MonoBehaviour
                         itemStatsTextField, 
                         itemStatsIcon, item);
                     HighlightClickedItem();
-                    itemStatsIcon.enabled = true;
                 });
             }
         }
@@ -84,7 +84,9 @@ public class CreateEquipmentUI : MonoBehaviour
                 //itemUseSuccessMessage.text = "You have used an item!";
                 break;
         }
-        //EquipmentHandler.selectedItem = item;
+        itemStatsIcon.enabled = true;
+
+        EquipmentHandler.selectedItem = item;
     }
 
     private void HighlightClickedItem() {
