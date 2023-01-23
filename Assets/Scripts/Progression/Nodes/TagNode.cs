@@ -20,6 +20,7 @@ public class TagNode : Node
     {
         public bool active;
         public bool collected;
+        public bool collectOnAvailable;
     }
 
     public Flags flags;
@@ -73,6 +74,7 @@ public class TagNode : Node
 
     public bool IsCollected()
     {
+        flags.collected |= flags.collectOnAvailable && IsAvailable();
         return flags.collected;
     }
 

@@ -30,6 +30,9 @@ public class TagNodeEditor : NodeEditor
         Node.flags.active = GUILayout.Toggle(Node.flags.active, "Active");
         Node.flags.collected = GUILayout.Toggle(Node.flags.collected, "Collected");
         GUILayout.EndHorizontal();
+        
+        
+        Node.flags.collectOnAvailable = GUILayout.Toggle(Node.flags.collectOnAvailable, "Collect on available");
 
         serializedObject.ApplyModifiedProperties();
 
