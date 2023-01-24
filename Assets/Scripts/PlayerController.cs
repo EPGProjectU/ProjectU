@@ -29,9 +29,9 @@ public class PlayerController : MonoBehaviour
         _inputActions = FindObjectOfType<PlayerInput>().actions;
     }
 
-    private void Update() {
-        if (Time.frameCount % 10 == 0)
-            ScanForNearbyInteractables();
+    private void Update()
+    {
+        ScanForNearbyInteractables();
     }
 
     /// <summary>
