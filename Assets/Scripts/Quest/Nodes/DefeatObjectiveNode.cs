@@ -1,9 +1,11 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using ProjectU;
 using ProjectU.Core;
 using UnityEngine;
 using XNode;
 
+
+[CreateNodeMenu("Quest/Objectives/Defeat")]
 public class DefeatObjectiveNode : Node, NotifyNodeInterface
 {
     [Input]
@@ -26,6 +28,7 @@ public class DefeatObjectiveNode : Node, NotifyNodeInterface
             if (!NotificationManger.DeathCallbacks.ContainsKey(tag))
                 NotificationManger.DeathCallbacks[tag] = null;
 
+            NotificationManger.DeathCallbacks[tag] -= EnemyDefeated;
             NotificationManger.DeathCallbacks[tag] += EnemyDefeated;
         }
 

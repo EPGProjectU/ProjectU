@@ -79,7 +79,7 @@ public class SaveEventSystem : MonoBehaviour
         data.activeTags = new List<string>();
         data.collectTags = new List<string>();
 
-        foreach (ProgressionTag tag in allTags)
+        foreach (TagNode tag in allTags)
         {
             if (tag.IsActive()) data.activeTags.Add(tag.Name);
             if (tag.IsCollected()) data.collectTags.Add(tag.Name);

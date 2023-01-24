@@ -5,5 +5,6 @@ using UnityEngine;
 public class QuestDatabase : ScriptableObject
 {
     [SerializeField]
+    [HideInInspector]
     public List<QuestGraph> quests = new List<QuestGraph>();
 }

@@ -36,6 +36,7 @@ public class AIController : MonoBehaviour
 
     private void UpdateAgent()
     {
+        agent.speed = actor.CurrentMaxSpeed;
         actor.MovementVector = agent.velocity / actor.CurrentMaxSpeed;
         
         if (actor.MovementVector.magnitude > 1)
