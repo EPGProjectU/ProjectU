@@ -13,25 +13,20 @@ public class PlayerController : MonoBehaviour
 {
     private InputActionAsset _inputActions;
 
-    public float pickupRange;
-    public float talkRange = 10;
-
     [HideInInspector]
     public bool NPCdetected;
+
     [HideInInspector]
     public bool ItemDetected;
-    private float detectRange = 1;
+
+    private float interactionRange = 2;
 
     private ActorController actor;
-
-
-    GameObject player;
 
     private void Awake()
     {
         actor = GetComponent<ActorController>();
         _inputActions = FindObjectOfType<PlayerInput>().actions;
-        player = GameObject.Find("Character Transforms");
     }
 
     private void Update() {
@@ -124,7 +119,7 @@ public class PlayerController : MonoBehaviour
         {
             ItemInfo itemInfo = ItemSearcher.findClosestItem(transform.position);
 
-            if (itemInfo.distance != -1 && itemInfo.distance <= pickupRange)
+            if (itemInfo.distance != -1 && itemInfo.distance <= interactionRange)
             {
                 Pickup(itemInfo.item);
                 //itemInfo.item.GetComponent<ItemDisplay>().item.Use(gameObject);//using item
@@ -201,13 +196,17 @@ public class PlayerController : MonoBehaviour
         };
 
 
-        _performedInputBindings["Talk"] = context => {
+        _performedInputBindings["Talk"] = context =>
+        {
             //Vector3 posRay = actor.transform.position + new Vector3(actor.LookVector.x, actor.LookVector.y);
-            Collider2D[] hits = Physics2D.OverlapCircleAll(actor.transform.position, talkRange);
+            Collider2D[] hits = Physics2D.OverlapCircleAll(actor.transform.position, interactionRange);
 
-            if (hits.Length > 0) {
-                foreach (Collider2D hit in hits) {
-                    if (hit.gameObject._CompareTag("NPC")) {
+            if (hits.Length > 0)
+            {
+                foreach (Collider2D hit in hits)
+                {
+                    if (hit.gameObject._CompareTag("NPC"))
+                    {
                         hit.gameObject.GetComponent<ActorController>().StartConversation();
                         break;
                     }
@@ -281,21 +280,29 @@ public class PlayerController : MonoBehaviour
         this.GetComponent<Equipment>().items.Add(item.GetComponent<ItemDisplay>().item);
     }
 
-    private void ScanForNearbyInteractables() {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(actor.transform.position, detectRange);
+    private void ScanForNearbyInteractables()
+    {
+        // Reset flags
+        ItemDetected = false;
+        NPCdetected = false;
 
-        if (hits.Length > 0) {
-            foreach (Collider2D hit in hits) {
-                if (hit.gameObject._CompareTag("NPC"))
-                    NPCdetected = true;
+        var hits = Physics2D.OverlapCircleAll(actor.transform.position, interactionRange);
 
-                else if (hit.gameObject._CompareTag("Item"))
-                    ItemDetected = true;
+        if (hits.Length <= 0)
+            return;
 
-                else {
-                    ItemDetected = false;
-                    NPCdetected = false;
-                }
+        foreach (var hit in hits)
+        {
+            if (hit.gameObject._CompareTag("NPC"))
+            {
+                NPCdetected = true;
+                return;
+            }
+
+            if (hit.gameObject._CompareTag("Item"))
+            {
+                ItemDetected = true;
+                return;
             }
         }
     }
