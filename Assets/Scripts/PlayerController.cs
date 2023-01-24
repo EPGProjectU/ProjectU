@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
         {
             ItemInfo itemInfo = ItemSearcher.findClosestItem(transform.position);
 
-            if (itemInfo.distance != -1 && itemInfo.distance <= interactionRange)
+            if (itemInfo.distance != -1 && (itemInfo.distance <= interactionRange || ItemDetected))
             {
                 Pickup(itemInfo.item);
                 //itemInfo.item.GetComponent<ItemDisplay>().item.Use(gameObject);//using item
