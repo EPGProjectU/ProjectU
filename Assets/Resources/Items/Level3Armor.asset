@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Chainmail
   sprite: {fileID: 21300000, guid: 6be7054473f84e0429d3e8b1b6cbf878, type: 3}
+  description: This is a silver mail shirt. All craftsdwarfship is of the highest
+    quality. It is studded with silver and object menaces with spikes of menace.
+    On the item there is an image of wooden mail made from bread.
   ArmorValue: 10
   Durability: 70

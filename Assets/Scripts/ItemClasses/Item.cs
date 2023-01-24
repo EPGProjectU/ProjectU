@@ -7,12 +7,14 @@ public class Item : ScriptableObject
 {
     public string Name;
     public Sprite sprite;
+    public string description;
 
     public override string ToString()
     {
         return "Nazwa: " + Name;
     }
 
+    public virtual string getStats() { return "Item has no statistics"; }
 
     public virtual void Use(GameObject target)
     {
