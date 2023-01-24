@@ -215,9 +215,9 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1841362858}
-        m_TargetAssemblyTypeName: OpenGate, Assembly-CSharp
-        m_MethodName: CollectTag
+      - m_Target: {fileID: 820328569}
+        m_TargetAssemblyTypeName: TagHookTrigger, Quest
+        m_MethodName: setActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -508,7 +508,7 @@ Transform:
   - {fileID: 1873102157}
   - {fileID: 918549101}
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &292253716
 PrefabInstance:
@@ -684,7 +684,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 34
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &321217144
 MonoBehaviour:
@@ -1485,7 +1485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hook:
-    <Tag>k__BackingField: {fileID: 0}
+    <Tag>k__BackingField: {fileID: -1351460517349501212, guid: 44376205d230af44a866298a556a002d, type: 2}
     onUpdate:
       delegate:
         guid:
@@ -1507,7 +1507,7 @@ MonoBehaviour:
           m_Value1: 1670666180
           m_Value2: 1191206319
           m_Value3: 1789317870
-  hookStateThatOpensGate: 0
+  hookStateThatOpensGate: 2
 --- !u!1 &528010167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,7 +1564,7 @@ Transform:
   m_LocalScale: {x: 1, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &528010170
 MonoBehaviour:
@@ -1823,7 +1823,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &741134177
 MonoBehaviour:
@@ -45498,6 +45498,72 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!1 &820328567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 820328568}
+  - component: {fileID: 820328569}
+  m_Layer: 0
+  m_Name: QuestStarter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &820328568
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820328567}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.29, y: -18.39, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &820328569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820328567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794c00079398eb74ca5e87b21c6e0487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagHook:
+    <Tag>k__BackingField: {fileID: 7278139415752595749, guid: 44376205d230af44a866298a556a002d, type: 2}
+    onUpdate:
+      delegate:
+        guid:
+          m_Value0: 661164065
+          m_Value1: 1260659476
+          m_Value2: 1205199156
+          m_Value3: 961162583
+    onCollect:
+      delegate:
+        guid:
+          m_Value0: 394268444
+          m_Value1: 1181419353
+          m_Value2: 158886696
+          m_Value3: 757275718
+    onActivate:
+      delegate:
+        guid:
+          m_Value0: 1207482010
+          m_Value1: 1261280256
+          m_Value2: 1232408141
+          m_Value3: 168552159
 --- !u!1 &857493435
 GameObject:
   m_ObjectHideFlags: 0
@@ -87732,7 +87798,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 33
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &991671560
 MonoBehaviour:
@@ -87925,7 +87991,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 32
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1068474537
 MonoBehaviour:
@@ -88175,7 +88241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hook:
-    <Tag>k__BackingField: {fileID: 0}
+    <Tag>k__BackingField: {fileID: -1351460517349501212, guid: 44376205d230af44a866298a556a002d, type: 2}
     onUpdate:
       delegate:
         guid:
@@ -88197,7 +88263,7 @@ MonoBehaviour:
           m_Value1: 416322213
           m_Value2: 1682543649
           m_Value3: 2001202713
-  hookStateThatOpensGate: 0
+  hookStateThatOpensGate: 3
 --- !u!1 &1117713559
 GameObject:
   m_ObjectHideFlags: 0
@@ -89388,24 +89454,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1418625564 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3576479455743742505, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
-  m_PrefabInstance: {fileID: 1694807098}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1418625565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418625564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eb3b2e09d434814abaec4d845d99751, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gate: {fileID: 1075227676}
 --- !u!1001 &1477127070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89788,7 +89836,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1647790980
 MonoBehaviour:
@@ -89807,83 +89855,6 @@ MonoBehaviour:
   - {x: -0.13, y: -0.02, z: 0}
   - {x: 10.34, y: -3.33, z: 0}
   loopPath: 1
---- !u!1001 &1694807098
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3576479455743742505, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
-      propertyPath: m_Name
-      value: Key (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933131748544864368, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
-      propertyPath: m_RootOrder
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933131748544864368, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -18.81
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933131748544864368, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933131748544864368, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933131748544864368, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933131748544864368, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933131748544864368, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933131748544864368, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933131748544864368, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933131748544864368, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933131748544864368, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5598899171532045513, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
-      propertyPath: item
-      value: 
-      objectReference: {fileID: 11400000, guid: ea27c041910e4654c8f9c94561a976bd, type: 2}
-    - target: {fileID: 7974813338223203648, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -583449003233949561, guid: 5d2c6546e2abec249b9dba923907052c, type: 3}
-    - target: {fileID: 7974813338223203648, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7974813338223203648, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
-      propertyPath: m_Color.g
-      value: 0.9439743
-      objectReference: {fileID: 0}
-    - target: {fileID: 7974813338223203648, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
 --- !u!1001 &1745066785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90122,82 +90093,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba5318c16db9a2a47845a4265c61607c, type: 3}
---- !u!1001 &1841362857
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -260298323778204529, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3876717094927602820, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
-      propertyPath: hook.tagName
-      value: HelpDrunkard
-      objectReference: {fileID: 0}
-    - target: {fileID: 5725991399162177800, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
-      propertyPath: m_Name
-      value: GateQuestStarter
-      objectReference: {fileID: 0}
-    - target: {fileID: 8745315289170433345, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8745315289170433345, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.9946686
-      objectReference: {fileID: 0}
-    - target: {fileID: 8745315289170433345, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -28.705326
-      objectReference: {fileID: 0}
-    - target: {fileID: 8745315289170433345, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8745315289170433345, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8745315289170433345, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8745315289170433345, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8745315289170433345, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8745315289170433345, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8745315289170433345, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8745315289170433345, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
---- !u!114 &1841362858 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3876717094927602820, guid: 7b2253157ba3a6c4cb578c1238915521, type: 3}
-  m_PrefabInstance: {fileID: 1841362857}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 494f033aacafacb4c90761d63a54bbec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1873102156
 GameObject:
   m_ObjectHideFlags: 0
@@ -90309,7 +90204,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1896305976
 MonoBehaviour:
@@ -90822,19 +90717,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentIDCounter: 11
-  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":223,"yPos":507},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes.\n","parentUIDs":[4],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":513,"yPos":525},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"No","parentUIDs":[4],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":239,"yPos":16},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":151,"yPos":603},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes.\n","parentUIDs":[4],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":441,"yPos":621},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"No","parentUIDs":[4],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":167,"yPos":112},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"I
     am busy don''t you see? All this wine to myself haha ack... ","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Drunk
-    Goblin","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":234,"yPos":139},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"So
+    Goblin","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":162,"yPos":235},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"So
     yoou want to escape from this prison.","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Drunk
-    Goblin","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":235,"yPos":369},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"If
+    Goblin","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":163,"yPos":465},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"If
     yoou get rid of those skeletons trying to steal my wine I may give you something
     that will help you with that Troll. Deal?","parentUIDs":[10],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Drunk
-    Goblin","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":228,"yPos":629},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"If
+    Goblin","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":157,"yPos":725},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"If
     you deal with these god damn skeletons I may open the gate to the room with my
     sword for you... or not haha","parentUIDs":[5],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Drunk
-    Goblin","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":514,"yPos":634},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"Your
+    Goblin","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":442,"yPos":730},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"Your
     loss ack...","parentUIDs":[7],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Drunk
-    Goblin","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":4}],"EditorInfo":{"isRoot":false,"xPos":230.5,"yPos":252},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"But
+    Goblin","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":4}],"EditorInfo":{"isRoot":false,"xPos":158.5,"yPos":348},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"But
     that HUUGE Troll is guarding the exit...","parentUIDs":[1],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Drunk
     Goblin","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
@@ -90854,7 +90749,19 @@ MonoBehaviour:
   EndConversationFont: {fileID: 0}
   Event:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 820328569}
+        m_TargetAssemblyTypeName: TagHookTrigger, Quest
+        m_MethodName: setActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1978047548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90913,7 +90820,7 @@ PrefabInstance:
     - target: {fileID: 5598899171532045513, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: ea27c041910e4654c8f9c94561a976bd, type: 2}
+      objectReference: {fileID: 11400000, guid: 7d783719729e7fa4aab084df6b4a0fe4, type: 2}
     - target: {fileID: 7974813338223203648, guid: 79a5a1d250f2c2a4bab88ee0fcfa9d19, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -90980,7 +90887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hook:
-    <Tag>k__BackingField: {fileID: 0}
+    <Tag>k__BackingField: {fileID: 7278139415752595749, guid: 44376205d230af44a866298a556a002d, type: 2}
     onUpdate:
       delegate:
         guid:
@@ -91002,7 +90909,7 @@ MonoBehaviour:
           m_Value1: 1945647939
           m_Value2: 1089505117
           m_Value3: 734371057
-  hookStateThatOpensGate: 0
+  hookStateThatOpensGate: 3
 --- !u!114 &2129459684
 MonoBehaviour:
   m_ObjectHideFlags: 0
