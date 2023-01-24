@@ -9,7 +9,7 @@ public class ItemSearcher : MonoBehaviour
         var closestDistance = -1f ;
         foreach(var item in TagList._FindGameObjectsWithTag("Item"))
         {
-            float dist = Vector3.Distance(item.transform.position, position);
+            float dist = Vector2.Distance(item.transform.position, position);
             if(closestDistance == -1f || closestDistance > dist)
             {
                 closestDistance = dist;
