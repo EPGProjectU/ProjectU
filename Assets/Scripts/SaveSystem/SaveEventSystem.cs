@@ -125,12 +125,24 @@ public class SaveEventSystem : MonoBehaviour
 
     private IEnumerator OnSceneLoaded()
     {
+        ResetProgression();
         yield return new WaitForSeconds(0.1f);
         OnLoadData?.Invoke(data);
         SceneManager.sceneLoaded -= OnSceneLoadedCorutine;
-
+        
         LoadItemsOnScene();
-        LoadProgression();
+        //LoadProgression();
+        foreach (string name in data.activeTags)
+        {
+            ProgressionManager.SetActiveTag(name, true);
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        foreach (string name in data.collectTags)
+        {
+            ProgressionManager.CollectTag(name, true);
+        }
     }
 
     private void LoadItemsOnScene()
@@ -158,6 +170,15 @@ public class SaveEventSystem : MonoBehaviour
         foreach (string name in data.collectTags)
         {
             ProgressionManager.CollectTag(name, true);
+        }
+    }
+
+    private void ResetProgression()
+    {
+        foreach (TagNode tagNode in ProgressionManager.GetAllTags())
+        {
+            tagNode.flags.collected = false;
+            tagNode.flags.active = false;
         }
     }
 }
