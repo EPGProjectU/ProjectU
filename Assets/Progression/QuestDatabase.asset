@@ -33,8 +33,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: -8200208134081661331}
-      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
@@ -44,27 +44,9 @@ MonoBehaviour:
   input: 2
   tagHook:
     <Tag>k__BackingField: {fileID: -3074108703614639802, guid: 44376205d230af44a866298a556a002d, type: 2}
-    onUpdate:
-      delegate:
-        guid:
-          m_Value0: 403468932
-          m_Value1: 1717852973
-          m_Value2: 1225694937
-          m_Value3: 1017947166
-    onCollect:
-      delegate:
-        guid:
-          m_Value0: 1667801151
-          m_Value1: 954217245
-          m_Value2: 81779735
-          m_Value3: 816546133
-    onActivate:
-      delegate:
-        guid:
-          m_Value0: 1786268109
-          m_Value1: 404817386
-          m_Value2: 808982513
-          m_Value3: 612729131
+    onUpdate: {}
+    onCollect: {}
+    onActivate: {}
 --- !u!114 &-6836032030014831207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,27 +91,9 @@ MonoBehaviour:
   input: 2
   tagHook:
     <Tag>k__BackingField: {fileID: -1351460517349501212, guid: 44376205d230af44a866298a556a002d, type: 2}
-    onUpdate:
-      delegate:
-        guid:
-          m_Value0: 403468932
-          m_Value1: 1717852973
-          m_Value2: 1225694937
-          m_Value3: 1017947166
-    onCollect:
-      delegate:
-        guid:
-          m_Value0: 1667801151
-          m_Value1: 954217245
-          m_Value2: 81779735
-          m_Value3: 816546133
-    onActivate:
-      delegate:
-        guid:
-          m_Value0: 1786268109
-          m_Value1: 404817386
-          m_Value2: 808982513
-          m_Value3: 612729131
+    onUpdate: {}
+    onCollect: {}
+    onActivate: {}
 --- !u!114 &-6759112726560877765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,27 +181,9 @@ MonoBehaviour:
   input: 2
   tagHook:
     <Tag>k__BackingField: {fileID: 7278139415752595749, guid: 44376205d230af44a866298a556a002d, type: 2}
-    onUpdate:
-      delegate:
-        guid:
-          m_Value0: 403468932
-          m_Value1: 1717852973
-          m_Value2: 1225694937
-          m_Value3: 1017947166
-    onCollect:
-      delegate:
-        guid:
-          m_Value0: 1667801151
-          m_Value1: 954217245
-          m_Value2: 81779735
-          m_Value3: 816546133
-    onActivate:
-      delegate:
-        guid:
-          m_Value0: 1786268109
-          m_Value1: 404817386
-          m_Value2: 808982513
-          m_Value3: 612729131
+    onUpdate: {}
+    onCollect: {}
+    onActivate: {}
 --- !u!114 &-6343387016870645793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,27 +506,9 @@ MonoBehaviour:
   input: 0
   tagHook:
     <Tag>k__BackingField: {fileID: -2808911589905771166, guid: 44376205d230af44a866298a556a002d, type: 2}
-    onUpdate:
-      delegate:
-        guid:
-          m_Value0: 276658437
-          m_Value1: 441877154
-          m_Value2: 927892172
-          m_Value3: 1717711133
-    onCollect:
-      delegate:
-        guid:
-          m_Value0: 144473443
-          m_Value1: 1731524940
-          m_Value2: 1401156229
-          m_Value3: 750351197
-    onActivate:
-      delegate:
-        guid:
-          m_Value0: 241513545
-          m_Value1: 1589246112
-          m_Value2: 1934802772
-          m_Value3: 1732423246
+    onUpdate: {}
+    onCollect: {}
+    onActivate: {}
 --- !u!114 &-1525444958682492193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,17 +522,37 @@ MonoBehaviour:
   m_Name: LVL1HelpArmor
   m_EditorClassIdentifier: 
   nodes:
+  - {fileID: -5958540144979267980}
+  - {fileID: 38582488751614828}
+  - {fileID: 1572538175248676239}
+  - {fileID: 7884446375011740394}
+  - {fileID: 8112424560519563130}
+  - {fileID: -3054342065683329751}
+  - {fileID: 7299702531727618121}
+  - {fileID: -6759112726560877765}
+  - {fileID: -4221686603062560836}
+  - {fileID: -1069654600858940167}
+  - {fileID: 7994633750440475879}
+  - {fileID: 1624452234452596887}
+  - {fileID: -6343387016870645793}
+  - {fileID: -3908601368573126488}
+  - {fileID: 2565818220840585077}
+  - {fileID: 8908257022347227051}
+  - {fileID: -1860124147500855951}
+  - {fileID: 8165235133174297205}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: -1806198133859934676}
+  - {fileID: 91586516980049575}
+  - {fileID: -6836032030014831207}
+  - {fileID: 3218039110154859720}
+  - {fileID: 3812492607899137976}
+  - {fileID: 2680716910700845173}
+  - {fileID: 3940809055230074604}
+  - {fileID: -6461824622840232631}
+  - {fileID: 4220089814974336712}
+  - {fileID: 8772623383576740225}
+  - {fileID: 518281272187738424}
+  - {fileID: -8200208134081661331}
 --- !u!114 &-1069654600858940167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -764,27 +712,9 @@ MonoBehaviour:
   input: 0
   tagHook:
     <Tag>k__BackingField: {fileID: -3074108703614639802, guid: 44376205d230af44a866298a556a002d, type: 2}
-    onUpdate:
-      delegate:
-        guid:
-          m_Value0: 276658437
-          m_Value1: 441877154
-          m_Value2: 927892172
-          m_Value3: 1717711133
-    onCollect:
-      delegate:
-        guid:
-          m_Value0: 144473443
-          m_Value1: 1731524940
-          m_Value2: 1401156229
-          m_Value3: 750351197
-    onActivate:
-      delegate:
-        guid:
-          m_Value0: 241513545
-          m_Value1: 1589246112
-          m_Value2: 1934802772
-          m_Value3: 1732423246
+    onUpdate: {}
+    onCollect: {}
+    onActivate: {}
 --- !u!114 &128641630204934169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,8 +763,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: 518281272187738424}
-      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections:
       - fieldName: output
         node: {fileID: 8165235133174297205}
@@ -847,27 +777,9 @@ MonoBehaviour:
   input: 0
   tagHook:
     <Tag>k__BackingField: {fileID: 7278139415752595749, guid: 44376205d230af44a866298a556a002d, type: 2}
-    onUpdate:
-      delegate:
-        guid:
-          m_Value0: 276658437
-          m_Value1: 441877154
-          m_Value2: 927892172
-          m_Value3: 1717711133
-    onCollect:
-      delegate:
-        guid:
-          m_Value0: 144473443
-          m_Value1: 1731524940
-          m_Value2: 1401156229
-          m_Value3: 750351197
-    onActivate:
-      delegate:
-        guid:
-          m_Value0: 241513545
-          m_Value1: 1589246112
-          m_Value2: 1934802772
-          m_Value3: 1732423246
+    onUpdate: {}
+    onCollect: {}
+    onActivate: {}
 --- !u!114 &1252054698142440036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1069,27 +981,9 @@ MonoBehaviour:
   input: 0
   tagHook:
     <Tag>k__BackingField: {fileID: -1351460517349501212, guid: 44376205d230af44a866298a556a002d, type: 2}
-    onUpdate:
-      delegate:
-        guid:
-          m_Value0: 276658437
-          m_Value1: 441877154
-          m_Value2: 927892172
-          m_Value3: 1717711133
-    onCollect:
-      delegate:
-        guid:
-          m_Value0: 144473443
-          m_Value1: 1731524940
-          m_Value2: 1401156229
-          m_Value3: 750351197
-    onActivate:
-      delegate:
-        guid:
-          m_Value0: 241513545
-          m_Value1: 1589246112
-          m_Value2: 1934802772
-          m_Value3: 1732423246
+    onUpdate: {}
+    onCollect: {}
+    onActivate: {}
 --- !u!114 &3218039110154859720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1123,8 +1017,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: 3218039110154859720}
-      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
@@ -1134,27 +1028,9 @@ MonoBehaviour:
   input: 2
   tagHook:
     <Tag>k__BackingField: {fileID: -2808911589905771166, guid: 44376205d230af44a866298a556a002d, type: 2}
-    onUpdate:
-      delegate:
-        guid:
-          m_Value0: 403468932
-          m_Value1: 1717852973
-          m_Value2: 1225694937
-          m_Value3: 1017947166
-    onCollect:
-      delegate:
-        guid:
-          m_Value0: 1667801151
-          m_Value1: 954217245
-          m_Value2: 81779735
-          m_Value3: 816546133
-    onActivate:
-      delegate:
-        guid:
-          m_Value0: 1786268109
-          m_Value1: 404817386
-          m_Value2: 808982513
-          m_Value3: 612729131
+    onUpdate: {}
+    onCollect: {}
+    onActivate: {}
 --- !u!114 &3311442594516287161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1217,27 +1093,9 @@ MonoBehaviour:
   input: 0
   tagHook:
     <Tag>k__BackingField: {fileID: 6299934136830688819, guid: 44376205d230af44a866298a556a002d, type: 2}
-    onUpdate:
-      delegate:
-        guid:
-          m_Value0: 276658437
-          m_Value1: 441877154
-          m_Value2: 927892172
-          m_Value3: 1717711133
-    onCollect:
-      delegate:
-        guid:
-          m_Value0: 144473443
-          m_Value1: 1731524940
-          m_Value2: 1401156229
-          m_Value3: 750351197
-    onActivate:
-      delegate:
-        guid:
-          m_Value0: 241513545
-          m_Value1: 1589246112
-          m_Value2: 1934802772
-          m_Value3: 1732423246
+    onUpdate: {}
+    onCollect: {}
+    onActivate: {}
 --- !u!114 &3940809055230074604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1271,8 +1129,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: 3940809055230074604}
-      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
@@ -1282,27 +1140,9 @@ MonoBehaviour:
   input: 2
   tagHook:
     <Tag>k__BackingField: {fileID: 6299934136830688819, guid: 44376205d230af44a866298a556a002d, type: 2}
-    onUpdate:
-      delegate:
-        guid:
-          m_Value0: 403468932
-          m_Value1: 1717852973
-          m_Value2: 1225694937
-          m_Value3: 1017947166
-    onCollect:
-      delegate:
-        guid:
-          m_Value0: 1667801151
-          m_Value1: 954217245
-          m_Value2: 81779735
-          m_Value3: 816546133
-    onActivate:
-      delegate:
-        guid:
-          m_Value0: 1786268109
-          m_Value1: 404817386
-          m_Value2: 808982513
-          m_Value3: 612729131
+    onUpdate: {}
+    onCollect: {}
+    onActivate: {}
 --- !u!114 &4220089814974336712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1347,27 +1187,9 @@ MonoBehaviour:
   input: 0
   tagHook:
     <Tag>k__BackingField: {fileID: 5702289810186121694, guid: 44376205d230af44a866298a556a002d, type: 2}
-    onUpdate:
-      delegate:
-        guid:
-          m_Value0: 276658437
-          m_Value1: 441877154
-          m_Value2: 927892172
-          m_Value3: 1717711133
-    onCollect:
-      delegate:
-        guid:
-          m_Value0: 144473443
-          m_Value1: 1731524940
-          m_Value2: 1401156229
-          m_Value3: 750351197
-    onActivate:
-      delegate:
-        guid:
-          m_Value0: 241513545
-          m_Value1: 1589246112
-          m_Value2: 1934802772
-          m_Value3: 1732423246
+    onUpdate: {}
+    onCollect: {}
+    onActivate: {}
 --- !u!114 &4619063764835722568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1708,8 +1530,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: input
       _node: {fileID: 8772623383576740225}
-      _typeQualifiedName: TagNode+TagState, Progression, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: NotifyNodeInterface+EmptyPort, Graph, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
@@ -1719,27 +1541,9 @@ MonoBehaviour:
   input: 2
   tagHook:
     <Tag>k__BackingField: {fileID: 5702289810186121694, guid: 44376205d230af44a866298a556a002d, type: 2}
-    onUpdate:
-      delegate:
-        guid:
-          m_Value0: 403468932
-          m_Value1: 1717852973
-          m_Value2: 1225694937
-          m_Value3: 1017947166
-    onCollect:
-      delegate:
-        guid:
-          m_Value0: 1667801151
-          m_Value1: 954217245
-          m_Value2: 81779735
-          m_Value3: 816546133
-    onActivate:
-      delegate:
-        guid:
-          m_Value0: 1786268109
-          m_Value1: 404817386
-          m_Value2: 808982513
-          m_Value3: 612729131
+    onUpdate: {}
+    onCollect: {}
+    onActivate: {}
 --- !u!114 &8908257022347227051
 MonoBehaviour:
   m_ObjectHideFlags: 0

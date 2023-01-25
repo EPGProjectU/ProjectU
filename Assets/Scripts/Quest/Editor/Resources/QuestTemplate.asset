@@ -182,27 +182,9 @@ MonoBehaviour:
   input: 2
   tagHook:
     <Tag>k__BackingField: {fileID: 0}
-    onUpdate:
-      delegate:
-        guid:
-          m_Value0: 403468932
-          m_Value1: 1717852973
-          m_Value2: 1225694937
-          m_Value3: 1017947166
-    onCollect:
-      delegate:
-        guid:
-          m_Value0: 1667801151
-          m_Value1: 954217245
-          m_Value2: 81779735
-          m_Value3: 816546133
-    onActivate:
-      delegate:
-        guid:
-          m_Value0: 1786268109
-          m_Value1: 404817386
-          m_Value2: 808982513
-          m_Value3: 612729131
+    onUpdate: {}
+    onCollect: {}
+    onActivate: {}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,24 +247,6 @@ MonoBehaviour:
   input: 0
   tagHook:
     <Tag>k__BackingField: {fileID: 0}
-    onUpdate:
-      delegate:
-        guid:
-          m_Value0: 276658437
-          m_Value1: 441877154
-          m_Value2: 927892172
-          m_Value3: 1717711133
-    onCollect:
-      delegate:
-        guid:
-          m_Value0: 144473443
-          m_Value1: 1731524940
-          m_Value2: 1401156229
-          m_Value3: 750351197
-    onActivate:
-      delegate:
-        guid:
-          m_Value0: 241513545
-          m_Value1: 1589246112
-          m_Value2: 1934802772
-          m_Value3: 1732423246
+    onUpdate: {}
+    onCollect: {}
+    onActivate: {}
