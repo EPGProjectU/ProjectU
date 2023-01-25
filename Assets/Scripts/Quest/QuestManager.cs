@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using ProjectU.Core;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -57,35 +58,29 @@ public class QuestManager
     }
 
     /// <summary>
-    /// Creates <see cref="QuestManagerData"/> file if it does not exist
-    /// </summary>
-    private static void CreateDataFile()
-    {
-#if UNITY_EDITOR
-        var fullDataPath = $"Assets/Resources/{ResourceDataPath}.asset";
-
-        Data = AssetDatabase.LoadAssetAtPath<QuestManagerData>(fullDataPath);
-
-        if (Data)
-            return;
-
-        Debug.Log("QuestManagerData does not exist. Creating a new instance.");
-        Directory.CreateDirectory(Path.GetDirectoryName(fullDataPath)!);
-        Data = ScriptableObject.CreateInstance<QuestManagerData>();
-        AssetDatabase.CreateAsset(Data, fullDataPath);
-
-#else
-        LoadData();
-#endif
-    }
-
-    /// <summary>
     /// Loads <see cref="QuestManagerData"/> from <see cref="ResourceDataPath"/>
     /// </summary>
     private static void LoadData()
     {
         Data = Resources.Load<QuestManagerData>(ResourceDataPath);
+        
+#if UNITY_EDITOR
+        if (Data)
+            return;
+
+        var fullDataPath = $"Assets/Resources/{ResourceDataPath}.asset";
+        
+        Debug.Log("QuestManagerData does not exist. Creating a new instance.");
+        Directory.CreateDirectory(Path.GetDirectoryName(fullDataPath)!);
+        Data = ScriptableObject.CreateInstance<QuestManagerData>();
+        AssetDatabase.CreateAsset(Data, fullDataPath);
+
+#endif
     }
 
-    static QuestManager() => CreateDataFile();
+    static QuestManager() => LoadData();
+
+    
+    [Awake]
+    private static void Init() {}
 }
