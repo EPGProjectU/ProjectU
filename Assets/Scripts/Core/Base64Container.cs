@@ -18,7 +18,7 @@ namespace ProjectU.Core
         {
             return
                 rhs is null
-                    ? string.IsNullOrEmpty(lhs!.data)
+                    ? string.IsNullOrEmpty(lhs?.data)
                     : lhs!.Equals(rhs);
         }
 
