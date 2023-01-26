@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7071194444171543542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
+  m_Name: Tag
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -184, y: 1016}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -7071194444171543542}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -7071194444171543542}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: 0
+  output: 0
+  flags:
+    active: 0
+    collected: 0
+    collectOnAvailable: 0
+  <Name>k__BackingField: LVL3DefeatBoss
 --- !u!114 &-6528832176433460488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,11 +300,57 @@ MonoBehaviour:
   - {fileID: -6528832176433460488}
   - {fileID: 7278139415752595749}
   - {fileID: -1351460517349501212}
+  - {fileID: 2641482638032796294}
+  - {fileID: -7071194444171543542}
   guid:
     m_Value0: 1433403466
     m_Value1: 1918343572
     m_Value2: 1977702249
     m_Value3: 732814182
+--- !u!114 &2641482638032796294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e82baa99a7efb4d8035985426a8b89, type: 3}
+  m_Name: Tag
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -184, y: 872}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 2641482638032796294}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 2641482638032796294}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: 0
+  output: 0
+  flags:
+    active: 0
+    collected: 0
+    collectOnAvailable: 0
+  <Name>k__BackingField: LVL3KillSkeletons
 --- !u!114 &3601258258368031554
 MonoBehaviour:
   m_ObjectHideFlags: 0
