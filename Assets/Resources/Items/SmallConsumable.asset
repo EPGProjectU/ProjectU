@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Potion
   sprite: {fileID: -7522750473901418957, guid: 18ab213d2a97b364d9c3b275ce30bad1, type: 3}
-  description: 
+  description: 'Restores small amount of your vital energy when drank. '
   Value: 5

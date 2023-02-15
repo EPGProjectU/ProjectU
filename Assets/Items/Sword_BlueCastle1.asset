@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Trollkin Slasher
   sprite: {fileID: -2028688851913010192, guid: bae663ab575f53e49891792aca1cc9eb, type: 3}
+  description: This weapon was once wielded by the legendary Laran Trollslayer before
+    he disappeared in Great Purge.
   Damage: 5
   Range: 10

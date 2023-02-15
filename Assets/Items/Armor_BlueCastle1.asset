@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Armor of the Blue Knight
   sprite: {fileID: 21300000, guid: 62b7ede9ae3045449b63ceb673474ce3, type: 3}
+  description: 'Armor of the mysterious being called Blue Knight that slayed Trollking '
   ArmorValue: 30
   Durability: 100
