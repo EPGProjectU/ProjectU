@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/MainMenu.unity
+    guid: 126958ac62baec347b2a8b78e67ef1a6
   - enabled: 1
     path: Assets/Scenes/EquipmentScene.unity
     guid: 4f96cafe2d602e34bbd6934ca6798f68
@@ -27,8 +27,8 @@ EditorBuildSettings:
     path: Assets/Scenes/LoadMenu.unity
     guid: 569e27334e4629d448983b7e5b7f150f
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 126958ac62baec347b2a8b78e67ef1a6
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/CharacterSheet.unity
     guid: f25bca3f5b951f8428327dc6a94e5eac
@@ -38,4 +38,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayerUI.unity
     guid: fde5dfc07787b6b48902a6863bd5598d
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 7c4ee2b7fb448104eaa683fef5ee7c89
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 5a59b9e043687dc438a593d76498f5ae
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: d9480ecbdc1c4954589bea14e5bb590b
+  - enabled: 1
+    path: Assets/Scenes/Level5.unity
+    guid: abe895552698abc47b24bdb9f2bf01fd
   m_configObjects: {}

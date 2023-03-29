@@ -7,11 +7,10 @@ public class QuestGraphEditor : NodeGraphEditor
 {
     private static readonly Type[] AllowedNodes =
     {
-        typeof(BoolNode),
         typeof(TagHookNode),
-        typeof(QuestEntryPoint),
+        typeof(QuestEntryPointNode),
         typeof(QuestExitPointNode),
-        typeof(DefeatObjectiveNode)
+        typeof(DefeatObjectiveNode),
     };
 
     public override string GetNodeMenuName(Type type)

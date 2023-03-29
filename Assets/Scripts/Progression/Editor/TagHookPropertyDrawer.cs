@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -22,31 +23,36 @@ public class TagHookPropertyDrawer : PropertyDrawer
         EditorGUI.indentLevel = 0;
 
 
-        var tagNameProperty = property.FindPropertyRelative("tagName");
-        
-        
+        var tagProperty = property.FindPropertyRelative("<Tag>k__BackingField");
+        var tag = tagProperty.objectReferenceValue as TagNode;
 
-        // Refresh ProgressionManager to make sure ProgressionTags are cached
-        ProgressionManager.SoftRefresh();
+        ProgressionManager.ClearCache();
 
-        var tagList = (from pTag in ProgressionManager.GetAllTags() select pTag.Name).ToList();
+        var tagList = ProgressionManager.GetAllTags().OrderBy(tagNode => tagNode.Name).ToList();
 
         // Get index of the current selected tag
-        var index = tagList.FindIndex(t => t.Contains(tagNameProperty.stringValue));
+        var index = tagList.FindIndex(t => t.Equals(tag));
 
         var defaultGUIColor = GUI.color;
 
         // If currently set tag name does not exist in current context make field yellow to indicate this
-        if (index < 0)
+        if (tag != null && index < 0)
+        {
             GUI.color = Color.yellow;
+            index = 0;
+            tagList = tagList.Prepend(tag).ToList();
+        }
 
         EditorGUI.BeginChangeCheck();
-        index = EditorGUI.Popup(position, index, tagList.ToArray());
-
+        index = EditorGUI.Popup(position, index < 0 ? -1 : index + 1, tagList.Select(tagNode => tagNode.Name).Prepend("-- Reset --").ToArray());
+        
         if (EditorGUI.EndChangeCheck())
-            tagNameProperty.stringValue = tagList[index];
+        {
+            tagProperty.objectReferenceValue = index == 0 ? null : tagList[index - 1] as Object;
+        }
 
-        EditorGUI.PropertyField(position, tagNameProperty, GUIContent.none);
+        //EditorGUI.TextField(position, tag?.Name);
+
         GUI.color = defaultGUIColor;
 
         // Set indent back to what it was

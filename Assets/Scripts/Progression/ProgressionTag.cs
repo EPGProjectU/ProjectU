@@ -1,10 +1,10 @@
 /// <summary>
 /// Tag used for storing progression states
 /// </summary>
-public interface ProgressionTag
+public interface TagNode2
 {
     /// <summary>
-    /// Possible states of <see cref="ProgressionTag"/>
+    /// Possible states of <see cref="TagNode"/>
     /// </summary>
     public enum TagState
     {
@@ -15,12 +15,12 @@ public interface ProgressionTag
     }
 
     /// <summary>
-    /// Identifier of the <see cref="ProgressionTag"/>
+    /// Identifier of the <see cref="TagNode"/>
     /// </summary>
     public string Name { get; }
 
     /// <summary>
-    /// Current <see cref="TagState"/> of <see cref="ProgressionTag"/>
+    /// Current <see cref="TagState"/> of <see cref="TagNode"/>
     /// </summary>
     /// Also returns true for <see cref="TagState.Active"/> <see cref="TagState"/>
     public TagState State { get; }

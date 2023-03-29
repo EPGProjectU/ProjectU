@@ -249,6 +249,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupRange: 2
+  talkRange: 2
+  NPCdetected: 0
+  ItemDetected: 0
 --- !u!114 &4783949260685935171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +266,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   running: 0
   motionData: {fileID: 11400000, guid: b44358aa2663b8a479e376b8ee472de7, type: 2}
-  StaggerRecovery: 1
+  sightRange: 0
+  weaponRange: 0
 --- !u!114 &647860402
 MonoBehaviour:
   m_ObjectHideFlags: 0

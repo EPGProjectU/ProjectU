@@ -7,86 +7,80 @@ using System.Linq;
 /// </summary>
 public static partial class ProgressionManager
 {
-    /// <param name="tagName">Name identifying <see cref="ProgressionTag"/></param>
-    /// <returns><see cref="ProgressionTag"/> with given name in the current <see cref="ProgressionGraph"/></returns>
-    public static ProgressionTag GetTag(string tagName)
+    /// <param name="tagName">Name identifying <see cref="TagNode"/></param>
+    /// <returns><see cref="TagNode"/> with given name in the current <see cref="ProgressionGraph"/></returns>
+    public static TagNode GetTag(string tagName)
     {
-        return !Tags.ContainsKey(tagName) ? null : Tags[tagName];
+        return TagNameCache.Get().TryGetValue(tagName, out var tag) ? tag : null;
     }
 
-    /// <returns>List of <see cref="ProgressionTag"/>s for the current <see cref="ProgressionGraph"/></returns>
-    public static List<ProgressionTag> GetAllTags()
+    /// <returns>List of <see cref="TagNode"/>s for the current <see cref="ProgressionGraph"/></returns>
+    public static List<TagNode> GetAllTags()
     {
-        return (from e in Tags select e.Value).ToList();
+        return (from e in TagNameCache.Get() select e.Value).ToList();
     }
 
     /// <summary>
-    /// Sets <see cref="ProgressionTag"/> to Collected <see cref="ProgressionTag.TagState"/>
+    /// Sets <see cref="TagNode"/> to Collected <see cref="TagNode.TagState"/>
     /// </summary>
-    /// <param name="tagName">Name identifying <see cref="ProgressionTag"/></param>
+    /// <param name="tagName">Name identifying <see cref="TagNode"/></param>
     /// <param name="force">If condition for collecting tag should be ignored</param>
     /// <returns>If collection was successful
     /// <br/>In case of forced collection, if force was needed</returns>
     public static bool CollectTag(string tagName, bool force = false)
     {
-        return CollectTag(Tags[tagName], force);
+        return CollectTag(TagNameCache.Get()[tagName], force);
     }
 
     /// <summary>
-    /// Sets <see cref="ProgressionTag"/> to Collected <see cref="ProgressionTag.TagState"/>
+    /// Sets <see cref="TagNode"/> to Collected <see cref="TagNode.TagState"/>
     /// </summary>
-    /// <param name="progressionTag"><see cref="ProgressionTag"/> to be collected</param>
+    /// <param name="tagNode"><see cref="TagNode"/> to be collected</param>
     /// <param name="force">If condition for collecting tag should be ignored</param>
     /// <returns>If collection was successful
     /// <br/>In case of forced collection, if force was needed</returns>
-    public static bool CollectTag(ProgressionTag progressionTag, bool force = false)
+    public static bool CollectTag(TagNode tagNode, bool force = false)
     {
-        if (!(progressionTag is TagNode tagNode))
+        if (!tagNode || !tagNode.IsAvailable() && !force)
             return false;
 
-        if (!progressionTag.IsAvailable() && !force)
-            return false;
-
-        StartChange();
+        CreateSnapshot();
 
         tagNode.flags.collected = true;
 
-        EndChange();
+        SendTagUpdateEvents();
 
         // Return if tag is available as a feedback to force flag
         return tagNode.IsAvailable();
     }
 
     /// <summary>
-    /// Sets or reset <see cref="ProgressionTag"/> Active <see cref="ProgressionTag.TagState"/>
+    /// Sets or reset <see cref="TagNode"/> Active <see cref="TagNode.TagState"/>
     /// </summary>
-    /// <param name="tagName">Name identifying <see cref="ProgressionTag"/></param>
+    /// <param name="tagName">Name identifying <see cref="TagNode"/></param>
     /// <param name="state">True to activate, false to deactivate</param>
     /// <returns>If active state was successful changed</returns>
     public static bool SetActiveTag(string tagName, bool state)
     {
-        return SetActiveTag(Tags[tagName], state);
+        return SetActiveTag(TagNameCache.Get()[tagName], state);
     }
 
     /// <summary>
-    /// Sets or reset <see cref="ProgressionTag"/> Active <see cref="ProgressionTag.TagState"/>
+    /// Sets or reset <see cref="TagNode"/> Active <see cref="TagNode.TagState"/>
     /// </summary>
-    /// <param name="progressionTag"><see cref="ProgressionTag"/> to be activate/deactivate</param>
+    /// <param name="tagNode"><see cref="TagNode"/> to be activate/deactivate</param>
     /// <param name="state">True to activate, false to deactivate</param>
     /// <returns>If active state was successful changed</returns>
-    public static bool SetActiveTag(ProgressionTag progressionTag, bool state)
+    public static bool SetActiveTag(TagNode tagNode, bool state)
     {
-        if (!(progressionTag is TagNode tagNode))
+        if (!tagNode.IsAvailable())
             return false;
 
-        if (!progressionTag.IsAvailable())
-            return false;
-
-        StartChange();
+        CreateSnapshot();
 
         tagNode.flags.active = state;
 
-        EndChange();
+        SendTagUpdateEvents();
 
         return true;
     }

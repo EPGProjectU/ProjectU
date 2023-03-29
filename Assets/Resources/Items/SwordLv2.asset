@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0260240d56df34085f3996c8994a93, type: 3}
   m_Name: SwordLv2
   m_EditorClassIdentifier: 
-  Name: Spear
+  Name: Darksteel sword
   sprite: {fileID: 21300000, guid: e2c0b1e216f938143a9fb6c2763f4afc, type: 3}
+  description: Forged with pure hatred this weapon will strike fear in the hearts
+    of your enemies
   Damage: 3
   Range: 6.5

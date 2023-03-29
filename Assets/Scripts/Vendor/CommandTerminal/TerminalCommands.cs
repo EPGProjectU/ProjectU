@@ -23,13 +23,13 @@ public static class TerminalCommands
     {
         var tags = ProgressionManager.GetAllTags();
 
-        var result = tags.Where(tag => tag.State == ProgressionTag.TagState.Unavailable).Aggregate("", (current, tag) => current + "- " + tag.Name + "\n");
+        var result = tags.Where(tag => tag.State == TagNode.TagState.Unavailable).Aggregate("", (current, tag) => current + "- " + tag.Name + "\n");
 
-        result = tags.Where(tag => tag.State == ProgressionTag.TagState.Available).Aggregate(result, (current, tag) => current + "+ " + tag.Name + "\n");
+        result = tags.Where(tag => tag.State == TagNode.TagState.Available).Aggregate(result, (current, tag) => current + "+ " + tag.Name + "\n");
 
-        result = tags.Where(tag => tag.State == ProgressionTag.TagState.Active).Aggregate(result, (current, tag) => current + "@ " + tag.Name + "\n");
+        result = tags.Where(tag => tag.State == TagNode.TagState.Active).Aggregate(result, (current, tag) => current + "@ " + tag.Name + "\n");
 
-        result = tags.Where(tag => tag.State == ProgressionTag.TagState.Collected).Aggregate(result, (current, tag) => current + "* " + tag.Name + "\n");
+        result = tags.Where(tag => tag.State == TagNode.TagState.Collected).Aggregate(result, (current, tag) => current + "* " + tag.Name + "\n");
 
         Debug.Log(result);
     }

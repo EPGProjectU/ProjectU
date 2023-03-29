@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Chainmail
   sprite: {fileID: 21300000, guid: 6be7054473f84e0429d3e8b1b6cbf878, type: 3}
+  description: A fine diamond decorated chainmal made by skilled dwarves in the depths
+    of the underground.
   ArmorValue: 10
   Durability: 70

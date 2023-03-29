@@ -1,4 +1,4 @@
-﻿{
+{
     "name": "QuestEditor",
     "rootNamespace": "",
     "references": [
@@ -6,7 +6,8 @@
         "XNode",
         "XNodeEditor",
         "Graph",
-        "Progression"
+        "Progression",
+        "GraphEditor"
     ],
     "includePlatforms": [
         "Editor"

@@ -14,6 +14,7 @@ namespace ProjectU.Core.Serialization
         /// <remarks>
         /// Might want to remove it from deserialized data, but in some cases should not cause any problems
         /// </remarks>
+        [Serializable]
         public class BrokenReference {}
 
         /// <summary>

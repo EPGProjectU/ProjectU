@@ -571,5 +571,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBarPlusNPCWindos
       objectReference: {fileID: 0}
+    - target: {fileID: 7692578985974718197, guid: d0bdd97116ebb0944b7b669f3dbd7bc7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 129.0029
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692578985974718197, guid: d0bdd97116ebb0944b7b669f3dbd7bc7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 20.2383
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692578985974718197, guid: d0bdd97116ebb0944b7b669f3dbd7bc7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 14.2695
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692578985974718199, guid: d0bdd97116ebb0944b7b669f3dbd7bc7, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692578985974718199, guid: d0bdd97116ebb0944b7b669f3dbd7bc7, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692578985974718199, guid: d0bdd97116ebb0944b7b669f3dbd7bc7, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0bdd97116ebb0944b7b669f3dbd7bc7, type: 3}

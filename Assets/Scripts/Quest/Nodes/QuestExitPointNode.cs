@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using XNode;
 
+[CreateNodeMenu("Quest/Flow/Exit Point")]
 public class QuestExitPointNode : Node, NotifyNodeInterface
 {
     [Input]
@@ -9,7 +10,10 @@ public class QuestExitPointNode : Node, NotifyNodeInterface
     [Output]
     public NotifyNodeInterface.EmptyPort output;
 
+    protected override void Init() => name = "Exit Point";
+
     public override object GetValue(NodePort port) => null;
+    
 
     public bool Notify(object payload)
     {

@@ -9,12 +9,11 @@ public class Armor : Item
     public int ArmorValue;
     public float Durability;
 
-    public override string ToString()
-    {
-        return base.ToString() + "\n"
-            + "ArmorValue: " + ArmorValue + "\n"
-            + "Durability: " + Durability;
+    public override string getStats() {
+        return "Armor defense: " + ArmorValue +
+            "\nArmor durability: " + Durability;
     }
+
     public override void Use(GameObject target)
     {
         target.GetComponent<HealthSystem>().UpdateDefence(ArmorValue,Durability);

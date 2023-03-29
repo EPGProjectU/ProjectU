@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
 using JetBrains.Annotations;
@@ -8,7 +9,7 @@ using XNode;
 /// <summary>
 /// Graph for creating progression flow
 /// </summary>
-/// TODO System to keep ProgressionTag names unique
+/// TODO System to keep TagNode names unique
 [CreateAssetMenu(menuName = "ProjectU/Progression Graph")]
 public class ProgressionGraph : NodeGraph
 {
